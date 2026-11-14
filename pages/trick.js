@@ -12,6 +12,7 @@ import { stepSentence } from '../logic/say.js';
 import { toHash, parseHash } from '../logic/routes.js';
 import { parseCommand } from '../logic/commands.js';
 import { stepBuild, newBlocks } from '../logic/tricks.js';
+import { wideScreen } from '../components/wide-screen.js';
 
 const HINT = 'Say "next", "again" or "back"';
 
@@ -43,7 +44,7 @@ export function trickPage(ctx, route) {
   hint.textContent = guideVoice.on ? HINT : '';
 
   const added = newBlocks(trick, n - 1).filter((id) => ctx.book.items[id]?.pic >= 0);
-  const picture = buildPicture(stepBuild(trick, n - 1), ctx.builds.blocks, { w: 320, h: 230, label: `Step ${n}: ${step.title}` });
+  const picture = buildPicture(stepBuild(trick, n - 1), ctx.builds.blocks, { ...(wideScreen() ? { w: 480, h: 340 } : { w: 320, h: 230 }), label: `Step ${n}: ${step.title}` });
   const nodes = [
     ...topBar({ left: { label: 'Builder tricks', href: '#/tricks' }, right: 'Builder trick' }),
     el(

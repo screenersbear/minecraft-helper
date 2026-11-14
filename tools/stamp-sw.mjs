@@ -7,7 +7,7 @@ import { join, relative } from 'node:path';
 
 const app = fileURLToPath(new URL('..', import.meta.url));
 const FOLDERS = ['components', 'data', 'logic', 'pages', 'speech', 'styles', 'fonts', 'images'];
-const ROOT_FILES = ['index.html', 'app.js', 'manifest.webmanifest'];
+const ROOT_FILES = ['index.html', 'app.js', 'app-old.js', 'manifest.webmanifest'];
 const KEEP = /\.(js|json|css|png|woff2)$/;
 
 function walk(folder) {

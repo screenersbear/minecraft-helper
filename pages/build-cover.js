@@ -8,6 +8,7 @@ import { itemPicture } from '../components/picture.js';
 import { buildPicture } from '../components/build-picture.js';
 import { guideVoice } from '../speech/guide-voice.js';
 import { remixPanel } from '../components/remix-panel.js';
+import { wideScreen } from '../components/wide-screen.js';
 import { findBuild, buildCounts, countWords, pictureId, coverSentence, sizeText } from '../logic/builds.js';
 import { remixOf, setRemix, remixedBuild } from '../data/remixes.js';
 import { parseCommand } from '../logic/commands.js';
@@ -74,7 +75,7 @@ export function buildCoverPage(ctx, route) {
     el(
       'div',
       { class: 'page build-cover' },
-      el('div', { class: 'build-hero' }, buildPicture(build, ctx.builds.blocks, { w: 300, h: 200 })),
+      el('div', { class: 'build-hero' }, buildPicture(build, ctx.builds.blocks, wideScreen() ? { w: 480, h: 320 } : { w: 300, h: 200 })),
       el('div', { class: 'title-row' }, el('h1', { class: 'answer-title', 'data-fit': '2', tabindex: '-1' }, build.name), speakerButton(actions.again)),
       el('p', { class: 'build-meta' }, buildTags(build), el('span', {}, sizeText(build))),
       build.variant ? el('p', { class: 'remix-tag' }, `Remixed: ${build.variant}`) : null,

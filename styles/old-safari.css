@@ -1,0 +1,30 @@
+/* Old Safari (iPads on iOS 12) only: index.html adds this file when it loads app-old.js. Fixes for things old
+   Safari can't do: the block picker panel (it has no <dialog>) and boxes that keep their shape square. */
+
+dialog:not([open]) {
+  display: none;
+}
+
+dialog[open] {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+}
+
+.dialog-back {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 19;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+/* No aspect-ratio: the crop box gets a height as big as its width. */
+.crop-box {
+  height: calc(100vw - 40px);
+  max-height: 560px;
+}

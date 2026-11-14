@@ -9,6 +9,7 @@ import { layerView } from '../components/layer-view.js';
 import { guideVoice } from '../speech/guide-voice.js';
 import { layerCounts, countWords, pictureId, layerSentence } from '../logic/builds.js';
 import { remixedBuild } from '../data/remixes.js';
+import { wideScreen } from '../components/wide-screen.js';
 import { parseCommand } from '../logic/commands.js';
 import { toHash, parseHash } from '../logic/routes.js';
 
@@ -77,7 +78,7 @@ export function buildLayerPage(ctx, route) {
   });
   hint.textContent = guideVoice.on ? HINT : '';
 
-  const view = layerView(build, ctx.builds.blocks, n);
+  const view = layerView(build, ctx.builds.blocks, n, { room: wideScreen() ? 440 : 320 });
   const runs = layerCounts(build, n).map((c) => el('li', {}, itemPicture(book, pictureId(c.id), 24), el('span', {}, countWords(book, c))));
   const nodes = [
     ...topBar({ left: { label: 'Back', href: cover }, right: build.name }),

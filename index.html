@@ -33,10 +33,28 @@
 <link rel="stylesheet" href="styles/surprise.css">
 <link rel="stylesheet" href="styles/tricks.css">
 <link rel="stylesheet" href="styles/mine.css">
-<script type="module" src="app.js"></script>
+<link rel="stylesheet" href="styles/wide.css">
 </head>
 <body>
 <main id="app"><p class="loading">Opening the book...</p></main>
 <noscript><p class="loading">This guide needs JavaScript turned on.</p></noscript>
+<script>
+// Old Safari (iPads stuck on iOS 12) can't read the newest JavaScript, so it gets app-old.js: the same app, made
+// for it by tools/build-old-safari.mjs, plus styles/old-safari.css. Adding ?old-safari to the address tries it.
+(function () {
+  var old = /[?&]old-safari/.test(location.search);
+  try { new Function('var a = {}; return a?.b ?? 1'); } catch (e) { old = true; }
+  if (old) {
+    var css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'styles/old-safari.css';
+    document.head.appendChild(css);
+  }
+  var script = document.createElement('script');
+  if (!old) script.type = 'module';
+  script.src = old ? 'app-old.js' : 'app.js';
+  document.body.appendChild(script);
+})();
+</script>
 </body>
 </html>

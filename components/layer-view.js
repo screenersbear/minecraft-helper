@@ -11,8 +11,8 @@ const PAPER = '#FAFAF7';
 const PANEL = '#C6C6C6';
 const GLASS = '#D6E8EE';
 
-// The size of each square, in CSS pixels, so the layer fits the screen: 48 at most.
-export const cellSize = (W, room = 320) => Math.max(14, Math.min(48, Math.floor((room - (W - 1) * GAP) / W)));
+// The size of each square, in CSS pixels, so the layer fits the screen: 48 at most, or 72 with more room (an iPad).
+export const cellSize = (W, room = 320) => Math.max(14, Math.min(room > 320 ? 72 : 48, Math.floor((room - (W - 1) * GAP) / W)));
 
 // n: the layer, from 1 at the bottom. Returns { node, faded } (faded: whether any square shows the layer below).
 export function layerView(build, looks, n, { room = 320 } = {}) {

@@ -4,8 +4,8 @@
   "type": "module",
   "description": "Ask the guide: a voice-first Minecraft (Bedrock) helper that works offline.",
   "scripts": {
-    "build": "node tools/build-book.mjs && node tools/join-guides.mjs && node tools/join-builds.mjs && node tools/check-links.mjs && node tools/make-icons.mjs && node tools/stamp-sw.mjs",
-    "build:guides": "node tools/join-guides.mjs && node tools/check-links.mjs && node tools/stamp-sw.mjs",
+    "build": "node tools/build-book.mjs && node tools/join-guides.mjs && node tools/join-builds.mjs && node tools/check-links.mjs && node tools/make-icons.mjs && node tools/build-old-safari.mjs && node tools/stamp-sw.mjs",
+    "build:guides": "node tools/join-guides.mjs && node tools/check-links.mjs && node tools/build-old-safari.mjs && node tools/stamp-sw.mjs",
     "fetch-sources": "node tools/fetch-sources.mjs",
     "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "vitest run --coverage --config vitest.config.mjs",
@@ -19,16 +19,17 @@
     "test:report": "playwright show-report reports/playwright"
   },
   "devDependencies": {
-    "pngjs": "^7.0.0",
-    "@fontsource/pixelify-sans": "^5.1.0",
     "@fontsource/atkinson-hyperlegible": "^5.1.0",
-    "vitest": "^5.1.0",
-    "@vitest/coverage-v8": "^5.1.0",
-    "jsdom": "^31.0.0",
+    "@fontsource/pixelify-sans": "^5.1.0",
+    "@lhci/cli": "^0.16.1",
     "@playwright/test": "^1.65.0",
     "@stryker-mutator/core": "^10.1.1",
     "@stryker-mutator/vitest-runner": "^10.1.1",
-    "@lhci/cli": "^0.16.1",
-    "http-server": "^14.1.1"
+    "@vitest/coverage-v8": "^5.1.0",
+    "esbuild": "^0.28.2",
+    "http-server": "^14.1.1",
+    "jsdom": "^31.0.0",
+    "pngjs": "^7.0.0",
+    "vitest": "^5.1.0"
   }
 }
