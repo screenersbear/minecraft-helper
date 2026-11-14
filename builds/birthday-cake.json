@@ -1,0 +1,70 @@
+{
+  "name": "Birthday cake",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A giant cake with pink and white layers, a cherry on top and four candles.",
+  "also": ["cake statue", "giant cake", "big cake"],
+  "key": {
+    "P": "pink_wool",
+    "W": "white_wool",
+    "R": "red_wool",
+    "t": "torch"
+  },
+  "layers": [
+    {
+      "name": "Bottom layer",
+      "tip": "A square of pink wool, 5 by 5.",
+      "rows": [
+        "PPPPP",
+        "PPPPP",
+        "PPPPP",
+        "PPPPP",
+        "PPPPP"
+      ]
+    },
+    {
+      "name": "Cream",
+      "tip": "A square of white wool for the cream.",
+      "rows": [
+        "WWWWW",
+        "WWWWW",
+        "WWWWW",
+        "WWWWW",
+        "WWWWW"
+      ]
+    },
+    {
+      "name": "Top layer",
+      "tip": "Pink wool again.",
+      "rows": [
+        "PPPPP",
+        "PPPPP",
+        "PPPPP",
+        "PPPPP",
+        "PPPPP"
+      ]
+    },
+    {
+      "name": "Icing",
+      "tip": "White wool on top for the icing.",
+      "rows": [
+        "WWWWW",
+        "WWWWW",
+        "WWWWW",
+        "WWWWW",
+        "WWWWW"
+      ]
+    },
+    {
+      "name": "Cherry and candles",
+      "tip": "A red wool cherry in the middle, and four torches around it for candles.",
+      "rows": [
+        ".....",
+        ".t.t.",
+        "..R..",
+        ".t.t.",
+        "....."
+      ]
+    }
+  ]
+}

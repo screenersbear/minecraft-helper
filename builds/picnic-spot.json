@@ -1,0 +1,100 @@
+{
+  "name": "Picnic spot",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A checked picnic blanket with a basket, under a little oak tree.",
+  "also": ["picnic", "picnic blanket"],
+  "key": {
+    "g": {"id": "grass_block", "ground": true},
+    "r": "gravel",
+    "R": "red_carpet",
+    "W": "white_carpet",
+    "K": "barrel",
+    "L": "oak_log",
+    "k": "oak_leaves",
+    "p": "poppy",
+    "y": "dandelion",
+    "o": "oxeye_daisy",
+    "c": "cornflower"
+  },
+  "layers": [
+    {
+      "name": "Path",
+      "tip": "Find a flat grassy spot. Dig a short path at the front right and fill it with gravel.",
+      "rows": [
+        "ggggggg",
+        "ggggggg",
+        "ggggggg",
+        "ggggggg",
+        "gggggrg",
+        "gggggrg",
+        "gggggrg"
+      ]
+    },
+    {
+      "name": "Blanket and tree",
+      "tip": "Lay red and white carpet in a checked square for the blanket. A barrel beside it is the basket. Start the tree with a log, and plant some flowers.",
+      "rows": [
+        "p.y....",
+        ".....L.",
+        "o......",
+        ".RWRK..",
+        ".WRW..c",
+        ".RWR..y",
+        "y.....p"
+      ]
+    },
+    {
+      "name": "Tree trunk",
+      "tip": "One more log on the tree.",
+      "rows": [
+        ".......",
+        ".....L.",
+        ".......",
+        ".......",
+        ".......",
+        ".......",
+        "......."
+      ]
+    },
+    {
+      "name": "Leaves",
+      "tip": "A last log, with leaves all around it. Collect leaves with shears.",
+      "rows": [
+        "....kkk",
+        "....kLk",
+        "....kkk",
+        ".......",
+        ".......",
+        ".......",
+        "......."
+      ]
+    },
+    {
+      "name": "More leaves",
+      "tip": "A square of leaves on top.",
+      "rows": [
+        "....kkk",
+        "....kkk",
+        "....kkk",
+        ".......",
+        ".......",
+        ".......",
+        "......."
+      ]
+    },
+    {
+      "name": "Treetop",
+      "tip": "Five leaves in a plus shape finish the tree. Leaves you place yourself never fall.",
+      "rows": [
+        ".....k.",
+        "....kkk",
+        ".....k.",
+        ".......",
+        ".......",
+        ".......",
+        "......."
+      ]
+    }
+  ]
+}

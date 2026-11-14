@@ -1,0 +1,59 @@
+{
+  "name": "Pumpkin patch",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A fenced patch full of pumpkins, with a stack of hay and glowing jack o'lanterns.",
+  "also": ["pumpkin garden", "halloween patch"],
+  "key": {
+    "g": {"id": "grass_block", "ground": true},
+    "r": "gravel",
+    "f": "oak_fence",
+    "n": "oak_fence_gate",
+    "m": "pumpkin",
+    "Y": "hay_block",
+    "C": {"id": "carved_pumpkin", "facing": "south"},
+    "J": {"id": "jack_o_lantern", "facing": "south"},
+    "t": "torch"
+  },
+  "layers": [
+    {
+      "name": "Path",
+      "tip": "On flat grass, dig a short path from the front and fill it with gravel.",
+      "rows": [
+        "ggggggg",
+        "ggggggg",
+        "ggggggg",
+        "ggggggg",
+        "gggrggg",
+        "gggrggg",
+        "gggrggg"
+      ]
+    },
+    {
+      "name": "Fence, hay and pumpkins",
+      "tip": "Put a fence all around with a gate at the front. Stack hay bales in the back corner and put pumpkins all over the grass. Use shears on one to carve a face.",
+      "rows": [
+        "fffffff",
+        "fYY.m.f",
+        "fY...mf",
+        "f.m.m.f",
+        "fm...mf",
+        "f.m..Cf",
+        "fffnfff"
+      ]
+    },
+    {
+      "name": "Jack o'lanterns",
+      "tip": "Put a torch with a carved pumpkin to make a jack o'lantern. Put two on the hay, and a torch on each front corner.",
+      "rows": [
+        ".......",
+        ".YJ....",
+        ".J.....",
+        ".......",
+        ".......",
+        ".......",
+        "t.....t"
+      ]
+    }
+  ]
+}

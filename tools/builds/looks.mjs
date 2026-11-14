@@ -42,6 +42,7 @@ const CROPS = {
 const SPRITES = new Set([
   'torch', 'poppy', 'dandelion', 'cornflower', 'oxeye_daisy', 'blue_orchid', 'allium', 'red_tulip', 'orange_tulip',
   'white_tulip', 'pink_tulip', 'azure_bluet', 'lily_of_the_valley', 'oak_sapling', 'sugar_cane', 'red_mushroom', 'brown_mushroom',
+  'fern',
 ]);
 
 // What a shaped block is made of: "stone_brick_stairs" -> stone_bricks, "oak_fence" -> oak_planks.
@@ -75,5 +76,5 @@ export function lookFor(id, has) {
 // Grey pictures the game colours in, as 0xRRGGBB.
 export const TINTS = {
   oak_leaves: 0x48b518, birch_leaves: 0x80a755, spruce_leaves: 0x619961, jungle_leaves: 0x48b518,
-  grass_block_top: 0x91bd59, water_still: 0x3f76e4,
+  grass_block_top: 0x91bd59, water_still: 0x3f76e4, fern: 0x91bd59,
 };

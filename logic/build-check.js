@@ -1,9 +1,10 @@
 // Checks a build the way you'd find out by building it: every layer has the same size, every letter has a block,
-// the build fits its difficulty, and nothing floats (each block sits on one below, or touches a block that does).
-// Water holds nothing up. Returns a list of problems, empty when the build is fine.
+// the build fits its difficulty, and nothing floats (each block sits on one below, or touches a block that does:
+// beside it, on top of it, or above it, like a swing seat hanging from fences). Water holds nothing up. Returns a
+// list of problems, empty when the build is fine.
 import { sizeOf, blockAt, allBlocks, MOST, DIFFICULTIES } from './builds.js';
 
-const NEAR = [[1, 0, 0], [-1, 0, 0], [0, 0, 1], [0, 0, -1], [0, 1, 0]];
+const NEAR = [[1, 0, 0], [-1, 0, 0], [0, 0, 1], [0, 0, -1], [0, 1, 0], [0, -1, 0]];
 
 // "layer 2, row 3, block 4" for each block with nothing under it.
 export function floating(build) {

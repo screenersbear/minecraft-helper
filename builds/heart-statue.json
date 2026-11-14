@@ -1,0 +1,77 @@
+{
+  "name": "Heart statue",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A big red heart standing on a stone base, with a pink shine.",
+  "also": ["big heart", "giant heart", "heart"],
+  "key": {
+    "B": "stone_bricks",
+    "R": "red_wool",
+    "p": "pink_wool"
+  },
+  "layers": [
+    {
+      "name": "Base",
+      "tip": "A square of stone bricks, 3 by 3.",
+      "rows": [
+        "..BBB..",
+        "..BBB..",
+        "..BBB.."
+      ]
+    },
+    {
+      "name": "Point",
+      "tip": "The point of the heart: one red wool in the middle of the base.",
+      "rows": [
+        ".......",
+        "...R...",
+        "......."
+      ]
+    },
+    {
+      "name": "Row 2",
+      "tip": "Three red wool, in a line from left to right.",
+      "rows": [
+        ".......",
+        "..RRR..",
+        "......."
+      ]
+    },
+    {
+      "name": "Row 3",
+      "tip": "Five red wool.",
+      "rows": [
+        ".......",
+        ".RRRRR.",
+        "......."
+      ]
+    },
+    {
+      "name": "Row 4",
+      "tip": "Seven red wool: the widest row.",
+      "rows": [
+        ".......",
+        "RRRRRRR",
+        "......."
+      ]
+    },
+    {
+      "name": "Row 5",
+      "tip": "Seven again, with pink wool second from the left for the shine.",
+      "rows": [
+        ".......",
+        "RpRRRRR",
+        "......."
+      ]
+    },
+    {
+      "name": "Top",
+      "tip": "Two bumps of two wool each, with a gap in the middle.",
+      "rows": [
+        ".......",
+        ".RR.RR.",
+        "......."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "name": "Archery range",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "Three targets on hay bales, and a gravel line to shoot from.",
+  "also": ["archery", "target practice", "shooting range"],
+  "key": {
+    "g": {"id": "grass_block", "ground": true},
+    "r": "gravel",
+    "Y": "hay_block",
+    "T": "target",
+    "K": "barrel",
+    "f": "oak_fence",
+    "t": "torch"
+  },
+  "layers": [
+    {
+      "name": "Shooting line",
+      "tip": "On flat grass, swap the front row for gravel. That is where you stand.",
+      "rows": [
+        "ggggggg",
+        "ggggggg",
+        "ggggggg",
+        "ggggggg",
+        "ggggggg",
+        "ggggggg",
+        "rrrrrrr"
+      ]
+    },
+    {
+      "name": "Hay bales",
+      "tip": "Three hay bales along the back, with a gap between each. A barrel on the gravel holds your arrows. Fence posts at the ends of the line hold torches.",
+      "rows": [
+        ".Y.Y.Y.",
+        ".......",
+        ".......",
+        ".......",
+        ".......",
+        ".......",
+        "fK....f"
+      ]
+    },
+    {
+      "name": "Targets",
+      "tip": "A target on each hay bale, and a torch on each post. Make a target from a hay bale and redstone.",
+      "rows": [
+        ".T.T.T.",
+        ".......",
+        ".......",
+        ".......",
+        ".......",
+        ".......",
+        "t.....t"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "name": "Star statue",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A bright yellow star standing on a stone base.",
+  "also": ["star", "big star", "giant star"],
+  "key": {
+    "B": "stone_bricks",
+    "Y": "yellow_wool"
+  },
+  "layers": [
+    {
+      "name": "Base",
+      "tip": "A line of stone bricks, 5 long and 3 deep.",
+      "rows": [
+        ".BBBBB.",
+        ".BBBBB.",
+        ".BBBBB."
+      ]
+    },
+    {
+      "name": "Feet",
+      "tip": "Two yellow wool, near each end of the base.",
+      "rows": [
+        ".......",
+        ".Y...Y.",
+        "......."
+      ]
+    },
+    {
+      "name": "Legs",
+      "tip": "Two wool on each leg, coming in towards the middle.",
+      "rows": [
+        ".......",
+        ".YY.YY.",
+        "......."
+      ]
+    },
+    {
+      "name": "Middle",
+      "tip": "Three wool in the middle join the legs.",
+      "rows": [
+        ".......",
+        "..YYY..",
+        "......."
+      ]
+    },
+    {
+      "name": "Body",
+      "tip": "Five wool.",
+      "rows": [
+        ".......",
+        ".YYYYY.",
+        "......."
+      ]
+    },
+    {
+      "name": "Arms",
+      "tip": "Seven wool, all the way across.",
+      "rows": [
+        ".......",
+        "YYYYYYY",
+        "......."
+      ]
+    },
+    {
+      "name": "Top point",
+      "tip": "One wool in the middle.",
+      "rows": [
+        ".......",
+        "...Y...",
+        "......."
+      ]
+    },
+    {
+      "name": "Tip",
+      "tip": "One more on top makes the point.",
+      "rows": [
+        ".......",
+        "...Y...",
+        "......."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "name": "Holiday tree",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A pointy spruce tree with colourful baubles, a yellow star and presents underneath.",
+  "also": ["christmas tree", "xmas tree", "decorated tree"],
+  "key": {
+    "L": "spruce_log",
+    "k": "spruce_leaves",
+    "R": "red_wool",
+    "U": "light_blue_wool",
+    "Y": "yellow_wool",
+    "M": "magenta_wool"
+  },
+  "layers": [
+    {
+      "name": "Trunk and presents",
+      "tip": "A spruce log in the middle. Wool blocks around it are the presents.",
+      "rows": [
+        ".......",
+        ".R...U.",
+        ".......",
+        "...L...",
+        ".......",
+        "..M..R.",
+        "......."
+      ]
+    },
+    {
+      "name": "Bottom branches",
+      "tip": "A log on the trunk, and spruce leaves around it in a big diamond. Some red and blue wool are baubles. Collect leaves with shears.",
+      "rows": [
+        "...M...",
+        "..kkk..",
+        ".kkkkk.",
+        "RkkLkkY",
+        ".kkkkk.",
+        "..kkk..",
+        "...U..."
+      ]
+    },
+    {
+      "name": "Middle branches",
+      "tip": "A smaller diamond of leaves around the trunk.",
+      "rows": [
+        ".......",
+        "...k...",
+        "..kkk..",
+        ".UkLkM.",
+        "..kkk..",
+        "...R...",
+        "......."
+      ]
+    },
+    {
+      "name": "More branches",
+      "tip": "The same size again, with baubles in new places.",
+      "rows": [
+        ".......",
+        "...k...",
+        "..kkR..",
+        ".kkLkk.",
+        "..YkU..",
+        "...k...",
+        "......."
+      ]
+    },
+    {
+      "name": "Top branches",
+      "tip": "A small plus of leaves around the trunk.",
+      "rows": [
+        ".......",
+        ".......",
+        "...k...",
+        "..kLk..",
+        "...R...",
+        ".......",
+        "......."
+      ]
+    },
+    {
+      "name": "Treetop",
+      "tip": "One more small plus.",
+      "rows": [
+        ".......",
+        ".......",
+        "...k...",
+        "..kLU..",
+        "...k...",
+        ".......",
+        "......."
+      ]
+    },
+    {
+      "name": "Point",
+      "tip": "A single leaf on top of the trunk.",
+      "rows": [
+        ".......",
+        ".......",
+        ".......",
+        "...k...",
+        ".......",
+        ".......",
+        "......."
+      ]
+    },
+    {
+      "name": "Star",
+      "tip": "Yellow wool on the very top is the star.",
+      "rows": [
+        ".......",
+        ".......",
+        ".......",
+        "...Y...",
+        ".......",
+        ".......",
+        "......."
+      ]
+    }
+  ]
+}

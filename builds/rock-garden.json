@@ -1,0 +1,61 @@
+{
+  "name": "Rock garden",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "Mossy rocks, ferns and flowers around a little pond, with a gravel path.",
+  "also": ["stone garden", "zen garden"],
+  "key": {
+    "g": {"id": "grass_block", "ground": true},
+    "r": "gravel",
+    "W": "water",
+    "C": "cobblestone",
+    "m": "mossy_cobblestone",
+    "S": "stone",
+    "A": "andesite",
+    "f": "fern",
+    "a": "allium",
+    "u": "azure_bluet",
+    "y": "dandelion"
+  },
+  "layers": [
+    {
+      "name": "Pond and path",
+      "tip": "On flat grass, dig a square 2 by 2 at the back right and fill it with water. Dig a path from the front to the middle and fill it with gravel.",
+      "rows": [
+        "ggggggg",
+        "ggggWWg",
+        "ggggWWg",
+        "ggggggg",
+        "gggrggg",
+        "gggrggg",
+        "gggrggg"
+      ]
+    },
+    {
+      "name": "Rocks and plants",
+      "tip": "Build two rocks from cobblestone, mossy cobblestone, stone and andesite. Plant ferns and flowers around them. Get ferns with shears.",
+      "rows": [
+        "CmCf.f.",
+        "mSC....",
+        "Cm.f...",
+        "f....AA",
+        ".a...Am",
+        "..y.fA.",
+        "Am..u.f"
+      ]
+    },
+    {
+      "name": "Rock tops",
+      "tip": "A few more stones on top make the rocks taller.",
+      "rows": [
+        "Cm.....",
+        "m......",
+        ".......",
+        ".....A.",
+        ".....m.",
+        ".......",
+        "......."
+      ]
+    }
+  ]
+}

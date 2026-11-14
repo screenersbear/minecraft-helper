@@ -1,0 +1,71 @@
+{
+  "name": "Swing",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A wooden swing on two posts, with a seat hanging from fences.",
+  "also": ["swing set", "tree swing"],
+  "key": {
+    "g": {"id": "grass_block", "ground": true},
+    "r": "gravel",
+    "L": "oak_log",
+    "P": "spruce_planks",
+    "f": "oak_fence",
+    "h": "oak_slab"
+  },
+  "layers": [
+    {
+      "name": "Gravel",
+      "tip": "On flat grass, swap a square of grass in the middle for gravel, 3 by 3.",
+      "rows": [
+        "ggrrrgg",
+        "ggrrrgg",
+        "ggrrrgg"
+      ]
+    },
+    {
+      "name": "Posts",
+      "tip": "Put a log at each end, with one square of grass between each log and the gravel.",
+      "rows": [
+        ".......",
+        "L.....L",
+        "......."
+      ]
+    },
+    {
+      "name": "Seat",
+      "tip": "Two more logs on the posts. The seat is three oak slabs hanging from the ropes, so leave it for the very end.",
+      "rows": [
+        ".......",
+        "L.hhh.L",
+        "......."
+      ]
+    },
+    {
+      "name": "Ropes",
+      "tip": "Two more logs on the posts. The fences here are ropes that hang from the beam, so add them at the end too.",
+      "rows": [
+        ".......",
+        "L.f.f.L",
+        "......."
+      ]
+    },
+    {
+      "name": "Tops of the posts",
+      "tip": "One more log on each post. Two more rope fences, also for the end.",
+      "rows": [
+        ".......",
+        "L.f.f.L",
+        "......."
+      ]
+    },
+    {
+      "name": "Beam",
+      "tip": "Join the posts with spruce planks across the top. Now hang the ropes: two fences down from the beam on each side. Then put the slab seat under them.",
+      "rows": [
+        ".......",
+        "PPPPPPP",
+        "......."
+      ]
+    }
+  ]
+}

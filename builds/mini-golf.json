@@ -1,0 +1,69 @@
+{
+  "name": "Mini golf hole",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A green course with a wooden edge, a bump in the middle, a hole and a flag.",
+  "also": ["mini golf", "golf", "golf course", "crazy golf"],
+  "key": {
+    "g": {"id": "grass_block", "ground": true},
+    "L": "lime_wool",
+    "h": "oak_slab",
+    "f": "oak_fence",
+    "R": "red_wool",
+    "w": "white_carpet"
+  },
+  "layers": [
+    {
+      "name": "Green",
+      "tip": "On flat grass, swap the middle for lime wool, 5 by 5. Leave one square near the back empty: that is the hole.",
+      "rows": [
+        "ggggggg",
+        "gLLL.Lg",
+        "gLLLLLg",
+        "gLLLLLg",
+        "gLLLLLg",
+        "gLLLLLg",
+        "ggggggg"
+      ]
+    },
+    {
+      "name": "Edge, bump and flag",
+      "tip": "Oak slabs all around the edge. One more slab in the middle is a bump. Start the flag pole with a fence next to the hole, and put white carpet at the front to start from.",
+      "rows": [
+        "hhhhhhh",
+        "h....fh",
+        "h..h..h",
+        "h.....h",
+        "h.....h",
+        "h..w..h",
+        "hhhhhhh"
+      ]
+    },
+    {
+      "name": "Flag pole",
+      "tip": "One more fence on the pole.",
+      "rows": [
+        ".......",
+        ".....f.",
+        ".......",
+        ".......",
+        ".......",
+        ".......",
+        "......."
+      ]
+    },
+    {
+      "name": "Flag",
+      "tip": "A last fence, with red wool beside it for the flag. Can you throw a snowball into the hole?",
+      "rows": [
+        ".......",
+        "....Rf.",
+        ".......",
+        ".......",
+        ".......",
+        ".......",
+        "......."
+      ]
+    }
+  ]
+}

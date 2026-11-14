@@ -42,7 +42,7 @@
     },
     {
       "title": "Pick apples",
-      "say": "Break the leaves on oak and dark oak trees. Sometimes an [apple](item:apple) drops out.",
+      "say": "Break the [leaves](item:oak_leaves) on oak and dark oak trees. Sometimes an [apple](item:apple) drops out.",
       "item": "apple"
     },
     {
