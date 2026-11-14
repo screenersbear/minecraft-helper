@@ -1,0 +1,64 @@
+{
+  "id": "tame-cat",
+  "title": "Tame a cat",
+  "picture": "cod",
+  "askedAs": [
+    "tame a cat",
+    "tame cat",
+    "get a cat",
+    "pet cat",
+    "tame a kitten",
+    "get a kitten",
+    "tame a kitty",
+    "get a kitty",
+    "find a cat",
+    "cat pet"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Cat",
+    "https://minecraft.wiki/w/Raw_Cod",
+    "https://minecraft.wiki/w/Raw_Salmon",
+    "https://minecraft.wiki/w/Fishing",
+    "https://minecraft.wiki/w/Taming",
+    "https://minecraft.wiki/w/Particles"
+  ],
+  "checked": "2026-11-13",
+  "steps": [
+    {
+      "title": "Get raw fish",
+      "say": "Get a few raw cod or raw salmon. Fishing with a fishing rod is a great way to catch them. Keep the fish raw, not cooked.",
+      "item": "cod"
+    },
+    {
+      "title": "Find a stray cat",
+      "say": "Look for stray cats in villages. They like to wander, so check around the houses and nearby."
+    },
+    {
+      "title": "Hold the fish",
+      "say": "Cats are shy and run from people. Hold the fish, stand still, and let the cat slowly walk up to you.",
+      "item": "cod"
+    },
+    {
+      "title": "Feed it fish",
+      "say": "When the cat is close, feed it the fish 1 at a time. It can take a few tries.",
+      "item": "salmon"
+    },
+    {
+      "title": "Look for the collar",
+      "say": "Smoke means not yet, so keep feeding. Hearts and a red collar mean the cat is yours, and it won't run from you anymore!"
+    },
+    {
+      "title": "Make it sit",
+      "say": "Use your empty hand on your cat to make it sit. Do it again and it gets up and follows you."
+    },
+    {
+      "title": "Heal your cat",
+      "say": "If your cat gets hurt, feed it raw cod or raw salmon to heal it.",
+      "item": "cod"
+    },
+    {
+      "title": "See what cats do",
+      "say": "Creepers stay away from cats, so your cat helps keep you safe. It might sleep on your bed and leave you a gift in the morning."
+    }
+  ]
+}

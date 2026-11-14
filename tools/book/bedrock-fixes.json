@@ -1,0 +1,174 @@
+{
+  "_readme": "Hand-made fixes to the book's recipes, each checked on minecraft.wiki for Bedrock (2026-11-14). leaveOut: things the book never answers. bedrockOnly: Bedrock things Java doesn't have. checked: things whose Java recipe the wiki says Bedrock uses too, so they lose the 'check this one in the game' note. replace: things whose crafting recipe is different on Bedrock, swapped for these (furnace and stonecutter ways stay). furnace: extra 'smelt this into that' recipes, thing made: what goes in. netheriteUpgrade: extra smithing upgrades, thing made: the diamond thing. Carpet dyeing (8 white carpet around a dye) is in wiki-fixes.mjs. recipes: any other extra recipes, same shape as the built ones.",
+  "leaveOut": [
+    "suspicious_stew",
+    "firework_rocket",
+    "decorated_pot",
+    "spectral_arrow",
+    "furnace_minecart",
+    "tipped_arrow"
+  ],
+  "bedrockOnly": [
+    "empty_locator_map"
+  ],
+  "checked": [
+    "oak_boat",
+    "spruce_boat",
+    "birch_boat",
+    "jungle_boat",
+    "acacia_boat",
+    "dark_oak_boat",
+    "mangrove_boat",
+    "white_bed",
+    "orange_bed",
+    "magenta_bed",
+    "light_blue_bed",
+    "yellow_bed",
+    "lime_bed",
+    "pink_bed",
+    "gray_bed",
+    "light_gray_bed",
+    "cyan_bed",
+    "purple_bed",
+    "blue_bed",
+    "brown_bed",
+    "green_bed",
+    "red_bed",
+    "black_bed",
+    "lead",
+    "barrel",
+    "lodestone",
+    "quartz_bricks",
+    "cake"
+  ],
+  "replace": {
+    "map": [
+      {
+        "count": 1,
+        "how": "crafting",
+        "grid": [
+          [
+            "paper",
+            "paper",
+            "paper"
+          ],
+          [
+            "paper",
+            "paper",
+            "paper"
+          ],
+          [
+            "paper",
+            "paper",
+            "paper"
+          ]
+        ],
+        "shapeless": false
+      }
+    ],
+    "sandstone_stairs": [
+      {
+        "count": 4,
+        "how": "crafting",
+        "grid": [
+          [
+            "sandstone",
+            null,
+            null
+          ],
+          [
+            "sandstone",
+            "sandstone",
+            null
+          ],
+          [
+            "sandstone",
+            "sandstone",
+            "sandstone"
+          ]
+        ],
+        "shapeless": false
+      }
+    ],
+    "red_sandstone_stairs": [
+      {
+        "count": 4,
+        "how": "crafting",
+        "grid": [
+          [
+            "red_sandstone",
+            null,
+            null
+          ],
+          [
+            "red_sandstone",
+            "red_sandstone",
+            null
+          ],
+          [
+            "red_sandstone",
+            "red_sandstone",
+            "red_sandstone"
+          ]
+        ],
+        "shapeless": false
+      }
+    ]
+  },
+  "furnace": {
+    "smooth_sandstone": [
+      "sandstone"
+    ],
+    "smooth_red_sandstone": [
+      "red_sandstone"
+    ],
+    "smooth_quartz": [
+      "quartz_block"
+    ],
+    "cracked_stone_bricks": [
+      "stone_bricks"
+    ],
+    "sponge": [
+      "wet_sponge"
+    ],
+    "glass": [
+      "red_sand"
+    ],
+    "resin_brick": [
+      "resin_clump"
+    ],
+    "leaf_litter": [
+      "@leaves"
+    ],
+    "copper_nugget": [
+      "copper_sword",
+      "copper_pickaxe",
+      "copper_axe",
+      "copper_shovel",
+      "copper_hoe",
+      "copper_spear",
+      "copper_helmet",
+      "copper_chestplate",
+      "copper_leggings",
+      "copper_boots",
+      "copper_horse_armor",
+      "copper_nautilus_armor"
+    ],
+    "iron_nugget": [
+      "iron_spear",
+      "iron_horse_armor",
+      "iron_nautilus_armor"
+    ],
+    "gold_nugget": [
+      "golden_spear",
+      "golden_horse_armor",
+      "golden_nautilus_armor"
+    ]
+  },
+  "netheriteUpgrade": {
+    "netherite_spear": "diamond_spear",
+    "netherite_horse_armor": "diamond_horse_armor",
+    "netherite_nautilus_armor": "diamond_nautilus_armor"
+  },
+  "recipes": []
+}

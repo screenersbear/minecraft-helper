@@ -1,0 +1,66 @@
+{
+  "id": "find-diamonds",
+  "title": "Find diamonds",
+  "picture": "diamond",
+  "askedAs": [
+    "find diamonds",
+    "where are diamonds",
+    "how to find diamonds",
+    "diamond level",
+    "what level are diamonds",
+    "best y level for diamonds",
+    "get diamonds",
+    "mine diamonds",
+    "where do diamonds spawn"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Diamond",
+    "https://minecraft.wiki/w/Diamond_Ore",
+    "https://minecraft.wiki/w/Tutorial:Mining/Diamonds",
+    "https://minecraft.wiki/w/Tutorial:Mining",
+    "https://minecraft.wiki/w/Coordinates",
+    "https://minecraft.wiki/w/Lava",
+    "https://minecraft.wiki/w/Deep_Dark",
+    "https://minecraft.wiki/w/Sculk_Shrieker"
+  ],
+  "checked": "2026-11-13",
+  "steps": [
+    {
+      "title": "Pack for the trip",
+      "say": "Bring an iron pickaxe or better, a spare pickaxe, food, torches and a water bucket. A weaker pickaxe breaks diamond ore but gives you nothing.",
+      "item": "iron_pickaxe"
+    },
+    {
+      "title": "Turn on coordinates",
+      "say": "In your world settings, turn on Show Coordinates. The middle number is Y, and it tells you how high or deep you are."
+    },
+    {
+      "title": "Dig down safely",
+      "say": "Dig down like a staircase, never straight under your feet. Digging straight down can drop you into a cave or into lava."
+    },
+    {
+      "title": "Stop at minus 53",
+      "say": "Stop when Y says minus 53. Diamonds are common there, and the lava that fills the deepest caves stays below your feet."
+    },
+    {
+      "title": "Watch for lava",
+      "say": "Lava can still show up down here. Pour water from your bucket onto it to turn it into obsidian or cobblestone.",
+      "item": "water_bucket"
+    },
+    {
+      "title": "Dig long tunnels",
+      "say": "Dig a long, flat tunnel 2 blocks high and 1 block wide. Place torches as you go so you can see and fewer monsters spawn.",
+      "item": "torch"
+    },
+    {
+      "title": "Avoid the sculk",
+      "say": "If your tunnel opens into a cave covered in sculk, turn back and dig somewhere else. Sculk shriekers there can call the Warden, a very strong monster.",
+      "item": "sculk"
+    },
+    {
+      "title": "Mine the diamonds",
+      "say": "When you find diamond ore, mine the blocks around it first so no diamond can fall into lava. Each ore gives 1 diamond.",
+      "item": "deepslate_diamond_ore"
+    }
+  ]
+}

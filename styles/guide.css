@@ -1,0 +1,52 @@
+/* Guide: one step at a time, with a progress bar and a big step number. */
+
+.progress {
+  display: flex;
+  gap: 4px;
+  margin: 10px 0 14px;
+}
+
+.progress span {
+  flex-grow: 1;
+  height: 10px;
+  background: var(--panel);
+}
+
+.progress span.done {
+  background: var(--green);
+}
+
+.step-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.step-number {
+  font-family: var(--pixel);
+  font-weight: 700;
+  font-size: 120px;
+  line-height: 0.8;
+}
+
+.step-title {
+  margin-top: 4px;
+  font-family: var(--pixel);
+  font-weight: 700;
+  font-size: 38px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.guide .say {
+  margin-top: 16px;
+}
+
+@media (max-height: 700px) {
+  .step-number {
+    font-size: 96px;
+  }
+  .step-title {
+    font-size: 32px;
+  }
+}

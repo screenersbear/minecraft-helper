@@ -1,0 +1,18 @@
+.cache/
+.DS_Store
+# app-safety-kit
+node_modules/
+reports/
+.stryker-tmp/
+.lighthouseci/
+test-results/
+
+# Downloaded sources (npm run fetch-sources), rebuilt any time
+.cache/
+.DS_Store
+
+# Kept on this Mac only: the build notes (family details) and Claude's local preview settings
+HANDOFF.md
+.claude/
+# The GitHub safety checks wait until the tests are written (Starky, 2026-11-14: skip the safety stuff for now)
+.github/workflows/

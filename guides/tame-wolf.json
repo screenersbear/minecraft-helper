@@ -1,0 +1,63 @@
+{
+  "id": "tame-wolf",
+  "title": "Tame a wolf",
+  "picture": "bone",
+  "askedAs": [
+    "tame a wolf",
+    "tame wolf",
+    "get a wolf",
+    "pet wolf",
+    "get a dog",
+    "pet dog",
+    "make a dog",
+    "tame a dog",
+    "wolf pet",
+    "dog pet"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Wolf",
+    "https://minecraft.wiki/w/Bone",
+    "https://minecraft.wiki/w/Taiga",
+    "https://minecraft.wiki/w/Taming",
+    "https://minecraft.wiki/w/Particles"
+  ],
+  "checked": "2026-11-13",
+  "steps": [
+    {
+      "title": "Get some bones",
+      "say": "Skeletons often drop bones when you defeat them. Collect several, because a wolf can take a few bones to tame.",
+      "item": "bone"
+    },
+    {
+      "title": "Find a wolf",
+      "say": "Look for wolves in forests and spruce forests, even snowy ones. Never hit a wolf, or its whole pack gets angry and can't be tamed."
+    },
+    {
+      "title": "Feed it bones",
+      "say": "Hold a bone near the wolf and it tilts its head at you. Feed it bones 1 at a time.",
+      "item": "bone"
+    },
+    {
+      "title": "Look for the collar",
+      "say": "Smoke means not yet, so keep feeding. Hearts and a red collar mean your wolf is tamed!"
+    },
+    {
+      "title": "Make it sit",
+      "say": "Use your empty hand on your wolf to make it sit and stay. Do it again and it stands up and follows you."
+    },
+    {
+      "title": "Take it along",
+      "say": "A standing wolf follows you around. If you get too far away, it can teleport to catch up with you."
+    },
+    {
+      "title": "Heal your wolf",
+      "say": "If its tail hangs low, your wolf is hurt. Feed it meat like steak or cooked chicken to heal it. Even rotten flesh works.",
+      "item": "cooked_beef"
+    },
+    {
+      "title": "Color its collar",
+      "say": "Want a new look? Use any dye on your wolf to change its collar color.",
+      "item": "light_blue_dye"
+    }
+  ]
+}

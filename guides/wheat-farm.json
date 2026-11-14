@@ -1,0 +1,76 @@
+{
+  "id": "wheat-farm",
+  "title": "Make a wheat farm",
+  "picture": "wheat",
+  "askedAs": [
+    "make a farm",
+    "make a wheat farm",
+    "wheat farm",
+    "build a farm",
+    "start a farm",
+    "grow wheat",
+    "plant wheat",
+    "plant seeds",
+    "farm wheat",
+    "how to farm"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Hoe",
+    "https://minecraft.wiki/w/Wheat_Seeds",
+    "https://minecraft.wiki/w/Bucket",
+    "https://minecraft.wiki/w/Water_Bucket",
+    "https://minecraft.wiki/w/Farmland",
+    "https://minecraft.wiki/w/Tutorial:Crop_farming",
+    "https://minecraft.wiki/w/Fence",
+    "https://minecraft.wiki/w/Torch",
+    "https://minecraft.wiki/w/Bone_Meal",
+    "https://minecraft.wiki/w/Bone",
+    "https://minecraft.wiki/w/Wheat",
+    "https://minecraft.wiki/w/Bread"
+  ],
+  "checked": "2026-11-13",
+  "steps": [
+    {
+      "title": "Make a hoe",
+      "say": "Make a wooden hoe at a crafting table with 2 planks and 2 sticks. A stone or iron hoe works too.",
+      "item": "wooden_hoe"
+    },
+    {
+      "title": "Collect wheat seeds",
+      "say": "Break grass to find wheat seeds. Only some grass drops a seed, so keep going until you have a handful.",
+      "item": "wheat_seeds"
+    },
+    {
+      "title": "Add the water",
+      "say": "Pick a flat grassy spot and dig 1 hole in the middle. Fill a bucket at a lake or river and pour the water in.",
+      "pattern": ["GGGGG", "GGGGG", "GGWGG", "GGGGG", "GGGGG"],
+      "key": { "G": "grass_block", "W": "water" }
+    },
+    {
+      "title": "Hoe the ground",
+      "say": "Use your hoe on the ground all around the water to make farmland. Water keeps farmland wet up to 4 blocks away in every direction.",
+      "pattern": ["FFFFF", "FFFFF", "FFWFF", "FFFFF", "FFFFF"],
+      "key": { "F": "farmland", "W": "water" }
+    },
+    {
+      "title": "Plant the seeds",
+      "say": "Place 1 seed on each farmland block. Walk on your farm but never jump, because jumping on farmland turns it back into dirt.",
+      "item": "wheat_seeds"
+    },
+    {
+      "title": "Protect your farm",
+      "say": "Build a fence with a gate around your farm to keep mobs from trampling it. Put torches on the fence posts so monsters don't spawn nearby.",
+      "item": "oak_fence"
+    },
+    {
+      "title": "Speed it up",
+      "say": "Wheat takes time to grow. Use bone meal on a wheat plant to help it grow faster. You can make bone meal from a bone.",
+      "item": "bone_meal"
+    },
+    {
+      "title": "Harvest and replant",
+      "say": "When the wheat turns brown, break it to get wheat and usually some seeds. Plant seeds back in each spot. 3 wheat make 1 bread!",
+      "item": "wheat"
+    }
+  ]
+}

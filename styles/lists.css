@@ -1,0 +1,104 @@
+/* Lists: "Not in the book" with its picks, the grown-ups list, and About. */
+
+/* Not in the book */
+.none-title {
+  font-family: var(--pixel);
+  font-weight: 700;
+  font-size: 52px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.saved-banner {
+  margin-top: 16px;
+  padding: 12px 14px;
+  background: var(--green);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.saved-banner svg {
+  flex-shrink: 0;
+}
+
+.none .say {
+  margin: 18px 0 10px;
+}
+
+.picks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Grown-ups and About */
+.log-title {
+  font-family: var(--pixel);
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.grown-ups .say {
+  margin-top: 6px;
+  font-size: 15px;
+}
+
+.log {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+}
+
+.log li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  min-height: 60px;
+  border-top: 3px solid var(--ink);
+  padding: 8px 0;
+}
+
+.log li:last-child {
+  border-bottom: 3px solid var(--ink);
+}
+
+.log-q {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.log-when {
+  font-size: 13px;
+}
+
+.about-part {
+  padding-top: 18px;
+}
+
+.about-part h2 {
+  font-family: var(--pixel);
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.about-part p + p {
+  margin-top: 8px;
+}
+
+.about .note {
+  padding: 22px 0 calc(env(safe-area-inset-bottom) + 24px);
+}
+
+@media (max-height: 700px) {
+  .none-title {
+    font-size: 44px;
+  }
+}

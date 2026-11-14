@@ -1,0 +1,5 @@
+Pictures in this folder (items.png, grass.png and the icon-*.png files) are made from
+Pixel Perfection CE by XSSheep and contributors: https://github.com/Athemis/PixelPerfectionCE
+License: Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0), https://creativecommons.org/licenses/by-sa/4.0/
+Changes: the pictures were cropped, some were recoloured or tinted, and they were packed into one image
+(tools/build-book.mjs and tools/make-icons.mjs). These changed pictures are shared under the same license.

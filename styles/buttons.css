@@ -1,0 +1,181 @@
+/* Buttons: square game buttons with notched corners and a darker bottom edge. */
+
+.notch {
+  clip-path: polygon(
+    0 6px, 6px 6px, 6px 0, calc(100% - 6px) 0, calc(100% - 6px) 6px, 100% 6px, 100% calc(100% - 6px),
+    calc(100% - 6px) calc(100% - 6px), calc(100% - 6px) 100%, 6px 100%, 6px calc(100% - 6px), 0 calc(100% - 6px)
+  );
+}
+
+.block-btn {
+  height: 64px;
+  width: 100%;
+  border: none;
+  padding: 0 12px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--pixel);
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.block-btn:active {
+  transform: translateY(2px);
+}
+
+.block-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.small-btn {
+  height: 52px;
+  font-size: 18px;
+}
+
+.tone-mango {
+  background: var(--mango);
+  color: var(--ink);
+  box-shadow: inset 0 -8px 0 var(--mango-dark);
+}
+
+.tone-green {
+  background: var(--green);
+  color: var(--paper);
+  box-shadow: inset 0 -8px 0 var(--green-dark);
+}
+
+.tone-grey {
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: inset 0 -8px 0 var(--slot);
+}
+
+.small-btn.tone-grey,
+.small-btn.tone-mango,
+.small-btn.tone-green {
+  box-shadow: inset 0 -6px 0 var(--slot);
+}
+
+.two-up,
+.three-up,
+.copy-row {
+  display: grid;
+  gap: 10px;
+}
+
+.two-up {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.three-up {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.copy-row {
+  grid-template-columns: 2fr 1fr;
+}
+
+/* "Did you mean one of these?" buttons */
+.pick-btn {
+  width: 100%;
+  min-height: 64px;
+  border: none;
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: inset 0 -6px 0 var(--slot);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 16px 14px;
+  font: 700 18px/1.2 var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.pick-btn:active {
+  transform: translateY(2px);
+}
+
+/* The big mango talk button */
+.talk-btn {
+  width: 188px;
+  height: 188px;
+  border: none;
+  background: var(--mango);
+  color: var(--ink);
+  box-shadow: inset 0 -12px 0 var(--mango-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: none;
+}
+
+.talk-btn:active,
+.talk-btn.is-listening {
+  box-shadow: inset 0 -6px 0 var(--mango-dark);
+  transform: translateY(3px);
+}
+
+.talk-btn.is-listening {
+  animation: listening 1s steps(2) infinite;
+}
+
+@keyframes listening {
+  50% {
+    background: #ffe35c;
+  }
+}
+
+.talk-label {
+  font-family: var(--pixel);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* The dark speaker button next to an answer */
+.speaker-btn {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border: none;
+  background: var(--ink);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.speaker-btn:active {
+  transform: translateY(2px);
+}
+
+@media (max-height: 700px) {
+  .talk-btn {
+    width: 150px;
+    height: 150px;
+  }
+  .talk-btn svg {
+    width: 60px;
+    height: 60px;
+  }
+  .talk-label {
+    font-size: 22px;
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "id": "nether-portal",
+  "title": "Build a Nether portal",
+  "picture": "obsidian",
+  "askedAs": [
+    "nether portal",
+    "portal to the nether",
+    "go to the nether",
+    "get to the nether",
+    "how to get to the nether",
+    "make a nether portal",
+    "build a portal",
+    "light the portal"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Nether_Portal",
+    "https://minecraft.wiki/w/Nether_Portal_(block)",
+    "https://minecraft.wiki/w/Obsidian",
+    "https://minecraft.wiki/w/Flint_and_Steel",
+    "https://minecraft.wiki/w/Flint",
+    "https://minecraft.wiki/w/Water",
+    "https://minecraft.wiki/w/Bed",
+    "https://minecraft.wiki/w/Ghast",
+    "https://minecraft.wiki/w/Coordinates"
+  ],
+  "checked": "2026-11-13",
+  "steps": [
+    {
+      "title": "Get 10 obsidian",
+      "say": "You need 10 obsidian. Mine it with a diamond or netherite pickaxe, because a weaker pickaxe gets you nothing.",
+      "item": "obsidian"
+    },
+    {
+      "title": "Make flint and steel",
+      "say": "Craft flint and steel from 1 iron ingot and 1 flint. Mining gravel sometimes drops flint.",
+      "item": "flint_and_steel"
+    },
+    {
+      "title": "Build the frame",
+      "say": "Stand 10 obsidian up like a big door, as in the picture. The hole inside is 2 blocks wide and 3 tall, and corners can be any block or empty.",
+      "pattern": ["-OO-", "O..O", "O..O", "O..O", "-OO-"],
+      "key": { "O": "obsidian" }
+    },
+    {
+      "title": "Light it",
+      "say": "Use your flint and steel on the inside of the frame. A purple swirl fills the door when it works.",
+      "item": "flint_and_steel"
+    },
+    {
+      "title": "Pack for the Nether",
+      "say": "Keep your flint and steel with you. In the Nether, water from a bucket vanishes, and a bed explodes if you try to sleep in it."
+    },
+    {
+      "title": "Step inside",
+      "say": "Stand inside the portal and wait about 4 seconds. You'll come out of a portal in the Nether, and that portal is your way home."
+    },
+    {
+      "title": "Remember your portal",
+      "say": "Before you explore, check your coordinates next to the portal and write them down. That way you can find it again."
+    },
+    {
+      "title": "Light it again",
+      "say": "If a ghast's fireball blows out your portal, use your flint and steel on the frame to light it again. Then step in to go home."
+    }
+  ]
+}

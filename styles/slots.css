@@ -1,0 +1,153 @@
+/* Slots: inventory boxes for recipes, lists of things with pictures, and build patterns for guides. */
+
+.panel {
+  background: var(--panel);
+  padding: 8px;
+  display: grid;
+  gap: 4px;
+  align-self: center;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, var(--slot-size));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, var(--slot-size));
+}
+
+.grid-row {
+  grid-auto-flow: column;
+}
+
+.slot {
+  width: var(--slot-size, 56px);
+  height: var(--slot-size, 56px);
+  background: var(--slot);
+  box-shadow: inset 3px 3px 0 var(--slot-shade);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.slot.result {
+  width: calc(var(--slot-size, 56px) + 16px);
+  height: calc(var(--slot-size, 56px) + 16px);
+}
+
+.slot.big {
+  width: 120px;
+  height: 120px;
+}
+
+.count {
+  position: absolute;
+  right: 4px;
+  bottom: 1px;
+  font: 700 20px/1 var(--pixel);
+  color: var(--paper);
+  text-shadow: 2px 2px 0 var(--ink);
+}
+
+/* A recipe: where it's made, an arrow, what you get. Slots shrink a little on narrow phones. */
+.recipe-row {
+  --slot-size: min(56px, calc((100vw - 152px) / 4));
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 16px;
+}
+
+.arrow {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.furnace {
+  justify-items: center;
+}
+
+.flame {
+  display: flex;
+  color: var(--slot-shade);
+}
+
+/* Small pictures with words, two to a row */
+.things {
+  padding-top: 14px;
+}
+
+.things .small-label {
+  margin-bottom: 6px;
+}
+
+.thing-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 12px;
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.thing-list li,
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.thing-list small {
+  font-size: 13px;
+}
+
+/* A guide's build pattern, block by block */
+.build {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), var(--block));
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.build > * {
+  width: var(--block);
+  height: var(--block);
+}
+
+.build-any {
+  display: inline-block;
+  box-shadow: inset 0 0 0 2px var(--slot);
+}
+
+.build-any.small {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.step-picture {
+  display: flex;
+  align-items: flex-end;
+  gap: 18px;
+  padding-top: 18px;
+}
+
+.legend {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+.legend-icon {
+  display: flex;
+  width: 24px;
+  justify-content: center;
+}

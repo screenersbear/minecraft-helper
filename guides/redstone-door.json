@@ -1,0 +1,88 @@
+{
+  "id": "redstone-door",
+  "title": "Make a redstone door",
+  "picture": "iron_door",
+  "askedAs": [
+    "redstone door",
+    "make a redstone door",
+    "build a redstone door",
+    "iron door",
+    "open an iron door",
+    "open the iron door",
+    "door with a button",
+    "button door",
+    "pressure plate door",
+    "automatic door"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Iron_Door",
+    "https://minecraft.wiki/w/Door",
+    "https://minecraft.wiki/w/Redstone_components",
+    "https://minecraft.wiki/w/Button",
+    "https://minecraft.wiki/w/Stone_Button",
+    "https://minecraft.wiki/w/Pressure_Plate",
+    "https://minecraft.wiki/w/Stone_Pressure_Plate",
+    "https://minecraft.wiki/w/Stone",
+    "https://minecraft.wiki/w/Lever",
+    "https://minecraft.wiki/w/Tutorial:Piston_uses"
+  ],
+  "checked": "2026-11-13",
+  "steps": [
+    {
+      "title": "Make an iron door",
+      "say": "At a crafting table, craft 6 iron ingots into 3 iron doors. Iron doors won't open by hand. They need power from something like a button.",
+      "item": "iron_door"
+    },
+    {
+      "title": "Make a stone button",
+      "say": "Craft a stone button from 1 stone. To get stone, smelt cobblestone in a furnace.",
+      "item": "stone_button"
+    },
+    {
+      "title": "Make a pressure plate",
+      "say": "Craft a stone pressure plate from 2 stone. This one goes inside, so you can open the door on your way out.",
+      "item": "stone_pressure_plate"
+    },
+    {
+      "title": "Make a doorway",
+      "say": "Use a wall of solid blocks like planks or stone. Make a hole in it 1 block wide and 2 blocks tall, starting at the ground.",
+      "pattern": [
+        "WWWW",
+        "WW.W",
+        "WW.W"
+      ],
+      "key": {
+        "W": "oak_planks"
+      }
+    },
+    {
+      "title": "Place the iron door",
+      "say": "Stand outside and place the iron door in the hole. Try to open it by hand. It won't open yet, and that's okay.",
+      "item": "iron_door"
+    },
+    {
+      "title": "Add the button outside",
+      "say": "Outside, place the button on the wall block right next to the bottom of the door. Use the button, and the door opens, then closes by itself a second later.",
+      "pattern": [
+        "WWWW",
+        "WWDW",
+        "WBDW"
+      ],
+      "key": {
+        "W": "oak_planks",
+        "D": "iron_door",
+        "B": "stone_button"
+      }
+    },
+    {
+      "title": "Add the plate inside",
+      "say": "Inside, place the pressure plate on the floor right in front of the door. Step on it to walk out. Keep it inside, because monsters can step on plates too.",
+      "item": "stone_pressure_plate"
+    },
+    {
+      "title": "Try a lever instead",
+      "say": "Want the door to stay open? Craft a lever from 1 stick and 1 cobblestone and put it beside the door. Flip it to open, flip again to close.",
+      "item": "lever"
+    }
+  ]
+}

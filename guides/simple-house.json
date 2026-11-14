@@ -1,0 +1,91 @@
+{
+  "id": "simple-house",
+  "title": "Build a simple house",
+  "picture": "oak_door",
+  "askedAs": [
+    "build a house",
+    "make a house",
+    "simple house",
+    "starter house",
+    "first house",
+    "wooden house",
+    "build a shelter",
+    "make a shelter",
+    "build a home"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Tutorial:Shelters",
+    "https://minecraft.wiki/w/Tutorial:Beginner's_guide",
+    "https://minecraft.wiki/w/Tutorial:Your_first_10_minutes",
+    "https://minecraft.wiki/w/Tutorials/Best_biomes_for_homes",
+    "https://minecraft.wiki/w/Planks",
+    "https://minecraft.wiki/w/Door",
+    "https://minecraft.wiki/w/Glass",
+    "https://minecraft.wiki/w/Torch",
+    "https://minecraft.wiki/w/Light",
+    "https://minecraft.wiki/w/Bed"
+  ],
+  "checked": "2026-11-13",
+  "steps": [
+    {
+      "title": "Gather your wood",
+      "say": "Find a flat, grassy spot near trees, and start in the daytime. Chop about 30 logs and craft them into planks. Each log makes 4 planks.",
+      "item": "oak_log"
+    },
+    {
+      "title": "Lay the floor",
+      "say": "Place planks on the ground in a square, 5 blocks long and 5 blocks wide. That's 25 planks.",
+      "item": "oak_planks"
+    },
+    {
+      "title": "Place the door",
+      "say": "Craft 6 planks into 3 doors at a crafting table. Stand outside and place 1 door on the middle block of the front edge of the floor.",
+      "item": "oak_door"
+    },
+    {
+      "title": "Build the walls",
+      "say": "Build walls 3 high on the edge of the floor, up to the door. Leave a hole on each side of the door's top half for windows. That's 44 planks.",
+      "pattern": [
+        "PPPPP",
+        "P.D.P",
+        "PPDPP",
+        "PPPPP"
+      ],
+      "key": {
+        "P": "oak_planks",
+        "D": "oak_door"
+      }
+    },
+    {
+      "title": "Add the windows",
+      "say": "Smelt 2 sand in a furnace to make 2 glass. Place 1 glass in each window hole.",
+      "item": "glass"
+    },
+    {
+      "title": "Put on the roof",
+      "say": "Cover the top with a flat roof of planks, 5 by 5, using 25 planks. A roof stops spiders from climbing in over the walls.",
+      "pattern": [
+        "PPPPP",
+        "PPPPP",
+        "PGDGP",
+        "PPDPP",
+        "PPPPP"
+      ],
+      "key": {
+        "P": "oak_planks",
+        "G": "glass",
+        "D": "oak_door"
+      }
+    },
+    {
+      "title": "Light it up",
+      "say": "Craft torches from coal and sticks. Put 1 on an inside wall, 1 on the roof and a few on the ground outside. Light helps stop monsters from appearing.",
+      "item": "torch"
+    },
+    {
+      "title": "Place your bed",
+      "say": "Craft a bed from 3 wool of the same color and 3 planks. Place it by the back wall. Sleep in it at night, and you'll respawn here.",
+      "item": "white_bed"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "id": "enchanting",
+  "title": "Set up enchanting",
+  "picture": "enchanting_table",
+  "askedAs": [
+    "set up enchanting",
+    "enchanting table",
+    "make an enchanting table",
+    "how to enchant",
+    "enchant my sword",
+    "enchant my tools",
+    "bookshelves for enchanting",
+    "best enchantments",
+    "get enchantments"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Enchanting_Table",
+    "https://minecraft.wiki/w/Enchanting_table_mechanics",
+    "https://minecraft.wiki/w/Bookshelf",
+    "https://minecraft.wiki/w/Book",
+    "https://minecraft.wiki/w/Lapis_Lazuli",
+    "https://minecraft.wiki/w/Lapis_Lazuli_Ore",
+    "https://minecraft.wiki/w/Experience",
+    "https://minecraft.wiki/w/Obsidian"
+  ],
+  "checked": "2026-11-13",
+  "steps": [
+    {
+      "title": "Craft the table",
+      "say": "Craft an enchanting table from 1 book, 2 diamonds and 4 obsidian, set out like the picture. You need a diamond pickaxe or better to mine obsidian.",
+      "pattern": [".B.", "DOD", "OOO"],
+      "key": { "B": "book", "D": "diamond", "O": "obsidian" }
+    },
+    {
+      "title": "Make 15 bookshelves",
+      "say": "For the best enchantments you need 15 bookshelves. Each one takes 6 wood planks and 3 books, and a book is 3 paper and 1 leather.",
+      "item": "bookshelf"
+    },
+    {
+      "title": "Place the bookshelves",
+      "say": "Place the table with 15 bookshelves around it like the picture, with 1 empty block between them. Even a torch in that gap stops a bookshelf from working.",
+      "pattern": ["BBBBB", "B...B", "B.E.B", "B...B", "BB.BB"],
+      "key": { "B": "bookshelf", "E": "enchanting_table" }
+    },
+    {
+      "title": "Mine lapis lazuli",
+      "say": "Mine lapis lazuli ore with a stone pickaxe or better. Each one drops 4 to 9 lapis, and it's most common near Y 0.",
+      "item": "lapis_lazuli"
+    },
+    {
+      "title": "Earn experience levels",
+      "say": "Earn levels by defeating monsters, mining ores like coal or diamond, and smelting. The best enchantments need level 30.",
+      "item": "experience_bottle"
+    },
+    {
+      "title": "Put in your item",
+      "say": "Use the enchanting table and put in something that isn't enchanted yet, like a sword, pickaxe, armor or a book. Then add 3 lapis lazuli.",
+      "item": "enchanting_table"
+    },
+    {
+      "title": "Pick the bottom choice",
+      "say": "With all 15 bookshelves, the bottom choice needs level 30 but only uses up 3 levels and 3 lapis. It usually gives the best enchantments."
+    }
+  ]
+}
