@@ -1,4 +1,5 @@
-/* Pixel art screens (crop, result, build), Save an idea, and Ideas to build on the grown-ups screen. */
+/* Pixel art screens (crop, result, build), Save an idea, and Ideas to build on the grown-ups screen.
+   The result page's settings, block list and block picker are in art-edit.css. */
 
 /* Crop: the photo in a square you can drag and pinch */
 .crop-stage {
@@ -112,18 +113,6 @@
 .art-photo {
   object-fit: cover;
   image-rendering: auto;
-}
-
-.wool-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 0 16px;
-}
-
-.wool-btn {
-  border: 3px solid var(--ink);
-  padding: 0 14px;
 }
 
 .text-btn {

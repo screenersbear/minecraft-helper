@@ -15,10 +15,26 @@ const loadAtlas = () => {
 const CELL = 16;
 const PAD = 5; // room around the picture for the row's outline
 
+// The square under a tap or click on the picture, or -1 for the edge around it.
+export function squareAt(canvas, size, event) {
+  const box = canvas.getBoundingClientRect();
+  const scale = canvas.width / (box.width || 1);
+  const col = Math.floor(((event.clientX - box.left) * scale - PAD) / CELL);
+  const row = Math.floor(((event.clientY - box.top) * scale - PAD) / CELL);
+  return col >= 0 && row >= 0 && col < size && row < size ? row * size + col : -1;
+}
+
 // art: { size, blocks, cells }. done: rows finished (from the bottom). current: the row being built, or 0.
-export function blockArt(book, art, { done = 0, current = 0 } = {}) {
+// picked: a square to box (the one being changed), or -1. onTap(square): makes the squares tappable.
+export function blockArt(book, art, { done = 0, current = 0, picked = -1, onTap = null } = {}) {
   const px = art.size * CELL;
-  const canvas = el('canvas', { class: 'block-art', width: px + PAD * 2, height: px + PAD * 2, role: 'img', 'aria-label': `The picture in blocks, ${art.size} by ${art.size}` });
+  const canvas = el('canvas', { class: `block-art${onTap ? ' tappable' : ''}`, width: px + PAD * 2, height: px + PAD * 2, role: 'img', 'aria-label': `The picture in blocks, ${art.size} by ${art.size}` });
+  if (onTap) {
+    canvas.addEventListener('click', (e) => {
+      const square = squareAt(canvas, art.size, e);
+      if (square >= 0) onTap(square);
+    });
+  }
   const c = canvas.getContext('2d');
   if (!c) return canvas;
   const colour = new Map(book.palette.map((p) => [p.id, p.rgb]));
@@ -40,16 +56,18 @@ export function blockArt(book, art, { done = 0, current = 0 } = {}) {
       }
     });
     c.globalAlpha = 1;
-    // The row being built: a mango line with dark edges just outside it, easy to see on any colour.
-    if (current) {
-      const y = PAD + (art.size - current) * CELL;
+    // The row being built, or the square being changed: a mango line with dark edges just outside it, easy to
+    // see on any colour.
+    const ring = (x, y, w, h) => {
       c.lineWidth = 5;
       c.strokeStyle = '#313d45';
-      c.strokeRect(PAD - 2.5, y - 2.5, px + 5, CELL + 5);
+      c.strokeRect(x - 2.5, y - 2.5, w + 5, h + 5);
       c.lineWidth = 2;
       c.strokeStyle = '#ffd100';
-      c.strokeRect(PAD - 2.5, y - 2.5, px + 5, CELL + 5);
-    }
+      c.strokeRect(x - 2.5, y - 2.5, w + 5, h + 5);
+    };
+    if (current) ring(PAD, PAD + (art.size - current) * CELL, px, CELL);
+    if (picked >= 0) ring(PAD + (picked % art.size) * CELL, PAD + Math.floor(picked / art.size) * CELL, CELL, CELL);
   };
   draw(null);
   loadAtlas().then(draw, () => {});

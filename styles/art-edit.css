@@ -1,0 +1,208 @@
+/* Pixel art result page: tapping squares, the Colours slider, the Outline and Wool only switches, the block list
+   you can tap to swap, and the block picker panel. */
+
+.block-art.tappable {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.tap-hint {
+  margin-top: 8px;
+}
+
+/* Colours: Fewer [slider] More, then the switches */
+.art-controls {
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.colours-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.colour-count {
+  font: 700 22px/1 var(--pixel);
+}
+
+.colours-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.colour-slider {
+  flex-grow: 1;
+  height: 44px;
+  margin: 0;
+  background: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  touch-action: pan-y;
+}
+
+/* The track is a dark bar, the handle a mango block. */
+.colour-slider::-webkit-slider-runnable-track {
+  height: 8px;
+  background: var(--ink);
+}
+
+.colour-slider::-moz-range-track {
+  height: 8px;
+  background: var(--ink);
+}
+
+.colour-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 28px;
+  height: 36px;
+  margin-top: -14px;
+  border: 3px solid var(--ink);
+  border-radius: 0;
+  background: var(--mango);
+}
+
+.colour-slider::-moz-range-thumb {
+  width: 22px;
+  height: 30px;
+  border: 3px solid var(--ink);
+  border-radius: 0;
+  background: var(--mango);
+}
+
+.colour-slider:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.one-up {
+  display: grid;
+}
+
+/* A switch: a box that's filled when it's on, so on and off differ in shape too, not just colour. */
+.toggle-btn {
+  border: 3px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.toggle-btn::before {
+  content: '';
+  width: 14px;
+  height: 14px;
+  border: 3px solid currentColor;
+}
+
+.toggle-btn[aria-pressed='true']::before {
+  background: var(--mango);
+  border-color: var(--mango);
+}
+
+/* Blocks you need: each one a button that swaps it everywhere */
+.need-list {
+  padding-top: 16px;
+}
+
+.need-list .small-label {
+  margin-bottom: 6px;
+}
+
+.need-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 10px;
+}
+
+.need-btn {
+  width: 100%;
+  min-height: 44px;
+  padding: 4px 8px;
+  border: none;
+  background: var(--panel);
+  box-shadow: inset 0 -4px 0 var(--slot);
+  color: var(--ink);
+  font: 15px/1.2 var(--text);
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.need-btn:active {
+  transform: translateY(2px);
+}
+
+/* The block picker: a panel at the bottom of the screen */
+.picker {
+  margin: auto 0 0;
+  width: 100%;
+  max-width: 100%;
+  max-height: 86vh;
+  padding: 18px var(--side) calc(env(safe-area-inset-bottom) + 18px);
+  border: none;
+  border-top: 4px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  overflow-y: auto;
+}
+
+.picker::backdrop {
+  background: rgb(49 61 69 / 0.55);
+}
+
+.picker-title {
+  margin: 0 0 12px;
+  font: 700 22px/1.1 var(--pixel);
+}
+
+.picker-blocks section {
+  padding-bottom: 12px;
+}
+
+.picker-blocks .small-label {
+  margin: 0 0 6px;
+}
+
+.block-pick-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(46px, 1fr));
+  gap: 6px;
+}
+
+.block-pick {
+  height: 46px;
+  border: none;
+  padding: 0;
+  background: var(--slot);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.block-pick[aria-pressed='true'] {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+  box-shadow: inset 0 0 0 3px var(--mango);
+}
+
+@media (min-width: 600px) {
+  .picker {
+    max-width: 560px;
+    margin: auto;
+    border: 4px solid var(--ink);
+  }
+}

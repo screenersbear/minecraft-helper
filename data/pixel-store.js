@@ -1,6 +1,7 @@
 // My pixel art: pictures made of blocks, saved on the phone so a kid can come back to a half-built one.
-// Each: { id, name, size, cells (a block number for each square, top row first), rgb (the photo's colours, for
-// "Wool only"), woolOnly, photo (a small picture of the photo), row (rows built so far), made }.
+// Each: { id, name, size, blocks (block ids), cells (a place in blocks for each square, top row first), photo (a
+// small picture of the photo, to make the blocks again), colours, outline, woolOnly, edits (squares the kid changed),
+// swaps (blocks the kid swapped everywhere), background (whether the photo had one), row (rows built so far), made }.
 import { load, save } from './store.js';
 
 const KEY = 'mc-helper.pixel-art';

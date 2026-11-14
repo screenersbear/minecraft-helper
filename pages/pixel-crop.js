@@ -7,24 +7,25 @@ import { cropBox, photoCanvas } from '../components/crop-box.js';
 import { artThumb } from '../components/art-thumb.js';
 import { getPhoto, setPhoto } from '../data/photo.js';
 import { chosenSize, saveArt, listArt, newArtId } from '../data/pixel-store.js';
-import { averageSquares, matchPixels } from '../logic/pixel.js';
+import { photoPixels } from '../data/art-photo.js';
+import { convert, COLOURS, DETAIL } from '../logic/pixel-convert.js';
 import { toHash } from '../logic/routes.js';
 
-const DETAIL = 8; // each block is the average of 8 by 8 pixels of the photo
+const WAIT = 120; // ms after the photo stops moving before the preview is made again
 
-// The photo inside the square, shrunk to size by size colours.
-function squareColours(crop, size) {
+// The photo inside the square as pixels, size * DETAIL across, ready for the converter.
+function squarePixels(crop, size) {
   const px = size * DETAIL;
   const canvas = el('canvas', { width: px, height: px });
   crop.drawTo(canvas, px);
-  return averageSquares(canvas.getContext('2d').getImageData(0, 0, px, px).data, px, size);
+  return canvas.getContext('2d', { willReadFrequently: true }).getImageData(0, 0, px, px).data;
 }
 
-// A small picture of the photo, kept with the pixel art for the Photo switch.
+// A small picture of the photo, kept with the pixel art for the Photo switch and to make the blocks again.
 function photoSnapshot(crop) {
   const canvas = el('canvas', { width: 192, height: 192 });
   crop.drawTo(canvas, 192);
-  return canvas.toDataURL('image/jpeg', 0.75);
+  return canvas.toDataURL('image/jpeg', 0.9);
 }
 
 function noPhoto() {
@@ -50,28 +51,35 @@ export function pixelCropPage(ctx) {
   let crop = null;
   let pending = 0;
 
-  // Shows how it will look in blocks, at most once a frame while the photo moves.
+  // Shows how it will look in blocks, once the photo stops moving for a moment (so dragging stays smooth).
   const showPreview = () => {
-    cancelAnimationFrame(pending);
-    pending = requestAnimationFrame(() => {
-      const { blocks, cells } = matchPixels(squareColours(crop, size), ctx.book.palette);
+    clearTimeout(pending);
+    pending = setTimeout(() => {
+      const { blocks, cells } = convert(squarePixels(crop, size), size * DETAIL, size, ctx.book.palette);
       preview.replaceChildren(artThumb(ctx.book, { size, blocks, cells }, 96), el('span', { class: 'small-label' }, `${size} by ${size} blocks`));
-    });
+    }, WAIT);
   };
 
-  make.addEventListener('click', () => {
-    if (!crop) return;
-    const rgb = squareColours(crop, size);
-    const { blocks, cells } = matchPixels(rgb, ctx.book.palette);
+  // Made from the saved photo, the same one the result page uses when the settings change.
+  make.addEventListener('click', async () => {
+    if (!crop || make.disabled) return;
+    make.disabled = true;
+    const photo = photoSnapshot(crop);
+    const width = size * DETAIL;
+    const made = convert(await photoPixels(photo, width), width, size, ctx.book.palette);
     const art = {
       id: newArtId(),
       name: name.value.trim() || `Picture ${listArt().length + 1}`,
       size,
-      blocks,
-      cells,
-      rgb,
+      blocks: made.blocks,
+      cells: made.cells,
+      background: made.background,
+      colours: COLOURS.start,
+      outline: false,
       woolOnly: false,
-      photo: photoSnapshot(crop),
+      edits: {},
+      swaps: {},
+      photo,
       row: 0,
       made: Date.now(),
     };
@@ -102,5 +110,5 @@ export function pixelCropPage(ctx) {
       el('div', { class: 'bottom' }, make),
     ),
   ];
-  return { nodes, title: 'Pixel art', cleanup: () => cancelAnimationFrame(pending) };
+  return { nodes, title: 'Pixel art', cleanup: () => clearTimeout(pending) };
 }

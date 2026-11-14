@@ -1,13 +1,18 @@
-// Pixel art, step 2 (#/pixel/<id>): the picture made of blocks, a switch back to the photo, a "Wool only" switch,
-// and every block it needs, most first. Build it goes row by row.
+// Pixel art, step 2 (#/pixel/<id>): the picture made of blocks, a switch back to the photo, the Colours slider and
+// the Outline and Wool only switches, and every block it needs, most first. Tap a square to change it, or a block in
+// the list to swap it everywhere. Build it goes row by row.
 import { el } from '../components/el.js';
 import { topBar } from '../components/top-bar.js';
 import { blockButton } from '../components/buttons.js';
 import { blockArt } from '../components/block-art.js';
-import { thingList } from '../components/thing-list.js';
+import { artControls } from '../components/art-controls.js';
+import { openBlockPicker } from '../components/block-picker.js';
 import { itemPicture } from '../components/picture.js';
 import { getArt, updateArt, removeArt } from '../data/pixel-store.js';
-import { matchPixels } from '../logic/pixel.js';
+import { photoPixels } from '../data/art-photo.js';
+import { convert, lookOf, DETAIL } from '../logic/pixel-convert.js';
+import { editSquare, swapBlock } from '../logic/pixel-edits.js';
+import { choices } from '../logic/pixel.js';
 import { blockCounts, countText } from '../logic/pixel-rows.js';
 import { listWords } from '../logic/plural.js';
 import { toHash } from '../logic/routes.js';
@@ -20,36 +25,96 @@ function needSentence(book, counts) {
   return `Here it is in blocks. You need ${listWords(top)}.`;
 }
 
-const toggle = (label, on, onClick) => el('button', { class: 'switch-btn', type: 'button', 'aria-pressed': String(on), onclick: onClick }, label);
+const blockName = (book, id) => (book.items[id]?.name || id.replace(/_/g, ' ')).toLowerCase();
 
 export function pixelResultPage(ctx, route) {
-  const art = getArt(route.id);
+  let art = getArt(route.id);
   if (!art) return null;
   const { book } = ctx;
-  const counts = blockCounts(art);
-  const say = needSentence(book, counts);
+  const sayLine = el('p', { class: 'say' });
   const view = el('div', { class: 'art-view' });
+  const list = el('div', { class: 'need-list' });
   let showing = 'blocks';
+  let closePicker = null;
+  const offered = () => choices(book.palette, lookOf(art).woolOnly).map((c) => c.id);
 
+  // Saves changes and draws the picture and the list again (the page itself stays, so the slider keeps working).
+  const save = (changes) => {
+    art = updateArt(art.id, changes) || art;
+    draw();
+  };
+  const pickSquare = (i) => {
+    draw(i);
+    closePicker = openBlockPicker(book, {
+      title: 'Pick a block for this square',
+      ids: offered(),
+      current: art.blocks[art.cells[i]],
+      onPick: (id) => save(editSquare(art, i, id)),
+      onClose: () => draw(),
+    });
+  };
+  const pickSwap = (from) => {
+    closePicker = openBlockPicker(book, {
+      title: `Swap ${blockName(book, from)} everywhere for`,
+      ids: offered(),
+      current: from,
+      onPick: (to) => save(swapBlock(art, from, to)),
+    });
+  };
+
+  function draw(picked = -1) {
+    const counts = blockCounts(art);
+    sayLine.textContent = needSentence(book, counts);
+    view.replaceChildren(
+      showing === 'blocks' ? blockArt(book, art, { picked, onTap: pickSquare }) : el('img', { class: 'art-photo', src: art.photo, alt: 'The photo' }),
+    );
+    list.replaceChildren(
+      el('h2', { class: 'small-label' }, 'Blocks you need, most first. Tap one to swap it.'),
+      el(
+        'ul',
+        { class: 'need-rows' },
+        counts.map((c) =>
+          el('li', {}, el('button', { class: 'need-btn', type: 'button', onclick: () => pickSwap(c.id) }, itemPicture(book, c.id, 24), el('span', {}, countText(book, c)))),
+        ),
+      ),
+    );
+  }
+
+  // Makes the blocks again from the photo with new settings. Only the newest request counts.
+  let asked = 0;
+  const remake = async (changes) => {
+    const mine = ++asked;
+    const width = art.size * DETAIL;
+    const look = { ...art, ...changes };
+    try {
+      const made = convert(await photoPixels(art.photo, width), width, art.size, book.palette, look);
+      if (mine !== asked) return;
+      save({ ...changes, blocks: made.blocks, cells: made.cells, background: made.background, rgb: undefined });
+    } catch {
+      if (mine === asked) save(changes);
+    }
+  };
+  let waiting = 0;
+  const controls = artControls(lookOf(art), art.background !== false, {
+    onColours: (colours) => {
+      clearTimeout(waiting);
+      waiting = setTimeout(() => remake({ colours }), 60);
+    },
+    onOutline: (outline) => remake({ outline }),
+    onWool: (woolOnly) => remake({ woolOnly }),
+  });
+
+  const switchRow = el('div', { class: 'switch-row' });
   const show = (which) => {
     showing = which;
-    view.replaceChildren(which === 'blocks' ? blockArt(book, art) : el('img', { class: 'art-photo', src: art.photo, alt: 'The photo' }));
-    switches.querySelectorAll('button').forEach((b, i) => b.setAttribute('aria-pressed', String((i === 0) === (showing === 'blocks'))));
+    switchRow.querySelectorAll('button').forEach((b, i) => b.setAttribute('aria-pressed', String((i === 0) === (which === 'blocks'))));
+    draw();
   };
-  const switches = el('div', { class: 'switch-row' }, toggle('Blocks', true, () => show('blocks')), toggle('Photo', false, () => show('photo')));
-  show('blocks');
-
-  // Wool only: match the photo again using only wool, for when that's all you have.
-  const wool = el('button', {
-    class: 'switch-btn wool-btn',
-    type: 'button',
-    'aria-pressed': String(Boolean(art.woolOnly)),
-    onclick: () => {
-      const woolOnly = !art.woolOnly;
-      updateArt(art.id, { woolOnly, ...matchPixels(art.rgb, book.palette, { woolOnly }) });
-      ctx.refresh();
-    },
-  }, 'Wool only');
+  switchRow.append(
+    el('button', { class: 'switch-btn', type: 'button', 'aria-pressed': 'true', onclick: () => show('blocks') }, 'Blocks'),
+    el('button', { class: 'switch-btn', type: 'button', 'aria-pressed': 'false', onclick: () => show('photo') }, 'Photo'),
+  );
+  draw();
 
   const next = Math.min(art.row + 1, art.size);
   const remove = el('button', {
@@ -70,11 +135,12 @@ export function pixelResultPage(ctx, route) {
       'div',
       { class: 'page pixel-result' },
       el('h1', { class: 'answer-title', 'data-fit': '2', tabindex: '-1' }, art.name),
-      el('p', { class: 'say' }, say),
-      switches,
+      sayLine,
+      switchRow,
       view,
-      el('div', { class: 'wool-row' }, wool, el('span', { class: 'small-label' }, 'For when wool is all you have')),
-      thingList(counts.map((c) => ({ picture: itemPicture(book, c.id, 24), text: countText(book, c) })), 'Blocks you need, most first'),
+      el('p', { class: 'small-label tap-hint' }, 'Tap a square to change its block.'),
+      controls,
+      list,
       el(
         'div',
         { class: 'bottom' },
@@ -88,5 +154,10 @@ export function pixelResultPage(ctx, route) {
       ),
     ),
   ];
-  return { nodes, say, title: art.name };
+  const cleanup = () => {
+    clearTimeout(waiting);
+    asked += 1;
+    closePicker?.();
+  };
+  return { nodes, say: sayLine.textContent, title: art.name, cleanup };
 }

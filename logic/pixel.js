@@ -1,5 +1,5 @@
-// Pixel art colours: swaps each square of a shrunk photo for the block whose colour is closest, the way people see
-// colour (CIELAB), with no dithering. Colours are numbers like 0xRRGGBB.
+// Pixel art colours: measures colour the way people see it (CIELAB) and finds the block whose colour is closest.
+// Colours are numbers like 0xRRGGBB. No dithering anywhere.
 
 // One sRGB channel (0 to 255) to linear light (0 to 1).
 function linear(c) {
@@ -11,9 +11,14 @@ const pivot = (t) => (t > 216 / 24389 ? Math.cbrt(t) : (24389 / 27 * t + 16) / 1
 
 // 0xRRGGBB -> [L, a, b], with the D65 white point.
 export function toLab(rgb) {
-  const r = linear((rgb >> 16) & 255);
-  const g = linear((rgb >> 8) & 255);
-  const b = linear(rgb & 255);
+  return labOf((rgb >> 16) & 255, (rgb >> 8) & 255, rgb & 255);
+}
+
+// Red, green and blue (0 to 255) -> [L, a, b].
+export function labOf(red, green, blue) {
+  const r = linear(red);
+  const g = linear(green);
+  const b = linear(blue);
   const x = pivot((r * 0.4124 + g * 0.3576 + b * 0.1805) / 0.95047);
   const y = pivot(r * 0.2126 + g * 0.7152 + b * 0.0722);
   const z = pivot((r * 0.0193 + g * 0.1192 + b * 0.9505) / 1.08883);
@@ -42,47 +47,30 @@ export function nearest(rgb, list) {
   return best;
 }
 
-// pixels: one 0xRRGGBB colour per square, top row first. Returns { blocks: block ids used, cells: a place in
-// blocks for each square }. Colours already seen are remembered, so a photo with flat areas is quick.
-export function matchPixels(pixels, palette, { woolOnly = false } = {}) {
-  const list = choices(palette, woolOnly);
+// Lightness counted at half weight: a shadow and the lit side of the same thing are mostly lighter or darker, not a
+// different colour, so this makes them close. rgb: 3 numbers per pixel. Returns 3 numbers per pixel: L / 2, a, b.
+export const HALF = 0.5;
+export function halfLightLab(rgb) {
+  const out = new Float32Array(rgb.length);
   const seen = new Map();
-  const blocks = [];
-  const cells = pixels.map((rgb) => {
-    if (!seen.has(rgb)) {
-      const id = list[nearest(rgb, list)].id;
-      if (!blocks.includes(id)) blocks.push(id);
-      seen.set(rgb, blocks.indexOf(id));
+  for (let i = 0; i < rgb.length; i += 3) {
+    const key = (rgb[i] << 16) | (rgb[i + 1] << 8) | rgb[i + 2];
+    let lab = seen.get(key);
+    if (!lab) {
+      lab = labOf(rgb[i], rgb[i + 1], rgb[i + 2]);
+      seen.set(key, lab);
     }
-    return seen.get(rgb);
-  });
-  return { blocks, cells };
-}
-
-// Shrinks a square picture's pixels (RGBA, width by width) to n by n squares, each the average of its part.
-// Clear parts count as white paper. Returns 0xRRGGBB numbers, top row first.
-export function averageSquares(data, width, n) {
-  const out = [];
-  const step = width / n;
-  for (let row = 0; row < n; row++) {
-    for (let col = 0; col < n; col++) {
-      let r = 0;
-      let g = 0;
-      let b = 0;
-      let count = 0;
-      for (let y = Math.floor(row * step); y < Math.floor((row + 1) * step); y++) {
-        for (let x = Math.floor(col * step); x < Math.floor((col + 1) * step); x++) {
-          const i = (y * width + x) * 4;
-          const a = data[i + 3] / 255;
-          r += data[i] * a + 255 * (1 - a);
-          g += data[i + 1] * a + 255 * (1 - a);
-          b += data[i + 2] * a + 255 * (1 - a);
-          count += 1;
-        }
-      }
-      const avg = (v) => Math.round(v / Math.max(1, count));
-      out.push((avg(r) << 16) | (avg(g) << 8) | avg(b));
-    }
+    out[i] = lab[0] * HALF;
+    out[i + 1] = lab[1];
+    out[i + 2] = lab[2];
   }
   return out;
+}
+
+// How far apart pixels i and j are in a halfLightLab list (squared).
+export function gap(lab, i, j) {
+  const d0 = lab[i * 3] - lab[j * 3];
+  const d1 = lab[i * 3 + 1] - lab[j * 3 + 1];
+  const d2 = lab[i * 3 + 2] - lab[j * 3 + 2];
+  return d0 * d0 + d1 * d1 + d2 * d2;
 }
