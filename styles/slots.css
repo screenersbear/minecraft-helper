@@ -63,8 +63,11 @@
   --slot-size: min(56px, calc((100vw - 152px) / 4));
   display: flex;
   align-items: center;
-  gap: 10px;
   padding-top: 16px;
+}
+
+.recipe-row > :not(:first-child) {
+  margin-left: 10px;
 }
 
 .arrow {
@@ -105,7 +108,11 @@
 .legend li {
   display: flex;
   align-items: center;
-  gap: 8px;
+}
+
+.thing-list li > :not(:first-child),
+.legend li > :not(:first-child) {
+  margin-left: 8px;
 }
 
 .thing-list small {
@@ -139,8 +146,11 @@
 .step-picture {
   display: flex;
   align-items: flex-end;
-  gap: 18px;
   padding-top: 18px;
+}
+
+.step-picture > :not(:first-child) {
+  margin-left: 18px;
 }
 
 .legend {
@@ -149,9 +159,12 @@
   padding: 0 0 2px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
   font-size: 14px;
   line-height: 1.25;
+}
+
+.legend > :not(:first-child) {
+  margin-top: 10px;
 }
 
 .legend-icon {

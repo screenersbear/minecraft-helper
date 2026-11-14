@@ -15,7 +15,10 @@
   padding: 18px 0 calc(env(safe-area-inset-bottom) + 24px);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+}
+
+.bottom > :not(:first-child) {
+  margin-top: 10px;
 }
 
 /* Ask */
@@ -59,8 +62,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
   padding: 20px 0;
+}
+
+.talk-area > :not(:first-child) {
+  margin-top: 12px;
 }
 
 .heard {
@@ -69,6 +75,11 @@
   text-align: center;
   font-size: 15px;
   color: var(--soft);
+}
+
+/* No talk button (a device that can't listen, like an old iPad): the box to type in takes its place, in the middle. */
+.ask.no-talk .type-it {
+  margin: auto 0;
 }
 
 .type-it input {
@@ -109,7 +120,6 @@
 /* Asked before: grey game buttons, one per question */
 .recent-row {
   display: flex;
-  gap: 12px;
   align-items: center;
   min-height: 48px;
   margin-bottom: 6px;
@@ -126,6 +136,10 @@
   touch-action: manipulation;
 }
 
+.recent-row > :not(:first-child) {
+  margin-left: 12px;
+}
+
 .recent-row:active {
   transform: translateY(2px);
 }
@@ -134,14 +148,24 @@
 .answer-head {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+}
+
+.answer-head > :not(:first-child) {
+  margin-top: 4px;
+}
+
+.answer-head > .say:not(:first-child) {
+  margin-top: 6px;
 }
 
 .title-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+}
+
+.title-row > :not(:first-child) {
+  margin-left: 12px;
 }
 
 .answer-title {
@@ -170,7 +194,10 @@
 .feedback {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+}
+
+.feedback > :not(:first-child) {
+  margin-top: 10px;
 }
 
 .feedback-q {
@@ -183,8 +210,11 @@
 .card-row {
   display: flex;
   align-items: center;
-  gap: 16px;
   padding-top: 16px;
+}
+
+.card-row > :not(:first-child) {
+  margin-left: 16px;
 }
 
 .tag {
@@ -250,8 +280,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
   font-size: 15px;
+}
+
+.undo-row > :not(:first-child) {
+  margin-left: 12px;
 }
 
 /* A thing in a crafting grid you can tap to see how to get it */
@@ -275,4 +308,9 @@
 /* "I know about pandas, but...": a gap before what it does know */
 .missing .known-label {
   padding-top: 20px;
+}
+
+/* Ask more, typed: on a device that can't listen, a small box under an answer instead of the talk button */
+.ask-more-typed {
+  padding-top: 10px;
 }

@@ -50,7 +50,6 @@
 .build-tile {
   display: flex;
   flex-direction: column;
-  gap: 2px;
   padding: 8px 10px 14px;
   background: var(--panel);
   border: 2px solid var(--edge);
@@ -58,6 +57,10 @@
   color: var(--panel-text);
   text-decoration: none;
   touch-action: manipulation;
+}
+
+.build-tile > :not(:first-child) {
+  margin-top: 2px;
 }
 
 .build-tile b {
@@ -102,7 +105,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
   min-height: 44px;
   padding: 0 0 4px;
   border: none;
@@ -112,6 +114,10 @@
   font: 700 12px var(--text);
   cursor: pointer;
   touch-action: manipulation;
+}
+
+.ready-btn > :not(:first-child) {
+  margin-top: 4px;
 }
 
 .ready-btn .art-thumb {
@@ -139,17 +145,25 @@
 }
 
 .build-meta {
-  margin: 8px 0 0;
+  margin: 2px -10px 0 0;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 6px 10px;
   font-size: 15px;
+}
+
+/* Space round each one (old Safari can't use gap here). The negative margins above take back the space past the
+   edges, so lines break where they would with gap. */
+.build-meta > * {
+  margin: 6px 10px 0 0;
 }
 
 .build-tags {
   display: flex;
-  gap: 6px;
+}
+
+.build-tags > :not(:first-child) {
+  margin-left: 6px;
 }
 
 .tag-easy {
@@ -183,9 +197,12 @@
 .need {
   display: flex;
   align-items: center;
-  gap: 10px;
   min-height: 36px;
   font-size: 16px;
+}
+
+.need > :not(:first-child) {
+  margin-left: 10px;
 }
 
 .need b {
@@ -216,15 +233,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
   font-size: 13px;
+}
+
+.layer-figure figcaption > :not(:first-child) {
+  margin-top: 4px;
 }
 
 .front-mark {
   display: flex;
   align-items: center;
-  gap: 6px;
   font-weight: 700;
+}
+
+.front-mark > :not(:first-child) {
+  margin-left: 6px;
 }
 
 .front-arrow {

@@ -15,7 +15,10 @@
   padding-top: 14px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+}
+
+.art-controls > :not(:first-child) {
+  margin-top: 8px;
 }
 
 .colours-head {
@@ -31,8 +34,11 @@
 .colours-row {
   display: flex;
   align-items: center;
-  gap: 12px;
   font-size: 14px;
+}
+
+.colours-row > :not(:first-child) {
+  margin-left: 12px;
 }
 
 .colour-slider {
@@ -90,7 +96,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+}
+
+.toggle-btn > :not(:first-child) {
+  margin-left: 10px;
 }
 
 .toggle-btn::before {
@@ -135,9 +144,12 @@
   text-align: left;
   display: flex;
   align-items: center;
-  gap: 8px;
   cursor: pointer;
   touch-action: manipulation;
+}
+
+.need-btn > :not(:first-child) {
+  margin-left: 8px;
 }
 
 .need-btn:active {

@@ -2,8 +2,11 @@
 
 .progress {
   display: flex;
-  gap: 4px;
   margin: 10px 0 14px;
+}
+
+.progress > :not(:first-child) {
+  margin-left: 4px;
 }
 
 .progress span {
@@ -20,7 +23,10 @@
 .step-head {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
+}
+
+.step-head > :not(:first-child) {
+  margin-left: 14px;
 }
 
 .step-number {

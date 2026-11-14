@@ -96,7 +96,7 @@ export function buildLayerPage(ctx, route) {
         'figure',
         { class: 'layer-figure' },
         el('div', { class: 'layer-frame' }, view.node),
-        el('figcaption', {}, el('span', { class: 'front-mark' }, upArrow(), 'Front (the door side)'), view.faded ? el('span', {}, 'Faded blocks are the layer below.') : null),
+        el('figcaption', {}, el('span', { class: 'front-mark' }, upArrow(), el('span', {}, 'Front (the door side)')), view.faded ? el('span', {}, 'Faded blocks are the layer below.') : null),
       ),
       el('h2', { class: 'small-label run-label' }, 'This layer'),
       el('ul', { class: 'row-runs' }, runs),

@@ -20,8 +20,11 @@ a.mention:active {
 .dig-deeper {
   display: flex;
   flex-direction: column;
-  gap: 8px;
   padding-bottom: 8px;
+}
+
+.dig-deeper > :not(:first-child) {
+  margin-top: 8px;
 }
 
 .dig-btn {
@@ -41,8 +44,11 @@ a.mention:active {
 .chapter-head {
   display: flex;
   align-items: center;
-  gap: 14px;
   padding-bottom: 6px;
+}
+
+.chapter-head > :not(:first-child) {
+  margin-left: 14px;
 }
 
 .slot.big-slot {

@@ -7,7 +7,10 @@
 .bar-right {
   display: flex;
   align-items: center;
-  gap: 10px;
+}
+
+.bar-right > :not(:first-child) {
+  margin-left: 10px;
 }
 
 .page-dots {
@@ -111,10 +114,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   font-weight: 700;
   font-size: 15px;
   touch-action: manipulation;
+}
+
+.cat-tile > :not(:first-child) {
+  margin-top: 8px;
 }
 
 .cat-tile:active,
@@ -135,7 +141,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
   color: var(--white);
   text-shadow: 2px 2px 0 var(--shade);
   text-decoration: none;
@@ -143,6 +148,10 @@
   font-size: 12px;
   line-height: 1.2;
   touch-action: manipulation;
+}
+
+.thing-tile > :not(:first-child) {
+  margin-top: 6px;
 }
 
 .thing-tile .slot {
@@ -164,11 +173,14 @@
 .chapter-tile {
   display: flex;
   align-items: center;
-  gap: 8px;
   min-height: 88px;
   padding: 8px;
   text-decoration: none;
   touch-action: manipulation;
+}
+
+.chapter-tile > :not(:first-child) {
+  margin-left: 8px;
 }
 
 .chapter-tile:active {

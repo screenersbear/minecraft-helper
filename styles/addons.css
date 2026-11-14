@@ -15,11 +15,15 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  column-gap: 6px;
-  padding: 0 var(--side);
+  padding: 0 calc(var(--side) - 6px) 0 var(--side);
   font-size: 13px;
   color: var(--soft);
   line-height: 1.2;
+}
+
+/* Space after each step (old Safari can't use gap here). */
+.trail > * {
+  margin-right: 6px;
 }
 
 .trail-link {

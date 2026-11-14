@@ -7,7 +7,6 @@
 .shelf-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
   min-height: 44px;
   padding: 0 0 0 12px;
   margin: -12px 0;
@@ -18,6 +17,10 @@
   font: inherit;
   cursor: pointer;
   touch-action: manipulation;
+}
+
+.shelf-btn > :not(:first-child) {
+  margin-left: 8px;
 }
 
 .shelf-btn[aria-expanded='true'] span:last-child {
@@ -45,5 +48,8 @@
 
 .shelf-item {
   justify-content: flex-start;
-  gap: 12px;
+}
+
+.shelf-item > :not(:first-child) {
+  margin-left: 12px;
 }

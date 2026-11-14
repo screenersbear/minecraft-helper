@@ -8,7 +8,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
   background: var(--go);
   border: 2px solid var(--edge);
   box-shadow: inset 3px 3px 0 var(--go-hi), inset -3px -3px 0 var(--go-lo);
@@ -19,6 +18,10 @@
   font-weight: 700;
   font-size: 21px;
   touch-action: manipulation;
+}
+
+.surprise-btn > :not(:first-child) {
+  margin-left: 12px;
 }
 
 .surprise-btn:active {
@@ -100,11 +103,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
   font-weight: 700;
   font-size: 17px;
   cursor: pointer;
   touch-action: manipulation;
+}
+
+.photo-btn > :not(:first-child) {
+  margin-top: 6px;
 }
 
 /* The real file box is invisible: the whole button opens it. */
@@ -148,10 +154,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
   font-family: var(--text);
   cursor: pointer;
   touch-action: manipulation;
+}
+
+.size-btn > :not(:first-child) {
+  margin-top: 2px;
 }
 
 .size-btn b {
@@ -186,7 +195,6 @@
 .art-row {
   display: flex;
   align-items: center;
-  gap: 14px;
   min-height: 64px;
   margin-bottom: 6px;
   padding: 6px 12px 6px 6px;
@@ -196,6 +204,10 @@
   color: var(--panel-text);
   text-decoration: none;
   touch-action: manipulation;
+}
+
+.art-row > :not(:first-child) {
+  margin-left: 14px;
 }
 
 .art-thumb {

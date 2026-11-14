@@ -4,10 +4,11 @@
 // If the phone won't start listening the moment a finger goes down, it switches to tap to talk by itself.
 // small: the "Hold to ask more" button at the bottom of an answer. onStart runs when it starts listening, onIdle
 // when it stops without a question (so a guide can listen for "next" again). about: what the small button asks
-// about ("Hold to ask about The Bloop"); "more" when it's left out.
+// about ("Hold to ask about The Bloop"); "more" when it's left out. Only made when the device can listen (see
+// speech/listen.js): Ask and ask-more show a box to type in instead.
 import { el } from './el.js';
 import { icon } from './icons.js';
-import { canListen, listenOnce } from '../speech/listen.js';
+import { listenOnce } from '../speech/listen.js';
 import { stopSpeaking, unlockSpeech } from '../speech/speak.js';
 
 const TYPE_INSTEAD = 'You can type your question below instead.';
@@ -21,7 +22,7 @@ const MESSAGES = {
 };
 const HOLD = 400; // a press longer than this is a hold, shorter is a tap
 
-export function talkButton({ onQuestion, onNoMic, small = false, onStart, onIdle, about = 'more' }) {
+export function talkButton({ onQuestion, small = false, onStart, onIdle, about = 'more' }) {
   const mic = icon('mic', small ? 36 : 80);
   const button = el('button', { class: `talk-btn${small ? ' talk-small' : ''}`, type: 'button', 'aria-label': 'Hold to talk' }, mic);
   const label = el('div', { class: 'talk-label' });
@@ -35,7 +36,7 @@ export function talkButton({ onQuestion, onNoMic, small = false, onStart, onIdle
   const show = () => {
     const idle = small ? `${tapOnly ? 'Tap' : 'Hold'} to ask ${about}` : tapOnly ? 'Tap to talk' : 'Hold to talk';
     const text = { idle, holding: 'Listening...', tapped: 'Listening... tap to stop', finishing: 'One moment...' }[mode];
-    label.textContent = canListen() ? text : small ? 'Tap to type a question' : 'Type it below';
+    label.textContent = text;
     button.setAttribute('aria-label', label.textContent);
     button.classList.toggle('is-listening', mode !== 'idle');
     if (mode === 'idle') delete document.body.dataset.listening;
@@ -88,7 +89,7 @@ export function talkButton({ onQuestion, onNoMic, small = false, onStart, onIdle
   button.addEventListener('contextmenu', (e) => e.preventDefault());
   button.addEventListener('pointerdown', (e) => {
     downAction = null;
-    if (!canListen() || e.button > 0) return;
+    if (e.button > 0) return;
     if (mode === 'tapped') {
       mode = 'finishing';
       show();
@@ -130,13 +131,11 @@ export function talkButton({ onQuestion, onNoMic, small = false, onStart, onIdle
   button.addEventListener('pointercancel', release);
   // Keyboard: Enter or Space starts and stops listening.
   button.addEventListener('click', (e) => {
-    if (!canListen()) return onNoMic?.();
     if (e.detail !== 0) return;
     if (mode === 'tapped') session?.stop();
     else if (mode === 'idle') begin('tapped');
   });
 
   show();
-  if (!canListen() && !small) heard.textContent = "This browser can't hear. Type your question below.";
   return { nodes: [button, label, heard], stop: () => session?.stop() };
 }

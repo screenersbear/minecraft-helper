@@ -18,9 +18,12 @@
   text-shadow: 2px 2px 0 var(--go-lo);
   display: flex;
   align-items: center;
-  gap: 12px;
   font-size: 16px;
   line-height: 1.35;
+}
+
+.saved-banner > :not(:first-child) {
+  margin-left: 12px;
 }
 
 .saved-banner svg {
@@ -34,7 +37,10 @@
 .picks {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+}
+
+.picks > :not(:first-child) {
+  margin-top: 8px;
 }
 
 /* Grown-ups and About */
@@ -50,6 +56,10 @@
   font-size: 15px;
 }
 
+.grown-ups .answer-head > .say:not(:first-child) {
+  margin-top: 10px;
+}
+
 .log {
   list-style: none;
   margin: 18px 0 0;
@@ -60,7 +70,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
   min-height: 60px;
   margin-bottom: 6px;
   padding: 8px 8px 8px 12px;
@@ -68,6 +77,10 @@
   color: var(--panel-text);
   border: 2px solid var(--edge);
   box-shadow: inset 3px 3px 0 var(--panel-hi), inset -3px -3px 0 var(--panel-lo);
+}
+
+.log li > :not(:first-child) {
+  margin-left: 12px;
 }
 
 .log-q {

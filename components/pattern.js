@@ -34,7 +34,7 @@ export function patternPicture(book, step) {
 
 // The legend next to a pattern: each block's picture and name, plus "Can be empty" when the pattern has "-".
 export function patternLegend(book, step) {
-  const rows = Object.values(step.key).map((id) => el('li', {}, itemPicture(book, id, 24), book.items[id]?.name || id));
-  if (step.pattern.some((r) => r.includes('-'))) rows.push(el('li', {}, el('span', { class: 'build-any small' }), 'Can be empty'));
+  const rows = Object.values(step.key).map((id) => el('li', {}, itemPicture(book, id, 24), el('span', {}, book.items[id]?.name || id)));
+  if (step.pattern.some((r) => r.includes('-'))) rows.push(el('li', {}, el('span', { class: 'build-any small' }), el('span', {}, 'Can be empty')));
   return rows;
 }

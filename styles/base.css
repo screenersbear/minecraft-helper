@@ -1,6 +1,8 @@
 /* Base: colours, the font, the page on its dirt ground, the top bar, and pictures.
    The look (Version 2, approved 2026-11-14): a game menu. Dark dirt behind everything, white words with a hard
-   shadow, grey bevelled buttons, light grey panels with dark words, and Minecraft yellow for what's picked. */
+   shadow, grey bevelled buttons, light grey panels with dark words, and Minecraft yellow for what's picked.
+   Old iPads (Safari 12) ignore gap in flexbox, so things in a flex row or column are spaced with margins instead,
+   like `.row > :not(:first-child) { margin-left: 10px; }`. Gap is fine in grids. */
 
 @font-face {
   font-family: 'Monocraft';

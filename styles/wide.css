@@ -43,4 +43,9 @@
   .build-layer > .bottom {
     grid-area: bottom;
   }
+
+  /* Pixel art, row by row: a bigger picture. */
+  .build-view .block-art {
+    width: min(100%, 460px);
+  }
 }

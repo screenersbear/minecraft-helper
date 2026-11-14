@@ -98,7 +98,6 @@
   min-height: 56px;
   display: flex;
   align-items: center;
-  gap: 12px;
   padding: 6px 12px;
   font-size: 15px;
   font-weight: 400;
@@ -107,11 +106,19 @@
   text-decoration: none;
 }
 
+.pick-btn > :not(:first-child),
+.menu-btn > :not(:first-child) {
+  margin-left: 12px;
+}
+
 .menu-list {
   display: flex;
   flex-direction: column;
-  gap: 6px;
   padding-top: 8px;
+}
+
+.menu-list > :not(:first-child) {
+  margin-top: 6px;
 }
 
 .menu-words {
@@ -203,8 +210,11 @@
 .ask-more {
   display: flex;
   align-items: center;
-  gap: 14px;
   padding-top: 18px;
+}
+
+.ask-more > :not(:first-child) {
+  margin-left: 14px;
 }
 
 .talk-btn.talk-small {

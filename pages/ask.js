@@ -1,7 +1,9 @@
 // Ask: the page the app opens on (the first of the four home pages). Hold the green button and ask, or type it.
-// "Asked before" shows the last few questions. A long press on the title opens the grown-ups screen.
+// On a device that can't listen (an old iPad), there's no talk button, only the box to type in. "Asked before"
+// shows the last few questions. A long press on the title opens the grown-ups screen.
 import { el } from '../components/el.js';
 import { talkButton } from '../components/talk-button.js';
+import { canListen } from '../speech/listen.js';
 import { itemPicture, mobPicture } from '../components/picture.js';
 import { listRecent } from '../data/recent.js';
 import { tidyQuestion } from '../logic/say.js';
@@ -60,20 +62,20 @@ export function askPanel(ctx) {
         ctx.ask(input.value);
       },
     },
-    el('label', { for: 'q', class: 'small-label' }, 'Or type it'),
+    el('label', { for: 'q', class: 'small-label' }, canListen() ? 'Or type it' : 'Type your question'),
     input,
   );
-  const talk = talkButton({ onQuestion: (q) => ctx.ask(q), onNoMic: () => input.focus() });
+  const talk = canListen() ? talkButton({ onQuestion: (q) => ctx.ask(q) }) : null;
   const title = el('h1', { class: 'ask-title', tabindex: '-1' }, 'Ask the', el('br'), 'guide');
   onLongPress(title, () => ctx.go('#/grown-ups'));
 
   const node = el(
     'div',
-    { class: 'page ask' },
+    { class: talk ? 'page ask' : 'page ask no-talk' },
     el('div', { class: 'ask-intro' }, title, el('p', { class: 'splash', 'aria-hidden': 'true' }, 'Ask me anything!')),
-    el('div', { class: 'talk-area' }, talk.nodes),
+    talk ? el('div', { class: 'talk-area' }, talk.nodes) : null,
     form,
     askedBefore(ctx),
   );
-  return { node, cleanup: () => talk.stop() };
+  return { node, cleanup: () => talk?.stop() };
 }

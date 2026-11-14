@@ -25,8 +25,11 @@
 .zoom-row {
   display: flex;
   justify-content: flex-end;
-  gap: 8px;
   padding-top: 8px;
+}
+
+.zoom-row > :not(:first-child) {
+  margin-left: 8px;
 }
 
 .zoom-btn {
@@ -45,23 +48,32 @@
 .crop-bottom {
   display: flex;
   align-items: flex-end;
-  gap: 16px;
   padding-top: 14px;
+}
+
+.crop-bottom > :not(:first-child) {
+  margin-left: 16px;
 }
 
 .crop-preview {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
   min-width: 96px;
+}
+
+.crop-preview > :not(:first-child) {
+  margin-top: 4px;
 }
 
 .name-it {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+}
+
+.name-it > :not(:first-child) {
+  margin-top: 6px;
 }
 
 .name-it input {
@@ -143,26 +155,37 @@
 
 .row-runs {
   list-style: none;
-  margin: 6px 0 0;
+  margin: 0 -14px 0 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 14px;
   font-size: 15px;
+}
+
+/* Space round each one (old Safari can't use gap here). The negative margin above takes back the space past the
+   right edge, so lines break where they would with gap. */
+.row-runs > li {
+  margin: 6px 14px 0 0;
 }
 
 .row-runs li {
   display: flex;
   align-items: center;
-  gap: 6px;
+}
+
+.row-runs li > :not(:first-child) {
+  margin-left: 6px;
 }
 
 /* Save an idea */
 .idea-area {
   display: flex;
   flex-direction: column;
-  gap: 14px;
   flex-grow: 1;
+}
+
+.idea-area > :not(:first-child) {
+  margin-top: 14px;
 }
 
 .idea-photo {
@@ -178,7 +201,10 @@
   padding: 18px 0 8px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+}
+
+.log-actions > :not(:first-child) {
+  margin-top: 10px;
 }
 
 .ideas {
