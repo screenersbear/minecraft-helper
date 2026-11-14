@@ -1,7 +1,10 @@
 /* Pages: the layout of each screen. */
 
 .page {
-  flex-grow: 1;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: none;
   display: flex;
   flex-direction: column;
   padding: 20px var(--side) 0;
@@ -99,12 +102,6 @@
 
 .recent-row:last-of-type {
   border-bottom: 3px solid var(--ink);
-}
-
-.about-link {
-  padding: 18px 0 calc(env(safe-area-inset-bottom) + 24px);
-  font-size: 14px;
-  text-align: center;
 }
 
 /* Answers: recipe, mob, fact */

@@ -46,6 +46,15 @@
   box-sizing: border-box;
 }
 
+/* The page itself never scrolls or bounces, so nothing shows behind it when pulled. Only a screen's own
+   content scrolls (.page), and only when it's longer than the screen. */
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   background: var(--ink);
@@ -62,8 +71,9 @@ body {
 }
 
 #app {
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   max-width: 560px;

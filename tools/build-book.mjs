@@ -9,12 +9,14 @@ import { isUnpack } from './book/crafting.mjs';
 import { buildFacts } from './book/facts.mjs';
 import { namer, mobName, familyNote, familyPicture } from './book/names.mjs';
 import { textureFor } from './book/textures.mjs';
+import { minecloniaFiles } from './book/mineclonia.mjs';
 import { FACES } from './book/faces.mjs';
 import { writeAtlas } from './book/atlas.mjs';
 
 const app = join(dirname(fileURLToPath(import.meta.url)), '..');
 const data = join(app, '.cache/minecraft-data');
 const pack = join(app, '.cache/ppce');
+const moreFiles = minecloniaFiles(join(app, '.cache/mineclonia'));
 const json = (p) => JSON.parse(readFileSync(join(data, p), 'utf8'));
 
 const sources = {
@@ -93,7 +95,7 @@ for (const id of [...used].sort()) {
     continue;
   }
   const picId = id.startsWith('@') ? familyPicture(id, exists) : id;
-  const pic = pictureIndex(picId && textureFor(picId, pack));
+  const pic = pictureIndex(picId && textureFor(picId, pack, moreFiles));
   if (pic < 0) noPicture.push(id);
   items[id] = { name, pic };
   const note = id.startsWith('@') ? familyNote(id) || 'any colour' : null;

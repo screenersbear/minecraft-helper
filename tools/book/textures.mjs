@@ -1,5 +1,6 @@
-// Finds the Pixel Perfection CE picture for an item or block id, and says how to treat it:
-// which file, an optional shape to cut it to (stairs, slab...), and an optional colour for grey textures (leaves, water).
+// Finds the picture for an item or block id, and says how to treat it: which file, an optional shape to cut it to
+// (stairs, slab...), and an optional colour for grey textures (leaves, water). Pixel Perfection CE first; for what it
+// doesn't have, Mineclonia's pictures (mineclonia.mjs), which are drawn in the same style.
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -36,6 +37,7 @@ const TINTS = {
   oak_leaves: '#48B518', jungle_leaves: '#48B518', acacia_leaves: '#48B518', dark_oak_leaves: '#48B518', mangrove_leaves: '#48B518',
   spruce_leaves: '#619961', birch_leaves: '#80A755', vine: '#48B518', lily_pad: '#208030', grass: '#91BD59', tall_grass: '#91BD59',
   fern: '#91BD59', large_fern: '#91BD59', grass_block_top: '#91BD59', water_still: '#3F76E4', redstone_dust_dot: '#FF0000',
+  leaf_litter: '#A0794A',
 };
 
 // Shapes cut from a full block texture, as 16 rows of 16 (1 = keep).
@@ -71,19 +73,29 @@ function materialCandidates(base) {
     cut_sandstone: ['cut_sandstone'], cut_red_sandstone: ['cut_red_sandstone'], purpur: ['purpur_block'], petrified_oak: ['oak_planks'],
     light_weighted: ['gold_block'], heavy_weighted: ['iron_block'], nether_brick: ['nether_bricks'], red_nether_brick: ['red_nether_bricks'],
     end_stone_brick: ['end_stone_bricks'], prismarine_brick: ['prismarine_bricks'], blackstone: ['blackstone'],
+    moss_carpet: ['moss_block'], pale_moss_carpet: ['pale_moss_block'],
   };
   if (special[base]) return special[base];
   if (base.endsWith('_carpet')) return [`${base.replace('_carpet', '')}_wool`];
   return [base, `${base}s`, `${base}_planks`, `${base}_block`, `${base}_wool`];
 }
 
-// The picture for an id: { file, shape?, tint? } or null when Pixel Perfection CE has none.
-export function textureFor(id, root) {
+// The picture for an id: { file, shape?, tint? } or null when there's none. root: Pixel Perfection CE.
+// more(folder, name): another pack's file for a picture, for what Pixel Perfection CE doesn't have.
+export function textureFor(id, root, more) {
+  const own = find(id, root, null);
+  if (own && !own.recolor) return own;
+  // Nothing, or only oak recoloured to a newer wood: a real picture from the other pack is better.
+  return (more && find(id, root, more)) || own;
+}
+
+function find(id, root, more) {
   const tex = join(root, 'assets/minecraft/textures');
   const file = (folder, name) => {
     const p = join(tex, folder, `${name}.png`);
-    return existsSync(p) ? p : null;
+    return existsSync(p) ? p : more?.(folder, name) || null;
   };
+  const again = (other) => find(other, root, more);
   if (RENAMED[id] === null) return null;
   const named = RENAMED[id] || id;
   if (MODELS[id]) return { ...MODELS[id], file: join(tex, MODELS[id].file) };
@@ -91,12 +103,7 @@ export function textureFor(id, root) {
   if (bed && DYE_HEX[bed[1]] && file('entity', `bed/${bed[1]}`)) return { file: file('entity', `bed/${bed[1]}`), crop: { x: 6, y: 6, w: 16, h: 16 } };
   const banner = /^(.+)_banner$/.exec(id);
   if (banner && DYE_HEX[banner[1]]) return { file: join(tex, 'entity/banner_base.png'), crop: { x: 1, y: 1, w: 20, h: 40 }, tint: DYE_HEX[banner[1]] };
-  const wood = /^(cherry|mangrove|pale_oak|bamboo)_(planks|stairs|slab|fence|fence_gate|button|pressure_plate)$/.exec(id);
-  if (wood) {
-    const oak = textureFor(`oak_${wood[2]}`, root);
-    return oak && { ...oak, recolor: NEW_WOODS[wood[1]] };
-  }
-  if (id.startsWith('potted_')) return textureFor(id.replace('potted_', ''), root);
+  if (id.startsWith('potted_')) return again(id.replace('potted_', ''));
   const tinted = (p, name) => ({ file: p, tint: TINTS[name] });
   for (const name of [named]) {
     const p = file('item', name) || file('block', name);
@@ -106,9 +113,9 @@ export function textureFor(id, root) {
     const p = file('block', `${named}${side}`);
     if (p) return tinted(p, `${named}${side}`);
   }
-  if (id.startsWith('waxed_')) return textureFor(id.replace('waxed_', ''), root);
-  if (/_wood$/.test(id)) return textureFor(id.replace(/_wood$/, '_log'), root);
-  if (/_hyphae$/.test(id)) return textureFor(id.replace(/_hyphae$/, '_stem'), root);
+  if (id.startsWith('waxed_')) return again(id.replace('waxed_', ''));
+  if (/_wood$/.test(id)) return again(id.replace(/_wood$/, '_log'));
+  if (/_hyphae$/.test(id)) return again(id.replace(/_hyphae$/, '_stem'));
   for (const [suffix, cut] of SUFFIX_SHAPES) {
     if (!id.endsWith(suffix)) continue;
     const base = id.slice(0, -suffix.length);
@@ -116,6 +123,12 @@ export function textureFor(id, root) {
       const p = file('block', m);
       if (p) return { file: p, shape: cut, tint: TINTS[m] };
     }
+  }
+  // Newer woods with no picture: oak's, recoloured to that wood.
+  const wood = /^(cherry|mangrove|pale_oak|bamboo)_(planks|stairs|slab|fence|fence_gate|button|pressure_plate)$/.exec(id);
+  if (wood) {
+    const oak = again(`oak_${wood[2]}`);
+    return oak && { ...oak, recolor: NEW_WOODS[wood[1]] };
   }
   return null;
 }

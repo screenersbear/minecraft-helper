@@ -1,5 +1,11 @@
 Pictures in this folder (items.png, grass.png and the icon-*.png files) are made from
 Pixel Perfection CE by XSSheep and contributors: https://github.com/Athemis/PixelPerfectionCE
 License: Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0), https://creativecommons.org/licenses/by-sa/4.0/
+
+Pictures of newer things (copper, deepslate, cherry, pale oak, candles and more) in items.png are from
+Mineclonia by XSSheep, Nova Wostra and Mineclonia contributors: https://codeberg.org/mineclonia/mineclonia
+(commit 994845e1, see its LEGAL.md and CREDITS.md). They are based on Pixel Perfection and Pixel Perfection Legacy,
+under CC BY-SA 4.0; a few are under CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/), shared here
+under CC BY-SA 4.0 as that license allows. Only picture files were used.
 Changes: the pictures were cropped, some were recoloured or tinted, and they were packed into one image
 (tools/build-book.mjs and tools/make-icons.mjs). These changed pictures are shared under the same license.

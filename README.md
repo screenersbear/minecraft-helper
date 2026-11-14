@@ -18,6 +18,8 @@ npm run build
 - Pictures: [Pixel Perfection CE](https://github.com/Athemis/PixelPerfectionCE) by XSSheep and contributors,
   CC BY-SA 4.0. Cropped, recoloured and packed for this app; those changes are shared under the same license
   (see images/CREDITS.txt).
+- Pictures of newer things: [Mineclonia](https://codeberg.org/mineclonia/mineclonia) by XSSheep, Nova Wostra and
+  Mineclonia contributors, based on Pixel Perfection, CC BY-SA 4.0 (a few CC BY-SA 3.0).
 - Recipes, names, mob drops and mining tools: [minecraft-data](https://github.com/PrismarineJS/minecraft-data) by
   PrismarineJS, MIT. Fixes for Bedrock checked against [minecraft.wiki](https://minecraft.wiki).
 - Fonts: Pixelify Sans and Atkinson Hyperlegible, SIL Open Font License (see fonts/).

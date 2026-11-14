@@ -51,5 +51,5 @@ export function copyText(list, now = Date.now()) {
     const extra = e.answer ? `, the app answered with "${e.answer}"` : '';
     return `- "${e.q}" (${WHY[e.why].toLowerCase()}, ${timesText(e.times)}, last on ${when}${extra})`;
   });
-  return [`Questions to add to the Minecraft Helper book (copied from the phone on ${day}):`, ...lines].join('\n');
+  return [`Questions to add to the guide's book (copied on ${day}):`, ...lines].join('\n');
 }

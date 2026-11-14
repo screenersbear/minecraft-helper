@@ -42,7 +42,7 @@ export function recipePage(ctx, route) {
       recipeView(book, recipe, route.id),
       needsList(book, recipe),
       back ? el('p', { class: 'note' }, back) : null,
-      recipe.maybeDifferent ? el('p', { class: 'note' }, 'Check this one in the game. It might be a little different on Switch.') : null,
+      recipe.maybeDifferent ? el('p', { class: 'note' }, 'Check this one in the game. It might be a little different in your game.') : null,
       another ? el('div', { class: 'another' }, another) : null,
       feedbackArea(ctx, route.q, item.name),
     ),

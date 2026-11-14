@@ -1,8 +1,9 @@
 // Ask: the first screen. Hold the mango button and ask, or type it. "Asked before" shows the last few questions.
-// A long press on the title opens the grown-ups screen.
+// A long press on the title opens the grown-ups screen. The Shelf button in the top bar holds About.
 import { el } from '../components/el.js';
 import { topBar } from '../components/top-bar.js';
 import { talkButton } from '../components/talk-button.js';
+import { shelfMenu } from '../components/shelf.js';
 import { itemPicture, mobPicture } from '../components/picture.js';
 import { listRecent } from '../data/recent.js';
 import { tidyQuestion } from '../logic/say.js';
@@ -68,8 +69,13 @@ export function askPage(ctx) {
   const title = el('h1', { class: 'ask-title', tabindex: '-1' }, 'Ask the', el('br'), 'guide');
   onLongPress(title, () => ctx.go('#/grown-ups'));
 
+  const shelf = shelfMenu(ctx.book, [{ label: 'About this guide', href: '#/about', pic: 'book' }]);
+  const [bar, strip] = topBar({ left: 'Bedrock guide', right: shelf.button });
+  bar.append(shelf.panel);
+
   const nodes = [
-    ...topBar({ left: 'Bedrock guide', right: 'Page 1' }),
+    bar,
+    strip,
     el(
       'div',
       { class: 'page ask' },
@@ -77,8 +83,11 @@ export function askPage(ctx) {
       el('div', { class: 'talk-area' }, talk.nodes),
       form,
       askedBefore(ctx),
-      el('p', { class: 'about-link' }, el('a', { href: '#/about' }, 'About this app')),
     ),
   ];
-  return { nodes, title: 'Ask', cleanup: talk.stop };
+  const cleanup = () => {
+    talk.stop();
+    shelf.cleanup();
+  };
+  return { nodes, title: 'Ask', cleanup };
 }

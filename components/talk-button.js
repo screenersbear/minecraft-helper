@@ -1,4 +1,5 @@
-// Talk button: the big mango button on the Ask screen. Hold it and talk, let go to ask.
+// Talk button: the big mango button on the Ask screen. Hold it and talk, let go to ask. Kids let go the moment they
+// stop talking, so after letting go it keeps listening a moment for the last words.
 // A quick tap works too: it listens until you stop talking, or until you tap again.
 // If the phone won't start listening the moment a finger goes down, it switches to tap to talk by itself.
 import { el } from './el.js';
@@ -23,13 +24,13 @@ export function talkButton({ onQuestion, onNoMic }) {
   const label = el('div', { class: 'talk-label' });
   const heard = el('p', { class: 'heard', 'aria-live': 'polite' });
   let session = null;
-  let mode = 'idle'; // idle, holding, tapped
+  let mode = 'idle'; // idle, holding, tapped, finishing (let go, catching the last words)
   let pressedAt = 0;
   let tapOnly = false;
   let retryOnRelease = false;
 
   const show = () => {
-    const text = { idle: tapOnly ? 'Tap to talk' : 'Hold to talk', holding: 'Listening...', tapped: 'Listening... tap to stop' }[mode];
+    const text = { idle: tapOnly ? 'Tap to talk' : 'Hold to talk', holding: 'Listening...', tapped: 'Listening... tap to stop', finishing: 'One moment...' }[mode];
     label.textContent = canListen() ? text : 'Type it below';
     button.setAttribute('aria-label', label.textContent);
     button.classList.toggle('is-listening', mode !== 'idle');
@@ -82,7 +83,9 @@ export function talkButton({ onQuestion, onNoMic }) {
     downAction = null;
     if (!canListen() || e.button > 0) return;
     if (mode === 'tapped') {
-      session?.stop();
+      mode = 'finishing';
+      show();
+      session?.finishSoon();
       downAction = 'stop';
       return;
     }
@@ -107,7 +110,9 @@ export function talkButton({ onQuestion, onNoMic }) {
     }
     if (mode !== 'holding') return;
     if (Date.now() - pressedAt >= HOLD) {
-      session?.stop();
+      mode = 'finishing';
+      show();
+      session?.finishSoon();
       unlockSpeech(); // letting go is a tap, so the phone allows the answer to be read out
     } else {
       mode = 'tapped';

@@ -14,12 +14,12 @@ export function aboutPage(ctx) {
       el('h1', { class: 'log-title', tabindex: '-1' }, 'About this', el('br'), 'guide'),
       section(
         'How it works',
-        el('p', {}, 'Every answer comes from the book built into the app, for Minecraft Bedrock Edition. It works without the internet once it has opened. The questions it saves stay on this phone. When you talk, the phone\'s own speech recognition turns your words into text.'),
+        el('p', {}, 'Every answer comes from the book built into the app, for Minecraft Bedrock Edition. It works without the internet once it has opened. The questions it saves stay on this phone or tablet. When you talk, the device\'s own speech recognition turns your words into text.'),
         el('p', {}, `Book made ${ctx.book.made}.`),
       ),
       section(
         'Pictures',
-        el('p', {}, 'Item, block and mob pictures are from ', link('https://github.com/Athemis/PixelPerfectionCE', 'Pixel Perfection CE'), ' by XSSheep and contributors, shared under ', link('https://creativecommons.org/licenses/by-sa/4.0/', 'CC BY-SA 4.0'), '. Some were cropped or recoloured for this app, and those are shared under the same license.'),
+        el('p', {}, 'Item, block and mob pictures are from ', link('https://github.com/Athemis/PixelPerfectionCE', 'Pixel Perfection CE'), ' by XSSheep and contributors, shared under ', link('https://creativecommons.org/licenses/by-sa/4.0/', 'CC BY-SA 4.0'), '. Pictures of newer things are from ', link('https://codeberg.org/mineclonia/mineclonia', 'Mineclonia'), ' by XSSheep, Nova Wostra and Mineclonia contributors, based on Pixel Perfection, under the same license (a few under CC BY-SA 3.0). Some were cropped or recoloured for this app, and those are shared under the same license.'),
       ),
       section(
         'Recipes and facts',

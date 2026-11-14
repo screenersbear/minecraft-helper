@@ -6,7 +6,9 @@ const Recognition = typeof window !== 'undefined' ? window.SpeechRecognition || 
 export const canListen = () => Boolean(Recognition);
 
 // Starts listening for one question. Calls onWords(text) while hearing, then onDone(text) once, or onError(code).
-// Returns { stop }: stop() ends listening and keeps what was heard.
+// Returns { stop, finishSoon }: stop() ends listening now and keeps what was heard. finishSoon() is for a finger that
+// let go: the phone is often still turning the last words into text, so it keeps listening until no new words have
+// come for a moment (quiet ms), but never longer than most ms.
 export function listenOnce({ onWords, onDone, onError }) {
   const rec = new Recognition();
   rec.lang = 'en-US';
@@ -15,9 +17,25 @@ export function listenOnce({ onWords, onDone, onError }) {
   rec.maxAlternatives = 1;
   let heard = '';
   let finished = false;
+  let quietTimer = null;
+  let lastTimer = null;
+  let quietFor = 0;
+  const stop = () => {
+    clearTimeout(quietTimer);
+    clearTimeout(lastTimer);
+    try {
+      rec.stop();
+    } catch {
+      /* already stopped */
+    }
+  };
   rec.onresult = (event) => {
     heard = Array.from(event.results).map((r) => r[0].transcript).join(' ').trim();
     onWords?.(heard);
+    if (quietFor) {
+      clearTimeout(quietTimer);
+      quietTimer = setTimeout(stop, quietFor);
+    }
   };
   rec.onerror = (event) => {
     if (finished) return;
@@ -25,13 +43,20 @@ export function listenOnce({ onWords, onDone, onError }) {
     onError?.(event.error || 'error');
   };
   rec.onend = () => {
+    clearTimeout(quietTimer);
+    clearTimeout(lastTimer);
     if (finished) return;
     finished = true;
     if (heard) onDone?.(heard);
     else onError?.('no-speech');
   };
   rec.start();
-  return { stop: () => rec.stop() };
+  const finishSoon = ({ quiet = 1000, most = 3500 } = {}) => {
+    quietFor = quiet;
+    quietTimer = setTimeout(stop, quiet);
+    lastTimer = setTimeout(stop, most);
+  };
+  return { stop, finishSoon };
 }
 
 // Keeps listening for short commands ("next", "again", "back") until stopped. Restarts itself when the phone
