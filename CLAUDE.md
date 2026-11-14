@@ -9,3 +9,10 @@ These rules apply to every change in this repo.
 5. Any new button, link or control must survive tests/e2e/click-everything. Only add `data-test-skip` to a control that would destroy real data or call a paid/external service, and leave an HTML comment saying why.
 6. Save tokens: run tests through the npm scripts (they print short summaries). Read only the failing test's output, e.g. `npm run test:quick 2>&1 | tail -60`. Do not open the HTML reports or paste full logs.
 7. When fixing a bug, first write a test that fails because of the bug, then fix it.
+
+## Publishing
+
+After every finished change, commit and push `main` yourself, without asking (Starky, 2026-11-14). A push publishes the
+live app at https://screenersbear.github.io/minecraft-helper/ in about a minute: run `npm run build` first if the book,
+pictures or app files changed (it restamps sw.js), then check the live app. HANDOFF.md, .claude/ and .github/workflows/
+stay out of git.
