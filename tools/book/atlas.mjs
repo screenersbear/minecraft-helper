@@ -95,11 +95,17 @@ function applyShape(pixels, name) {
   for (let y = 0; y < 16; y++) for (let x = 0; x < 16; x++) if (!mask[y][x]) pixels[(y * 16 + x) * 4 + 3] = 0;
 }
 
-// One picture from a spec: { file, shape?, tint?, recolor?, crop?, smooth? }. smooth: shrink a big crop by averaging.
+// One picture from a spec: { file, shape?, tint?, recolor?, crop?, smooth?, over? }. smooth: shrink a big crop by
+// averaging. over: a second picture drawn on top with the same crop, like a mob's glowing eyes (an Enderman's purple
+// eyes are a layer of their own).
 export function picture(spec) {
   const png = load(spec.file);
   const { crop } = spec;
   const pixels = spec.smooth && crop && Math.max(crop.w, crop.h) > 16 ? shrink(png, crop) : square(png, crop);
+  if (spec.over) {
+    const top = square(load(spec.over), crop);
+    for (let i = 0; i < top.length; i += 4) if (top[i + 3] >= 128) for (let c = 0; c < 4; c++) pixels[i + c] = top[i + c];
+  }
   if (spec.tint) applyTint(pixels, spec.tint);
   if (spec.recolor) applyRecolor(pixels, spec.recolor);
   if (spec.shape) applyShape(pixels, spec.shape);

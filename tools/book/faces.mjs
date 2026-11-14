@@ -1,6 +1,6 @@
 // Mob pictures. Most are the front of the mob's head, cut from its Pixel Perfection CE skin (F). Mobs whose
 // head doesn't read well that small use Mineclonia's picture of the whole mob, its spawn icon by 22i (M), or
-// their own item picture (fish). Numbers are x, y, width, height on the picture.
+// their own item picture (fish). Numbers are x, y, width, height on the picture. over: a layer drawn on top (eyes).
 const F = (file, x, y, w, h) => ({ file: `entity/${file}.png`, crop: { x, y, w, h } });
 const ITEM = (name) => ({ file: `item/${name}.png` });
 // smooth: these are 32 by 32, so they're shrunk by averaging instead of skipping every other pixel.
@@ -16,11 +16,12 @@ export const FACES = {
   wither_skeleton: F('skeleton/wither_skeleton', 8, 8, 8, 8),
   wither: F('wither/wither', 8, 24, 8, 8),
   creeper: F('creeper/creeper', 8, 8, 8, 8),
-  enderman: F('enderman/enderman', 8, 8, 8, 8),
+  // Pixel Perfection's Enderman skin isn't laid out like the rest, so it comes from Mineclonia, eyes and all.
+  enderman: { mineclonia: 'mobs_mc_enderman.png', crop: { x: 8, y: 8, w: 8, h: 8 }, over: 'mobs_mc_enderman_eyes.png' },
   ender_dragon: F('enderdragon/dragon', 128, 46, 16, 16),
   shulker: F('shulker/shulker', 6, 58, 6, 6),
-  spider: F('spider/spider', 40, 12, 8, 8),
-  cave_spider: F('spider/cave_spider', 40, 12, 8, 8),
+  spider: { ...F('spider/spider', 40, 12, 8, 8), over: 'entity/spider_eyes.png' },
+  cave_spider: { ...F('spider/cave_spider', 40, 12, 8, 8), over: 'entity/spider_eyes.png' },
   pig: F('pig/pig', 8, 8, 8, 8),
   cow: F('cow/cow', 6, 6, 8, 8),
   mooshroom: F('cow/red_mooshroom', 6, 6, 8, 8),
@@ -57,7 +58,7 @@ export const FACES = {
   strider: F('strider/strider', 16, 16, 16, 14),
   guardian: F('guardian', 16, 16, 12, 12),
   elder_guardian: F('guardian_elder', 16, 16, 12, 12),
-  phantom: F('phantom', 5, 5, 7, 3),
+  phantom: { ...F('phantom', 5, 5, 7, 3), over: 'entity/phantom_eyes.png' },
   axolotl: { mineclonia: 'mobs_mc_axolotl_pink.png', crop: { x: 4, y: 4, w: 12, h: 8 } },
   cod: ITEM('cod'),
   salmon: ITEM('salmon'),

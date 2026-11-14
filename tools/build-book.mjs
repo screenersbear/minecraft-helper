@@ -139,7 +139,8 @@ for (const id of [...used].sort()) {
 for (const [id, mob] of Object.entries(mobs)) {
   const face = FACES[id];
   const file = face && (face.mineclonia ? join(app, '.cache/mineclonia/mods/ENTITIES/mobs_mc/textures', face.mineclonia) : join(pack, 'assets/minecraft/textures', face.file));
-  mob.pic = face && existsSync(file) ? pictureIndex({ ...face, file }) : -1;
+  const over = face?.over && (face.mineclonia ? join(app, '.cache/mineclonia/mods/ENTITIES/mobs_mc/textures', face.over) : join(pack, 'assets/minecraft/textures', face.over));
+  mob.pic = face && existsSync(file) ? pictureIndex({ ...face, file, over }) : -1;
 }
 
 // 4b. The book's pages (Tools, Food...): what's in each.
