@@ -1,0 +1,47 @@
+{
+  "name": "Bookshelf wall",
+  "difficulty": "Easy",
+  "group": "Room ideas",
+  "about": "A wall of bookshelves with a reading rug in front.",
+  "also": ["library"],
+  "key": {
+    "L": "oak_log",
+    "K": "bookshelf",
+    "P": "oak_planks",
+    "c": "green_carpet"
+  },
+  "layers": [
+    {
+      "name": "Bookshelves",
+      "tip": "A log at each end with three bookshelves between. Carpet in front makes a reading rug.",
+      "rows": [
+        "LKKKL",
+        ".ccc."
+      ]
+    },
+    {
+      "name": "Bookshelves",
+      "tip": "The same again on top.",
+      "rows": [
+        "LKKKL",
+        "....."
+      ]
+    },
+    {
+      "name": "Bookshelves",
+      "tip": "One more row.",
+      "rows": [
+        "LKKKL",
+        "....."
+      ]
+    },
+    {
+      "name": "Top",
+      "tip": "Oak planks across the top.",
+      "rows": [
+        "LPPPL",
+        "....."
+      ]
+    }
+  ]
+}

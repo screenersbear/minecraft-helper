@@ -1,0 +1,140 @@
+{
+  "name": "Windmill",
+  "difficulty": "Big",
+  "group": "Builds",
+  "about": "A stone and wood tower with four big white sails on the front.",
+  "key": {
+    "C": "cobblestone",
+    "P": "oak_planks",
+    "L": "oak_log",
+    "G": "glass",
+    "f": "oak_fence",
+    "w": "white_wool",
+    "s": {"id": "oak_stairs", "facing": "south"},
+    "n": {"id": "oak_stairs", "facing": "north"},
+    "e": {"id": "oak_stairs", "facing": "east"},
+    "v": {"id": "oak_stairs", "facing": "west"}
+  },
+  "layers": [
+    {
+      "name": "Stone base",
+      "tip": "A ring of cobblestone, 5 by 5, with a gap at the front for the door.",
+      "rows": [
+        ".CCCCC.",
+        ".C...C.",
+        ".C...C.",
+        ".C...C.",
+        ".CC.CC.",
+        "......."
+      ]
+    },
+    {
+      "name": "Stone base",
+      "tip": "Again, with the door gap.",
+      "rows": [
+        ".CCCCC.",
+        ".C...C.",
+        ".C...C.",
+        ".C...C.",
+        ".CC.CC.",
+        "......."
+      ]
+    },
+    {
+      "name": "Stone base",
+      "tip": "One more ring, closed over the door.",
+      "rows": [
+        ".CCCCC.",
+        ".C...C.",
+        ".C...C.",
+        ".C...C.",
+        ".CCCCC.",
+        "......."
+      ]
+    },
+    {
+      "name": "Wood and lower sail",
+      "tip": "Now oak planks with logs in the corners. In front of the door, start the lower sail: a fence with white wool to its left.",
+      "rows": [
+        ".LPPPL.",
+        ".P...P.",
+        ".P...P.",
+        ".P...P.",
+        ".LPPPL.",
+        "..wf..."
+      ]
+    },
+    {
+      "name": "Windows",
+      "tip": "Windows on both sides. The lower sail keeps going up.",
+      "rows": [
+        ".LPPPL.",
+        ".P...P.",
+        ".G...G.",
+        ".P...P.",
+        ".LPPPL.",
+        "..wf..."
+      ]
+    },
+    {
+      "name": "Right sail",
+      "tip": "The lower sail gets one more. The right sail starts with white wool beside it.",
+      "rows": [
+        ".LPPPL.",
+        ".P...P.",
+        ".P...P.",
+        ".P...P.",
+        ".LPPPL.",
+        "..wfwww"
+      ]
+    },
+    {
+      "name": "Middle of the sails",
+      "tip": "An oak log in the middle of the front holds the sails. Fences go out to the left and right.",
+      "rows": [
+        ".LPPPL.",
+        ".P...P.",
+        ".P...P.",
+        ".P...P.",
+        ".LPPPL.",
+        "fffLfff"
+      ]
+    },
+    {
+      "name": "Roof and upper sail",
+      "tip": "Cover the top with planks, with stairs all around the edge, tall side in, and planks in the corners. The upper sail is a fence with white wool to its right, and the left sail is wool on top of its fences.",
+      "rows": [
+        ".PsssP.",
+        ".ePPPv.",
+        ".ePPPv.",
+        ".ePPPv.",
+        ".PnnnP.",
+        "wwwfw.."
+      ]
+    },
+    {
+      "name": "Roof",
+      "tip": "A smaller ring of stairs. The upper sail keeps going.",
+      "rows": [
+        ".......",
+        "..PsP..",
+        "..ePv..",
+        "..PnP..",
+        ".......",
+        "...fw.."
+      ]
+    },
+    {
+      "name": "Roof top",
+      "tip": "One plank on top. The upper sail gets its last fence and wool.",
+      "rows": [
+        ".......",
+        ".......",
+        "...P...",
+        ".......",
+        ".......",
+        "...fw.."
+      ]
+    }
+  ]
+}

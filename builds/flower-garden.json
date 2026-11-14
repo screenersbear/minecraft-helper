@@ -1,0 +1,61 @@
+{
+  "name": "Flower garden",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A garden full of flowers, with a gravel path, a fence and a little bush.",
+  "also": ["garden", "flower bed"],
+  "key": {
+    "g": {"id": "grass_block", "ground": true},
+    "r": "gravel",
+    "f": "oak_fence",
+    "n": "oak_fence_gate",
+    "p": "poppy",
+    "y": "dandelion",
+    "o": "oxeye_daisy",
+    "c": "cornflower",
+    "a": "allium",
+    "k": "oak_leaves",
+    "t": "torch"
+  },
+  "layers": [
+    {
+      "name": "Path",
+      "tip": "Find a flat grassy spot. Dig out the path and fill it with gravel: a loop in the middle and a line to the front.",
+      "rows": [
+        "ggggggg",
+        "ggggggg",
+        "ggrrrgg",
+        "ggrgrgg",
+        "ggrrrgg",
+        "gggrggg",
+        "gggrggg"
+      ]
+    },
+    {
+      "name": "Fence and flowers",
+      "tip": "Put a fence all around with a gate at the front. Plant flowers on the grass, and a block of leaves in the middle for a bush.",
+      "rows": [
+        "fffffff",
+        "fpyocaf",
+        "fo...of",
+        "fa.k.yf",
+        "fc...pf",
+        "fyp.ocf",
+        "fffnfff"
+      ]
+    },
+    {
+      "name": "Lights",
+      "tip": "A torch on each corner post.",
+      "rows": [
+        "t.....t",
+        ".......",
+        ".......",
+        ".......",
+        ".......",
+        ".......",
+        "t.....t"
+      ]
+    }
+  ]
+}

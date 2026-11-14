@@ -1,0 +1,56 @@
+{
+  "name": "Chicken coop",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A hut with hay nests and a fenced yard, so your chickens stay safe.",
+  "also": ["chicken house"],
+  "key": {
+    "P": "oak_planks",
+    "Y": "hay_block",
+    "f": "oak_fence",
+    "g": "oak_fence_gate",
+    "h": "spruce_slab",
+    "G": "glass"
+  },
+  "layers": [
+    {
+      "name": "Hut and yard",
+      "tip": "Build the hut walls at the back, with hay bales inside for nests. Then put a fence around the yard, with a gate in the front.",
+      "rows": [
+        "PPPPP",
+        "PY.YP",
+        "P...P",
+        "PP.PP",
+        "f...f",
+        "f...f",
+        "ffgff"
+      ]
+    },
+    {
+      "name": "Walls",
+      "tip": "One more row on the hut walls, with glass on the sides for windows.",
+      "rows": [
+        "PPPPP",
+        "P...P",
+        "G...G",
+        "PP.PP",
+        ".....",
+        ".....",
+        "....."
+      ]
+    },
+    {
+      "name": "Roof",
+      "tip": "Cover the hut with spruce slabs.",
+      "rows": [
+        "hhhhh",
+        "hhhhh",
+        "hhhhh",
+        "hhhhh",
+        ".....",
+        ".....",
+        "....."
+      ]
+    }
+  ]
+}

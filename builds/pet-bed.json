@@ -1,0 +1,22 @@
+{
+  "name": "Pet bed",
+  "difficulty": "Easy",
+  "group": "Room ideas",
+  "about": "A little basket with a soft cushion for a cat or a dog.",
+  "also": ["dog bed", "cat bed"],
+  "key": {
+    "h": "spruce_slab",
+    "c": "red_carpet"
+  },
+  "layers": [
+    {
+      "name": "Basket",
+      "tip": "A ring of spruce slabs with a red carpet in the middle for the cushion.",
+      "rows": [
+        "hhh",
+        "hch",
+        "hhh"
+      ]
+    }
+  ]
+}

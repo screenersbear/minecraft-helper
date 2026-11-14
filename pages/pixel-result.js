@@ -1,6 +1,7 @@
 // Pixel art, step 2 (#/pixel/<id>): the picture made of blocks, a switch back to the photo, the Colours slider and
 // the Outline and Wool only switches, and every block it needs, most first. Tap a square to change it, or a block in
-// the list to swap it everywhere. Build it goes row by row.
+// the list to swap it everywhere. Build it goes row by row. A ready-made picture has no photo, so it has no photo
+// switch and no Colours slider.
 import { el } from '../components/el.js';
 import { topBar } from '../components/top-bar.js';
 import { blockButton } from '../components/buttons.js';
@@ -139,10 +140,10 @@ export function pixelResultPage(ctx, route) {
       { class: 'page pixel-result' },
       el('h1', { class: 'answer-title', 'data-fit': '2', tabindex: '-1' }, art.name),
       sayLine,
-      switchRow,
+      art.photo ? switchRow : null,
       view,
       el('p', { class: 'small-label tap-hint' }, 'Tap a square to change its block.'),
-      controls,
+      art.photo ? controls : null,
       list,
       el(
         'div',

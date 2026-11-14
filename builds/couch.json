@@ -1,0 +1,24 @@
+{
+  "name": "Couch",
+  "difficulty": "Easy",
+  "group": "Room ideas",
+  "about": "A comfy couch with arms, a rug and a little table in front.",
+  "also": ["sofa"],
+  "key": {
+    "P": "spruce_planks",
+    "s": {"id": "oak_stairs", "facing": "north"},
+    "c": "red_carpet",
+    "u": {"id": "spruce_slab", "half": "top"}
+  },
+  "layers": [
+    {
+      "name": "Couch, rug and table",
+      "tip": "Three stairs in a row with their tall back against the wall make the seat. Planks on each end are the arms. Carpet for the rug, and slabs high up for the little table.",
+      "rows": [
+        "PsssP",
+        "ccccc",
+        ".uuu."
+      ]
+    }
+  ]
+}

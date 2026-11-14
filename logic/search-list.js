@@ -1,6 +1,7 @@
 // Search list: every name the app knows, as simple words, pointing at an answer. Built once from the book,
-// the guides and the nicknames. Each entry: { words, target: { type, id }, label }. The type is 'item', 'mob',
-// 'guide', 'place' (a village, a stronghold), or one of the info types (biome, enchant, effect, topic).
+// the guides, the builds and the nicknames. Each entry: { words, target: { type, id }, label }. The type is 'item',
+// 'mob', 'guide', 'build' (a cat house, a treehouse), 'place' (a village, a stronghold), or one of the info types
+// (biome, enchant, effect, topic).
 import { keyWords, allWords } from './words.js';
 import { INFO_TYPES } from './info.js';
 
@@ -69,7 +70,7 @@ function addInfo(book, add, taken) {
   }
 }
 
-// book: data/book.json; guides: data/guides.json; nicknames: data/nicknames.json.
+// book: data/book.json (with book.builds from data/builds.json); guides: data/guides.json; nicknames: data/nicknames.json.
 export function buildSearchList(book, guides, nicknames) {
   const list = [];
   const add = (phrase, t, label) => {
@@ -89,6 +90,7 @@ export function buildSearchList(book, guides, nicknames) {
     if (entry) entry.phrase = allWords(phrase).join(' ');
   };
   for (const g of guides) [g.title, ...g.askedAs].forEach((phrase) => addGuide(phrase, g));
+  for (const b of book.builds || []) for (const phrase of [b.name, ...(b.also || [])]) add(phrase, { type: 'build', id: b.id }, b.name);
   const taken = new Set([...Object.values(book.items), ...Object.values(book.mobs)].map((x) => x.name.toLowerCase()));
   addInfo(book, add, taken);
   for (const [phrase, to] of Object.entries(nicknames)) if (!phrase.startsWith('_')) add(phrase, target(to));

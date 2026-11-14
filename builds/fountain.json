@@ -1,0 +1,52 @@
+{
+  "name": "Fountain",
+  "difficulty": "Medium",
+  "group": "Builds",
+  "about": "A stone fountain with a pool around it and a little bowl of water on top.",
+  "key": {
+    "B": "stone_bricks",
+    "W": "water",
+    "s": "stone_brick_slab"
+  },
+  "layers": [
+    {
+      "name": "Pool",
+      "tip": "A square of stone bricks with one in the middle. Fill the inside with water.",
+      "rows": [
+        "BBBBBBB",
+        "BWWWWWB",
+        "BWWWWWB",
+        "BWWBWWB",
+        "BWWWWWB",
+        "BWWWWWB",
+        "BBBBBBB"
+      ]
+    },
+    {
+      "name": "Edge and middle",
+      "tip": "Slabs all around the edge. In the middle, stone bricks in a plus shape.",
+      "rows": [
+        "sssssss",
+        "s.....s",
+        "s..B..s",
+        "s.BBB.s",
+        "s..B..s",
+        "s.....s",
+        "sssssss"
+      ]
+    },
+    {
+      "name": "Top bowl",
+      "tip": "A small ring of stone bricks on top, with water in the middle.",
+      "rows": [
+        ".......",
+        ".......",
+        "..BBB..",
+        "..BWB..",
+        "..BBB..",
+        ".......",
+        "......."
+      ]
+    }
+  ]
+}

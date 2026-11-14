@@ -1,0 +1,70 @@
+{
+  "name": "Cat house",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A little wooden house with a bed inside for your cat.",
+  "key": {
+    "L": "oak_log",
+    "H": "birch_planks",
+    "G": "glass",
+    "O": "orange_wool",
+    "S": "spruce_planks"
+  },
+  "layers": [
+    {
+      "name": "Floor",
+      "tip": "Lay the floor first, with a log in each corner.",
+      "rows": [
+        "LHHHL",
+        "HHHHH",
+        "HHHHH",
+        "HHHHH",
+        "LHHHL"
+      ]
+    },
+    {
+      "name": "Walls and door",
+      "tip": "Leave the middle of the front open: that's the door. The orange wool is the cat's bed.",
+      "rows": [
+        "LHHHL",
+        "H.O.H",
+        "H...H",
+        "H...H",
+        "LH.HL"
+      ]
+    },
+    {
+      "name": "Windows",
+      "tip": "Glass in the middle of each side makes two windows.",
+      "rows": [
+        "LHHHL",
+        "H...H",
+        "G...G",
+        "H...H",
+        "LHHHL"
+      ]
+    },
+    {
+      "name": "Roof",
+      "tip": "Cover the whole top with spruce planks.",
+      "rows": [
+        "SSSSS",
+        "SSSSS",
+        "SSSSS",
+        "SSSSS",
+        "SSSSS"
+      ]
+    },
+    {
+      "name": "Roof top",
+      "tip": "A smaller square in the middle finishes the roof.",
+      "rows": [
+        ".....",
+        ".SSS.",
+        ".SSS.",
+        ".SSS.",
+        "....."
+      ]
+    }
+  ]
+}

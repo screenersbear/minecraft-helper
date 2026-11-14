@@ -1,0 +1,51 @@
+{
+  "name": "Fish tank",
+  "difficulty": "Easy",
+  "group": "Room ideas",
+  "about": "A glass tank with sand at the bottom. Add fish with a bucket of fish.",
+  "also": ["aquarium"],
+  "key": {
+    "P": "oak_planks",
+    "G": "glass",
+    "A": "sand",
+    "W": "water"
+  },
+  "layers": [
+    {
+      "name": "Stand",
+      "tip": "A stand of oak planks, 5 by 3.",
+      "rows": [
+        "PPPPP",
+        "PPPPP",
+        "PPPPP"
+      ]
+    },
+    {
+      "name": "Sand",
+      "tip": "Glass around the edge, sand inside.",
+      "rows": [
+        "GGGGG",
+        "GAAAG",
+        "GGGGG"
+      ]
+    },
+    {
+      "name": "Water",
+      "tip": "More glass, with water inside.",
+      "rows": [
+        "GGGGG",
+        "GWWWG",
+        "GGGGG"
+      ]
+    },
+    {
+      "name": "Water",
+      "tip": "One more row. Then use a bucket of fish on the water.",
+      "rows": [
+        "GGGGG",
+        "GWWWG",
+        "GGGGG"
+      ]
+    }
+  ]
+}

@@ -1,8 +1,9 @@
 // A page of the book (#/book/tools): everything in it as a grid of pictures. Tapping one opens its recipe, its facts,
-// or the mob, and Back comes back here.
+// or the mob, and Back comes back here. The Building page starts with the builds you can make layer by layer.
 import { el } from '../components/el.js';
 import { topBar } from '../components/top-bar.js';
 import { itemPicture, mobPicture } from '../components/picture.js';
+import { buildPicture } from '../components/build-picture.js';
 import { categoryById } from '../data/categories.js';
 import { answerType } from '../logic/find-answer.js';
 import { toHash } from '../logic/routes.js';
@@ -12,6 +13,16 @@ function hashFor(ctx, target, from) {
   const type = answerType(target, ctx.book, ctx.guides);
   if (!type) return null;
   return toHash({ page: type === 'unpack' ? 'recipe' : type, id: target.id, from });
+}
+
+// "Things to build": a small 3D picture of each build, opening its cover.
+function buildTiles(ctx, from) {
+  const { builds, blocks } = ctx.builds || { builds: [] };
+  if (!builds.length) return null;
+  const tiles = builds.map((b) =>
+    el('a', { class: 'thing-tile', href: toHash({ page: 'build', id: b.id, from }) }, el('span', { class: 'slot build-slot' }, buildPicture(b, blocks, { w: 52, h: 52, label: '' })), el('span', { class: 'thing-name' }, b.name)),
+  );
+  return [el('h2', { class: 'small-label book-sub' }, 'Things to build, layer by layer'), el('div', { class: 'thing-grid' }, tiles), el('h2', { class: 'small-label book-sub' }, 'Blocks')];
 }
 
 export function bookPage(ctx, route) {
@@ -38,6 +49,7 @@ export function bookPage(ctx, route) {
       { class: 'page book-page' },
       el('h1', { class: 'home-title', tabindex: '-1' }, cat.name),
       el('p', { class: 'home-intro' }, isMobs ? 'Tap a mob to see what it drops.' : 'Tap anything to see how to make it.'),
+      route.id === 'building' ? buildTiles(ctx, from) : null,
       el('div', { class: 'thing-grid' }, tiles),
     ),
   ];

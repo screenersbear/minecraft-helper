@@ -1,0 +1,94 @@
+{
+  "name": "Horse stable",
+  "difficulty": "Medium",
+  "group": "Builds",
+  "about": "Two stalls for horses, with hay to eat, water to drink and gates to keep them in.",
+  "also": ["stable", "horse barn"],
+  "key": {
+    "L": "oak_log",
+    "S": "spruce_planks",
+    "Y": "hay_block",
+    "U": "cauldron",
+    "f": "oak_fence",
+    "g": "oak_fence_gate",
+    "G": "glass",
+    "P": "oak_planks",
+    "s": {"id": "spruce_stairs", "facing": "south"},
+    "n": {"id": "spruce_stairs", "facing": "north"},
+    "h": "spruce_slab"
+  },
+  "layers": [
+    {
+      "name": "Stalls",
+      "tip": "Walls at the back, the ends and in the middle. Hay and a cauldron of water in each stall. Fences with a gate across the front.",
+      "rows": [
+        "LSSSSLSSSSL",
+        "SY..USY..US",
+        "S....S....S",
+        "S....S....S",
+        "LffgfLfgffL",
+        "..........."
+      ]
+    },
+    {
+      "name": "Walls",
+      "tip": "More wall, with a window at each end. Another hay bale on top of the first.",
+      "rows": [
+        "LSSSSLSSSSL",
+        "SY...SY...S",
+        "G....S....G",
+        "S....S....S",
+        "L....L....L",
+        "..........."
+      ]
+    },
+    {
+      "name": "Walls",
+      "tip": "One more row of wall and the front posts.",
+      "rows": [
+        "LSSSSLSSSSL",
+        "S....S....S",
+        "S....S....S",
+        "S....S....S",
+        "L....L....L",
+        "..........."
+      ]
+    },
+    {
+      "name": "Roof",
+      "tip": "Stairs along the back and the front, sticking out one block over the gates. Oak planks fill the middle.",
+      "rows": [
+        "sssssssssss",
+        "PPPPPPPPPPP",
+        "PPPPPPPPPPP",
+        "PPPPPPPPPPP",
+        "PPPPPPPPPPP",
+        "nnnnnnnnnnn"
+      ]
+    },
+    {
+      "name": "Roof",
+      "tip": "One step in on each side.",
+      "rows": [
+        "...........",
+        "sssssssssss",
+        "PPPPPPPPPPP",
+        "PPPPPPPPPPP",
+        "nnnnnnnnnnn",
+        "..........."
+      ]
+    },
+    {
+      "name": "Roof top",
+      "tip": "Spruce slabs along the top.",
+      "rows": [
+        "...........",
+        "...........",
+        "hhhhhhhhhhh",
+        "hhhhhhhhhhh",
+        "...........",
+        "..........."
+      ]
+    }
+  ]
+}

@@ -16,6 +16,8 @@ import { bookPage } from './pages/book-page.js';
 import { pixelCropPage } from './pages/pixel-crop.js';
 import { pixelResultPage } from './pages/pixel-result.js';
 import { pixelBuildPage } from './pages/pixel-build.js';
+import { buildCoverPage } from './pages/build-cover.js';
+import { buildLayerPage } from './pages/build-layer.js';
 import { ideaPage } from './pages/idea.js';
 import { recipePage } from './pages/recipe.js';
 import { guidePage } from './pages/guide.js';
@@ -47,6 +49,7 @@ function pictureFor(answer, book, guides) {
   if (answer.target.type === 'place') return { kind: 'item', id: book.places?.[answer.target.id]?.pic };
   if (isInfo(answer.target.type)) return { kind: 'item', id: infoOf(book, answer.target)?.pic };
   if (answer.target.type === 'guide') return { kind: 'item', id: guides.find((g) => g.id === answer.target.id)?.picture };
+  if (answer.target.type === 'build') return { kind: 'item', id: book.builds?.find((b) => b.id === answer.target.id)?.pic };
   return { kind: 'item', id: answer.target.id };
 }
 
@@ -57,6 +60,8 @@ function pageFor(route) {
   if (route.page === 'book') return bookPage;
   // Pixel art: #/pixel/crop, then #/pixel/<id> for the result and #/pixel/<id>/<row> to build it.
   if (route.page === 'pixel') return route.id === 'crop' ? pixelCropPage : route.step ? pixelBuildPage : pixelResultPage;
+  // Builds: #/build/<id> for the cover, #/build/<id>/<layer> to build it layer by layer.
+  if (route.page === 'build') return route.step ? buildLayerPage : buildCoverPage;
   return PAGES[route.page];
 }
 
@@ -99,11 +104,12 @@ function readOut(text) {
   setTimeout(done, Math.min(25000, 3000 + text.split(/\s+/).length * 600));
 }
 
-function start({ book, guides, addons, list }) {
+function start({ book, guides, addons, builds, list }) {
   const ctx = {
     book,
     guides,
     addons,
+    builds,
     list,
     ask(question) {
       const q = String(question || '').trim();

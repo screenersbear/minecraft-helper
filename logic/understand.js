@@ -53,8 +53,9 @@ export function questionKind(text) {
 }
 
 // Which kinds of answer suit a question kind, best first. 'info' is a biome, enchantment, potion effect or topic.
-// 'where' is a line from where.json (or a place, like a village). 'field' is one fact in its own slot (what a cat
-// eats, what gifts it brings: see fields.js). With no fitting answer, the app says it doesn't know that yet.
+// 'where' is a line from where.json (or a place, like a village). 'build' is a build to make layer by layer.
+// 'field' is one fact in its own slot (what a cat eats, what gifts it brings: see fields.js). With no fitting answer,
+// the app says it doesn't know that yet.
 export const FITS = {
   gifts: ['field'],
   breed: ['field', 'guide'],
@@ -63,15 +64,15 @@ export const FITS = {
   mine: ['fact', 'guide'],
   find: ['where', 'guide', 'fact', 'recipe'],
   get: ['recipe', 'guide', 'fact', 'where'],
-  make: ['recipe', 'guide', 'fact', 'where'],
+  make: ['recipe', 'build', 'guide', 'fact', 'where'],
   max: ['info'],
   food: ['fact', 'info', 'guide'],
   eats: ['field'],
   weather: ['info'],
   danger: ['field', 'mob', 'guide'],
   does: ['field', 'info', 'guide'],
-  about: ['mob', 'fact', 'info', 'recipe', 'guide', 'where'],
-  any: ['recipe', 'guide', 'mob', 'fact', 'info', 'where'],
+  about: ['mob', 'fact', 'info', 'recipe', 'guide', 'build', 'where'],
+  any: ['recipe', 'guide', 'build', 'mob', 'fact', 'info', 'where'],
 };
 
 // Every kind of question, for checking a kind read from the address.

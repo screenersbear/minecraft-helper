@@ -50,6 +50,7 @@ const PLACE_KINDS = new Set(['find', 'get', 'about', 'any']);
 // never the description; so does "how do I get" something you can't craft, and "how do I make" a mob you build.
 export function answerType(target, book, guides, kind = 'any') {
   if (target.type === 'guide') return guides.some((g) => g.id === target.id) ? 'guide' : null;
+  if (target.type === 'build') return book.builds?.some((b) => b.id === target.id) ? 'build' : null;
   // A place (a village) answers where it is, and what it is. "How do I build a village" isn't in the book.
   if (target.type === 'place') return book.places?.[target.id] && PLACE_KINDS.has(kind) ? 'where' : null;
   const recipes = book.recipes[target.id];

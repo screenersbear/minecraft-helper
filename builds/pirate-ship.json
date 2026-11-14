@@ -1,0 +1,201 @@
+{
+  "name": "Small pirate ship",
+  "difficulty": "Big",
+  "group": "Builds",
+  "about": "A wooden ship with a cabin, a tall mast, a big sail and a lookout at the top.",
+  "also": ["pirate ship", "ship"],
+  "key": {
+    "D": "dark_oak_planks",
+    "S": "spruce_planks",
+    "f": "oak_fence",
+    "L": "oak_log",
+    "G": "glass",
+    "w": "white_wool",
+    "r": "red_wool",
+    "h": "spruce_slab"
+  },
+  "layers": [
+    {
+      "name": "Bottom",
+      "tip": "Build it on the beach or in the water. Start with a strip of dark oak planks, 9 long and 3 wide.",
+      "rows": [
+        "...............",
+        "...............",
+        "...DDDDDDDDD...",
+        "...DDDDDDDDD...",
+        "...DDDDDDDDD...",
+        "...............",
+        "..............."
+      ]
+    },
+    {
+      "name": "Deck",
+      "tip": "A wider layer makes the deck: 11 long and 7 wide, with a little more at each end and a point at the front.",
+      "rows": [
+        "..DDDDDDDDDDD..",
+        ".DDDDDDDDDDDDD.",
+        ".DDDDDDDDDDDDD.",
+        ".DDDDDDDDDDDDDD",
+        ".DDDDDDDDDDDDD.",
+        ".DDDDDDDDDDDDD.",
+        "..DDDDDDDDDDD.."
+      ]
+    },
+    {
+      "name": "Sides, cabin and mast",
+      "tip": "Spruce planks around the edge of the deck. At the back, the cabin walls with a door facing the front. An oak log in the middle starts the mast.",
+      "rows": [
+        "..SSSSSSSSSSS..",
+        ".SSSS........S.",
+        ".SS.S........S.",
+        ".SS.....L....SS",
+        ".SS.S........S.",
+        ".SSSS........S.",
+        "..SSSSSSSSSSS.."
+      ]
+    },
+    {
+      "name": "Railing and cabin",
+      "tip": "Fences on top of the sides. More cabin wall: the door is two blocks tall.",
+      "rows": [
+        "..fffffffffff..",
+        "..SSS........f.",
+        "..S.S........f.",
+        "..S.....L....ff",
+        "..S.S........f.",
+        "..SSS........f.",
+        "..fffffffffff.."
+      ]
+    },
+    {
+      "name": "Cabin windows",
+      "tip": "Close the cabin wall over the door, with glass windows at the back.",
+      "rows": [
+        "...............",
+        "..SSS..........",
+        "..G.S..........",
+        "..S.S...L......",
+        "..G.S..........",
+        "..SSS..........",
+        "..............."
+      ]
+    },
+    {
+      "name": "Cabin roof and sail",
+      "tip": "Spruce slabs over the cabin. The sail starts: white wool across the ship, right in front of the mast.",
+      "rows": [
+        "...............",
+        "..hhh....w.....",
+        "..hhh....w.....",
+        "..hhh...Lw.....",
+        "..hhh....w.....",
+        "..hhh....w.....",
+        "..............."
+      ]
+    },
+    {
+      "name": "Sail",
+      "tip": "Keep going up: mast and sail.",
+      "rows": [
+        "...............",
+        ".........w.....",
+        ".........w.....",
+        "........Lw.....",
+        ".........w.....",
+        ".........w.....",
+        "..............."
+      ]
+    },
+    {
+      "name": "Red stripe",
+      "tip": "A red stripe across the middle of the sail.",
+      "rows": [
+        "...............",
+        ".........r.....",
+        ".........r.....",
+        "........Lr.....",
+        ".........r.....",
+        ".........r.....",
+        "..............."
+      ]
+    },
+    {
+      "name": "Sail",
+      "tip": "White again.",
+      "rows": [
+        "...............",
+        ".........w.....",
+        ".........w.....",
+        "........Lw.....",
+        ".........w.....",
+        ".........w.....",
+        "..............."
+      ]
+    },
+    {
+      "name": "Top of the sail",
+      "tip": "The last row of the sail.",
+      "rows": [
+        "...............",
+        ".........w.....",
+        ".........w.....",
+        "........Lw.....",
+        ".........w.....",
+        ".........w.....",
+        "..............."
+      ]
+    },
+    {
+      "name": "Yard",
+      "tip": "Fences along the top of the sail hold it up.",
+      "rows": [
+        "...............",
+        ".........f.....",
+        ".........f.....",
+        "........Lf.....",
+        ".........f.....",
+        ".........f.....",
+        "..............."
+      ]
+    },
+    {
+      "name": "Lookout",
+      "tip": "A ring of spruce slabs around the mast makes the lookout.",
+      "rows": [
+        "...............",
+        "...............",
+        ".......hhh.....",
+        ".......hLh.....",
+        ".......hhh.....",
+        "...............",
+        "..............."
+      ]
+    },
+    {
+      "name": "Lookout railing",
+      "tip": "Fences around the lookout, and the mast goes one higher.",
+      "rows": [
+        "...............",
+        "...............",
+        ".......fff.....",
+        ".......fLf.....",
+        ".......fff.....",
+        "...............",
+        "..............."
+      ]
+    },
+    {
+      "name": "Flag",
+      "tip": "A red flag at the very top: one wool on the mast and one beside it.",
+      "rows": [
+        "...............",
+        "...............",
+        "...............",
+        "........rr.....",
+        "...............",
+        "...............",
+        "..............."
+      ]
+    }
+  ]
+}

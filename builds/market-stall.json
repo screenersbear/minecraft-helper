@@ -1,0 +1,60 @@
+{
+  "name": "Market stall",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A little shop with a striped roof, a counter and things to sell.",
+  "also": ["shop", "stall", "market"],
+  "key": {
+    "f": "oak_fence",
+    "R": "barrel",
+    "T": "crafting_table",
+    "P": "oak_planks",
+    "k": "pumpkin",
+    "m": "melon",
+    "c": "red_carpet",
+    "r": "red_wool",
+    "w": "white_wool"
+  },
+  "layers": [
+    {
+      "name": "Counter and posts",
+      "tip": "Fence posts in the four corners. Barrels at the back, and a counter of planks at the front.",
+      "rows": [
+        "fRTRf",
+        ".....",
+        ".....",
+        "fPPPf"
+      ]
+    },
+    {
+      "name": "Things to sell",
+      "tip": "Put a pumpkin, a cloth and a melon on the counter.",
+      "rows": [
+        "f...f",
+        ".....",
+        ".....",
+        "fkcmf"
+      ]
+    },
+    {
+      "name": "Posts",
+      "tip": "One more fence on each corner post.",
+      "rows": [
+        "f...f",
+        ".....",
+        ".....",
+        "f...f"
+      ]
+    },
+    {
+      "name": "Striped roof",
+      "tip": "Red and white wool in stripes, from the back to the front.",
+      "rows": [
+        "rwrwr",
+        "rwrwr",
+        "rwrwr",
+        "rwrwr"
+      ]
+    }
+  ]
+}

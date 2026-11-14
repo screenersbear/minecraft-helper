@@ -1,0 +1,45 @@
+{
+  "name": "Campfire with seats",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A campfire in a ring of stones, with benches all around to sit and tell stories.",
+  "also": ["fire pit", "campfire with benches"],
+  "key": {
+    "x": "campfire",
+    "k": "cobblestone_slab",
+    "n": {"id": "oak_stairs", "facing": "north"},
+    "s": {"id": "oak_stairs", "facing": "south"},
+    "w": {"id": "oak_stairs", "facing": "west"},
+    "e": {"id": "oak_stairs", "facing": "east"},
+    "f": "oak_fence",
+    "t": "torch"
+  },
+  "layers": [
+    {
+      "name": "Fire and benches",
+      "tip": "The campfire goes in the middle, with cobblestone slabs around it. Stairs make the benches: their tall back faces away from the fire.",
+      "rows": [
+        "f.....f",
+        "..nnn..",
+        ".wkkke.",
+        ".wkxke.",
+        ".wkkke.",
+        "..sss..",
+        "f.....f"
+      ]
+    },
+    {
+      "name": "Lights",
+      "tip": "A torch on each corner post.",
+      "rows": [
+        "t.....t",
+        ".......",
+        ".......",
+        ".......",
+        ".......",
+        ".......",
+        "t.....t"
+      ]
+    }
+  ]
+}

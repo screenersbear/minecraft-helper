@@ -1,0 +1,81 @@
+{
+  "name": "Dog house",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A cozy house with a pointy roof and a soft bed for your dog.",
+  "key": {
+    "P": "oak_planks",
+    "r": "red_carpet",
+    "e": {"id": "spruce_stairs", "facing": "east"},
+    "w": {"id": "spruce_stairs", "facing": "west"},
+    "S": "spruce_planks"
+  },
+  "layers": [
+    {
+      "name": "Floor",
+      "tip": "Make a square of oak planks, 5 by 5.",
+      "rows": [
+        "PPPPP",
+        "PPPPP",
+        "PPPPP",
+        "PPPPP",
+        "PPPPP"
+      ]
+    },
+    {
+      "name": "Walls and door",
+      "tip": "Build the walls around the edge. Leave the middle of the front open for the door. The red carpet is the bed.",
+      "rows": [
+        "PPPPP",
+        "P...P",
+        "P.r.P",
+        "P...P",
+        "PP.PP"
+      ]
+    },
+    {
+      "name": "Top of the walls",
+      "tip": "One more row all the way around. This time the front is closed.",
+      "rows": [
+        "PPPPP",
+        "P...P",
+        "P...P",
+        "P...P",
+        "PPPPP"
+      ]
+    },
+    {
+      "name": "Roof sides",
+      "tip": "Put stairs along the left and right edges, with their tall side towards the middle. Fill the front and back with planks.",
+      "rows": [
+        "ePPPw",
+        "e...w",
+        "e...w",
+        "e...w",
+        "ePPPw"
+      ]
+    },
+    {
+      "name": "More roof",
+      "tip": "One step in: two more lines of stairs, and one plank at the front and the back.",
+      "rows": [
+        ".ePw.",
+        ".e.w.",
+        ".e.w.",
+        ".e.w.",
+        ".ePw."
+      ]
+    },
+    {
+      "name": "Roof top",
+      "tip": "A line of spruce planks down the middle closes the roof.",
+      "rows": [
+        "..S..",
+        "..S..",
+        "..S..",
+        "..S..",
+        "..S.."
+      ]
+    }
+  ]
+}

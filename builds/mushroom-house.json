@@ -1,0 +1,108 @@
+{
+  "name": "Mushroom house",
+  "difficulty": "Medium",
+  "group": "Builds",
+  "about": "A house shaped like a giant mushroom, with a red spotty roof.",
+  "also": ["mushroom home"],
+  "key": {
+    "T": "white_terracotta",
+    "P": "oak_planks",
+    "G": "glass",
+    "R": "red_wool",
+    "w": "white_wool",
+    "t": "torch"
+  },
+  "layers": [
+    {
+      "name": "Floor",
+      "tip": "A ring of white terracotta, 5 by 5, with oak planks inside.",
+      "rows": [
+        ".......",
+        ".TTTTT.",
+        ".TPPPT.",
+        ".TPPPT.",
+        ".TPPPT.",
+        ".TTTTT.",
+        "......."
+      ]
+    },
+    {
+      "name": "Walls and door",
+      "tip": "Leave the middle of the front open for the door. A torch inside keeps it bright.",
+      "rows": [
+        ".......",
+        ".TTTTT.",
+        ".Tt..T.",
+        ".T...T.",
+        ".T...T.",
+        ".TT.TT.",
+        "......."
+      ]
+    },
+    {
+      "name": "Windows",
+      "tip": "Glass on the left and right walls.",
+      "rows": [
+        ".......",
+        ".TTTTT.",
+        ".T...T.",
+        ".G...G.",
+        ".T...T.",
+        ".TT.TT.",
+        "......."
+      ]
+    },
+    {
+      "name": "Top of the stem",
+      "tip": "Close the ring all the way around.",
+      "rows": [
+        ".......",
+        ".TTTTT.",
+        ".T...T.",
+        ".T...T.",
+        ".T...T.",
+        ".TTTTT.",
+        "......."
+      ]
+    },
+    {
+      "name": "Cap",
+      "tip": "The cap is wider than the stem: red wool 7 by 7, without the corners. A few white wool spots.",
+      "rows": [
+        ".RRRwR.",
+        "RRRRRRR",
+        "wRRRRRR",
+        "RRRRRRR",
+        "RRRRRRw",
+        "RRRRRRR",
+        ".RwRRR."
+      ]
+    },
+    {
+      "name": "Cap",
+      "tip": "A smaller square on top, 5 by 5.",
+      "rows": [
+        ".......",
+        ".RRRRw.",
+        ".RwRRR.",
+        ".RRRRR.",
+        ".wRRwR.",
+        ".RRRRR.",
+        "......."
+      ]
+    },
+    {
+      "name": "Cap top",
+      "tip": "A small square of 3 by 3 finishes the cap.",
+      "rows": [
+        ".......",
+        ".......",
+        "..RRR..",
+        "..RwR..",
+        "..RRR..",
+        ".......",
+        "......."
+      ]
+    }
+  ]
+}

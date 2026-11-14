@@ -1,0 +1,80 @@
+{
+  "name": "Well",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "An old stone well with a wooden roof, like the ones in villages.",
+  "key": {
+    "C": "cobblestone",
+    "W": "water",
+    "L": "oak_log",
+    "S": "spruce_planks"
+  },
+  "layers": [
+    {
+      "name": "Water",
+      "tip": "A ring of cobblestone with water inside.",
+      "rows": [
+        "CCCCC",
+        "CWWWC",
+        "CWWWC",
+        "CWWWC",
+        "CCCCC"
+      ]
+    },
+    {
+      "name": "Wall",
+      "tip": "Another ring on top, with a log in each corner.",
+      "rows": [
+        "LCCCL",
+        "C...C",
+        "C...C",
+        "C...C",
+        "LCCCL"
+      ]
+    },
+    {
+      "name": "Posts",
+      "tip": "Just the four corner logs, going up.",
+      "rows": [
+        "L...L",
+        ".....",
+        ".....",
+        ".....",
+        "L...L"
+      ]
+    },
+    {
+      "name": "Posts",
+      "tip": "One more log on each corner.",
+      "rows": [
+        "L...L",
+        ".....",
+        ".....",
+        ".....",
+        "L...L"
+      ]
+    },
+    {
+      "name": "Roof",
+      "tip": "Cover the top with spruce planks.",
+      "rows": [
+        "SSSSS",
+        "SSSSS",
+        "SSSSS",
+        "SSSSS",
+        "SSSSS"
+      ]
+    },
+    {
+      "name": "Roof top",
+      "tip": "A smaller square in the middle.",
+      "rows": [
+        ".....",
+        ".SSS.",
+        ".SSS.",
+        ".SSS.",
+        "....."
+      ]
+    }
+  ]
+}

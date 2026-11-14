@@ -1,0 +1,79 @@
+{
+  "name": "Igloo",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A round snow house with a rug and a light inside.",
+  "also": ["snow house"],
+  "key": {
+    "s": "snow_block",
+    "c": "red_carpet",
+    "t": "torch"
+  },
+  "layers": [
+    {
+      "name": "Round wall",
+      "tip": "Make a circle of snow blocks with a gap at the front for the door. Put a rug and a torch inside.",
+      "rows": [
+        "..sss..",
+        ".s.t.s.",
+        "s.ccc.s",
+        "s.ccc.s",
+        "s.ccc.s",
+        ".s...s.",
+        "..s.s.."
+      ]
+    },
+    {
+      "name": "Round wall",
+      "tip": "The same circle again.",
+      "rows": [
+        "..sss..",
+        ".s...s.",
+        "s.....s",
+        "s.....s",
+        "s.....s",
+        ".s...s.",
+        "..s.s.."
+      ]
+    },
+    {
+      "name": "Start the dome",
+      "tip": "This row leans in: the corners fill in, and the door gets a top.",
+      "rows": [
+        "..sss..",
+        ".sssss.",
+        "ss...ss",
+        "ss...ss",
+        "ss...ss",
+        ".sssss.",
+        "..sss.."
+      ]
+    },
+    {
+      "name": "Close the dome",
+      "tip": "Fill in the top, one step smaller.",
+      "rows": [
+        ".......",
+        "..sss..",
+        ".sssss.",
+        ".sssss.",
+        ".sssss.",
+        "..sss..",
+        "......."
+      ]
+    },
+    {
+      "name": "Top",
+      "tip": "A small square on top rounds it off.",
+      "rows": [
+        ".......",
+        ".......",
+        "..sss..",
+        "..sss..",
+        "..sss..",
+        ".......",
+        "......."
+      ]
+    }
+  ]
+}

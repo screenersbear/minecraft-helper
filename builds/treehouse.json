@@ -1,0 +1,183 @@
+{
+  "name": "Treehouse",
+  "difficulty": "Big",
+  "group": "Builds",
+  "about": "A hut high up a tree, with a ladder, a porch with a railing and leaves all around the top.",
+  "key": {
+    "L": "oak_log",
+    "h": {"id": "ladder", "facing": "south"},
+    "P": "oak_planks",
+    "f": "oak_fence",
+    "S": "spruce_planks",
+    "G": "glass",
+    "d": "spruce_slab",
+    "k": "oak_leaves"
+  },
+  "layers": [
+    {
+      "name": "Trunk",
+      "tip": "Start the trunk with one oak log. Put a ladder on its front.",
+      "rows": [
+        ".........",
+        ".........",
+        ".........",
+        ".........",
+        "....L....",
+        "....h....",
+        ".........",
+        ".........",
+        "........."
+      ]
+    },
+    {
+      "name": "Trunk",
+      "tip": "Another log and another ladder on top.",
+      "rows": [
+        ".........",
+        ".........",
+        ".........",
+        ".........",
+        "....L....",
+        "....h....",
+        ".........",
+        ".........",
+        "........."
+      ]
+    },
+    {
+      "name": "Trunk",
+      "tip": "Keep going up.",
+      "rows": [
+        ".........",
+        ".........",
+        ".........",
+        ".........",
+        "....L....",
+        "....h....",
+        ".........",
+        ".........",
+        "........."
+      ]
+    },
+    {
+      "name": "Trunk",
+      "tip": "One more log and ladder.",
+      "rows": [
+        ".........",
+        ".........",
+        ".........",
+        ".........",
+        "....L....",
+        "....h....",
+        ".........",
+        ".........",
+        "........."
+      ]
+    },
+    {
+      "name": "Platform",
+      "tip": "Build a floor of oak planks, 7 by 7, around the trunk. Leave the hole where the ladder goes up, and put one more ladder in it.",
+      "rows": [
+        ".........",
+        ".PPPPPPP.",
+        ".PPPPPPP.",
+        ".PPPPPPP.",
+        ".PPPLPPP.",
+        ".PPPhPPP.",
+        ".PPPPPPP.",
+        ".PPPPPPP.",
+        "........."
+      ]
+    },
+    {
+      "name": "Railing and hut",
+      "tip": "A fence all around the edge. One step in, the hut walls: logs in the corners, spruce planks between, and a door at the front.",
+      "rows": [
+        ".........",
+        ".fffffff.",
+        ".fLSSSLf.",
+        ".fS...Sf.",
+        ".fS.L.Sf.",
+        ".fS...Sf.",
+        ".fLS.SLf.",
+        ".fffffff.",
+        "........."
+      ]
+    },
+    {
+      "name": "Windows",
+      "tip": "More wall, with glass on the back and both sides. The door stays open.",
+      "rows": [
+        ".........",
+        ".........",
+        "..LSGSL..",
+        "..S...S..",
+        "..G.L.G..",
+        "..S...S..",
+        "..LS.SL..",
+        ".........",
+        "........."
+      ]
+    },
+    {
+      "name": "Roof",
+      "tip": "Spruce slabs over the whole platform, around the trunk.",
+      "rows": [
+        ".........",
+        ".ddddddd.",
+        ".ddddddd.",
+        ".ddddddd.",
+        ".dddLddd.",
+        ".ddddddd.",
+        ".ddddddd.",
+        ".ddddddd.",
+        "........."
+      ]
+    },
+    {
+      "name": "Leaves",
+      "tip": "Leaves all around the top of the trunk. Collect them with shears.",
+      "rows": [
+        ".........",
+        "..kkkkk..",
+        ".kkkkkkk.",
+        ".kkkkkkk.",
+        ".kkkLkkk.",
+        ".kkkkkkk.",
+        ".kkkkkkk.",
+        "..kkkkk..",
+        "........."
+      ]
+    },
+    {
+      "name": "Leaves",
+      "tip": "A smaller square of leaves.",
+      "rows": [
+        ".........",
+        ".........",
+        "...kkk...",
+        "..kkkkk..",
+        "..kkkkk..",
+        "..kkkkk..",
+        "...kkk...",
+        ".........",
+        "........."
+      ]
+    },
+    {
+      "name": "Leaves",
+      "tip": "A little plus shape on the very top.",
+      "rows": [
+        ".........",
+        ".........",
+        ".........",
+        "....k....",
+        "...kkk...",
+        "....k....",
+        ".........",
+        ".........",
+        "........."
+      ]
+    }
+  ]
+}

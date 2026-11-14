@@ -1,0 +1,136 @@
+{
+  "name": "Castle tower",
+  "difficulty": "Big",
+  "group": "Builds",
+  "about": "A tall stone tower with a ladder inside and a lookout on top.",
+  "also": ["castle", "tower"],
+  "key": {
+    "B": "stone_bricks",
+    "C": "cobblestone",
+    "G": "glass",
+    "S": "spruce_planks",
+    "h": {"id": "ladder", "facing": "south"}
+  },
+  "layers": [
+    {
+      "name": "Floor",
+      "tip": "A ring of stone bricks, 9 by 9, with cobblestone inside.",
+      "rows": [
+        "BBBBBBBBB",
+        "BCCCCCCCB",
+        "BCCCCCCCB",
+        "BCCCCCCCB",
+        "BCCCCCCCB",
+        "BCCCCCCCB",
+        "BCCCCCCCB",
+        "BCCCCCCCB",
+        "BBBBBBBBB"
+      ]
+    },
+    {
+      "name": "Walls and door",
+      "tip": "Walls with a gap in the middle of the front for the door. Put a ladder on the inside of the back wall, near the left.",
+      "rows": [
+        "BBBBBBBBB",
+        "B.h.....B",
+        "B.......B",
+        "B.......B",
+        "B.......B",
+        "B.......B",
+        "B.......B",
+        "B.......B",
+        "BBBB.BBBB"
+      ]
+    },
+    {
+      "name": "Walls and door",
+      "tip": "Again: the door is two blocks tall. Keep the ladder going.",
+      "rows": [
+        "BBBBBBBBB",
+        "B.h.....B",
+        "B.......B",
+        "B.......B",
+        "B.......B",
+        "B.......B",
+        "B.......B",
+        "B.......B",
+        "BBBB.BBBB"
+      ]
+    },
+    {
+      "name": "Walls",
+      "tip": "Close the wall all the way around.",
+      "rows": [
+        "BBBBBBBBB",
+        "B.h.....B",
+        "B.......B",
+        "B.......B",
+        "B.......B",
+        "B.......B",
+        "B.......B",
+        "B.......B",
+        "BBBBBBBBB"
+      ]
+    },
+    {
+      "name": "Windows",
+      "tip": "Glass in the middle of every side.",
+      "rows": [
+        "BBBBGBBBB",
+        "B.h.....B",
+        "B.......B",
+        "B.......B",
+        "G.......G",
+        "B.......B",
+        "B.......B",
+        "B.......B",
+        "BBBBGBBBB"
+      ]
+    },
+    {
+      "name": "Walls",
+      "tip": "One more full ring.",
+      "rows": [
+        "BBBBBBBBB",
+        "B.h.....B",
+        "B.......B",
+        "B.......B",
+        "B.......B",
+        "B.......B",
+        "B.......B",
+        "B.......B",
+        "BBBBBBBBB"
+      ]
+    },
+    {
+      "name": "Top floor",
+      "tip": "Spruce planks over the inside, with a hole for the ladder and one more ladder in it.",
+      "rows": [
+        "BBBBBBBBB",
+        "BShSSSSSB",
+        "BSSSSSSSB",
+        "BSSSSSSSB",
+        "BSSSSSSSB",
+        "BSSSSSSSB",
+        "BSSSSSSSB",
+        "BSSSSSSSB",
+        "BBBBBBBBB"
+      ]
+    },
+    {
+      "name": "Battlements",
+      "tip": "Every other block around the edge, like teeth.",
+      "rows": [
+        "B.B.B.B.B",
+        ".........",
+        "B.......B",
+        ".........",
+        "B.......B",
+        ".........",
+        "B.......B",
+        ".........",
+        "B.B.B.B.B"
+      ]
+    }
+  ]
+}

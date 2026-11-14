@@ -1,0 +1,34 @@
+{
+  "name": "Bed with a nightstand",
+  "difficulty": "Easy",
+  "group": "Room ideas",
+  "about": "A bed with a little table beside it, a light on top and a rug at the end.",
+  "also": ["nightstand", "bedroom"],
+  "key": {
+    "R": "barrel",
+    "h": {"id": "red_bed", "part": "head", "facing": "north"},
+    "f": {"id": "red_bed", "part": "foot", "facing": "north"},
+    "c": "light_blue_carpet",
+    "t": "torch"
+  },
+  "layers": [
+    {
+      "name": "Bed and nightstand",
+      "tip": "Put the bed against a wall, with its pillow at the back. A barrel beside it is the nightstand, and carpet in front makes a rug.",
+      "rows": [
+        "Rh.",
+        ".f.",
+        "ccc"
+      ]
+    },
+    {
+      "name": "Light",
+      "tip": "A torch on top of the barrel.",
+      "rows": [
+        "t..",
+        "...",
+        "..."
+      ]
+    }
+  ]
+}

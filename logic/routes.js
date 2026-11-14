@@ -79,6 +79,7 @@ export function deeperHash(hash, here) {
 export function hashForAnswer(answer, question, kind) {
   if (answer.type === 'none') return toHash({ page: 'none', q: question });
   if (answer.type === 'guide') return toHash({ page: 'guide', id: answer.target.id, step: 1, q: question });
+  if (answer.type === 'build') return toHash({ page: 'build', id: answer.target.id, q: question });
   if (answer.type === 'where') return toHash({ page: 'where', id: targetKey(answer.target), q: question, kind });
   if (answer.type === 'field') return toHash({ page: 'field', id: fieldKey(answer.target, answer.field), q: question, kind });
   if (answer.type === 'missing') return toHash({ page: 'missing', id: targetKey(answer.target), q: question, kind: answer.kind });

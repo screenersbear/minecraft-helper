@@ -1,0 +1,146 @@
+{
+  "heart": {
+    "name": "Heart",
+    "key": {".": "white_wool", "R": "red_wool", "P": "pink_wool"},
+    "rows": [
+      "............",
+      "..RR....RR..",
+      ".RRRR..RRRR.",
+      "RRPRRRRRRRRR",
+      "RPRRRRRRRRRR",
+      "RRRRRRRRRRRR",
+      ".RRRRRRRRRR.",
+      "..RRRRRRRR..",
+      "...RRRRRR...",
+      "....RRRR....",
+      ".....RR.....",
+      "............"
+    ]
+  },
+  "star": {
+    "name": "Star",
+    "key": {".": "blue_wool", "Y": "yellow_wool"},
+    "rows": [
+      ".....YY.....",
+      ".....YY.....",
+      "....YYYY....",
+      "....YYYY....",
+      "YYYYYYYYYYYY",
+      ".YYYYYYYYYY.",
+      "..YYYYYYYY..",
+      "...YYYYYY...",
+      "..YYYYYYYY..",
+      "..YYY..YYY..",
+      ".YYY....YYY.",
+      ".YY......YY."
+    ]
+  },
+  "rainbow": {
+    "name": "Rainbow",
+    "key": {".": "light_blue_wool", "R": "red_wool", "O": "orange_wool", "Y": "yellow_wool", "G": "lime_wool", "B": "blue_wool", "P": "purple_wool", "W": "white_wool"},
+    "rows": [
+      "............",
+      "............",
+      "............",
+      "..RRRRRRRR..",
+      "RROOOOOOOORR",
+      "OOYYYYYYYYOO",
+      "OYGGGGGGGGYO",
+      "YGGBBBBBBGGY",
+      "GBBPPPPPPBBG",
+      "GWW......WWG",
+      "WWW......WWW",
+      "WWW......WWW"
+    ]
+  },
+  "smiley": {
+    "name": "Smiley face",
+    "key": {".": "light_blue_wool", "Y": "yellow_wool", "K": "black_wool"},
+    "rows": [
+      ".....YY.....",
+      "...YYYYYY...",
+      "..YYYYYYYY..",
+      ".YYYKYYKYYY.",
+      ".YYYKYYKYYY.",
+      "YYYYYYYYYYYY",
+      "YYYYYYYYYYYY",
+      ".YYKYYYYKYY.",
+      ".YYYKKKKYYY.",
+      "..YYYYYYYY..",
+      "...YYYYYY...",
+      ".....YY....."
+    ]
+  },
+  "flower": {
+    "name": "Flower",
+    "key": {".": "light_blue_wool", "P": "pink_wool", "Y": "yellow_wool", "G": "green_wool", "L": "lime_wool", "D": "brown_wool"},
+    "rows": [
+      "............",
+      "....PPPP....",
+      "...PPPPPP...",
+      "..PPPYYPPP..",
+      "..PPYYYYPP..",
+      "..PPYYYYPP..",
+      "..PPPYYPPP..",
+      "...PPPPPP...",
+      ".....GG.....",
+      "..LLLGG.....",
+      ".....GGLLL..",
+      "DDDDDDDDDDDD"
+    ]
+  },
+  "cat-face": {
+    "name": "Cat face",
+    "key": {".": "light_blue_wool", "O": "orange_wool", "P": "pink_wool", "K": "black_wool", "W": "white_wool", "G": "lime_wool"},
+    "rows": [
+      "............",
+      ".OO......OO.",
+      ".OPO....OPO.",
+      ".OOOOOOOOOO.",
+      "OOOOOOOOOOOO",
+      "OOKGOOOOKGOO",
+      "OOKKOOOOKKOO",
+      "WOOOOPPOOOOW",
+      "OWOOOKKOOOWO",
+      ".OOOKOOKOOO.",
+      "..OOOOOOOO..",
+      "............"
+    ]
+  },
+  "sun": {
+    "name": "Sun",
+    "key": {".": "light_blue_wool", "Y": "yellow_wool", "O": "orange_wool"},
+    "rows": [
+      ".....OO.....",
+      ".O...OO...O.",
+      "..O......O..",
+      "....YYYY....",
+      "...YYYYYY...",
+      "OO.YYYYYY.OO",
+      "OO.YYYYYY.OO",
+      "...YYYYYY...",
+      "....YYYY....",
+      "..O......O..",
+      ".O...OO...O.",
+      ".....OO....."
+    ]
+  },
+  "mushroom": {
+    "name": "Mushroom",
+    "key": {".": "light_blue_wool", "R": "red_wool", "W": "white_wool", "S": "white_terracotta", "G": "lime_wool"},
+    "rows": [
+      "............",
+      "....RRRR....",
+      "..RRWWRRRR..",
+      ".RRWWRRRWWR.",
+      ".RRRRRRRWWR.",
+      "RRRRRRRRRRRR",
+      "RWWRRRRRWWRR",
+      "....SSSS....",
+      "....SSSS....",
+      "....SSSS....",
+      "...SSSSSS...",
+      "GGGGGGGGGGGG"
+    ]
+  }
+}

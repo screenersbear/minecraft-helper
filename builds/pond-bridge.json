@@ -1,0 +1,61 @@
+{
+  "name": "Pond with a bridge",
+  "difficulty": "Medium",
+  "group": "Builds",
+  "about": "A little pond with sugar cane at the edges and a wooden bridge to walk across.",
+  "also": ["pond", "bridge"],
+  "key": {
+    "g": {"id": "grass_block", "ground": true},
+    "W": "water",
+    "P": "oak_planks",
+    "e": {"id": "oak_stairs", "facing": "east"},
+    "w": {"id": "oak_stairs", "facing": "west"},
+    "u": "sugar_cane",
+    "f": "oak_fence",
+    "p": "poppy",
+    "y": "dandelion",
+    "o": "oxeye_daisy",
+    "c": "cornflower"
+  },
+  "layers": [
+    {
+      "name": "Dig the pond",
+      "tip": "On flat grass, dig a hole one block deep in this shape. Fill it with water from a bucket.",
+      "rows": [
+        "ggggggggg",
+        "ggWWWWWgg",
+        "gWWWWWWWg",
+        "gWWWWWWWg",
+        "gWWWWWWWg",
+        "ggWWWWWgg",
+        "ggggggggg"
+      ]
+    },
+    {
+      "name": "Bridge",
+      "tip": "Build the bridge across the middle, three blocks wide, with stairs going up at each end. Plant sugar cane by the water and flowers on the grass.",
+      "rows": [
+        "p...o....",
+        ".u.....u.",
+        "ePPPPPPPw",
+        "ePPPPPPPw",
+        "ePPPPPPPw",
+        ".u.....u.",
+        "...c....y"
+      ]
+    },
+    {
+      "name": "Railings",
+      "tip": "Fences along both sides of the bridge, and more sugar cane on top of the first.",
+      "rows": [
+        ".........",
+        ".u.....u.",
+        ".fffffff.",
+        ".........",
+        ".fffffff.",
+        ".u.....u.",
+        "........."
+      ]
+    }
+  ]
+}

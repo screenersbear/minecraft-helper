@@ -1,0 +1,54 @@
+{
+  "name": "Fireplace",
+  "difficulty": "Easy",
+  "group": "Room ideas",
+  "about": "A brick fireplace with a campfire inside, a shelf on top and a chimney.",
+  "key": {
+    "b": "bricks",
+    "x": "campfire",
+    "s": "smooth_stone_slab",
+    "t": "torch"
+  },
+  "layers": [
+    {
+      "name": "Hearth",
+      "tip": "A row of bricks against the wall. In front, a brick on each side of a campfire.",
+      "rows": [
+        "bbbbb",
+        ".bxb."
+      ]
+    },
+    {
+      "name": "Over the fire",
+      "tip": "More bricks, and three across the front over the fire.",
+      "rows": [
+        "bbbbb",
+        ".bbb."
+      ]
+    },
+    {
+      "name": "Shelf",
+      "tip": "Three bricks at the back, and slabs in front make a shelf.",
+      "rows": [
+        ".bbb.",
+        ".sss."
+      ]
+    },
+    {
+      "name": "Chimney",
+      "tip": "A brick in the middle starts the chimney, with a torch on each side.",
+      "rows": [
+        ".tbt.",
+        "....."
+      ]
+    },
+    {
+      "name": "Chimney",
+      "tip": "Keep the chimney going up to the ceiling.",
+      "rows": [
+        "..b..",
+        "....."
+      ]
+    }
+  ]
+}

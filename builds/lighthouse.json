@@ -1,0 +1,225 @@
+{
+  "name": "Lighthouse",
+  "difficulty": "Big",
+  "group": "Builds",
+  "about": "A tall striped tower with a ladder inside and a light at the top to guide boats home.",
+  "key": {
+    "B": "stone_bricks",
+    "W": "white_concrete",
+    "r": "red_concrete",
+    "h": {"id": "ladder", "facing": "south"},
+    "G": "glass",
+    "f": "oak_fence",
+    "J": {"id": "jack_o_lantern", "facing": "south"}
+  },
+  "layers": [
+    {
+      "name": "Base",
+      "tip": "A round base of stone bricks, 7 by 7 without the corners.",
+      "rows": [
+        ".BBBBB.",
+        "BBBBBBB",
+        "BBBBBBB",
+        "BBBBBBB",
+        "BBBBBBB",
+        "BBBBBBB",
+        ".BBBBB."
+      ]
+    },
+    {
+      "name": "Tower 1 of 10",
+      "tip": "A ring of white concrete, with a gap at the front for the door. Put a ladder inside on the back wall.",
+      "rows": [
+        ".......",
+        "..WWW..",
+        ".W.h.W.",
+        ".W...W.",
+        ".W...W.",
+        "..W.W..",
+        "......."
+      ]
+    },
+    {
+      "name": "Tower 2 of 10",
+      "tip": "Keep building the ring and the ladder.",
+      "rows": [
+        ".......",
+        "..WWW..",
+        ".W.h.W.",
+        ".W...W.",
+        ".W...W.",
+        "..W.W..",
+        "......."
+      ]
+    },
+    {
+      "name": "Tower 3 of 10",
+      "tip": "Now red: every two rows the colour changes. Keep the ladder going up.",
+      "rows": [
+        ".......",
+        "..rrr..",
+        ".r.h.r.",
+        ".r...r.",
+        ".r...r.",
+        "..rrr..",
+        "......."
+      ]
+    },
+    {
+      "name": "Tower 4 of 10",
+      "tip": "Keep building the ring and the ladder.",
+      "rows": [
+        ".......",
+        "..rrr..",
+        ".r.h.r.",
+        ".r...r.",
+        ".r...r.",
+        "..rrr..",
+        "......."
+      ]
+    },
+    {
+      "name": "Tower 5 of 10",
+      "tip": "White again, with a little window on the right.",
+      "rows": [
+        ".......",
+        "..WWW..",
+        ".W.h.W.",
+        ".W...G.",
+        ".W...W.",
+        "..WWW..",
+        "......."
+      ]
+    },
+    {
+      "name": "Tower 6 of 10",
+      "tip": "Keep building the ring and the ladder.",
+      "rows": [
+        ".......",
+        "..WWW..",
+        ".W.h.W.",
+        ".W...W.",
+        ".W...W.",
+        "..WWW..",
+        "......."
+      ]
+    },
+    {
+      "name": "Tower 7 of 10",
+      "tip": "Keep building the ring and the ladder.",
+      "rows": [
+        ".......",
+        "..rrr..",
+        ".r.h.r.",
+        ".r...r.",
+        ".r...r.",
+        "..rrr..",
+        "......."
+      ]
+    },
+    {
+      "name": "Tower 8 of 10",
+      "tip": "Keep building the ring and the ladder.",
+      "rows": [
+        ".......",
+        "..rrr..",
+        ".r.h.r.",
+        ".r...G.",
+        ".r...r.",
+        "..rrr..",
+        "......."
+      ]
+    },
+    {
+      "name": "Tower 9 of 10",
+      "tip": "Keep building the ring and the ladder.",
+      "rows": [
+        ".......",
+        "..WWW..",
+        ".W.h.W.",
+        ".W...W.",
+        ".W...W.",
+        "..WWW..",
+        "......."
+      ]
+    },
+    {
+      "name": "Tower 10 of 10",
+      "tip": "Keep building the ring and the ladder.",
+      "rows": [
+        ".......",
+        "..WWW..",
+        ".W.h.W.",
+        ".W...W.",
+        ".W...W.",
+        "..WWW..",
+        "......."
+      ]
+    },
+    {
+      "name": "Balcony",
+      "tip": "A floor of stone bricks over the whole top, 7 by 7. Leave the hole for the ladder, with one more ladder in it.",
+      "rows": [
+        "BBBBBBB",
+        "BBBBBBB",
+        "BBBhBBB",
+        "BBBBBBB",
+        "BBBBBBB",
+        "BBBBBBB",
+        "BBBBBBB"
+      ]
+    },
+    {
+      "name": "Railing and light",
+      "tip": "A fence all around the edge. In the middle, a jack o'lantern for the light, with a fence post at each corner of it.",
+      "rows": [
+        "fffffff",
+        "f.....f",
+        "f.f.f.f",
+        "f..J..f",
+        "f.f.f.f",
+        "f.....f",
+        "fffffff"
+      ]
+    },
+    {
+      "name": "Posts",
+      "tip": "One more fence on each of the four posts.",
+      "rows": [
+        ".......",
+        ".......",
+        "..f.f..",
+        ".......",
+        "..f.f..",
+        ".......",
+        "......."
+      ]
+    },
+    {
+      "name": "Roof",
+      "tip": "A red roof, 3 by 3, on the posts.",
+      "rows": [
+        ".......",
+        ".......",
+        "..rrr..",
+        "..rrr..",
+        "..rrr..",
+        ".......",
+        "......."
+      ]
+    },
+    {
+      "name": "Roof top",
+      "tip": "One red block on top.",
+      "rows": [
+        ".......",
+        ".......",
+        ".......",
+        "...r...",
+        ".......",
+        ".......",
+        "......."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "name": "Greenhouse",
+  "difficulty": "Medium",
+  "group": "Builds",
+  "about": "A glass house full of flowers, little trees, pumpkins and melons.",
+  "also": ["glass house"],
+  "key": {
+    "L": "oak_log",
+    "P": "oak_planks",
+    "d": "dirt",
+    "r": "gravel",
+    "G": "glass",
+    "k": "pumpkin",
+    "m": "melon",
+    "p": "poppy",
+    "y": "dandelion",
+    "o": "oxeye_daisy",
+    "c": "cornflower",
+    "a": "allium",
+    "q": "oak_sapling"
+  },
+  "layers": [
+    {
+      "name": "Base and beds",
+      "tip": "A frame of oak planks with logs in the corners. Inside, two beds of dirt with a gravel path down the middle.",
+      "rows": [
+        "LPPPPPPPL",
+        "PdddrdddP",
+        "PdddrdddP",
+        "PdddrdddP",
+        "PdddrdddP",
+        "PdddrdddP",
+        "LPPPPPPPL"
+      ]
+    },
+    {
+      "name": "Glass walls and plants",
+      "tip": "Glass walls with a door at the front. Plant flowers and saplings in the dirt, with a pumpkin and a melon in the corners.",
+      "rows": [
+        "LGGGGGGGL",
+        "Gkpy.yckG",
+        "Goaq.oaqG",
+        "Gypc.yopG",
+        "Gqoa.qpaG",
+        "Gm.q.q.mG",
+        "LGGG.GGGL"
+      ]
+    },
+    {
+      "name": "Glass walls",
+      "tip": "More glass, with logs in the corners. The door stays open.",
+      "rows": [
+        "LGGGGGGGL",
+        "G.......G",
+        "G.......G",
+        "G.......G",
+        "G.......G",
+        "G.......G",
+        "LGGG.GGGL"
+      ]
+    },
+    {
+      "name": "Glass roof",
+      "tip": "Cover the top with glass, logs in the corners.",
+      "rows": [
+        "LGGGGGGGL",
+        "GGGGGGGGG",
+        "GGGGGGGGG",
+        "GGGGGGGGG",
+        "GGGGGGGGG",
+        "GGGGGGGGG",
+        "LGGGGGGGL"
+      ]
+    },
+    {
+      "name": "Roof",
+      "tip": "A smaller roof on top, three rows deep.",
+      "rows": [
+        ".........",
+        ".........",
+        "GGGGGGGGG",
+        "GGGGGGGGG",
+        "GGGGGGGGG",
+        ".........",
+        "........."
+      ]
+    },
+    {
+      "name": "Roof top",
+      "tip": "One row of glass along the top.",
+      "rows": [
+        ".........",
+        ".........",
+        ".........",
+        "GGGGGGGGG",
+        ".........",
+        ".........",
+        "........."
+      ]
+    }
+  ]
+}

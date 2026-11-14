@@ -1,51 +1,47 @@
-// Make: one of the five home pages. Turn a photo into pixel art: take or pick a photo (how big is picked on the
-// next page, to fit the thing), and come back to pictures already started. A small link at the bottom saves a photo as an idea for a 3D build.
+// Make: one of the five home pages, in two parts. Builds: picture tiles of things to build block by block, with
+// buttons to show only Easy, Medium or Big ones. Pixel art: turn a photo (or a ready-made picture) into blocks.
+// The page remembers which part was open. A small link at the bottom saves an idea for a new build.
 import { el } from '../components/el.js';
-import { photoButtons } from '../components/photo-button.js';
-import { artThumb } from '../components/art-thumb.js';
-import { listArt } from '../data/pixel-store.js';
-import { setPhoto } from '../data/photo.js';
-import { toHash } from '../logic/routes.js';
+import { makeBuilds } from '../components/make-builds.js';
+import { makePixel } from '../components/make-pixel.js';
+import { load, save } from '../data/store.js';
 
-function progressText(art) {
-  const rows = art.size;
-  if (art.row >= rows) return `${art.size} by ${art.size} · all done`;
-  if (art.row > 0) return `${art.size} by ${art.size} · up to row ${art.row}`;
-  return `${art.size} by ${art.size} · not started`;
-}
-
-function myArt(ctx) {
-  const list = listArt();
-  if (!list.length) return null;
-  return el(
-    'section',
-    { class: 'my-art' },
-    el('h2', { class: 'small-label' }, 'My pixel art'),
-    list.map((art) =>
-      el(
-        'a',
-        { class: 'art-row', href: toHash({ page: 'pixel', id: art.id, step: art.row > 0 && art.row < art.size ? art.row + 1 : undefined }) },
-        artThumb(ctx.book, art, 48),
-        el('span', { class: 'art-text' }, el('b', {}, art.name), el('small', {}, progressText(art))),
-        el('span', { class: 'art-go' }, art.row >= art.size ? 'Look' : 'Keep going'),
-      ),
-    ),
-  );
-}
+const PART = 'mc-helper.make-part';
+const PARTS = ['Builds', 'Pixel art'];
 
 export function makePanel(ctx) {
-  const onPhoto = (file) => {
-    setPhoto(file, 'pixel');
-    ctx.go('#/pixel/crop');
+  let part = PARTS.includes(load(PART, 'Builds')) ? load(PART, 'Builds') : 'Builds';
+  let showing = 'All';
+  const body = el('div', { class: 'make-body' });
+  const switchRow = el('div', { class: 'switch-row make-switch', role: 'group', 'aria-label': 'Builds or pixel art' });
+
+  const draw = () => {
+    switchRow.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.textContent === part)));
+    body.replaceChildren(
+      part === 'Builds'
+        ? makeBuilds(ctx, showing, (which) => {
+          showing = which;
+          draw();
+        })
+        : makePixel(ctx),
+    );
   };
+  const choose = (which) => {
+    part = which;
+    save(PART, which);
+    draw();
+  };
+  switchRow.append(...PARTS.map((which) => el('button', { class: 'switch-btn', type: 'button', 'aria-pressed': 'false', onclick: () => choose(which) }, which)));
+  draw();
+
   const node = el(
     'div',
     { class: 'page home-page make' },
-    el('h1', { class: 'home-title', tabindex: '-1' }, 'Pixel art'),
-    el('p', { class: 'home-intro' }, 'Turn a photo into a picture made of blocks.'),
-    photoButtons(onPhoto),
-    myArt(ctx),
-    el('a', { class: 'idea-link', href: '#/idea' }, 'Want a real 3D build? Save it as an idea'),
+    el('h1', { class: 'home-title', tabindex: '-1' }, 'Make'),
+    el('p', { class: 'home-intro' }, 'Build something block by block, or turn a photo into blocks.'),
+    switchRow,
+    body,
+    el('a', { class: 'idea-link', href: '#/idea' }, 'Want to build something else? Save it as an idea'),
   );
   return { node };
 }

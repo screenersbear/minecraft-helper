@@ -1,0 +1,30 @@
+{
+  "name": "Kitchen",
+  "difficulty": "Easy",
+  "group": "Room ideas",
+  "about": "A row of kitchen blocks: cupboards, a smoker for cooking, a sink and a crafting table.",
+  "key": {
+    "R": "barrel",
+    "M": {"id": "smoker", "facing": "south"},
+    "U": "cauldron",
+    "T": "crafting_table",
+    "F": {"id": "furnace", "facing": "south"},
+    "t": "torch"
+  },
+  "layers": [
+    {
+      "name": "Counter",
+      "tip": "Put them in a row against a wall: barrels for cupboards at each end, a smoker, a cauldron for the sink, a crafting table and a furnace.",
+      "rows": [
+        "RMUTFR"
+      ]
+    },
+    {
+      "name": "Lights",
+      "tip": "A torch on each barrel.",
+      "rows": [
+        "t....t"
+      ]
+    }
+  ]
+}

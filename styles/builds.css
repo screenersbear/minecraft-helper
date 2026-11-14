@@ -1,0 +1,258 @@
+/* Builds: the Builds and Pixel art switch on the Make page, the build tiles and filter buttons, ready-made pixel
+   art, a build's cover, and the layer screen. */
+
+.make-switch {
+  margin-top: 18px;
+}
+
+/* Builds or Pixel art: the open part is dark, with a mango edge under it. */
+.make-switch .switch-btn {
+  min-height: 48px;
+  font-size: 18px;
+}
+
+.make-switch .switch-btn[aria-pressed='true'] {
+  box-shadow: inset 0 -5px 0 var(--mango);
+}
+
+.make-note {
+  margin: 16px 0 0;
+  font-size: 16px;
+}
+
+/* All, Easy, Medium, Big */
+.build-filters {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  padding-top: 14px;
+}
+
+.filter-btn {
+  min-height: 44px;
+  border: none;
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: inset 0 -5px 0 var(--slot);
+  font: 700 16px var(--pixel);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.filter-btn[aria-pressed='true'] {
+  background: var(--green);
+  color: var(--paper);
+  box-shadow: inset 0 -5px 0 var(--green-dark);
+}
+
+.build-group {
+  padding-top: 18px;
+}
+
+.build-group .small-label {
+  margin-bottom: 8px;
+}
+
+.build-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.build-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 10px 14px;
+  background: var(--panel);
+  box-shadow: inset 0 -6px 0 var(--slot);
+  color: var(--ink);
+  text-decoration: none;
+  touch-action: manipulation;
+}
+
+.build-tile b {
+  font: 700 18px/1.1 var(--pixel);
+  padding-top: 4px;
+}
+
+.build-tile small {
+  font-size: 13px;
+}
+
+.tile-picture {
+  height: 108px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.build-picture {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Ready-made pixel art: four to a row. */
+.ready-made {
+  padding-top: 18px;
+}
+
+.ready-made .small-label {
+  margin-bottom: 8px;
+}
+
+.ready-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.ready-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-height: 44px;
+  padding: 0 0 4px;
+  border: none;
+  background: none;
+  color: var(--ink);
+  font: 700 13px var(--text);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.ready-btn .art-thumb {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 1;
+}
+
+/* A build's cover. */
+.build-hero {
+  margin-top: 16px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 10px 16px;
+  box-sizing: border-box;
+  background: var(--panel);
+  box-shadow: inset 0 -6px 0 var(--slot);
+}
+
+.build-cover .title-row {
+  padding-top: 16px;
+}
+
+.build-meta {
+  margin: 8px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  font-size: 15px;
+}
+
+.build-tags {
+  display: flex;
+  gap: 6px;
+}
+
+.tag-easy {
+  background: var(--green);
+  color: var(--paper);
+}
+
+.tag-medium {
+  background: var(--mango);
+}
+
+.tag-big {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.tag-creative {
+  background: var(--paper);
+  box-shadow: inset 0 0 0 2px var(--ink);
+}
+
+.need-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 12px;
+}
+
+.need {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 36px;
+  font-size: 16px;
+}
+
+.need b {
+  font: 700 18px var(--pixel);
+}
+
+/* The layer screen. */
+.layer-figure {
+  margin: 14px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.layer-frame {
+  padding: 8px 8px 14px;
+  background: var(--panel);
+  box-shadow: inset 0 -6px 0 var(--slot);
+}
+
+.layer-view {
+  display: block;
+}
+
+.layer-figure figcaption {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+}
+
+.front-mark {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+}
+
+.front-arrow {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 9px solid var(--ink);
+}
+
+/* The Building page of the book: builds first, then blocks. */
+.book-sub {
+  margin: 18px 0 8px;
+}
+
+.build-slot {
+  background: var(--panel);
+  box-shadow: inset 3px 3px 0 var(--slot);
+}
+
+.book-sub + .thing-grid {
+  padding: 4px 0 0;
+}

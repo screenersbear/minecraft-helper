@@ -1,0 +1,63 @@
+{
+  "name": "Archway",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A stone arch to walk through, for the way into a garden or a town.",
+  "also": ["arch"],
+  "key": {
+    "B": "stone_bricks",
+    "M": "mossy_stone_bricks",
+    "t": {"id": "stone_brick_slab", "half": "top"},
+    "T": "torch"
+  },
+  "layers": [
+    {
+      "name": "Pillars",
+      "tip": "Two pillars, each two blocks by two, with a gap of three between them.",
+      "rows": [
+        "BM...BB",
+        "BB...MB"
+      ]
+    },
+    {
+      "name": "Pillars",
+      "tip": "Keep going up.",
+      "rows": [
+        "BB...BB",
+        "BB...BB"
+      ]
+    },
+    {
+      "name": "Pillars",
+      "tip": "One more on each pillar.",
+      "rows": [
+        "MB...BB",
+        "BB...BM"
+      ]
+    },
+    {
+      "name": "Round the corners",
+      "tip": "A slab in the top half of each inside corner makes the arch round.",
+      "rows": [
+        "BBt.tBB",
+        "BBt.tBB"
+      ]
+    },
+    {
+      "name": "Top",
+      "tip": "Join the two pillars with a row of stone bricks.",
+      "rows": [
+        "BBBBBBB",
+        "BMBBBBB"
+      ]
+    },
+    {
+      "name": "Lights",
+      "tip": "A torch on each end.",
+      "rows": [
+        "T.....T",
+        "......."
+      ]
+    }
+  ]
+}

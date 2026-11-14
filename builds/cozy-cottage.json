@@ -1,0 +1,158 @@
+{
+  "name": "Cozy cottage",
+  "difficulty": "Medium",
+  "group": "Builds",
+  "about": "A little house with a stone base, a pointy roof and a chimney that puffs smoke.",
+  "also": ["cottage", "house", "little house", "wooden house"],
+  "key": {
+    "C": "cobblestone",
+    "P": "oak_planks",
+    "L": "oak_log",
+    "G": "glass",
+    "b": "bricks",
+    "T": "crafting_table",
+    "F": {"id": "furnace", "facing": "south"},
+    "R": "barrel",
+    "s": {"id": "spruce_stairs", "facing": "south"},
+    "n": {"id": "spruce_stairs", "facing": "north"},
+    "h": "spruce_slab",
+    "x": "campfire"
+  },
+  "layers": [
+    {
+      "name": "Stone base",
+      "tip": "A ring of cobblestone, 9 by 7, with oak planks inside for the floor. Leave a row empty in front and behind for the roof to hang over.",
+      "rows": [
+        ".........",
+        "CCCCCCCCC",
+        "CPPPPPPPC",
+        "CPPPPPPPC",
+        "CPPPPPPPC",
+        "CPPPPPPPC",
+        "CPPPPPPPC",
+        "CCCCCCCCC",
+        "........."
+      ]
+    },
+    {
+      "name": "Walls and door",
+      "tip": "Logs in the corners, planks between, and a gap in the middle of the front for the door. Bricks in the back corner start the chimney. Put a crafting table, a furnace and a barrel inside.",
+      "rows": [
+        ".........",
+        "LPPPPPPPL",
+        "PTF...b.P",
+        "P.......P",
+        "P.......P",
+        "P.......P",
+        "P......RP",
+        "LPPP.PPPL",
+        "........."
+      ]
+    },
+    {
+      "name": "Windows",
+      "tip": "Glass makes six windows: two at the back, two at the front and one on each side.",
+      "rows": [
+        ".........",
+        "LPGPPPGPL",
+        "P.....b.P",
+        "P.......P",
+        "G.......G",
+        "P.......P",
+        "P.......P",
+        "LPGP.PGPL",
+        "........."
+      ]
+    },
+    {
+      "name": "Top of the walls",
+      "tip": "Close the wall all the way around, over the door too.",
+      "rows": [
+        ".........",
+        "LPPPPPPPL",
+        "P.....b.P",
+        "P.......P",
+        "P.......P",
+        "P.......P",
+        "P.......P",
+        "LPPPPPPPL",
+        "........."
+      ]
+    },
+    {
+      "name": "Roof edge",
+      "tip": "Spruce stairs along the front and back, one block out from the walls, with their tall side towards the middle. Planks fill the two ends.",
+      "rows": [
+        "sssssssss",
+        "P.......P",
+        "P.....b.P",
+        "P.......P",
+        "P.......P",
+        "P.......P",
+        "P.......P",
+        "P.......P",
+        "nnnnnnnnn"
+      ]
+    },
+    {
+      "name": "Roof",
+      "tip": "The next line of stairs, one step in and one up.",
+      "rows": [
+        ".........",
+        "sssssssss",
+        "P.....b.P",
+        "P.......P",
+        "P.......P",
+        "P.......P",
+        "P.......P",
+        "nnnnnnnnn",
+        "........."
+      ]
+    },
+    {
+      "name": "Roof",
+      "tip": "One more step in. The chimney keeps going up through the roof.",
+      "rows": [
+        ".........",
+        ".........",
+        "ssssssbss",
+        "P.......P",
+        "P.......P",
+        "P.......P",
+        "nnnnnnnnn",
+        ".........",
+        "........."
+      ]
+    },
+    {
+      "name": "Roof",
+      "tip": "The last line of stairs on each side.",
+      "rows": [
+        ".........",
+        ".........",
+        "......b..",
+        "sssssssss",
+        "P.......P",
+        "nnnnnnnnn",
+        ".........",
+        ".........",
+        "........."
+      ]
+    },
+    {
+      "name": "Roof top",
+      "tip": "Spruce slabs along the top. A campfire on the chimney makes smoke.",
+      "rows": [
+        ".........",
+        ".........",
+        "......x..",
+        ".........",
+        "hhhhhhhhh",
+        ".........",
+        ".........",
+        ".........",
+        "........."
+      ]
+    }
+  ]
+}

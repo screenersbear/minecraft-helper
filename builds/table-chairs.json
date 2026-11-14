@@ -1,0 +1,25 @@
+{
+  "name": "Table and chairs",
+  "difficulty": "Easy",
+  "group": "Room ideas",
+  "about": "A table for two with four chairs around it, for dinner with friends.",
+  "also": ["chairs", "dining table", "kitchen table"],
+  "key": {
+    "T": {"id": "oak_slab", "half": "top"},
+    "n": {"id": "spruce_stairs", "facing": "north"},
+    "s": {"id": "spruce_stairs", "facing": "south"},
+    "w": {"id": "spruce_stairs", "facing": "west"},
+    "e": {"id": "spruce_stairs", "facing": "east"}
+  },
+  "layers": [
+    {
+      "name": "Table and chairs",
+      "tip": "Two slabs placed high in their space make the table: aim at the top half of a block. Stairs make the chairs, with their tall back away from the table.",
+      "rows": [
+        ".nn.",
+        "wTTe",
+        ".ss."
+      ]
+    }
+  ]
+}
