@@ -1,7 +1,7 @@
 {
   "id": "make-boat",
   "title": "Make a boat",
-  "group": "Building",
+  "group": "Ocean",
   "topic": "item:oak_boat",
   "picture": "oak_boat",
   "askedAs": [

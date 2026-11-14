@@ -1,6 +1,6 @@
-// Home: the five pages you swipe between, Make, Ask, The book, Guides and Add-ons, under one top bar with five
-// squares. The app opens on Ask. Swiping (or tapping a square) slides to the next page and keeps the address up to
-// date (#/make, #/, #/book, #/guides, #/addons) without adding a step to Back.
+// Home: the four pages you swipe between, Ask, Make, The book and Guides, under one top bar with four squares. The
+// app opens on Ask, the first page, so kids only ever swipe one way to move on. Swiping (or tapping a square) slides
+// to the next page and keeps the address up to date (#/, #/make, #/book, #/guides) without adding a step to Back.
 import { el } from '../components/el.js';
 import { swipePanels } from '../components/swipe.js';
 import { pageDots } from '../components/page-dots.js';
@@ -9,17 +9,15 @@ import { makePanel } from './make.js';
 import { askPanel } from './ask.js';
 import { bookPanel } from './book.js';
 import { guidesPanel } from './guides.js';
-import { addonsPanel } from './addons.js';
 
 const PAGES = [
-  { page: 'make', name: 'Make', label: 'Make', build: makePanel },
   { page: 'ask', name: 'Ask', label: 'Bedrock guide', build: askPanel },
+  { page: 'make', name: 'Make', label: 'Make', build: makePanel },
   { page: 'book', name: 'The book', label: 'The book', build: bookPanel },
   { page: 'guides', name: 'Guides', label: 'Guides', build: guidesPanel },
-  { page: 'addons', name: 'Add-ons', label: 'Add-ons', build: addonsPanel },
 ];
 
-// Is this address one of the five home pages? (#/book is, #/book/tools is a page of the book.)
+// Is this address one of the four home pages? (#/book is, #/book/tools is a page of the book.)
 export const isHome = (route) => PAGES.some((p) => p.page === route.page) && !route.id;
 
 const hashOf = (i) => (PAGES[i].page === 'ask' ? '#/' : `#/${PAGES[i].page}`);
@@ -35,8 +33,8 @@ export function homePage(ctx, route) {
     at = i;
     label.textContent = PAGES[i].label;
     dots.show(i);
-    document.title = i === 1 ? 'Ask the guide' : `${PAGES[i].name} · Ask the guide`;
-    if (location.hash !== hashOf(i) && !(i === 1 && !location.hash)) location.replace(hashOf(i));
+    document.title = i === 0 ? 'Ask the guide' : `${PAGES[i].name} · Ask the guide`;
+    if (location.hash !== hashOf(i) && !(i === 0 && !location.hash)) location.replace(hashOf(i));
   };
   const swipe = swipePanels({ panels: panels.map((p) => p.node), index: at, onChange: settle });
   const dots = pageDots(
@@ -50,10 +48,9 @@ export function homePage(ctx, route) {
 
   const bar = el('header', { class: 'top-bar home-bar' }, label, el('div', { class: 'bar-right' }, dots.node, shelf.button));
   bar.append(shelf.panel);
-  const strip = el('div', { class: 'grass', 'aria-hidden': 'true' });
 
   return {
-    nodes: [bar, strip, swipe.node],
+    nodes: [bar, swipe.node],
     title: PAGES[at].page === 'ask' ? 'Ask' : PAGES[at].name,
     focusNode: () => panels[at].node.querySelector('h1'),
     // Another home page in the address (Back, a square, a link): slide to it instead of building everything again.

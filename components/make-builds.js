@@ -11,7 +11,7 @@ function tile(build, looks) {
   const total = totalOf(buildCounts(build));
   return el(
     'a',
-    { class: 'build-tile notch', href: toHash({ page: 'build', id: build.id }) },
+    { class: 'build-tile', href: toHash({ page: 'build', id: build.id }) },
     el('span', { class: 'tile-picture' }, buildPicture(build, looks, { w: 140, h: 100, label: '' })),
     el('b', {}, build.name),
     el('small', {}, `${build.difficulty} · ${total} block${total === 1 ? '' : 's'}`),

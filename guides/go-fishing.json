@@ -1,7 +1,7 @@
 {
   "id": "go-fishing",
   "title": "Go fishing",
-  "group": "Farming",
+  "group": "Ocean",
   "topic": "item:fishing_rod",
   "picture": "fishing_rod",
   "askedAs": [

@@ -31,7 +31,7 @@ export function recipePage(ctx, route) {
           label: `Another way (${way + 1} of ${ways.length})`,
           tone: 'grey',
           onClick: () => ctx.go(toHash({ page: 'recipe', id: route.id, q: route.q, from: route.from, way: (way + 1) % ways.length }), { replace: true }),
-          extra: { class: 'block-btn notch tone-grey small-btn' },
+          extra: { class: 'block-btn tone-grey small-btn' },
         })
       : null;
 

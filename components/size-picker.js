@@ -18,7 +18,7 @@ export function sizePicker(onPick) {
   const buttons = SIZES.map((n) =>
     el(
       'button',
-      { class: 'size-btn notch', type: 'button', 'aria-pressed': 'false', 'aria-label': `${n} by ${n}, ${blockCount(n)} blocks`, onclick: () => onPick(n) },
+      { class: 'size-btn', type: 'button', 'aria-pressed': 'false', 'aria-label': `${n} by ${n}, ${blockCount(n)} blocks`, onclick: () => onPick(n) },
       el('b', {}, String(n)),
       el('span', {}, blockCount(n)),
     ),

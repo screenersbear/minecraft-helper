@@ -1,33 +1,47 @@
-/* Buttons: square game buttons with notched corners and a darker bottom edge. */
-
-.notch {
-  clip-path: polygon(
-    0 6px, 6px 6px, 6px 0, calc(100% - 6px) 0, calc(100% - 6px) 6px, 100% 6px, 100% calc(100% - 6px),
-    calc(100% - 6px) calc(100% - 6px), calc(100% - 6px) 100%, 6px 100%, 6px calc(100% - 6px), 0 calc(100% - 6px)
-  );
-}
-
-.block-btn {
-  height: 64px;
-  width: 100%;
-  border: none;
-  padding: 0 12px 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--pixel);
-  font-weight: 700;
-  font-size: 21px;
-  line-height: 1;
-  text-decoration: none;
+/* Buttons: square game buttons with a black edge and a bevel (light top left, dark bottom right). Grey for most
+   things, green for the one thing to do next. */
+.block-btn,
+.photo-btn,
+.pick-btn,
+.menu-btn,
+.speaker-btn,
+.undo-btn,
+.talk-btn {
+  border: 2px solid var(--edge);
+  border-radius: 0;
+  background: var(--btn);
+  color: var(--white);
+  text-shadow: 2px 2px 0 var(--shade);
+  box-shadow: inset 3px 3px 0 var(--btn-hi), inset -3px -3px 0 var(--btn-lo);
+  font-family: var(--text);
   cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
   touch-action: manipulation;
 }
 
-.block-btn:active {
+.block-btn:active,
+.photo-btn:active,
+.pick-btn:active,
+.menu-btn:active,
+.speaker-btn:active,
+.undo-btn:active {
   transform: translateY(2px);
+  box-shadow: inset 3px 3px 0 var(--btn-lo), inset -3px -3px 0 var(--btn-hi);
+}
+
+.block-btn {
+  height: 60px;
+  width: 100%;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.1;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .block-btn:disabled {
@@ -37,31 +51,24 @@
 
 .small-btn {
   height: 52px;
-  font-size: 18px;
+  font-size: 15px;
 }
 
-.tone-mango {
-  background: var(--mango);
-  color: var(--ink);
-  box-shadow: inset 0 -8px 0 var(--mango-dark);
+.tone-green,
+.talk-btn {
+  background: var(--go);
+  text-shadow: 2px 2px 0 var(--go-lo);
+  box-shadow: inset 3px 3px 0 var(--go-hi), inset -3px -3px 0 var(--go-lo);
 }
 
-.tone-green {
-  background: var(--green);
-  color: var(--paper);
-  box-shadow: inset 0 -8px 0 var(--green-dark);
+.tone-green:active {
+  box-shadow: inset 3px 3px 0 var(--go-lo), inset -3px -3px 0 var(--go-hi);
 }
 
-.tone-grey {
-  background: var(--panel);
-  color: var(--ink);
-  box-shadow: inset 0 -8px 0 var(--slot);
-}
-
-.small-btn.tone-grey,
-.small-btn.tone-mango,
-.small-btn.tone-green {
-  box-shadow: inset 0 -6px 0 var(--slot);
+/* A picked choice (a timer, a size): a white edge, like a picked slot in the game. */
+.block-btn.is-on,
+.block-btn[aria-pressed='true'] {
+  border-color: var(--white);
 }
 
 .two-up,
@@ -84,39 +91,59 @@
   grid-template-columns: 2fr 1fr;
 }
 
-/* "Did you mean one of these?" buttons */
-.pick-btn {
+/* Big menu buttons with a picture: "Did you mean one of these?", guides in a chapter, Asked before */
+.pick-btn,
+.menu-btn {
   width: 100%;
-  min-height: 64px;
-  border: none;
-  background: var(--panel);
-  color: var(--ink);
-  box-shadow: inset 0 -6px 0 var(--slot);
+  min-height: 56px;
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 8px 16px 14px;
-  font: 700 18px/1.2 var(--text);
+  gap: 12px;
+  padding: 6px 12px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.25;
   text-align: left;
-  cursor: pointer;
+  text-decoration: none;
 }
 
-.pick-btn:active {
-  transform: translateY(2px);
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 8px;
 }
 
-/* The big mango talk button */
+.menu-words {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.menu-words b {
+  display: block;
+  font-weight: 400;
+}
+
+/* A small tag naming an add-on, like a game tooltip */
+.addon-tag {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 1px 6px;
+  background: var(--tip);
+  border: 2px solid var(--tip-edge);
+  color: var(--tip-text);
+  text-shadow: none;
+  font-size: 11px;
+  font-style: normal;
+}
+
+/* The big green talk button */
 .talk-btn {
-  width: 188px;
-  height: 188px;
-  border: none;
-  background: var(--mango);
-  color: var(--ink);
-  box-shadow: inset 0 -12px 0 var(--mango-dark);
+  width: 176px;
+  height: 176px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -125,8 +152,8 @@
 
 .talk-btn:active,
 .talk-btn.is-listening {
-  box-shadow: inset 0 -6px 0 var(--mango-dark);
   transform: translateY(3px);
+  box-shadow: inset 3px 3px 0 var(--go-lo), inset -3px -3px 0 var(--go-hi);
 }
 
 .talk-btn.is-listening {
@@ -135,35 +162,27 @@
 
 @keyframes listening {
   50% {
-    background: #ffe35c;
+    background: #4fa232;
   }
 }
 
 .talk-label {
-  font-family: var(--pixel);
   font-weight: 700;
-  font-size: 26px;
-  line-height: 1.1;
-  text-transform: uppercase;
+  font-size: 20px;
+  line-height: 1.2;
   text-align: center;
+  text-shadow: 2px 2px 0 var(--shade);
 }
 
-/* The dark speaker button next to an answer */
+/* The speaker button next to an answer */
 .speaker-btn {
   width: 52px;
   height: 52px;
   flex-shrink: 0;
-  border: none;
-  background: var(--ink);
-  color: var(--paper);
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-}
-
-.speaker-btn:active {
-  transform: translateY(2px);
 }
 
 @media (max-height: 700px) {
@@ -176,7 +195,7 @@
     height: 60px;
   }
   .talk-label {
-    font-size: 22px;
+    font-size: 18px;
   }
 }
 
@@ -192,7 +211,6 @@
   width: 72px;
   height: 72px;
   flex-shrink: 0;
-  box-shadow: inset 0 -8px 0 var(--mango-dark);
 }
 
 .talk-btn.talk-small svg {
@@ -205,7 +223,7 @@
 }
 
 .ask-more .talk-label {
-  font-size: 20px;
+  font-size: 17px;
   text-align: left;
 }
 
@@ -216,18 +234,11 @@
   font-size: 15px;
 }
 
-/* Undo: a plain outlined button, big enough to tap */
+/* Undo: a grey button, big enough to tap */
 .undo-btn {
   min-width: 96px;
   min-height: 48px;
   padding: 0 14px;
-  border: 3px solid var(--ink);
-  background: var(--paper);
-  color: var(--ink);
-  font: 700 18px/1 var(--pixel);
-  cursor: pointer;
-}
-
-.undo-btn:active {
-  transform: translateY(2px);
+  font-weight: 700;
+  font-size: 16px;
 }

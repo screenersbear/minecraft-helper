@@ -1,4 +1,4 @@
-// Talk button: the big mango button on the Ask screen. Hold it and talk, let go to ask. Kids let go the moment they
+// Talk button: the big green button on the Ask screen. Hold it and talk, let go to ask. Kids let go the moment they
 // stop talking, so after letting go it keeps listening a moment for the last words.
 // A quick tap works too: it listens until you stop talking, or until you tap again.
 // If the phone won't start listening the moment a finger goes down, it switches to tap to talk by itself.
@@ -22,8 +22,8 @@ const MESSAGES = {
 const HOLD = 400; // a press longer than this is a hold, shorter is a tap
 
 export function talkButton({ onQuestion, onNoMic, small = false, onStart, onIdle, about = 'more' }) {
-  const mic = icon('mic', small ? 36 : 76);
-  const button = el('button', { class: `talk-btn notch${small ? ' talk-small' : ''}`, type: 'button', 'aria-label': 'Hold to talk' }, mic);
+  const mic = icon('mic', small ? 36 : 80);
+  const button = el('button', { class: `talk-btn${small ? ' talk-small' : ''}`, type: 'button', 'aria-label': 'Hold to talk' }, mic);
   const label = el('div', { class: 'talk-label' });
   const heard = el('p', { class: 'heard', 'aria-live': 'polite' });
   let session = null;

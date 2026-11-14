@@ -1,8 +1,16 @@
 /* Slots: inventory boxes for recipes, lists of things with pictures, and build patterns for guides. */
 
-.panel {
+/* A light grey game panel with a bevel. Words on it are dark. */
+.panel,
+.panel-box {
   background: var(--panel);
-  padding: 8px;
+  color: var(--panel-text);
+  border: 2px solid var(--edge);
+  box-shadow: inset 3px 3px 0 var(--panel-hi), inset -3px -3px 0 var(--panel-lo);
+}
+
+.panel {
+  padding: 10px;
   display: grid;
   gap: 4px;
   align-self: center;
@@ -24,7 +32,7 @@
   width: var(--slot-size, 56px);
   height: var(--slot-size, 56px);
   background: var(--slot);
-  box-shadow: inset 3px 3px 0 var(--slot-shade);
+  box-shadow: inset 2px 2px 0 var(--slot-lo), inset -2px -2px 0 var(--slot-hi);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,9 +53,9 @@
   position: absolute;
   right: 4px;
   bottom: 1px;
-  font: 700 20px/1 var(--pixel);
-  color: var(--paper);
-  text-shadow: 2px 2px 0 var(--ink);
+  font: 700 18px/1 var(--pixel);
+  color: var(--white);
+  text-shadow: 2px 2px 0 var(--shade);
 }
 
 /* A recipe: where it's made, an arrow, what you get. Slots shrink a little on narrow phones. */
@@ -70,7 +78,7 @@
 
 .flame {
   display: flex;
-  color: var(--slot-shade);
+  color: var(--panel-lo);
 }
 
 /* Small pictures with words, two to a row */

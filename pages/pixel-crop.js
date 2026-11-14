@@ -118,7 +118,7 @@ export function pixelCropPage(ctx) {
   photoCanvas(file)
     .then((canvas) => {
       crop = cropBox(canvas, showPreview);
-      const zoom = (label, f) => el('button', { class: 'zoom-btn notch', type: 'button', 'aria-label': label, onclick: () => crop.zoomBy(f) }, f > 1 ? '+' : '-');
+      const zoom = (label, f) => el('button', { class: 'zoom-btn', type: 'button', 'aria-label': label, onclick: () => crop.zoomBy(f) }, f > 1 ? '+' : '-');
       stage.replaceChildren(crop.node, el('div', { class: 'zoom-row' }, zoom('Zoom out', 1 / 1.25), zoom('Zoom in', 1.25)));
       make.disabled = false;
       showPreview();

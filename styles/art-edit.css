@@ -46,15 +46,15 @@
   touch-action: pan-y;
 }
 
-/* The track is a dark bar, the handle a mango block. */
+/* The track is a black bar, the handle a yellow block. */
 .colour-slider::-webkit-slider-runnable-track {
   height: 8px;
-  background: var(--ink);
+  background: var(--edge);
 }
 
 .colour-slider::-moz-range-track {
   height: 8px;
-  background: var(--ink);
+  background: var(--edge);
 }
 
 .colour-slider::-webkit-slider-thumb {
@@ -62,21 +62,21 @@
   width: 28px;
   height: 36px;
   margin-top: -14px;
-  border: 3px solid var(--ink);
+  border: 3px solid var(--edge);
   border-radius: 0;
-  background: var(--mango);
+  background: var(--yellow);
 }
 
 .colour-slider::-moz-range-thumb {
   width: 22px;
   height: 30px;
-  border: 3px solid var(--ink);
+  border: 3px solid var(--edge);
   border-radius: 0;
-  background: var(--mango);
+  background: var(--yellow);
 }
 
 .colour-slider:focus-visible {
-  outline: 3px solid var(--ink);
+  outline: 3px solid var(--yellow);
   outline-offset: 2px;
 }
 
@@ -86,7 +86,7 @@
 
 /* A switch: a box that's filled when it's on, so on and off differ in shape too, not just colour. */
 .toggle-btn {
-  border: 3px solid var(--ink);
+  border: 2px solid var(--edge);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,8 +101,8 @@
 }
 
 .toggle-btn[aria-pressed='true']::before {
-  background: var(--mango);
-  border-color: var(--mango);
+  background: var(--yellow);
+  border-color: var(--yellow);
 }
 
 /* Blocks you need: each one a button that swaps it everywhere */
@@ -127,10 +127,10 @@
   width: 100%;
   min-height: 44px;
   padding: 4px 8px;
-  border: none;
+  border: 2px solid var(--edge);
   background: var(--panel);
-  box-shadow: inset 0 -4px 0 var(--slot);
-  color: var(--ink);
+  box-shadow: inset 2px 2px 0 var(--panel-hi), inset -2px -2px 0 var(--panel-lo);
+  color: var(--panel-text);
   font: 15px/1.2 var(--text);
   text-align: left;
   display: flex;
@@ -152,9 +152,9 @@
   max-height: 86vh;
   padding: 18px var(--side) calc(env(safe-area-inset-bottom) + 18px);
   border: none;
-  border-top: 4px solid var(--ink);
-  background: var(--paper);
-  color: var(--ink);
+  border-top: 3px solid var(--edge);
+  background: var(--panel);
+  color: var(--panel-text);
   overflow-y: auto;
 }
 
@@ -194,15 +194,15 @@
 }
 
 .block-pick[aria-pressed='true'] {
-  outline: 3px solid var(--ink);
+  outline: 3px solid var(--edge);
   outline-offset: 2px;
-  box-shadow: inset 0 0 0 3px var(--mango);
+  box-shadow: inset 0 0 0 3px var(--yellow);
 }
 
 @media (min-width: 600px) {
   .picker {
     max-width: 560px;
     margin: auto;
-    border: 4px solid var(--ink);
+    border: 3px solid var(--edge);
   }
 }

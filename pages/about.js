@@ -25,7 +25,7 @@ export function aboutPage(ctx) {
         'Recipes and facts',
         el('p', {}, 'Recipes, names, mob drops, mining tools, biomes, enchantments, food and potion effects come from ', link('https://github.com/PrismarineJS/minecraft-data', 'minecraft-data'), ' by PrismarineJS (MIT license). The guides, what each enchantment and effect does, and a few recipe fixes were written for this app and checked against ', link('https://minecraft.wiki', 'minecraft.wiki'), '.'),
       ),
-      section('Fonts', el('p', {}, 'Pixelify Sans and Atkinson Hyperlegible, both under the SIL Open Font License.')),
+      section('Fonts', el('p', {}, 'Monocraft by Idrees Hassan, under the SIL Open Font License.')),
       el('p', { class: 'note' }, 'Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.'),
     ),
   ];

@@ -150,7 +150,7 @@ const categories = buildCategories(items, answerable, blockIds, mobs, foodIds);
 
 // 5. Write everything.
 const atlas = writeAtlas(specs.map((s) => ({ ...s })), join(app, 'images/items.png'));
-copyFileSync(join(pack, 'assets/minecraft/textures/block/grass_block_side.png'), join(app, 'images/grass.png'));
+copyFileSync(join(pack, 'assets/minecraft/textures/block/dirt.png'), join(app, 'images/dirt.png'));
 const book = {
   made: new Date().toISOString().slice(0, 10),
   sources: 'Recipes, names, drops, mining, biomes, enchantments, food and effects: minecraft-data (PrismarineJS, MIT). Pictures: Pixel Perfection CE and Mineclonia (CC BY-SA 4.0)',

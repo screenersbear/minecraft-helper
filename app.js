@@ -30,6 +30,7 @@ import { infoPage } from './pages/info.js';
 import { fieldPage } from './pages/field.js';
 import { missingPage } from './pages/missing.js';
 import { addonAnswerPage } from './pages/addon-answer.js';
+import { chapterPage } from './pages/chapter.js';
 import { trailNav } from './components/trail.js';
 import { crumbsFor } from './logic/trail.js';
 import { isInfo, infoOf } from './logic/info.js';
@@ -53,11 +54,12 @@ function pictureFor(answer, book, guides) {
   return { kind: 'item', id: answer.target.id };
 }
 
-// Which screen an address shows. The five home pages (Make, Ask, The book, Guides, Add-ons) are one screen you swipe
-// across.
+// Which screen an address shows. The four home pages (Ask, Make, The book, Guides) are one screen you swipe across.
 function pageFor(route) {
   if (isHome(route)) return homePage;
   if (route.page === 'book') return bookPage;
+  // A chapter of the Guides page: #/guides/ocean.
+  if (route.page === 'guides') return chapterPage;
   // Pixel art: #/pixel/crop, then #/pixel/<id> for the result and #/pixel/<id>/<row> to build it.
   if (route.page === 'pixel') return route.id === 'crop' ? pixelCropPage : route.step ? pixelBuildPage : pixelResultPage;
   // Builds: #/build/<id> for the cover, #/build/<id>/<layer> to build it layer by layer.
@@ -78,10 +80,10 @@ function show(ctx) {
     if (location.hash && location.hash !== '#/') return location.replace('#/');
     view = homePage(ctx, route);
   }
-  // The breadcrumb (The Bloop › Inside the Bloop › The boss fight) goes under the top bar and its grass strip.
+  // The breadcrumb (The Bloop › Inside the Bloop › The boss fight) goes under the top bar.
   const nodes = view.nodes.filter(Boolean);
   const trail = trailNav(crumbsFor(route, ctx));
-  if (trail) nodes.splice(2, 0, trail);
+  if (trail) nodes.splice(1, 0, trail);
   root.replaceChildren(...nodes);
   document.title = view.title && view.title !== 'Ask' ? `${view.title} · Ask the guide` : 'Ask the guide';
   window.scrollTo(0, 0);

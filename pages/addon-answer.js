@@ -12,6 +12,7 @@ import { logQuestion } from '../data/questions-log.js';
 import { addonOf, addonKey, askFor, moreOf, besideOf, isSure, addonMissing, MAYBE } from '../logic/addon.js';
 import { findInAddon } from '../logic/addon-search.js';
 import { toHash, backHash } from '../logic/routes.js';
+import { addonHome } from '../logic/chapters.js';
 
 const NOT_YET = "I don't know that yet.";
 
@@ -25,7 +26,7 @@ export function askAddon(ctx, pack, question) {
     const missing = addonMissing(pack, q);
     logQuestion({ q, answer: missing, reason: 'missing', missing });
   }
-  ctx.go(toHash({ page: 'addon', id: addonKey(pack, id), q, from: 'addons' }));
+  ctx.go(toHash({ page: 'addon', id: addonKey(pack, id), q, from: addonHome(pack).slice(2) }));
 }
 
 export function addonAnswerPage(ctx, route) {
@@ -48,10 +49,10 @@ export function addonAnswerPage(ctx, route) {
     feedback: answer ? { question: route.q, answer: `${pack.name}: ${title}`, say, suggest: false } : false,
     talk: { onQuestion: (q) => askAddon(ctx, pack, q), about: `about ${pack.name}` },
   });
-  const allAbout = blockButton({ label: `All about ${pack.name}`, tone: 'grey', href: '#/addons', extra: { class: 'block-btn notch tone-grey small-btn' } });
+  const allAbout = blockButton({ label: `All about ${pack.name}`, tone: 'grey', href: addonHome(pack), extra: { class: 'block-btn tone-grey small-btn' } });
 
   const nodes = [
-    ...topBar({ left: { label: 'Back', href: backHash(route) }, right: 'Add-ons' }),
+    ...topBar({ left: { label: 'Back', href: backHash(route) }, right: pack.name }),
     el(
       'div',
       { class: 'page answer addon-answer' },

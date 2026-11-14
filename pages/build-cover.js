@@ -57,7 +57,7 @@ export function buildCoverPage(ctx, route) {
     el(
       'div',
       { class: 'page build-cover' },
-      el('div', { class: 'build-hero notch' }, buildPicture(build, ctx.builds.blocks, { w: 300, h: 200 })),
+      el('div', { class: 'build-hero' }, buildPicture(build, ctx.builds.blocks, { w: 300, h: 200 })),
       el('div', { class: 'title-row' }, el('h1', { class: 'answer-title', 'data-fit': '2', tabindex: '-1' }, build.name), speakerButton(actions.again)),
       el('p', { class: 'build-meta' }, buildTags(build), el('span', {}, sizeText(build))),
       el('p', { class: 'say' }, build.about),

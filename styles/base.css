@@ -1,45 +1,52 @@
-/* Base: colours, fonts, the page, the top bar with its grass strip, and pictures. */
+/* Base: colours, the font, the page on its dirt ground, the top bar, and pictures.
+   The look (Version 2, approved 2026-11-14): a game menu. Dark dirt behind everything, white words with a hard
+   shadow, grey bevelled buttons, light grey panels with dark words, and Minecraft yellow for what's picked. */
 
 @font-face {
-  font-family: 'Pixelify Sans';
-  font-weight: 500;
-  font-display: swap;
-  src: url(../fonts/pixelify-sans-latin-500-normal.woff2) format('woff2');
-}
-@font-face {
-  font-family: 'Pixelify Sans';
-  font-weight: 700;
-  font-display: swap;
-  src: url(../fonts/pixelify-sans-latin-700-normal.woff2) format('woff2');
-}
-@font-face {
-  font-family: 'Atkinson Hyperlegible';
+  font-family: 'Monocraft';
   font-weight: 400;
   font-display: swap;
-  src: url(../fonts/atkinson-hyperlegible-latin-400-normal.woff2) format('woff2');
+  src: url(../fonts/monocraft-400.woff2) format('woff2');
 }
 @font-face {
-  font-family: 'Atkinson Hyperlegible';
+  font-family: 'Monocraft';
   font-weight: 700;
   font-display: swap;
-  src: url(../fonts/atkinson-hyperlegible-latin-700-normal.woff2) format('woff2');
+  src: url(../fonts/monocraft-700.woff2) format('woff2');
 }
 
 :root {
-  --ink: #313d45;
-  --paper: #fafaf7;
+  /* Words on the dirt ground */
   --white: #ffffff;
+  --soft: #e0e0e0;
+  --yellow: #ffff55;
+  --shade: #3f3f3f;
+  --edge: #000000;
+  /* Light panels and the dark words on them */
   --panel: #c6c6c6;
+  --panel-text: #3f3f3f;
+  --panel-hi: #ffffff;
+  --panel-lo: #555555;
+  /* Grey buttons */
+  --btn: #6f6f6f;
+  --btn-hi: #ababab;
+  --btn-lo: #484848;
+  /* The green "go" button */
+  --go: #3c8527;
+  --go-hi: #6cc349;
+  --go-lo: #2a641c;
+  /* Inventory slots */
   --slot: #8b8b8b;
-  --slot-shade: #555e63;
-  --green: #13803f;
-  --green-dark: #0c5a2b;
-  --mango: #ffd100;
-  --mango-dark: #d9a900;
-  --pixel: 'Pixelify Sans', ui-rounded, system-ui, sans-serif;
-  --text: 'Atkinson Hyperlegible', system-ui, sans-serif;
-  --side: 24px;
-  color-scheme: light;
+  --slot-hi: #ffffff;
+  --slot-lo: #373737;
+  /* Tooltips (add-on tags, tips) */
+  --tip: #100010;
+  --tip-edge: #2d0a63;
+  --tip-text: #d9b3ff;
+  --pixel: 'Monocraft', ui-monospace, monospace;
+  --text: 'Monocraft', ui-monospace, monospace;
+  --side: 20px;
+  color-scheme: dark;
 }
 
 * {
@@ -57,17 +64,31 @@ body {
 
 html {
   -webkit-text-size-adjust: 100%;
-  background: var(--ink);
+  background: #1b1510;
 }
 
 body {
   margin: 0;
-  background: var(--paper);
-  color: var(--ink);
+  position: relative;
+  z-index: 0;
+  color: var(--white);
   font-family: var(--text);
-  font-size: 17px;
-  line-height: 1.4;
+  font-size: 16px;
+  line-height: 1.45;
   -webkit-tap-highlight-color: transparent;
+}
+
+/* The dirt ground, darkened, on its own layer so its sharp pixels don't change how photos are drawn. */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url(../images/dirt.png) 0 0 / 64px 64px;
+  image-rendering: pixelated;
 }
 
 #app {
@@ -78,7 +99,6 @@ body {
   flex-direction: column;
   max-width: 560px;
   margin: 0 auto;
-  background: var(--paper);
 }
 
 h1,
@@ -88,11 +108,11 @@ p {
 }
 
 a {
-  color: var(--green);
+  color: var(--yellow);
 }
 
 :focus-visible {
-  outline: 3px solid var(--green);
+  outline: 3px solid var(--yellow);
   outline-offset: 2px;
 }
 
@@ -100,45 +120,43 @@ h1:focus {
   outline: none;
 }
 
-.loading {
-  padding: 48px var(--side);
-  font-family: var(--pixel);
-  font-size: 20px;
+/* Big words on the ground: white with a hard shadow, like a game menu. */
+.shadow-text,
+h1 {
+  text-shadow: 3px 3px 0 var(--shade);
 }
 
-/* Top bar and the grass strip under it */
+.loading {
+  padding: 48px var(--side);
+  font-size: 18px;
+}
+
+/* Top bar: Back on the left, where you are on the right, right on the dirt. */
 .top-bar {
-  background: var(--ink);
-  color: var(--paper);
-  padding: calc(env(safe-area-inset-top) + 14px) var(--side) 14px;
+  padding: calc(env(safe-area-inset-top) + 16px) var(--side) 8px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  font-family: var(--pixel);
-  font-size: 15px;
+  align-items: center;
+  font-size: 14px;
   line-height: 1.2;
+  color: var(--soft);
 }
 
 .top-link {
-  color: var(--paper);
+  color: var(--white);
   text-decoration: none;
+  text-shadow: 2px 2px 0 var(--shade);
   background: none;
   border: none;
   font: inherit;
-  padding: 12px 16px 12px 0;
-  margin: -12px 0;
+  font-weight: 700;
+  padding: 14px 16px 14px 0;
+  margin: -14px 0;
   cursor: pointer;
 }
 
-.grass {
-  height: 32px;
-  background: url(../images/grass.png) 0 0 / 32px 32px repeat-x;
-  image-rendering: pixelated;
-}
-
-.stone-strip {
-  height: 12px;
-  background: var(--panel);
+.top-link::before {
+  content: '\2039  ';
 }
 
 /* Pictures: one big image, each picture picked out with background-position */
@@ -154,9 +172,9 @@ h1:focus {
 
 /* No picture yet: its first letters on a pale square */
 .pic-none {
-  background: #e6e6e1;
-  box-shadow: inset 0 0 0 2px var(--slot-shade);
-  color: var(--ink);
+  background: var(--panel);
+  box-shadow: inset 0 0 0 2px var(--panel-lo);
+  color: var(--panel-text);
   font: 700 calc(var(--s) * 0.38) / var(--s) var(--pixel);
   text-align: center;
   overflow: hidden;
@@ -176,6 +194,7 @@ h1:focus {
   font-size: 13px;
   font-weight: 400;
   line-height: 1.35;
+  color: var(--soft);
 }
 
 .note,

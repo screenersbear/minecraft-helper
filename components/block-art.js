@@ -56,14 +56,14 @@ export function blockArt(book, art, { done = 0, current = 0, picked = -1, onTap 
       }
     });
     c.globalAlpha = 1;
-    // The row being built, or the square being changed: a mango line with dark edges just outside it, easy to
+    // The row being built, or the square being changed: a yellow line with black edges just outside it, easy to
     // see on any colour.
     const ring = (x, y, w, h) => {
       c.lineWidth = 5;
-      c.strokeStyle = '#313d45';
+      c.strokeStyle = '#000000';
       c.strokeRect(x - 2.5, y - 2.5, w + 5, h + 5);
       c.lineWidth = 2;
-      c.strokeStyle = '#ffd100';
+      c.strokeStyle = '#ffff55';
       c.strokeRect(x - 2.5, y - 2.5, w + 5, h + 5);
     };
     if (current) ring(PAD, PAD + (art.size - current) * CELL, px, CELL);

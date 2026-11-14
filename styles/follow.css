@@ -5,7 +5,7 @@ a.mention {
   color: inherit;
   text-decoration: underline;
   text-decoration-thickness: 2px;
-  text-decoration-color: var(--mango-dark);
+  text-decoration-color: var(--yellow);
   text-underline-offset: 3px;
   /* A taller place to tap than the line itself, without moving the lines apart. */
   padding: 10px 0;
@@ -14,7 +14,7 @@ a.mention {
 }
 
 a.mention:active {
-  background: var(--mango);
+  color: var(--yellow);
 }
 
 .dig-deeper {
@@ -27,8 +27,8 @@ a.mention:active {
 .dig-btn {
   height: auto;
   min-height: 56px;
-  padding: 8px 14px 14px;
-  font-size: 18px;
+  padding: 8px 14px;
+  font-size: 15px;
   line-height: 1.15;
   text-align: center;
 }
@@ -37,12 +37,27 @@ a.mention:active {
   padding-top: 16px;
 }
 
-/* The Guides page, in groups */
-.guide-group h2 {
-  padding-top: 20px;
+/* A chapter of the Guides page: its picture and name, then its guides */
+.chapter-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
   padding-bottom: 6px;
 }
 
-.guide-group .guide-rows {
-  padding-top: 0;
+.slot.big-slot {
+  --slot-size: 72px;
+  border: 2px solid var(--edge);
+}
+
+.chapter-page .small-label {
+  padding-top: 14px;
+}
+
+.chapter-head .small-label {
+  padding-top: 2px;
+}
+
+.chapter-page .menu-list:last-child {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 24px);
 }

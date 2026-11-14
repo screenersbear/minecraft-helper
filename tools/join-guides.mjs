@@ -4,14 +4,15 @@ import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { plainText } from '../logic/links.js';
+import { CHAPTERS } from '../data/chapters.js';
 
 const app = join(dirname(fileURLToPath(import.meta.url)), '..');
 const book = JSON.parse(readFileSync(join(app, 'data/book.json'), 'utf8'));
 const problems = [];
 const warn = (guide, msg) => problems.push(`${guide}: ${msg}`);
 
-// The groups on the Guides page, in order.
-const GROUPS = ['Getting started', 'Finding things', 'Animals', 'Farming', 'Building', 'Redstone', 'Nether and End', 'Magic', 'Villagers', 'Danger'];
+// The chapters on the Guides page, in order: a guide's "group" is its chapter's name.
+const GROUPS = CHAPTERS.map((c) => c.name);
 
 const guides = [];
 for (const file of readdirSync(join(app, 'guides')).filter((f) => f.endsWith('.json')).sort()) {

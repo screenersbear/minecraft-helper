@@ -35,7 +35,7 @@ export function missingPage(ctx, route) {
       el('h2', { class: 'small-label known-label' }, "Here's what I know"),
       el('div', { class: 'card-row' }, el('div', { class: 'panel' }, el('div', { class: 'slot big' }, targetPicture(book, guides, target, 96)))),
       known ? linkedText(ctx, known) : null,
-      el('div', { class: 'another' }, blockButton({ label: 'All about it', tone: 'grey', href: hashForAnswer({ type, target }, ''), extra: { class: 'block-btn notch tone-grey small-btn' } })),
+      el('div', { class: 'another' }, blockButton({ label: 'All about it', tone: 'grey', href: hashForAnswer({ type, target }, ''), extra: { class: 'block-btn tone-grey small-btn' } })),
       footer.node,
     ),
   ];

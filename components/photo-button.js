@@ -7,7 +7,7 @@ import { icon } from './icons.js';
 export function photoButton({ label, pic, tone, camera, onPhoto }) {
   const input = el('input', { type: 'file', accept: 'image/*', class: 'file-input', capture: camera ? 'environment' : null });
   input.addEventListener('change', () => input.files?.[0] && onPhoto(input.files[0]));
-  return el('label', { class: `photo-btn notch tone-${tone}` }, icon(pic, 36), el('span', {}, label), input);
+  return el('label', { class: `photo-btn tone-${tone}` }, icon(pic, 36), el('span', {}, label), input);
 }
 
 // The two buttons side by side: Take a photo and Pick a photo.

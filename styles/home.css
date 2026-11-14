@@ -30,16 +30,17 @@
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
-  background: var(--slot);
+  width: 12px;
+  height: 12px;
+  background: var(--panel-lo);
+  border: 2px solid var(--edge);
 }
 
 .dot-btn.on .dot {
-  background: var(--mango);
+  background: var(--yellow);
 }
 
-/* The five pages sit in a row; only one shows. */
+/* The four pages sit in a row; only one shows. */
 .swipe {
   flex: 1 1 auto;
   min-height: 0;
@@ -65,24 +66,30 @@
   -webkit-user-select: none;
 }
 
-.home-title {
-  font-family: var(--pixel);
+.home-title,
+.page-title {
   font-weight: 700;
-  font-size: 52px;
-  line-height: 1;
+  font-size: 30px;
+  line-height: 1.1;
   text-transform: uppercase;
+}
+
+.page-title {
+  font-size: 28px;
 }
 
 .home-intro {
   margin-top: 6px;
-  font-size: 16px;
+  font-size: 13px;
+  color: var(--soft);
 }
 
 .swipe-hint {
   margin-top: auto;
   padding: 24px 0 calc(env(safe-area-inset-bottom) + 24px);
-  font-size: 13px;
+  font-size: 12px;
   text-align: center;
+  color: var(--soft);
 }
 
 /* The book's eight tiles */
@@ -96,17 +103,17 @@
 .cat-tile {
   height: 112px;
   background: var(--panel);
-  color: var(--ink);
-  box-shadow: inset 0 -6px 0 var(--slot);
+  color: var(--panel-text);
+  border: 2px solid var(--edge);
+  box-shadow: inset 3px 3px 0 var(--panel-hi), inset -3px -3px 0 var(--panel-lo);
   text-decoration: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  font-family: var(--pixel);
   font-weight: 700;
-  font-size: 18px;
+  font-size: 15px;
   touch-action: manipulation;
 }
 
@@ -129,10 +136,11 @@
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  color: var(--ink);
+  color: var(--white);
+  text-shadow: 2px 2px 0 var(--shade);
   text-decoration: none;
   text-align: center;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.2;
   touch-action: manipulation;
 }
@@ -145,34 +153,46 @@
   overflow-wrap: anywhere;
 }
 
-/* Guides, one row each */
-.guide-rows {
-  display: flex;
-  flex-direction: column;
+/* Guides: the chapter tiles, two to a row */
+.chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
   padding-top: 16px;
 }
 
-.guide-row {
+.chapter-tile {
   display: flex;
   align-items: center;
-  gap: 14px;
-  min-height: 56px;
-  border-top: 3px solid var(--ink);
-  color: var(--ink);
+  gap: 8px;
+  min-height: 88px;
+  padding: 8px;
   text-decoration: none;
   touch-action: manipulation;
 }
 
-.guide-row:last-child {
-  border-bottom: 3px solid var(--ink);
+.chapter-tile:active {
+  transform: translateY(2px);
 }
 
-.guide-row b {
-  flex-grow: 1;
-  font-size: 17px;
+.chapter-tile .slot {
+  --slot-size: 44px;
+  flex-shrink: 0;
 }
 
-.guide-row span:last-child {
+.chapter-words {
+  min-width: 0;
+}
+
+.chapter-words b {
+  display: block;
   font-size: 13px;
-  white-space: nowrap;
+  line-height: 1.15;
+}
+
+.chapter-words small {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  line-height: 1.3;
 }

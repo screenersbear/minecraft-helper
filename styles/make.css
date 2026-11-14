@@ -15,9 +15,8 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  font-family: var(--pixel);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 17px;
   cursor: pointer;
   touch-action: manipulation;
 }
@@ -32,7 +31,7 @@
 }
 
 .photo-btn:focus-within {
-  outline: 3px solid var(--green);
+  outline: 3px solid var(--yellow);
   outline-offset: 2px;
 }
 
@@ -54,10 +53,11 @@
 
 .size-btn {
   height: 72px;
-  border: none;
-  background: var(--panel);
-  color: var(--ink);
-  box-shadow: inset 0 -6px 0 var(--slot);
+  border: 2px solid var(--edge);
+  background: var(--btn);
+  color: var(--white);
+  text-shadow: 2px 2px 0 var(--shade);
+  box-shadow: inset 3px 3px 0 var(--btn-hi), inset -3px -3px 0 var(--btn-lo);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -69,8 +69,7 @@
 }
 
 .size-btn b {
-  font-family: var(--pixel);
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .size-btn span {
@@ -84,9 +83,10 @@
 }
 
 .size-btn[aria-pressed='true'] {
-  background: var(--green);
-  color: var(--paper);
-  box-shadow: inset 0 -6px 0 var(--green-dark);
+  background: var(--go);
+  color: var(--white);
+  text-shadow: 2px 2px 0 var(--go-lo);
+  box-shadow: inset 3px 3px 0 var(--go-hi), inset -3px -3px 0 var(--go-lo);
 }
 
 .my-art {
@@ -102,14 +102,14 @@
   align-items: center;
   gap: 14px;
   min-height: 64px;
-  border-top: 3px solid var(--ink);
-  color: var(--ink);
+  margin-bottom: 6px;
+  padding: 6px 12px 6px 6px;
+  background: var(--panel);
+  border: 2px solid var(--edge);
+  box-shadow: inset 3px 3px 0 var(--panel-hi), inset -3px -3px 0 var(--panel-lo);
+  color: var(--panel-text);
   text-decoration: none;
   touch-action: manipulation;
-}
-
-.art-row:last-child {
-  border-bottom: 3px solid var(--ink);
 }
 
 .art-thumb {
@@ -125,7 +125,7 @@
 }
 
 .art-text b {
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .art-text small {
@@ -133,9 +133,8 @@
 }
 
 .art-go {
-  font-family: var(--pixel);
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
   white-space: nowrap;
 }
 
@@ -147,7 +146,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: var(--ink);
-  font-size: 15px;
+  color: var(--yellow);
+  font-size: 14px;
   font-weight: 700;
 }

@@ -7,9 +7,9 @@ import { itemPicture } from './picture.js';
 export function shelfMenu(book, items) {
   const panel = el(
     'nav',
-    { class: 'shelf notch', id: 'shelf', hidden: true, 'aria-label': 'Shelf' },
+    { class: 'shelf', id: 'shelf', hidden: true, 'aria-label': 'Shelf' },
     items.map(({ label, href, pic }) =>
-      el('a', { class: 'block-btn small-btn tone-grey notch shelf-item', href }, itemPicture(book, pic, 32), el('span', {}, label)),
+      el('a', { class: 'block-btn small-btn tone-grey shelf-item', href }, itemPicture(book, pic, 32), el('span', {}, label)),
     ),
   );
   const button = el(

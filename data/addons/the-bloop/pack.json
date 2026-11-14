@@ -3,6 +3,8 @@
   "name": "The Bloop",
   "by": "Mythicus",
   "colour": "#0f4c6b",
+  "chapter": "ocean",
+  "pics": { "what": "nautilus_shell", "inside": "compass", "boss": "diamond_sword", "creatures": "pufferfish", "changed": "prismarine_shard", "gear": "turtle_helmet", "villages": "prismarine_bricks" },
   "game": "Bedrock 1.21.120 and newer, add-on version 1.0.9",
   "checked": "2026-11-14",
   "sources": {
@@ -13,7 +15,7 @@
   "topics": ["what", "inside", "boss", "creatures", "changed", "gear", "villages"],
   "answers": {
     "what": {
-      "title": "What is it?",
+      "title": "What is the Bloop?",
       "say": "The Bloop is a giant sea monster. It's not in the regular game: it comes from an add-on by Mythicus. It hunts players in the oceans of your world, and it's about 50 times bigger than you.",
       "words": ["bloop", "giant", "big", "size", "hunt", "live", "addon", "add"],
       "from": ["article", "store"],

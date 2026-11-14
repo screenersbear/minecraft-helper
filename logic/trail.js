@@ -7,6 +7,7 @@ import { targetName } from './target-name.js';
 import { isInfo } from './info.js';
 import { fieldForKind } from './fields.js';
 import { addonOf, askFor } from './addon.js';
+import { addonHome } from './chapters.js';
 
 // A fact's short name in the trail, when the step before is about the same thing.
 const SHORT = { where: 'Where', eats: 'Food', tame: 'Taming', breed: 'Breeding', gifts: 'Gifts', dangerous: 'Danger', uses: 'Uses' };
@@ -55,5 +56,5 @@ export function crumbsFor(route, ctx) {
   const found = addonOf(ctx.addons, route.id);
   if (!found) return [];
   // A question the add-on has nothing for: just its name, with nothing after it.
-  return [{ label: found.pack.name, href: '#/addons' }, ...(found.id ? crumbs : [])];
+  return [{ label: found.pack.name, href: addonHome(found.pack) }, ...(found.id ? crumbs : [])];
 }

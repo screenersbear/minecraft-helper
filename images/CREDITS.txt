@@ -1,4 +1,4 @@
-Pictures in this folder (items.png, grass.png and the icon-*.png files) are made from
+Pictures in this folder (items.png, dirt.png, build-blocks.png and the icon-*.png files) are made from
 Pixel Perfection CE by XSSheep and contributors: https://github.com/Athemis/PixelPerfectionCE
 License: Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0), https://creativecommons.org/licenses/by-sa/4.0/
 

@@ -8,12 +8,13 @@
 
 .progress span {
   flex-grow: 1;
-  height: 10px;
-  background: var(--panel);
+  height: 12px;
+  background: var(--btn-lo);
+  border: 2px solid var(--edge);
 }
 
 .progress span.done {
-  background: var(--green);
+  background: var(--go-hi);
 }
 
 .step-head {
@@ -23,18 +24,17 @@
 }
 
 .step-number {
-  font-family: var(--pixel);
   font-weight: 700;
-  font-size: 120px;
+  font-size: 96px;
+  color: var(--yellow);
   line-height: 0.8;
 }
 
 .step-title {
   margin-top: 4px;
-  font-family: var(--pixel);
   font-weight: 700;
-  font-size: 38px;
-  line-height: 1;
+  font-size: 26px;
+  line-height: 1.15;
   text-transform: uppercase;
 }
 
@@ -44,9 +44,10 @@
 
 @media (max-height: 700px) {
   .step-number {
-    font-size: 96px;
+    font-size: 80px;
   }
+
   .step-title {
-    font-size: 32px;
+    font-size: 22px;
   }
 }

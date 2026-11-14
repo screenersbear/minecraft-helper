@@ -35,7 +35,7 @@ export function fieldPage(ctx, route) {
   const kind = route.kind || questionKind(route.q);
   const guide = entry.guide && guides.find((g) => g.id === entry.guide);
   const type = answerType(target, book, guides);
-  const small = (label, href) => blockButton({ label, tone: 'grey', href, extra: { class: 'block-btn notch tone-grey small-btn' } });
+  const small = (label, href) => blockButton({ label, tone: 'grey', href, extra: { class: 'block-btn tone-grey small-btn' } });
   const extras = [
     guide && [guide.title, toHash({ page: 'guide', id: guide.id, step: 1, q: route.q })],
     MORE[type] && [MORE[type], hashForAnswer({ type, target }, '')],

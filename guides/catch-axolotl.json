@@ -1,7 +1,7 @@
 {
   "id": "catch-axolotl",
   "title": "Catch an axolotl in a bucket",
-  "group": "Animals",
+  "group": "Ocean",
   "topic": "mob:axolotl",
   "picture": "water_bucket",
   "askedAs": [

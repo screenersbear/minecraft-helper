@@ -33,7 +33,7 @@ export function openBlockPicker(book, { title, ids, current, onPick, onClose }) 
   dialog.append(
     el('h2', { class: 'picker-title' }, title),
     el('div', { class: 'picker-blocks' }, sections),
-    el('button', { class: 'block-btn small-btn tone-grey notch', type: 'button', onclick: close }, 'Cancel'),
+    el('button', { class: 'block-btn small-btn tone-grey', type: 'button', onclick: close }, 'Cancel'),
   );
   // Tapping outside the panel closes it too.
   dialog.addEventListener('click', (e) => {

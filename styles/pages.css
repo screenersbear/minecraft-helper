@@ -20,17 +20,33 @@
 
 /* Ask */
 .ask-intro {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  position: relative;
+  padding-top: 8px;
+  text-align: center;
+}
+
+/* "Ask me anything!": a yellow line tilted over the corner of the title, like a game's title screen. */
+.splash {
+  position: absolute;
+  right: 0;
+  bottom: -14px;
+  transform: rotate(-14deg);
+  color: var(--yellow);
+  text-shadow: 2px 2px 0 #3f3f15;
   font-size: 15px;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.talk-btn svg {
+  filter: drop-shadow(3px 3px 0 var(--go-lo));
 }
 
 .ask-title {
-  font-family: var(--pixel);
   font-weight: 700;
-  font-size: 64px;
-  line-height: 0.95;
+  font-size: 44px;
+  line-height: 1.05;
+  letter-spacing: 1px;
   text-transform: uppercase;
   user-select: none;
   -webkit-user-select: none;
@@ -51,7 +67,8 @@
   min-height: 1.4em;
   max-width: 300px;
   text-align: center;
-  font-size: 16px;
+  font-size: 15px;
+  color: var(--soft);
 }
 
 .type-it input {
@@ -59,19 +76,24 @@
   width: 100%;
   height: 48px;
   margin-top: 6px;
-  border: 3px solid var(--ink);
+  border: 2px solid #a0a0a0;
   border-radius: 0;
-  background: var(--white);
-  padding: 0 14px;
+  background: var(--edge);
+  padding: 0 12px;
   font: inherit;
   font-size: 16px;
-  color: var(--ink);
+  color: var(--white);
   -webkit-appearance: none;
   appearance: none;
 }
 
 .type-it input::placeholder {
-  color: #6b747a;
+  color: #a0a0a0;
+}
+
+.type-it input:focus {
+  border-color: var(--white);
+  outline: none;
 }
 
 .asked-before {
@@ -84,24 +106,28 @@
   margin-bottom: 6px;
 }
 
+/* Asked before: grey game buttons, one per question */
 .recent-row {
   display: flex;
   gap: 12px;
   align-items: center;
-  min-height: 52px;
-  border: none;
-  border-top: 3px solid var(--ink);
-  background: none;
-  padding: 6px 0;
-  color: var(--ink);
+  min-height: 48px;
+  margin-bottom: 6px;
+  padding: 6px 12px;
+  border: 2px solid var(--edge);
+  background: var(--btn);
+  box-shadow: inset 3px 3px 0 var(--btn-hi), inset -3px -3px 0 var(--btn-lo);
+  color: var(--white);
+  text-shadow: 2px 2px 0 var(--shade);
   font: inherit;
-  font-size: 16px;
+  font-size: 15px;
   text-align: left;
   cursor: pointer;
+  touch-action: manipulation;
 }
 
-.recent-row:last-of-type {
-  border-bottom: 3px solid var(--ink);
+.recent-row:active {
+  transform: translateY(2px);
 }
 
 /* Answers: recipe, mob, fact */
@@ -119,9 +145,8 @@
 }
 
 .answer-title {
-  font-family: var(--pixel);
   font-weight: 700;
-  font-size: 64px;
+  font-size: 40px;
   line-height: 1;
   text-transform: uppercase;
   min-width: 0;
@@ -130,7 +155,8 @@
 
 .say {
   margin-top: 2px;
-  font-size: 17px;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .answer .note {
@@ -148,9 +174,9 @@
 }
 
 .feedback-q {
-  font-family: var(--pixel);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 18px;
+  text-shadow: 2px 2px 0 var(--shade);
   text-align: center;
 }
 
@@ -167,30 +193,34 @@
   padding: 3px 8px;
   white-space: nowrap;
   background: var(--panel);
+  color: var(--panel-text);
+  border: 2px solid var(--edge);
 }
 
 .kind-hostile,
 .tag-mango {
-  background: var(--mango);
+  background: var(--yellow);
 }
 
 .kind-passive {
-  background: var(--green);
-  color: var(--paper);
+  background: var(--go);
+  color: var(--white);
 }
 
 .kind-boss {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--tip);
+  border-color: var(--tip-edge);
+  color: var(--tip-text);
 }
 
 /* Short phones like the iPhone SE: smaller headings so more fits without scrolling */
 @media (max-height: 700px) {
   .ask-title {
-    font-size: 52px;
+    font-size: 38px;
   }
+
   .answer-title {
-    font-size: 52px;
+    font-size: 34px;
   }
   .talk-area {
     padding: 14px 0;
@@ -211,7 +241,7 @@
 
 .why-grid .block-btn {
   height: 72px;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.1;
   text-align: center;
 }
@@ -234,7 +264,7 @@
 }
 
 .slot-link:focus-visible {
-  outline: 3px solid var(--mango);
+  outline: 3px solid var(--yellow);
   outline-offset: 2px;
 }
 

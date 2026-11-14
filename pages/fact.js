@@ -44,7 +44,7 @@ export function factPage(ctx, route) {
     : [];
   const canMake = (book.recipes[route.id] || []).length > 0;
   const target = { type: 'item', id: route.id };
-  const small = (label, href) => blockButton({ label, tone: 'grey', href, extra: { class: 'block-btn notch tone-grey small-btn' } });
+  const small = (label, href) => blockButton({ label, tone: 'grey', href, extra: { class: 'block-btn tone-grey small-btn' } });
   const more = [
     canMake ? small('How to make it', toHash({ page: 'recipe', id: route.id, q: route.q, from: route.from })) : null,
   ].filter(Boolean);

@@ -1,4 +1,4 @@
-// Ask: the page the app opens on (one of the five home pages). Hold the mango button and ask, or type it.
+// Ask: the page the app opens on (the first of the four home pages). Hold the green button and ask, or type it.
 // "Asked before" shows the last few questions. A long press on the title opens the grown-ups screen.
 import { el } from '../components/el.js';
 import { talkButton } from '../components/talk-button.js';
@@ -70,7 +70,7 @@ export function askPanel(ctx) {
   const node = el(
     'div',
     { class: 'page ask' },
-    el('div', { class: 'ask-intro' }, el('p', {}, 'Ask me anything about the game.'), title),
+    el('div', { class: 'ask-intro' }, title, el('p', { class: 'splash', 'aria-hidden': 'true' }, 'Ask me anything!')),
     el('div', { class: 'talk-area' }, talk.nodes),
     form,
     askedBefore(ctx),

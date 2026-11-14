@@ -41,7 +41,7 @@ const TYPES = {
     extra(book, b, route) {
       const snowy = book.biomes[b.snowy];
       if (!snowy || b.weather === 'snow') return null;
-      return el('div', { class: 'another' }, blockButton({ label: snowy.name, href: toHash({ page: 'biome', id: b.snowy, q: route.q, from: route.from }), extra: { class: 'block-btn notch tone-grey small-btn' } }));
+      return el('div', { class: 'another' }, blockButton({ label: snowy.name, href: toHash({ page: 'biome', id: b.snowy, q: route.q, from: route.from }), extra: { class: 'block-btn tone-grey small-btn' } }));
     },
   },
   enchant: {

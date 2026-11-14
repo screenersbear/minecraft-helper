@@ -7,7 +7,7 @@ export function bookPanel(ctx) {
   const tile = (c) =>
     el(
       'a',
-      { class: 'cat-tile notch', href: `#/book/${c.id}` },
+      { class: 'cat-tile', href: `#/book/${c.id}` },
       c.mob ? mobPicture(ctx.book, c.mob, 48) : itemPicture(ctx.book, c.pic, 48),
       el('span', {}, c.name),
     );

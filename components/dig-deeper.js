@@ -11,7 +11,7 @@ import { deeperHash } from '../logic/routes.js';
 export function digDeeper(items, here = location.hash) {
   if (!items.length) return null;
   const button = (item) => {
-    const link = blockButton({ label: item.label, tone: 'grey', href: deeperHash(item.hash, here), extra: { class: 'block-btn notch tone-grey dig-btn' } });
+    const link = blockButton({ label: item.label, tone: 'grey', href: deeperHash(item.hash, here), extra: { class: 'block-btn tone-grey dig-btn' } });
     if (item.missing) link.addEventListener('click', () => logQuestion({ q: item.label, answer: item.missing, reason: 'missing', missing: item.missing }));
     return link;
   };
