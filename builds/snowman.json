@@ -1,0 +1,115 @@
+{
+  "name": "Snowman",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A big snowman with a red scarf, an orange nose and a black hat.",
+  "also": ["snow man", "snowman statue"],
+  "key": {
+    "S": "snow_block",
+    "K": "black_wool",
+    "R": "red_wool",
+    "O": "orange_wool",
+    "f": "oak_fence"
+  },
+  "layers": [
+    {
+      "name": "Bottom",
+      "tip": "Snow blocks in this round shape. Dig snow with a shovel to get snowballs: 4 snowballs make a snow block.",
+      "rows": [
+        ".SSS.",
+        "SSSSS",
+        "SSSSS",
+        "SSSSS",
+        ".SSS."
+      ]
+    },
+    {
+      "name": "Top of the bottom",
+      "tip": "A smaller square on top.",
+      "rows": [
+        ".....",
+        ".SSS.",
+        ".SSS.",
+        ".SSS.",
+        "....."
+      ]
+    },
+    {
+      "name": "Middle and arms",
+      "tip": "Another square, with a black wool button at the front and a fence on each side for arms.",
+      "rows": [
+        ".....",
+        ".SSS.",
+        "fSSSf",
+        ".SKS.",
+        "....."
+      ]
+    },
+    {
+      "name": "Scarf",
+      "tip": "A square of red wool.",
+      "rows": [
+        ".....",
+        ".RRR.",
+        ".RRR.",
+        ".RRR.",
+        "....."
+      ]
+    },
+    {
+      "name": "Nose",
+      "tip": "Snow again, with orange wool sticking out at the front for the nose.",
+      "rows": [
+        ".....",
+        ".SSS.",
+        ".SSS.",
+        ".SSS.",
+        "..O.."
+      ]
+    },
+    {
+      "name": "Eyes",
+      "tip": "Snow, with two black wool eyes at the front.",
+      "rows": [
+        ".....",
+        ".SSS.",
+        ".SSS.",
+        ".KSK.",
+        "....."
+      ]
+    },
+    {
+      "name": "Top of the head",
+      "tip": "One more square of snow.",
+      "rows": [
+        ".....",
+        ".SSS.",
+        ".SSS.",
+        ".SSS.",
+        "....."
+      ]
+    },
+    {
+      "name": "Hat",
+      "tip": "A square of black wool.",
+      "rows": [
+        ".....",
+        ".KKK.",
+        ".KKK.",
+        ".KKK.",
+        "....."
+      ]
+    },
+    {
+      "name": "Top of the hat",
+      "tip": "One more black wool in the middle. Want a snowman that moves? Stack two snow blocks with a carved pumpkin on top to make a snow golem.",
+      "rows": [
+        ".....",
+        ".....",
+        "..K..",
+        ".....",
+        "....."
+      ]
+    }
+  ]
+}

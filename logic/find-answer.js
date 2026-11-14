@@ -99,6 +99,19 @@ function pick(candidates, kind, guides) {
   return [...top].sort((a, b) => rankOf(a) - rankOf(b) || b.score - a.score)[0];
 }
 
+// A build's name can hold a question word: "pet" (taming) in "pet bed", "gift" in "gift box". When the question says
+// the name word for word and the rest of it asks to make or build ("how do I make a pet bed"), it's a make question,
+// and the name's words are about the thing. Returns the name's words, or null. "What gifts does a cat bring" says
+// no build's name, so it stays a gifts question.
+export function buildNamed(question, list) {
+  const said = ` ${allWords(question).join(' ')} `;
+  for (const entry of list) {
+    if (entry.target.type !== 'build' || !entry.phrase || !said.includes(` ${entry.phrase} `)) continue;
+    if (questionKind(said.replace(` ${entry.phrase} `, ' ')) === 'make') return new Set(entry.phrase.split(' '));
+  }
+  return null;
+}
+
 // Kinds of question where knowing the thing isn't enough: if the book has no answer of that kind, it says so.
 const NEEDS_KIND = new Set(['find', 'get', 'make', 'drops', 'tame', 'breed', 'gifts', 'mine', 'food', 'eats', 'danger', 'does', 'max', 'weather']);
 const KNOWN_TYPES = new Set(['mob', 'item', 'place']);
@@ -107,6 +120,8 @@ const KNOWN_TYPES = new Set(['mob', 'item', 'place']);
 // (not in the book), or 'missing' (it knows the thing, but not this kind of answer: "where do pandas live").
 export function findAnswer(question, list, book, guides) {
   let kind = questionKind(question);
+  const named = kind === 'make' ? null : buildNamed(question, list);
+  if (named) kind = 'make';
   const asked = questionWords(question, kind === 'weather' ? WEATHER_WORDS : undefined);
   const scored = [];
   const known = [];
@@ -114,7 +129,7 @@ export function findAnswer(question, list, book, guides) {
   // "find a stronghold" a match for "where do I find diamonds", and "tool" isn't a misspelled "wool".
   // A question made only of kind words ("how do I get food") can still match a guide whose phrase it says word for
   // word, if the phrase has at least 2 words ("get food"). One word ("eat") is too little: that's a follow-up.
-  const thingWords = asked.filter((a) => !KIND_WORDS.has(a.w) && !(a.parts && a.parts.every((p) => KIND_WORDS.has(p))));
+  const thingWords = asked.filter((a) => named?.has(a.w) || (!KIND_WORDS.has(a.w) && !(a.parts && a.parts.every((p) => KIND_WORDS.has(p)))));
   const said = ` ${allWords(question).join(' ')} `;
   const saysPhrase = (entry) => entry.phrase?.includes(' ') && said.includes(` ${entry.phrase} `);
   const kindOnly = (entry, s) => !thingWords.length && entry.target.type === 'guide' && s.full && saysPhrase(entry);

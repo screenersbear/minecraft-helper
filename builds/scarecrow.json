@@ -1,0 +1,86 @@
+{
+  "name": "Scarecrow",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A friendly scarecrow with a pumpkin head, watching over a little wheat field.",
+  "also": ["scare crow"],
+  "key": {
+    "g": {"id": "grass_block", "ground": true},
+    "F": {"id": "farmland", "ground": true},
+    "W": "water",
+    "w": "wheat_seeds",
+    "m": "pumpkin",
+    "f": "oak_fence",
+    "Y": "hay_block",
+    "C": {"id": "carved_pumpkin", "facing": "south"},
+    "h": "dark_oak_slab"
+  },
+  "layers": [
+    {
+      "name": "Water and farmland",
+      "tip": "On flat grass, dig one block in the middle and fill it with water. Hoe the three rows around it into farmland. Leave the back and front rows as grass.",
+      "rows": [
+        "ggggg",
+        "FFFFF",
+        "FFWFF",
+        "FFFFF",
+        "ggggg"
+      ]
+    },
+    {
+      "name": "Wheat, pumpkins and a post",
+      "tip": "Plant wheat seeds on the farmland. On the back row, put a pumpkin at each end and a fence post in the middle.",
+      "rows": [
+        "m.f.m",
+        "wwwww",
+        "ww.ww",
+        "wwwww",
+        "....."
+      ]
+    },
+    {
+      "name": "Body",
+      "tip": "A hay bale on top of the post.",
+      "rows": [
+        "..Y..",
+        ".....",
+        ".....",
+        ".....",
+        "....."
+      ]
+    },
+    {
+      "name": "Arms",
+      "tip": "Another hay bale, with two fences on each side for arms.",
+      "rows": [
+        "ffYff",
+        ".....",
+        ".....",
+        ".....",
+        "....."
+      ]
+    },
+    {
+      "name": "Head",
+      "tip": "Use shears on a pumpkin to carve a face. Put it on top, facing the front.",
+      "rows": [
+        "..C..",
+        ".....",
+        ".....",
+        ".....",
+        "....."
+      ]
+    },
+    {
+      "name": "Hat",
+      "tip": "A dark oak slab makes a hat.",
+      "rows": [
+        "..h..",
+        ".....",
+        ".....",
+        ".....",
+        "....."
+      ]
+    }
+  ]
+}

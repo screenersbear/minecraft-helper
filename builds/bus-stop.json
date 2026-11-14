@@ -1,0 +1,53 @@
+{
+  "name": "Bus stop",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A little shelter with a glass back, a bench and a yellow sign.",
+  "also": ["bus shelter"],
+  "key": {
+    "p": "smooth_stone",
+    "B": "stone_bricks",
+    "G": "glass",
+    "S": {"id": "oak_stairs", "facing": "north"},
+    "f": "oak_fence",
+    "Y": "yellow_wool"
+  },
+  "layers": [
+    {
+      "name": "Pavement",
+      "tip": "Lay smooth stone, 7 blocks long and 3 deep.",
+      "rows": [
+        "ppppppp",
+        "ppppppp",
+        "ppppppp"
+      ]
+    },
+    {
+      "name": "Walls and bench",
+      "tip": "Stone brick posts at the back corners with glass between them, and glass on both sides. Three oak stairs, tall side at the back, make the bench. Start the sign post with a fence.",
+      "rows": [
+        ".BGGGB.",
+        ".GSSSG.",
+        "......f"
+      ]
+    },
+    {
+      "name": "More walls",
+      "tip": "The same walls again, and one more fence on the post.",
+      "rows": [
+        ".BGGGB.",
+        ".G...G.",
+        "......f"
+      ]
+    },
+    {
+      "name": "Roof and sign",
+      "tip": "Cover the shelter with glass, so it stays light inside. A yellow wool block on the post is the bus sign.",
+      "rows": [
+        ".GGGGG.",
+        ".GGGGG.",
+        "......Y"
+      ]
+    }
+  ]
+}

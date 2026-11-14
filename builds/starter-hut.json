@@ -1,0 +1,63 @@
+{
+  "name": "Starter hut",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A quick little hut for your first night, with a bed and a crafting table inside.",
+  "also": ["first house", "starter house", "hut"],
+  "key": {
+    "L": "oak_log",
+    "P": "oak_planks",
+    "G": "glass",
+    "C": "crafting_table",
+    "h": {"id": "red_bed", "part": "head", "facing": "west"},
+    "f": {"id": "red_bed", "part": "foot", "facing": "west"},
+    "t": "torch",
+    "s": "oak_slab"
+  },
+  "layers": [
+    {
+      "name": "Walls, bed and table",
+      "tip": "On flat ground, put a log in each corner and planks between them. Leave the middle of the front open for a door. Put the bed along the back wall and the crafting table beside it.",
+      "rows": [
+        "LPPPL",
+        "PhfCP",
+        "P...P",
+        "P...P",
+        "LP.PL"
+      ]
+    },
+    {
+      "name": "Windows and light",
+      "tip": "Glass on each side makes two windows. A torch on the crafting table lights it up.",
+      "rows": [
+        "LPPPL",
+        "P..tP",
+        "G...G",
+        "P...P",
+        "LP.PL"
+      ]
+    },
+    {
+      "name": "Top of the walls",
+      "tip": "One more row all the way around. This time the front closes over the door.",
+      "rows": [
+        "LPPPL",
+        "P...P",
+        "P...P",
+        "P...P",
+        "LPPPL"
+      ]
+    },
+    {
+      "name": "Roof",
+      "tip": "Cover the top with oak slabs. Put a door in the gap and close it at night.",
+      "rows": [
+        "sssss",
+        "sssss",
+        "sssss",
+        "sssss",
+        "sssss"
+      ]
+    }
+  ]
+}

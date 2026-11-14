@@ -1,0 +1,60 @@
+{
+  "name": "Vegetable garden",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "Rows of wheat, carrots, potatoes and beetroot around a square of water, with a fence to keep animals out.",
+  "also": ["veggie garden", "vegetable patch", "crop garden"],
+  "key": {
+    "g": {"id": "grass_block", "ground": true},
+    "F": {"id": "farmland", "ground": true},
+    "W": "water",
+    "f": "oak_fence",
+    "n": "oak_fence_gate",
+    "w": "wheat_seeds",
+    "k": "carrot",
+    "p": "potato",
+    "b": "beetroot_seeds",
+    "t": "torch"
+  },
+  "layers": [
+    {
+      "name": "Water and farmland",
+      "tip": "On flat grass, dig one block in the middle and fill it with water. Use a hoe on the grass around it to make farmland, 5 by 5. Leave a ring of grass around the edge.",
+      "rows": [
+        "ggggggg",
+        "gFFFFFg",
+        "gFFFFFg",
+        "gFFWFFg",
+        "gFFFFFg",
+        "gFFFFFg",
+        "ggggggg"
+      ]
+    },
+    {
+      "name": "Plant and fence",
+      "tip": "Plant a row of each crop: wheat seeds, carrots, potatoes, beetroot seeds, then wheat again. Put a fence on the grass all around, with a gate at the front.",
+      "rows": [
+        "fffffff",
+        "fwwwwwf",
+        "fkkkkkf",
+        "fpp.ppf",
+        "fbbbbbf",
+        "fwwwwwf",
+        "fffnfff"
+      ]
+    },
+    {
+      "name": "Lights",
+      "tip": "A torch on each corner post helps the crops grow at night.",
+      "rows": [
+        "t.....t",
+        ".......",
+        ".......",
+        ".......",
+        ".......",
+        ".......",
+        "t.....t"
+      ]
+    }
+  ]
+}

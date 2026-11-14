@@ -90,7 +90,13 @@ export function buildSearchList(book, guides, nicknames) {
     if (entry) entry.phrase = allWords(phrase).join(' ');
   };
   for (const g of guides) [g.title, ...g.askedAs].forEach((phrase) => addGuide(phrase, g));
-  for (const b of book.builds || []) for (const phrase of [b.name, ...(b.also || [])]) add(phrase, { type: 'build', id: b.id }, b.name);
+  // Builds keep their whole phrase too, so a name with a question word in it ("pet bed", "gift box") is still found.
+  for (const b of book.builds || []) {
+    for (const phrase of [b.name, ...(b.also || [])]) {
+      const entry = add(phrase, { type: 'build', id: b.id }, b.name);
+      if (entry) entry.phrase = allWords(phrase).join(' ');
+    }
+  }
   const taken = new Set([...Object.values(book.items), ...Object.values(book.mobs)].map((x) => x.name.toLowerCase()));
   addInfo(book, add, taken);
   for (const [phrase, to] of Object.entries(nicknames)) if (!phrase.startsWith('_')) add(phrase, target(to));

@@ -26,6 +26,16 @@ const OWN = {
   campfire: { shape: 'campfire', top: 'campfire_log_lit', side: 'campfire_log_lit', sprite: 'campfire_fire' },
   ladder: { shape: 'ladder', top: 'ladder', side: 'ladder' },
   smooth_stone_slab: { shape: 'slab', top: 'smooth_stone', side: 'smooth_stone_slab_side' },
+  beehive: { top: 'beehive_end', side: 'beehive_side', front: 'beehive_front' },
+  farmland: { top: 'farmland_moist', side: 'dirt' },
+  // The lantern's block picture is a cut-out sheet, so it borrows the item picture.
+  lantern: { shape: 'sprite', sprite: '../item/lantern' },
+};
+
+// Crops are named by what you plant, and show fully grown.
+const CROPS = {
+  wheat_seeds: 'wheat_stage7', carrot: 'carrots_stage3', potato: 'potatoes_stage3', beetroot_seeds: 'beetroots_stage3',
+  sweet_berries: 'sweet_berry_bush_stage3',
 };
 
 // Flat pictures standing up.
@@ -46,6 +56,7 @@ function material(base, has) {
 export function lookFor(id, has) {
   if (OWN[id]) return { ...OWN[id] };
   if (SPRITES.has(id)) return has(id) ? { shape: 'sprite', sprite: id } : null;
+  if (CROPS[id]) return has(CROPS[id]) ? { shape: 'sprite', sprite: CROPS[id] } : null;
   if (id.endsWith('_log') && has(id) && has(`${id}_top`)) return { top: `${id}_top`, side: id };
   const bed = /^(.+)_bed$/.exec(id);
   if (bed) return has(`${bed[1]}_wool`) ? { shape: 'bed', top: `${bed[1]}_wool`, side: `${bed[1]}_wool`, pillow: 'white_wool' } : null;

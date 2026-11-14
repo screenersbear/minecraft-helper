@@ -1,0 +1,56 @@
+{
+  "name": "Sheep pen",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A fenced field for sheep, with a gate and a little shelter in the corner.",
+  "also": ["sheep farm", "sheep fence"],
+  "key": {
+    "g": {"id": "grass_block", "ground": true},
+    "P": "oak_planks",
+    "f": "oak_fence",
+    "n": "oak_fence_gate",
+    "s": "oak_slab",
+    "t": "torch"
+  },
+  "layers": [
+    {
+      "name": "Shelter floor",
+      "tip": "Find a flat grassy spot. Swap the grass in the back left corner for oak planks. Leave the rest as grass: sheep eat it, and it grows back.",
+      "rows": [
+        "PPPgggg",
+        "PPPgggg",
+        "ggggggg",
+        "ggggggg",
+        "ggggggg",
+        "ggggggg",
+        "ggggggg"
+      ]
+    },
+    {
+      "name": "Fence",
+      "tip": "Put a fence all the way around, with a gate in the middle of the front. One more fence post holds up the shelter roof.",
+      "rows": [
+        "fffffff",
+        "f.f...f",
+        "f.....f",
+        "f.....f",
+        "f.....f",
+        "f.....f",
+        "fffnfff"
+      ]
+    },
+    {
+      "name": "Shelter roof and lights",
+      "tip": "Oak slabs over the corner make the shelter. Torches on the other corners help stop monsters appearing inside. Hold wheat and sheep will follow you in.",
+      "rows": [
+        "sss...t",
+        "sss....",
+        ".......",
+        ".......",
+        ".......",
+        ".......",
+        "t.....t"
+      ]
+    }
+  ]
+}

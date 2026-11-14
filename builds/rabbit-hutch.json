@@ -1,0 +1,59 @@
+{
+  "name": "Rabbit hutch",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A low wooden hutch with hay beds, and a fenced yard with flowers.",
+  "also": ["rabbit house", "bunny house", "bunny hutch", "rabbit pen"],
+  "key": {
+    "g": {"id": "grass_block", "ground": true},
+    "S": "spruce_planks",
+    "P": "oak_planks",
+    "Y": "hay_block",
+    "f": "oak_fence",
+    "n": "oak_fence_gate",
+    "y": "dandelion",
+    "t": "torch",
+    "s": "spruce_slab"
+  },
+  "layers": [
+    {
+      "name": "Floor",
+      "tip": "Find a flat grassy spot. Swap the grass at the back for spruce planks: that's the hutch floor. The rest stays grass for the yard.",
+      "rows": [
+        "SSSSSSS",
+        "SSSSSSS",
+        "SSSSSSS",
+        "ggggggg",
+        "ggggggg",
+        "ggggggg",
+        "ggggggg"
+      ]
+    },
+    {
+      "name": "Hutch and fence",
+      "tip": "Build the hutch walls on the floor, with a gap in the middle of the front so rabbits can hop in. Fences beside the gap are windows, and hay bales inside are beds. Fence the yard, with a gate at the front, and plant dandelions: rabbits love them.",
+      "rows": [
+        "PPPPPPP",
+        "PY...YP",
+        "PPf.fPP",
+        "f.....f",
+        "f..y..f",
+        "f.y..yf",
+        "fffnfff"
+      ]
+    },
+    {
+      "name": "Roof and lights",
+      "tip": "Cover the hutch with spruce slabs, and put a torch on each corner post of the yard.",
+      "rows": [
+        "sssssss",
+        "sssssss",
+        "sssssss",
+        "t.....t",
+        ".......",
+        ".......",
+        "t.....t"
+      ]
+    }
+  ]
+}

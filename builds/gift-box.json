@@ -1,0 +1,68 @@
+{
+  "name": "Gift box",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A giant present wrapped in red, with a yellow ribbon and a bow on top.",
+  "also": ["present", "gift", "birthday present"],
+  "key": {
+    "R": "red_wool",
+    "Y": "yellow_wool"
+  },
+  "layers": [
+    {
+      "name": "Bottom",
+      "tip": "Red wool, with a yellow cross through the middle for the ribbon.",
+      "rows": [
+        "RRYRR",
+        "RRYRR",
+        "YYYYY",
+        "RRYRR",
+        "RRYRR"
+      ]
+    },
+    {
+      "name": "Sides",
+      "tip": "Red wool around the edge, with yellow in the middle of each side. Leave the inside empty.",
+      "rows": [
+        "RRYRR",
+        "R...R",
+        "Y...Y",
+        "R...R",
+        "RRYRR"
+      ]
+    },
+    {
+      "name": "More sides",
+      "tip": "The same again.",
+      "rows": [
+        "RRYRR",
+        "R...R",
+        "Y...Y",
+        "R...R",
+        "RRYRR"
+      ]
+    },
+    {
+      "name": "Top",
+      "tip": "Cover it like the bottom: red with a yellow cross.",
+      "rows": [
+        "RRYRR",
+        "RRYRR",
+        "YYYYY",
+        "RRYRR",
+        "RRYRR"
+      ]
+    },
+    {
+      "name": "Bow",
+      "tip": "Five yellow wool on top in an X shape.",
+      "rows": [
+        ".....",
+        ".Y.Y.",
+        "..Y..",
+        ".Y.Y.",
+        "....."
+      ]
+    }
+  ]
+}

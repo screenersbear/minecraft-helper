@@ -1,0 +1,76 @@
+{
+  "name": "Bee house",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "Two beehives under a little roof, with flowers all around for the bees.",
+  "also": ["bee garden"],
+  "key": {
+    "g": {"id": "grass_block", "ground": true},
+    "r": "gravel",
+    "L": "birch_log",
+    "H": {"id": "beehive", "facing": "south"},
+    "P": "birch_planks",
+    "s": "birch_slab",
+    "p": "poppy",
+    "y": "dandelion",
+    "o": "oxeye_daisy",
+    "c": "cornflower",
+    "a": "allium",
+    "u": "azure_bluet",
+    "e": "red_tulip"
+  },
+  "layers": [
+    {
+      "name": "Path",
+      "tip": "Find a flat grassy spot. Dig a short path at the front and fill it with gravel.",
+      "rows": [
+        "ggggggg",
+        "ggggggg",
+        "ggggggg",
+        "ggggggg",
+        "gggrggg",
+        "gggrggg",
+        "gggrggg"
+      ]
+    },
+    {
+      "name": "Posts and flowers",
+      "tip": "Put up two log posts, three blocks apart. Plant flowers all around: bees need flowers to make honey.",
+      "rows": [
+        "p.y.o.c",
+        ".......",
+        "a.e.u.a",
+        ".LuyuL.",
+        "y.c.p.o",
+        ".......",
+        "o.a.e.p"
+      ]
+    },
+    {
+      "name": "Beehives",
+      "tip": "A log on each post, then a beehive, a plank and a beehive between them. Turn the beehives to face the front.",
+      "rows": [
+        ".......",
+        ".......",
+        ".......",
+        ".LHPHL.",
+        ".......",
+        ".......",
+        "......."
+      ]
+    },
+    {
+      "name": "Roof",
+      "tip": "Cover the row with birch slabs, and one more row behind it. Hold a flower and bees will follow you.",
+      "rows": [
+        ".......",
+        ".......",
+        ".sssss.",
+        ".sssss.",
+        ".......",
+        ".......",
+        "......."
+      ]
+    }
+  ]
+}

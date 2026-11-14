@@ -1,0 +1,62 @@
+{
+  "name": "Park bench",
+  "difficulty": "Easy",
+  "group": "Builds",
+  "about": "A bench by a gravel path, with bushes, flowers and a lamp post.",
+  "also": ["bench", "lamp post", "street lamp", "park"],
+  "key": {
+    "g": {"id": "grass_block", "ground": true},
+    "r": "gravel",
+    "k": "oak_leaves",
+    "S": {"id": "oak_stairs", "facing": "north"},
+    "f": "oak_fence",
+    "l": "lantern",
+    "p": "poppy",
+    "y": "dandelion",
+    "o": "oxeye_daisy",
+    "c": "cornflower",
+    "a": "allium"
+  },
+  "layers": [
+    {
+      "name": "Path",
+      "tip": "On flat grass, dig a line one row in front of the bench and fill it with gravel.",
+      "rows": [
+        "ggggggg",
+        "ggggggg",
+        "rrrrrrr",
+        "ggggggg"
+      ]
+    },
+    {
+      "name": "Bench and bushes",
+      "tip": "Four oak stairs in a row, with their tall side at the back, make the bench. A block of leaves on each end is a bush. Start the lamp post with a fence, and plant flowers.",
+      "rows": [
+        "o.p.y.c",
+        "kSSSSkf",
+        ".......",
+        ".c...a."
+      ]
+    },
+    {
+      "name": "Lamp post",
+      "tip": "One more fence on the post.",
+      "rows": [
+        ".......",
+        "......f",
+        ".......",
+        "......."
+      ]
+    },
+    {
+      "name": "Lantern",
+      "tip": "A lantern on top. Make one from iron nuggets around a torch.",
+      "rows": [
+        ".......",
+        "......l",
+        ".......",
+        "......."
+      ]
+    }
+  ]
+}

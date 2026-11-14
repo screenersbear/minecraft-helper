@@ -3,7 +3,7 @@ import { loadBook } from './data/load-book.js';
 import { addRecent } from './data/recent.js';
 import { logQuestion, NOT_IN_BOOK } from './data/questions-log.js';
 import { rememberThing, lastThing } from './data/last-thing.js';
-import { findAnswer } from './logic/find-answer.js';
+import { findAnswer, buildNamed } from './logic/find-answer.js';
 import { parseHash, hashForAnswer } from './logic/routes.js';
 import { withLastThing, describeLast, thingOfRoute, followUp } from './logic/follow-up.js';
 import { missingLabel } from './logic/say-missing.js';
@@ -119,7 +119,8 @@ function start({ book, guides, addons, builds, list }) {
       const memory = lastThing();
       const alone = findAnswer(q, list, book, guides);
       const follow = alone.type === 'none' ? followUp(q, memory, book, guides, list) : null;
-      const matched = follow ? q : withLastThing(q, describeLast(memory, book, guides));
+      // One that says a build's name ("how do I make a present") is about that build, not the last answer.
+      const matched = follow || buildNamed(q, list) ? q : withLastThing(q, describeLast(memory, book, guides));
       const answer = follow || findAnswer(matched, list, book, guides);
       addRecent({ q, pic: pictureFor(answer, book, guides) });
       if (answer.type === 'none') logQuestion({ q, answer: NOT_IN_BOOK, reason: 'not-in-book' });
