@@ -1,5 +1,6 @@
 // Say: the sentences the app speaks and shows. Short and plain, made only from what's in the book.
-import { plural, counted, article, listWords, capitalize } from './plural.js';
+import { plural, mobPlural, counted, article, listWords, capitalize } from './plural.js';
+import { foodSentence } from './say-facts.js';
 
 // The name of a recipe cell: "coal", "wood planks", "red mushroom or brown mushroom".
 export function cellName(cell, book) {
@@ -63,6 +64,7 @@ export function factSentence(id, book, kind) {
   const parts = [];
   if (kind === 'mine' && fact.mineWith === 'wooden_pickaxe') return `Mine ${name.toLowerCase()} with any pickaxe.`;
   if (kind === 'mine' && fact.mineWith) return `Mine ${name.toLowerCase()} with ${article(toolName(fact.mineWith, book))} or better.`;
+  if (kind === 'food' && fact.food) return foodSentence(fact.food);
   const realRecipe = (book.recipes[id] || []).some((r) => !r.unpack);
   if (!realRecipe) parts.push(`You can't craft ${many}.`);
   if (fact.fromBlocks?.length) {
@@ -73,11 +75,12 @@ export function factSentence(id, book, kind) {
     parts.push(sometimes ? `Mining ${listWords(blocks)} sometimes gives you ${many}.` : `Mine ${listWords(blocks.slice(0, 2))} to get ${many}.`);
     if (!sometimes) parts.push(toolSentence(tool, book).trim());
   } else if (fact.fromMobs?.length) {
-    const mobs = fact.fromMobs.map((m) => plural(book.mobs[m]?.name || m));
+    const mobs = fact.fromMobs.map((m) => mobPlural(book.mobs[m]?.name || m));
     parts.push(`${capitalize(listWords(mobs))} drop ${many}.`);
   } else if (fact.mineWith) {
     parts.push(`Mine it with ${article(toolName(fact.mineWith, book))} or better.`);
   }
+  if (fact.food) parts.push(foodSentence(fact.food));
   return parts.filter(Boolean).join(' ');
 }
 

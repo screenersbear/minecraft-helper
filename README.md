@@ -1,7 +1,8 @@
 # Ask the guide
 
 A voice-first Minecraft (Bedrock Edition) helper for kids. Hold the button, ask "how do I make a cake?", and it shows
-the recipe and reads it out loud. It works offline once it has opened, has no logins, and uses no AI: every answer
+the recipe and reads it out loud. Swipe for the book (everything by category), step-by-step guides, and photo to
+pixel art (done on the phone, row by row, nothing uploaded). It works offline once it has opened, has no logins, and uses no AI: every answer
 comes from the book built into the app.
 
 Open it at https://screenersbear.github.io/minecraft-helper/ and add it to the Home Screen.
@@ -20,7 +21,7 @@ npm run build
   (see images/CREDITS.txt).
 - Pictures of newer things: [Mineclonia](https://codeberg.org/mineclonia/mineclonia) by XSSheep, Nova Wostra and
   Mineclonia contributors, based on Pixel Perfection, CC BY-SA 4.0 (a few CC BY-SA 3.0).
-- Recipes, names, mob drops and mining tools: [minecraft-data](https://github.com/PrismarineJS/minecraft-data) by
+- Recipes, names, mob drops, mining tools, biomes, enchantments, food and potion effects: [minecraft-data](https://github.com/PrismarineJS/minecraft-data) by
   PrismarineJS, MIT. Fixes for Bedrock checked against [minecraft.wiki](https://minecraft.wiki).
 - Fonts: Pixelify Sans and Atkinson Hyperlegible, SIL Open Font License (see fonts/).
 

@@ -7,7 +7,7 @@ import { feedbackArea } from '../components/feedback-area.js';
 import { stepPicture } from '../components/step-picture.js';
 import { guideVoice } from '../speech/guide-voice.js';
 import { stepSentence } from '../logic/say.js';
-import { toHash, parseHash } from '../logic/routes.js';
+import { toHash, parseHash, backHash } from '../logic/routes.js';
 import { parseCommand } from '../logic/commands.js';
 
 function progress(step, total) {
@@ -22,7 +22,7 @@ export function guidePage(ctx, route) {
   const n = Math.min(route.step || 1, total);
   const step = guide.steps[n - 1];
   const say = stepSentence(step, n);
-  const goStep = (to) => ctx.go(toHash({ page: 'guide', id: guide.id, step: to, q: route.q }), { replace: true });
+  const goStep = (to) => ctx.go(toHash({ page: 'guide', id: guide.id, step: to, q: route.q, from: route.from }), { replace: true });
 
   const bottom = el('div', { class: 'bottom' });
   const hint = el('p', { class: 'hint' });
@@ -60,7 +60,7 @@ export function guidePage(ctx, route) {
   hint.textContent = guideVoice.on ? 'Say "next", "again" or "back"' : '';
 
   const nodes = [
-    ...topBar({ left: { label: 'Back', href: '#/' }, right: 'Guide' }),
+    ...topBar({ left: { label: 'Back', href: backHash(route) }, right: 'Guide' }),
     el(
       'div',
       { class: 'page guide' },

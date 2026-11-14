@@ -1,12 +1,16 @@
 // Routes: which screen is showing, kept in the address after # so reloading keeps your place.
-// Examples: #/recipe/cake?q=how do I make a cake   #/guide/nether-portal/2   #/grown-ups
+// Examples: #/recipe/cake?q=how do I make a cake   #/guide/nether-portal/2   #/grown-ups   #/fact/apple?from=book/food
+// "from" is the page an answer was opened from (a page of the book), so Back goes there instead of to Ask.
 
-export function toHash({ page = 'ask', id, step, way, q } = {}) {
+const SAFE_FROM = /^[a-z0-9_/-]+$/;
+
+export function toHash({ page = 'ask', id, step, way, q, from } = {}) {
   if (page === 'ask') return '#/';
   const path = [page, id, step].filter((x) => x !== undefined && x !== null && x !== '').map(encodeURIComponent).join('/');
   const query = new URLSearchParams();
   if (q) query.set('q', q);
   if (way) query.set('way', String(way));
+  if (from && SAFE_FROM.test(from)) query.set('from', from);
   const tail = query.toString();
   return `#/${path}${tail ? `?${tail}` : ''}`;
 }
@@ -22,8 +26,12 @@ export function parseHash(hash) {
     step: step ? Math.max(1, parseInt(step, 10) || 1) : undefined,
     way: parseInt(params.get('way') || '0', 10) || 0,
     q: params.get('q') || '',
+    from: SAFE_FROM.test(params.get('from') || '') ? params.get('from') : '',
   };
 }
+
+// Where an answer's Back link goes: the page it came from, or Ask.
+export const backHash = (route) => (route.from ? `#/${route.from}` : '#/');
 
 // Where an answer from findAnswer goes.
 export function hashForAnswer(answer, question) {

@@ -14,7 +14,7 @@ export function aboutPage(ctx) {
       el('h1', { class: 'log-title', tabindex: '-1' }, 'About this', el('br'), 'guide'),
       section(
         'How it works',
-        el('p', {}, 'Every answer comes from the book built into the app, for Minecraft Bedrock Edition. It works without the internet once it has opened. The questions it saves stay on this phone or tablet. When you talk, the device\'s own speech recognition turns your words into text.'),
+        el('p', {}, 'Every answer comes from the book built into the app, for Minecraft Bedrock Edition. It works without the internet once it has opened. The questions it saves, pixel art and ideas stay on this phone or tablet: photos are turned into blocks right here and never uploaded. When you talk, the device\'s own speech recognition turns your words into text.'),
         el('p', {}, `Book made ${ctx.book.made}.`),
       ),
       section(
@@ -23,7 +23,7 @@ export function aboutPage(ctx) {
       ),
       section(
         'Recipes and facts',
-        el('p', {}, 'Recipes, names, mob drops and mining tools come from ', link('https://github.com/PrismarineJS/minecraft-data', 'minecraft-data'), ' by PrismarineJS (MIT license). The guides and a few recipe fixes were written for this app and checked against ', link('https://minecraft.wiki', 'minecraft.wiki'), '.'),
+        el('p', {}, 'Recipes, names, mob drops, mining tools, biomes, enchantments, food and potion effects come from ', link('https://github.com/PrismarineJS/minecraft-data', 'minecraft-data'), ' by PrismarineJS (MIT license). The guides, what each enchantment and effect does, and a few recipe fixes were written for this app and checked against ', link('https://minecraft.wiki', 'minecraft.wiki'), '.'),
       ),
       section('Fonts', el('p', {}, 'Pixelify Sans and Atkinson Hyperlegible, both under the SIL Open Font License.')),
       el('p', { class: 'note' }, 'Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.'),

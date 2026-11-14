@@ -1,0 +1,266 @@
+{
+  "_readme": "What enchantments, potion effects, biomes and foods are like, in a few plain words, written for Bedrock and checked against minecraft.wiki. The data says which ones exist; these say what they do. Change or add any line. An enchantment or effect missing here is left out of the book.",
+  "enchantments": {
+    "aqua_affinity": "It lets you mine fast underwater.",
+    "bane_of_arthropods": "It does extra damage to spiders, bees, silverfish and endermites.",
+    "binding_curse": "It's a curse: once you put it on, you can't take it off.",
+    "blast_protection": "It protects you from explosions.",
+    "breach": "Mace hits get through some of the armor.",
+    "channeling": "In a thunderstorm, a trident you throw at a mob makes lightning strike it.",
+    "density": "Mace smash attacks do more damage the farther you fall.",
+    "depth_strider": "It lets you walk faster underwater.",
+    "efficiency": "It lets you mine faster.",
+    "feather_falling": "You take less damage when you fall.",
+    "fire_aspect": "It sets what you hit on fire.",
+    "fire_protection": "It protects you from fire and lava.",
+    "flame": "Your arrows set what they hit on fire.",
+    "fortune": "Some blocks drop more, like diamond ore and coal ore.",
+    "frost_walker": "It turns water into ice under your feet as you walk.",
+    "impaling": "The trident does extra damage to mobs that are in water or rain.",
+    "infinity": "You can shoot as much as you like with just one arrow.",
+    "knockback": "It knocks mobs farther back when you hit them.",
+    "looting": "Mobs drop more loot.",
+    "loyalty": "The trident flies back to you after you throw it.",
+    "luck_of_the_sea": "You catch more treasure when fishing.",
+    "lunge": "Your spear's jab pushes you forward.",
+    "lure": "Fish bite sooner.",
+    "mending": "Experience orbs you pick up fix the item.",
+    "multishot": "Your crossbow shoots 3 arrows at once.",
+    "piercing": "Crossbow arrows go through mobs and hit the ones behind.",
+    "power": "Your arrows do more damage.",
+    "projectile_protection": "It protects you from arrows and other things shot at you.",
+    "protection": "It protects you from most kinds of damage.",
+    "punch": "Your arrows knock mobs farther back.",
+    "quick_charge": "Your crossbow loads faster.",
+    "respiration": "You can stay underwater longer before you run out of air.",
+    "riptide": "Throwing the trident in water or rain launches you along with it.",
+    "sharpness": "It does more damage.",
+    "silk_touch": "Blocks drop themselves, like glass or a grass block.",
+    "smite": "It does extra damage to undead mobs, like zombies and skeletons.",
+    "soul_speed": "You walk faster on soul sand and soul soil.",
+    "swift_sneak": "You walk faster while sneaking.",
+    "thorns": "It hurts mobs that hit you.",
+    "unbreaking": "The item lasts longer before it breaks.",
+    "vanishing_curse": "It's a curse: the item disappears when you die.",
+    "wind_burst": "After a mace smash attack, you bounce up into the air."
+  },
+  "goesOn": {
+    "armor": "any armor",
+    "head_armor": "helmets",
+    "foot_armor": "boots",
+    "leg_armor": "leggings",
+    "equippable": "armor and other things you wear",
+    "bow": "bows",
+    "crossbow": "crossbows",
+    "durability": "anything that wears out, like tools and armor",
+    "fire_aspect": "swords and maces",
+    "fishing": "fishing rods",
+    "lunge": "spears",
+    "mace": "maces",
+    "melee_weapon": "swords",
+    "sharp_weapon": "swords and axes",
+    "weapon": "swords, axes and maces",
+    "mining": "pickaxes, shovels, axes and hoes",
+    "mining_loot": "pickaxes, shovels, axes and hoes",
+    "trident": "tridents",
+    "vanishing": "almost anything"
+  },
+  "effects": {
+    "speed": "You run faster.",
+    "slowness": "You walk slower.",
+    "haste": "You mine and swing faster.",
+    "mining_fatigue": "You mine much slower.",
+    "strength": "Your hits do more damage.",
+    "instant_health": "Heals you right away.",
+    "instant_damage": "Hurts you right away.",
+    "jump_boost": "You jump higher.",
+    "nausea": "Your screen wobbles and spins.",
+    "regeneration": "You heal over time.",
+    "resistance": "You take less damage.",
+    "fire_resistance": "Fire and lava can't hurt you.",
+    "water_breathing": "You can breathe underwater.",
+    "invisibility": "You turn invisible, but armor you wear still shows.",
+    "blindness": "You can hardly see, and you can't sprint.",
+    "night_vision": "You can see in the dark.",
+    "hunger": "You get hungry faster.",
+    "weakness": "Your hits do less damage.",
+    "poison": "Hurts you over time, but it can't take your last heart.",
+    "wither": "Hurts you over time and turns your hearts black. It can kill you.",
+    "health_boost": "Gives you extra hearts.",
+    "absorption": "Gives you golden hearts that soak up damage.",
+    "saturation": "Fills up your hunger.",
+    "levitation": "You float up into the air.",
+    "slow_falling": "You fall slowly and take no fall damage.",
+    "conduit_power": "Underwater you can breathe, see clearly and mine faster.",
+    "dolphins_grace": "You swim much faster.",
+    "bad_omen": "Walk into a village with it and a raid starts.",
+    "hero_of_the_village": "Villagers give you lower prices and gifts.",
+    "darkness": "Your screen goes dark and pulses. The Warden gives you this.",
+    "trial_omen": "Trial spawners near you turn ominous: harder mobs and better loot.",
+    "raid_omen": "A raid is about to start in the village.",
+    "wind_charged": "When you die, you let out a big burst of wind.",
+    "weaving": "When you die, you leave cobwebs behind.",
+    "oozing": "When you die, two slimes appear.",
+    "infested": "Getting hurt can make silverfish come out of you."
+  },
+  "effectNames": {
+    "instant_health": [
+      "healing",
+      "potion of healing",
+      "health potion"
+    ],
+    "instant_damage": [
+      "harming",
+      "potion of harming"
+    ],
+    "jump_boost": [
+      "leaping",
+      "potion of leaping"
+    ],
+    "speed": [
+      "swiftness",
+      "potion of swiftness"
+    ],
+    "fire_resistance": [
+      "fire potion"
+    ]
+  },
+  "biomeNames": {
+    "nether_wastes": [
+      "nether"
+    ],
+    "badlands": [
+      "mesa"
+    ],
+    "snowy_plains": [
+      "ice plains",
+      "snow plains",
+      "tundra"
+    ],
+    "snowy_taiga": [
+      "cold taiga",
+      "snow taiga"
+    ],
+    "old_growth_spruce_taiga": [
+      "mega spruce taiga",
+      "giant spruce taiga"
+    ],
+    "old_growth_pine_taiga": [
+      "mega taiga",
+      "giant tree taiga"
+    ],
+    "windswept_hills": [
+      "extreme hills"
+    ],
+    "dark_forest": [
+      "roofed forest"
+    ],
+    "mushroom_fields": [
+      "mushroom island"
+    ],
+    "swamp": [
+      "swampland"
+    ],
+    "stony_shore": [
+      "stone beach"
+    ],
+    "snowy_beach": [
+      "cold beach"
+    ],
+    "sparse_jungle": [
+      "jungle edge"
+    ],
+    "soul_sand_valley": [
+      "soul valley"
+    ]
+  },
+  "biomePictures": {
+    "badlands": "red_sand",
+    "eroded_badlands": "terracotta",
+    "wooded_badlands": "coarse_dirt",
+    "bamboo_jungle": "bamboo",
+    "jungle": "jungle_sapling",
+    "sparse_jungle": "jungle_sapling",
+    "basalt_deltas": "basalt",
+    "crimson_forest": "crimson_fungus",
+    "warped_forest": "warped_fungus",
+    "nether_wastes": "netherrack",
+    "soul_sand_valley": "soul_sand",
+    "beach": "sand",
+    "snowy_beach": "snow",
+    "stony_shore": "stone",
+    "birch_forest": "birch_sapling",
+    "old_growth_birch_forest": "birch_sapling",
+    "cherry_grove": "cherry_sapling",
+    "dark_forest": "dark_oak_sapling",
+    "deep_dark": "sculk",
+    "desert": "cactus",
+    "dripstone_caves": "pointed_dripstone",
+    "lush_caves": "moss_block",
+    "the_end": "end_stone",
+    "flower_forest": "allium",
+    "forest": "oak_sapling",
+    "windswept_forest": "oak_sapling",
+    "frozen_peaks": "packed_ice",
+    "ice_spikes": "packed_ice",
+    "frozen_river": "ice",
+    "frozen_ocean": "ice",
+    "deep_frozen_ocean": "ice",
+    "grove": "snow_block",
+    "jagged_peaks": "snow_block",
+    "snowy_slopes": "snow_block",
+    "snowy_plains": "snow_block",
+    "mangrove_swamp": "mangrove_propagule",
+    "meadow": "cornflower",
+    "mushroom_fields": "red_mushroom",
+    "old_growth_pine_taiga": "spruce_sapling",
+    "old_growth_spruce_taiga": "spruce_sapling",
+    "taiga": "spruce_sapling",
+    "snowy_taiga": "spruce_sapling",
+    "pale_garden": "pale_moss_block",
+    "plains": "short_grass",
+    "sunflower_plains": "sunflower",
+    "river": "water_bucket",
+    "ocean": "water_bucket",
+    "deep_ocean": "water_bucket",
+    "cold_ocean": "water_bucket",
+    "deep_cold_ocean": "water_bucket",
+    "lukewarm_ocean": "water_bucket",
+    "deep_lukewarm_ocean": "water_bucket",
+    "warm_ocean": "tube_coral",
+    "savanna": "acacia_sapling",
+    "savanna_plateau": "acacia_sapling",
+    "windswept_savanna": "acacia_sapling",
+    "stony_peaks": "calcite",
+    "swamp": "lily_pad",
+    "windswept_hills": "stone",
+    "windswept_gravelly_hills": "gravel"
+  },
+  "foods": {
+    "rotten_flesh": "It can make you hungry.",
+    "spider_eye": "It poisons you.",
+    "pufferfish": "It poisons you and makes you sick.",
+    "poisonous_potato": "It can poison you.",
+    "chicken": "Raw chicken can make you hungry. Cook it first.",
+    "chorus_fruit": "It teleports you a short way.",
+    "golden_apple": "It heals you and gives you extra golden hearts.",
+    "enchanted_golden_apple": "It heals you, gives you golden hearts, and protects you from fire and damage for a while.",
+    "honey_bottle": "It cures poison.",
+    "suspicious_stew": "It gives you a surprise effect.",
+    "golden_carrot": "It keeps you full the longest of any food."
+  },
+  "topics": {
+    "best-food": {
+      "title": "The best food",
+      "pic": "cooked_beef",
+      "askedAs": [
+        "best food",
+        "good food",
+        "most filling food",
+        "healthiest food",
+        "best thing to eat"
+      ],
+      "say": "Steak and cooked porkchops are the best everyday food: each fills 4 drumsticks and keeps you full a long time. Golden carrots keep you full even longer."
+    }
+  }
+}

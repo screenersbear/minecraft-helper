@@ -12,6 +12,9 @@ import { textureFor } from './book/textures.mjs';
 import { minecloniaFiles } from './book/mineclonia.mjs';
 import { FACES } from './book/faces.mjs';
 import { writeAtlas } from './book/atlas.mjs';
+import { buildBiomes, buildEnchants, buildEffects, buildFoods, buildTopics, extraPictures } from './book/extras.mjs';
+import { buildPalette } from './book/palette.mjs';
+import { buildCategories } from './book/categories.mjs';
 
 const app = join(dirname(fileURLToPath(import.meta.url)), '..');
 const data = join(app, '.cache/minecraft-data');
@@ -28,6 +31,11 @@ const sources = {
   entityLoot: json('pc/1.20/entityLoot.json'),
   blockLoot: json('pc/1.20/blockLoot.json'),
   bedrockItems: json('bedrock/1.26.60/items.json'),
+  javaBiomes: json('pc/26.1/biomes.json'),
+  bedrockBiomes: json('bedrock/1.21.60/biomes.json'),
+  javaEnchants: json('pc/26.1/enchantments.json'),
+  javaFoods: json('pc/26.1/foods.json'),
+  javaEffects: json('pc/26.1/effects.json'),
 };
 const nameOf = namer([...sources.javaItems, ...sources.javaBlocks]);
 
@@ -60,9 +68,12 @@ const inBedrock = new Set(sources.bedrockItems.map((i) => i.name));
 const allFacts = buildFacts(sources, used);
 const facts = {};
 const mobs = {};
+// Not in Bedrock (the giant, the illusioner), or not really a mob (an End crystal).
+const NOT_MOBS = new Set(['giant', 'illusioner', 'end_crystal']);
 for (const [id, f] of Object.entries(allFacts)) {
-  if (f.mob && mobName(sources.javaEntities, id)) mobs[id] = { name: mobName(sources.javaEntities, id), ...f.mob };
-  const item = { fromMobs: f.fromMobs, fromBlocks: f.fromBlocks, mineWith: f.mineWith };
+  if (f.mob && mobName(sources.javaEntities, id) && !NOT_MOBS.has(id)) mobs[id] = { name: mobName(sources.javaEntities, id), ...f.mob };
+  const fromMobs = f.fromMobs?.filter((m) => !NOT_MOBS.has(m));
+  const item = { fromMobs: fromMobs?.length ? fromMobs : undefined, fromBlocks: f.fromBlocks, mineWith: f.mineWith };
   const useful = item.fromMobs || item.fromBlocks || item.mineWith;
   if (useful && nameOf(id) && (used.has(id) || inBedrock.has(id))) {
     facts[id] = Object.fromEntries(Object.entries(item).filter(([, v]) => v));
@@ -71,6 +82,20 @@ for (const [id, f] of Object.entries(allFacts)) {
 }
 for (const m of Object.values(mobs)) m.drops.forEach((d) => used.add(d));
 for (const f of Object.values(facts)) (f.fromBlocks || []).forEach((b) => used.add(b.block));
+
+// 3b. More facts: biomes, enchantments, potion effects, food, and the block colours for pixel art.
+const explain = JSON.parse(readFileSync(join(app, 'tools/book/explain.json'), 'utf8'));
+const biomes = buildBiomes(sources.javaBiomes, sources.bedrockBiomes, explain);
+const enchants = buildEnchants(sources.javaEnchants, explain);
+const effects = buildEffects(sources.javaEffects, explain);
+const topics = buildTopics(sources.javaFoods, explain);
+for (const [id, food] of Object.entries(buildFoods(sources.javaFoods, explain))) {
+  if (!nameOf(id)) continue;
+  facts[id] = { ...facts[id], food };
+  used.add(id);
+}
+const palette = buildPalette(pack);
+for (const id of [...extraPictures(biomes, enchants, effects, topics), ...palette.map((p) => p.id)]) if (nameOf(id)) used.add(id);
 
 // 4. Names and pictures.
 const specs = [];
@@ -107,21 +132,35 @@ for (const [id, mob] of Object.entries(mobs)) {
   mob.pic = face && existsSync(file) ? pictureIndex({ ...face, file }) : -1;
 }
 
+// 4b. The book's pages (Tools, Food...): what's in each.
+const answerable = (id) => (recipes[id] || []).some((r) => !r.unpack) || Boolean(facts[id]);
+const blockIds = new Set(sources.javaBlocks.map((b) => b.name));
+const foodIds = new Set(sources.javaFoods.map((f) => f.name));
+const categories = buildCategories(items, answerable, blockIds, mobs, foodIds);
+
 // 5. Write everything.
 const atlas = writeAtlas(specs.map((s) => ({ ...s })), join(app, 'images/items.png'));
 copyFileSync(join(pack, 'assets/minecraft/textures/block/grass_block_side.png'), join(app, 'images/grass.png'));
 const book = {
   made: new Date().toISOString().slice(0, 10),
-  sources: 'Recipes, names, drops and mining: minecraft-data (PrismarineJS, MIT). Pictures: Pixel Perfection CE (CC BY-SA 4.0)',
+  sources: 'Recipes, names, drops, mining, biomes, enchantments, food and effects: minecraft-data (PrismarineJS, MIT). Pictures: Pixel Perfection CE and Mineclonia (CC BY-SA 4.0)',
   atlas: { columns: atlas.columns, cell: atlas.cell, width: atlas.width, height: atlas.height },
   items,
   recipes,
   facts,
   mobs,
+  biomes,
+  enchants,
+  effects,
+  topics,
+  palette,
+  categories,
 };
 writeFileSync(join(app, 'data/book.json'), JSON.stringify(book));
 writeFileSync(join(app, '.cache/build-review.json'), JSON.stringify({ ...review, noPicture, noName }, null, 1));
 const size = (readFileSync(join(app, 'data/book.json')).length / 1024).toFixed(0);
 console.log(`book: ${Object.keys(items).length} things, ${Object.keys(recipes).length} with recipes, ${Object.keys(facts).length} facts, ${Object.keys(mobs).length} mobs, ${size} KB`);
+console.log(`more: ${Object.keys(biomes).length} biomes, ${Object.keys(enchants).length} enchantments, ${Object.keys(effects).length} effects, ${palette.length} pixel art colours`);
+console.log(`book pages: ${Object.entries(categories).map(([k, v]) => `${k} ${v.length}`).join(', ')}`);
 console.log(`pictures: ${specs.length} (${atlas.width}x${atlas.height}); no picture: ${noPicture.length}; no name: ${noName.length}`);
 console.log(`left out (not in the released game yet): ${review.unreleased.length}; Bedrock-only crafting: ${review.bedrockOnly.length}; maybe different on Bedrock: ${review.maybeDifferent.length}; details in .cache/build-review.json`);

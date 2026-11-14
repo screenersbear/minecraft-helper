@@ -1,0 +1,178 @@
+/* Home: the four pages you swipe between, the squares in the top bar, the book's tiles and the guide rows. */
+
+.home-bar {
+  align-items: center;
+}
+
+.bar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-dots {
+  display: flex;
+}
+
+/* Each square is small to look at but big enough to tap. */
+.dot-btn {
+  width: 22px;
+  height: 32px;
+  margin: -8px 0;
+  padding: 0;
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: var(--slot);
+}
+
+.dot-btn.on .dot {
+  background: var(--mango);
+}
+
+/* The four pages sit in a row; only one shows. */
+.swipe {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.swipe-track {
+  display: flex;
+  height: 100%;
+  will-change: transform;
+}
+
+.swipe-track > .page {
+  flex: 0 0 100%;
+  width: 100%;
+  /* Each page scrolls up and down; side to side is the swipe's. */
+  touch-action: pan-y;
+}
+
+.swipe.dragging {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.home-title {
+  font-family: var(--pixel);
+  font-weight: 700;
+  font-size: 52px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.home-intro {
+  margin-top: 6px;
+  font-size: 16px;
+}
+
+.swipe-hint {
+  margin-top: auto;
+  padding: 24px 0 calc(env(safe-area-inset-bottom) + 24px);
+  font-size: 13px;
+  text-align: center;
+}
+
+/* The book's eight tiles */
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding-top: 18px;
+}
+
+.cat-tile {
+  height: 112px;
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: inset 0 -6px 0 var(--slot);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--pixel);
+  font-weight: 700;
+  font-size: 18px;
+  touch-action: manipulation;
+}
+
+.cat-tile:active,
+.photo-btn:active,
+.size-btn:active {
+  transform: translateY(2px);
+}
+
+/* A page of the book: everything in it, as pictures with names */
+.thing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+  gap: 14px 8px;
+  padding: 18px 0 calc(env(safe-area-inset-bottom) + 24px);
+}
+
+.thing-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink);
+  text-decoration: none;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.2;
+  touch-action: manipulation;
+}
+
+.thing-tile .slot {
+  --slot-size: 60px;
+}
+
+.thing-name {
+  overflow-wrap: anywhere;
+}
+
+/* Guides, one row each */
+.guide-rows {
+  display: flex;
+  flex-direction: column;
+  padding-top: 16px;
+}
+
+.guide-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 56px;
+  border-top: 3px solid var(--ink);
+  color: var(--ink);
+  text-decoration: none;
+  touch-action: manipulation;
+}
+
+.guide-row:last-child {
+  border-bottom: 3px solid var(--ink);
+}
+
+.guide-row b {
+  flex-grow: 1;
+  font-size: 17px;
+}
+
+.guide-row span:last-child {
+  font-size: 13px;
+  white-space: nowrap;
+}

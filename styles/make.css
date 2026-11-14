@@ -1,0 +1,146 @@
+/* Make: the pixel art page (photo buttons, sizes, my pixel art) and the idea link. */
+
+.photo-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding-top: 16px;
+}
+
+.photo-btn {
+  position: relative;
+  height: 96px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: var(--pixel);
+  font-weight: 700;
+  font-size: 20px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+/* The real file box is invisible: the whole button opens it. */
+.file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.photo-btn:focus-within {
+  outline: 3px solid var(--green);
+  outline-offset: 2px;
+}
+
+.make-sizes {
+  padding-top: 18px;
+}
+
+.make-sizes .small-label {
+  margin-bottom: 6px;
+}
+
+.size-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.size-btn {
+  height: 72px;
+  border: none;
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: inset 0 -6px 0 var(--slot);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-family: var(--text);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.size-btn b {
+  font-family: var(--pixel);
+  font-size: 22px;
+}
+
+.size-btn span {
+  font-size: 12px;
+}
+
+.size-btn[aria-pressed='true'] {
+  background: var(--green);
+  color: var(--paper);
+  box-shadow: inset 0 -6px 0 var(--green-dark);
+}
+
+.my-art {
+  padding-top: 18px;
+}
+
+.my-art .small-label {
+  margin-bottom: 6px;
+}
+
+.art-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 64px;
+  border-top: 3px solid var(--ink);
+  color: var(--ink);
+  text-decoration: none;
+  touch-action: manipulation;
+}
+
+.art-row:last-child {
+  border-bottom: 3px solid var(--ink);
+}
+
+.art-thumb {
+  flex-shrink: 0;
+  image-rendering: pixelated;
+  box-shadow: inset 0 0 0 1px var(--slot);
+}
+
+.art-text {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.art-text b {
+  font-size: 17px;
+}
+
+.art-text small {
+  font-size: 13px;
+}
+
+.art-go {
+  font-family: var(--pixel);
+  font-weight: 700;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.idea-link {
+  margin-top: auto;
+  padding: 24px 0 calc(env(safe-area-inset-bottom) + 24px);
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 700;
+}

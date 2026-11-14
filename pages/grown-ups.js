@@ -1,8 +1,9 @@
-// Questions to add (for grown-ups): everything the book couldn't answer, newest first.
+// For grown-ups: questions to add (everything the book couldn't answer, newest first) and ideas to build.
 // Copy the list to paste into Claude Code, or clear it. Opened by holding the title on the Ask screen.
 import { el } from '../components/el.js';
 import { topBar } from '../components/top-bar.js';
 import { blockButton } from '../components/buttons.js';
+import { ideasList } from '../components/ideas-list.js';
 import { listQuestions, clearQuestions, detailText, copyText, WHY } from '../data/questions-log.js';
 import { whenLabel } from '../logic/routes.js';
 import { tidyQuestion } from '../logic/say.js';
@@ -72,15 +73,16 @@ export function grownUpsPage(ctx) {
         'div',
         { class: 'answer-head' },
         el('h1', { class: 'log-title', tabindex: '-1' }, 'Questions', el('br'), 'to add'),
-        el('p', { class: 'say' }, "Everything it couldn't answer, plus answers that didn't help. Newest first."),
+        el('p', { class: 'say' }, "Everything it couldn't answer, plus answers kids said didn't help, and ideas they saved to build. Newest first."),
       ),
       rows(list),
       el(
         'div',
-        { class: 'bottom' },
+        { class: 'log-actions' },
         el('p', { class: 'hint' }, 'Paste the list into Claude Code and ask it to add these to the book.'),
         el('div', { class: 'copy-row' }, copyButton, clearButton),
       ),
+      ideasList(ctx),
     ),
   ];
   return { nodes, title: 'Questions to add' };

@@ -2,12 +2,14 @@
 // It never makes anything up: if nothing in the book fits, the answer is { type: 'none' }.
 import { keyWords } from './words.js';
 import { wordMatch } from './spelling.js';
-import { questionKind, FITS, KIND_WORDS } from './understand.js';
+import { questionKind, fitIndex, KIND_WORDS, WEATHER_WORDS } from './understand.js';
+import { isInfo, infoOf } from './info.js';
 
 // The question's words, plus each pair joined ("pick axe" -> pickaxe, "book shelf" -> bookshelf).
 // A match on a joined pair counts a little extra, since it explains two words.
-function questionWords(text) {
-  const words = keyWords(text).map((w) => ({ w, bonus: 0 }));
+// skip: words to leave out ("snow" in "does it snow in a taiga" says it's about weather, not a snowy biome).
+function questionWords(text, skip = new Set()) {
+  const words = keyWords(text).filter((w) => !skip.has(w)).map((w) => ({ w, bonus: 0 }));
   const joined = [];
   for (let i = 0; i < words.length - 1; i++) joined.push({ w: words[i].w + words[i + 1].w, bonus: 0.5 });
   return [...words, ...joined];
@@ -28,17 +30,25 @@ export function scoreEntry(entry, asked) {
   return { full, matched, score: full ? entry.words.length * 10 + quality : quality };
 }
 
-// What kind of answer a target gives: a recipe, a fact, a mob card, a guide, or nothing yet.
-// Things with both a recipe and facts (stone) give the fact when the question suits facts better ("what tool for stone").
+// What a fact needs to answer some kinds of question: "iron golems drop iron ingots" doesn't answer
+// "how do I mine iron", and "how much does bread fill you" needs how much food it is.
+const FACT_NEEDS = {
+  mine: (f) => Boolean(f.mineWith || f.fromBlocks),
+  food: (f) => Boolean(f.food),
+};
+
+// What kind of answer a target gives: a recipe, a fact, a mob card, a guide, an info page (biome, enchant,
+// effect, topic), or nothing yet. Things with both a recipe and facts (stone) give the fact when the question
+// suits facts better ("what tool for stone").
 export function answerType(target, book, guides, kind = 'any') {
   if (target.type === 'guide') return guides.some((g) => g.id === target.id) ? 'guide' : null;
   if (target.type === 'mob') return book.mobs[target.id] ? 'mob' : null;
+  if (isInfo(target.type)) return infoOf(book, target) ? target.type : null;
   const recipes = book.recipes[target.id];
-  const fits = FITS[kind] || FITS.any;
-  const factFirst = fits.includes('fact') && (!fits.includes('recipe') || fits.indexOf('fact') < fits.indexOf('recipe'));
+  const at = (type) => fitIndex(kind, type);
+  const factFirst = at('fact') >= 0 && (at('recipe') < 0 || at('fact') < at('recipe'));
   const fact = book.facts[target.id];
-  // A mining question needs a fact about mining: "iron golems drop iron ingots" doesn't answer "how do I mine iron".
-  const hasFact = Boolean(fact) && (kind !== 'mine' || Boolean(fact.mineWith || fact.fromBlocks));
+  const hasFact = Boolean(fact) && (!FACT_NEEDS[kind] || FACT_NEEDS[kind](fact));
   if (hasFact && factFirst) return 'fact';
   if (recipes && !recipes.every((r) => r.unpack)) return 'recipe';
   if (hasFact) return 'fact';
@@ -54,24 +64,23 @@ const sameTarget = (a, b) => a.type === b.type && a.id === b.id;
 
 // Order full matches by how well they fit the kind of question, then by score.
 function pick(candidates, kind, guides) {
-  const fits = FITS[kind];
   const usable = candidates.filter((c) => {
-    if (c.type === 'unpack') return kind !== 'tame' && kind !== 'drops';
+    if (c.type === 'unpack') return !['tame', 'drops', 'max', 'weather', 'food'].includes(kind);
     if (kind === 'tame') return c.type === 'guide' && isTameGuide(guides, c.target.id);
-    return fits.includes(c.type);
+    return fitIndex(kind, c.type) >= 0;
   });
   if (!usable.length) return null;
   const best = Math.max(...usable.map((c) => c.score));
   // Among the strongest matches, the kind of answer that suits the question wins. Unpacking a block comes last.
   const top = usable.filter((c) => c.score >= best - 0.5);
-  const rankOf = (c) => (c.type === 'unpack' ? 99 : fits.indexOf(c.type));
+  const rankOf = (c) => (c.type === 'unpack' ? 99 : fitIndex(kind, c.type));
   return [...top].sort((a, b) => rankOf(a) - rankOf(b) || b.score - a.score)[0];
 }
 
 // list: from buildSearchList. Returns { type, target, kind, suggestions }.
 export function findAnswer(question, list, book, guides) {
-  const asked = questionWords(question);
   const kind = questionKind(question);
+  const asked = questionWords(question, kind === 'weather' ? WEATHER_WORDS : undefined);
   const scored = [];
   // A match has to come from the question's own words, not only its kind words: "find" alone doesn't make
   // "find a stronghold" a match for "where do I find diamonds", and "tool" isn't a misspelled "wool".
@@ -107,7 +116,7 @@ export function suggest(scored, answer, kind, guides) {
   const guideFirst = (s) => (kind === 'tame' && s.type === 'guide' ? 1 : 0);
   // Best match first. Among equal matches, answers that suit the question (a mining fact for "how do I mine iron"),
   // then the shorter name: "iron ore" before "deepslate iron ore".
-  const fitRank = (x) => (FITS[kind].includes(x.type) ? FITS[kind].indexOf(x.type) : 99);
+  const fitRank = (x) => (fitIndex(kind, x.type) >= 0 ? fitIndex(kind, x.type) : 99);
   const ordered = [...scored].sort(
     (a, b) => guideFirst(b) - guideFirst(a) || b.matched - a.matched || b.score - a.score || fitRank(a) - fitRank(b) || a.size - b.size,
   );

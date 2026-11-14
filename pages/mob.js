@@ -1,5 +1,6 @@
 // Mob answer: what a mob is like (friendly, neutral, hostile or a boss) and what it drops.
 import { el } from '../components/el.js';
+import { backHash } from '../logic/routes.js';
 import { topBar } from '../components/top-bar.js';
 import { answerHead } from '../components/answer-head.js';
 import { thingList } from '../components/thing-list.js';
@@ -17,7 +18,7 @@ export function mobPage(ctx, route) {
   const drops = mob.drops.map((id) => ({ picture: itemPicture(book, id, 24), text: book.items[id]?.name || id }));
 
   const nodes = [
-    ...topBar({ left: { label: 'Back', href: '#/' }, right: 'Mobs' }),
+    ...topBar({ left: { label: 'Back', href: backHash(route) }, right: 'Mobs' }),
     el(
       'div',
       { class: 'page answer' },

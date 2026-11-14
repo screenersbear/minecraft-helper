@@ -7,10 +7,10 @@ const SAME = new Set(
     'cobblestone stone obsidian netherrack wool powder redstone kelp wart slime honey quartz prismarine deepslate blackstone ' +
     'basalt andesite diorite granite tuff calcite mud moss terracotta concrete scaffolding bamboo cactus cane fish cod salmon ' +
     'pufferfish sheep beef mutton chicken rabbit porkchop iron gold copper netherite amethyst sculk resin dripstone glowstone ' +
-    'magma lava water milk end purpur popcorn bread cake stew soup'
+    'magma lava water milk end purpur popcorn bread cake stew soup flesh'
   ).split(' '),
 );
-const SPECIAL = { leaf: 'leaves', wolf: 'wolves', loaf: 'loaves', foot: 'feet', enderman: 'endermen', knife: 'knives', shelf: 'shelves' };
+const SPECIAL = { drowned: 'drowned', leaf: 'leaves', wolf: 'wolves', loaf: 'loaves', foot: 'feet', enderman: 'endermen', knife: 'knives', shelf: 'shelves' };
 
 function pluralWord(word) {
   if (SPECIAL[word]) return SPECIAL[word];
@@ -30,6 +30,10 @@ export function plural(name, count = 2) {
   words[words.length - 1] = pluralWord(words[words.length - 1]);
   return words.join(' ');
 }
+
+// Mobs named like a food: "chickens", not "chicken" as in "2 raw chicken".
+const MOBS = { chicken: 'chickens', rabbit: 'rabbits', cod: 'cod', salmon: 'salmon' };
+export const mobPlural = (name) => MOBS[String(name).toLowerCase()] || plural(name);
 
 // "3 milk buckets"
 export const counted = (count, name) => `${count} ${plural(name, count)}`;

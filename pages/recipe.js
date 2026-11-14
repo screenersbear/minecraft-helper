@@ -8,7 +8,7 @@ import { needsList } from '../components/thing-list.js';
 import { blockButton } from '../components/buttons.js';
 import { feedbackArea } from '../components/feedback-area.js';
 import { recipeSentence, backSentence } from '../logic/say.js';
-import { toHash } from '../logic/routes.js';
+import { toHash, backHash } from '../logic/routes.js';
 
 const WHERE = { crafting: 'Crafting', furnace: 'Furnace', stonecutter: 'Stonecutter', smithing: 'Smithing' };
 
@@ -28,13 +28,13 @@ export function recipePage(ctx, route) {
       ? blockButton({
           label: `Another way (${way + 1} of ${ways.length})`,
           tone: 'grey',
-          onClick: () => ctx.go(toHash({ page: 'recipe', id: route.id, q: route.q, way: (way + 1) % ways.length }), { replace: true }),
+          onClick: () => ctx.go(toHash({ page: 'recipe', id: route.id, q: route.q, from: route.from, way: (way + 1) % ways.length }), { replace: true }),
           extra: { class: 'block-btn notch tone-grey small-btn' },
         })
       : null;
 
   const nodes = [
-    ...topBar({ left: { label: 'Back', href: '#/' }, right: WHERE[recipe.how] }),
+    ...topBar({ left: { label: 'Back', href: backHash(route) }, right: WHERE[recipe.how] }),
     el(
       'div',
       { class: 'page answer' },

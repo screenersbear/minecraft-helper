@@ -1,6 +1,8 @@
 // Search list: every name the app knows, as simple words, pointing at an answer. Built once from the book,
-// the guides and the nicknames. Each entry: { words, target: { type: 'item' | 'mob' | 'guide', id }, label }.
+// the guides and the nicknames. Each entry: { words, target: { type, id }, label }. The type is 'item', 'mob',
+// 'guide', or one of the info types (biome, enchant, effect, topic).
 import { keyWords } from './words.js';
+import { INFO_TYPES } from './info.js';
 
 // "Red Bed" -> "Bed", "Oak Planks" -> "Planks", "Wooden Pickaxe" -> "Pickaxe": the plain name, and which kind is the default.
 const PREFIXES = [
@@ -37,11 +39,31 @@ export function plainNames(items, hasAnswer) {
   return out;
 }
 
+// A nickname's target: "mob:wolf", "guide:nether-portal", "biome:taiga", or an item id.
 const target = (text) => {
-  if (text.startsWith('mob:')) return { type: 'mob', id: text.slice(4) };
-  if (text.startsWith('guide:')) return { type: 'guide', id: text.slice(6) };
+  const [type, id] = text.split(':');
+  if (id && ['mob', 'guide', ...INFO_TYPES].includes(type)) return { type, id };
   return { type: 'item', id: text };
 };
+
+// Biomes, enchantments, potion effects and topics. An effect named like a mob or item ("wither") is only found
+// as "wither effect", so asking about the mob still finds the mob.
+function addInfo(book, add, taken) {
+  for (const [id, b] of Object.entries(book.biomes || {})) {
+    add(b.name, { type: 'biome', id }, b.name);
+    for (const phrase of b.also) add(phrase, { type: 'biome', id }, b.name);
+  }
+  for (const [id, e] of Object.entries(book.enchants || {})) {
+    add(e.name, { type: 'enchant', id }, e.name);
+    add(`${e.name} enchantment`, { type: 'enchant', id }, e.name);
+  }
+  for (const [id, e] of Object.entries(book.effects || {})) {
+    const t = { type: 'effect', id };
+    if (!taken.has(e.name.toLowerCase())) add(e.name, t, e.name);
+    for (const phrase of [`${e.name} effect`, `potion of ${e.name}`, `${e.name} potion`, ...e.also]) add(phrase, t, e.name);
+  }
+  for (const [id, topic] of Object.entries(book.topics || {})) for (const phrase of topic.askedAs) add(phrase, { type: 'topic', id }, topic.title);
+}
 
 // book: data/book.json; guides: data/guides.json; nicknames: data/nicknames.json.
 export function buildSearchList(book, guides, nicknames) {
@@ -58,6 +80,8 @@ export function buildSearchList(book, guides, nicknames) {
     add(g.title, { type: 'guide', id: g.id }, g.title);
     for (const phrase of g.askedAs) add(phrase, { type: 'guide', id: g.id }, g.title);
   }
+  const taken = new Set([...Object.values(book.items), ...Object.values(book.mobs)].map((x) => x.name.toLowerCase()));
+  addInfo(book, add, taken);
   for (const [phrase, to] of Object.entries(nicknames)) if (!phrase.startsWith('_')) add(phrase, target(to));
   return list;
 }
