@@ -2,6 +2,8 @@
 // stop talking, so after letting go it keeps listening a moment for the last words.
 // A quick tap works too: it listens until you stop talking, or until you tap again.
 // If the phone won't start listening the moment a finger goes down, it switches to tap to talk by itself.
+// small: the "Hold to ask more" button at the bottom of an answer. onStart runs when it starts listening, onIdle
+// when it stops without a question (so a guide can listen for "next" again).
 import { el } from './el.js';
 import { icon } from './icons.js';
 import { canListen, listenOnce } from '../speech/listen.js';
@@ -18,9 +20,9 @@ const MESSAGES = {
 };
 const HOLD = 400; // a press longer than this is a hold, shorter is a tap
 
-export function talkButton({ onQuestion, onNoMic }) {
-  const mic = icon('mic', 76);
-  const button = el('button', { class: 'talk-btn notch', type: 'button', 'aria-label': 'Hold to talk' }, mic);
+export function talkButton({ onQuestion, onNoMic, small = false, onStart, onIdle }) {
+  const mic = icon('mic', small ? 36 : 76);
+  const button = el('button', { class: `talk-btn notch${small ? ' talk-small' : ''}`, type: 'button', 'aria-label': 'Hold to talk' }, mic);
   const label = el('div', { class: 'talk-label' });
   const heard = el('p', { class: 'heard', 'aria-live': 'polite' });
   let session = null;
@@ -30,8 +32,9 @@ export function talkButton({ onQuestion, onNoMic }) {
   let retryOnRelease = false;
 
   const show = () => {
-    const text = { idle: tapOnly ? 'Tap to talk' : 'Hold to talk', holding: 'Listening...', tapped: 'Listening... tap to stop', finishing: 'One moment...' }[mode];
-    label.textContent = canListen() ? text : 'Type it below';
+    const idle = small ? (tapOnly ? 'Tap to ask more' : 'Hold to ask more') : tapOnly ? 'Tap to talk' : 'Hold to talk';
+    const text = { idle, holding: 'Listening...', tapped: 'Listening... tap to stop', finishing: 'One moment...' }[mode];
+    label.textContent = canListen() ? text : small ? 'Tap to type a question' : 'Type it below';
     button.setAttribute('aria-label', label.textContent);
     button.classList.toggle('is-listening', mode !== 'idle');
     if (mode === 'idle') delete document.body.dataset.listening;
@@ -46,6 +49,7 @@ export function talkButton({ onQuestion, onNoMic }) {
 
   function begin(nextMode) {
     stopSpeaking();
+    onStart?.();
     heard.textContent = '';
     mode = nextMode;
     show();
@@ -68,11 +72,13 @@ export function talkButton({ onQuestion, onNoMic }) {
           }
           finish();
           heard.textContent = MESSAGES[code] ?? MESSAGES.error;
+          onIdle?.();
         },
       });
     } catch {
       finish();
       heard.textContent = MESSAGES.error;
+      onIdle?.();
     }
   }
 
@@ -130,6 +136,6 @@ export function talkButton({ onQuestion, onNoMic }) {
   });
 
   show();
-  if (!canListen()) heard.textContent = "This browser can't hear. Type your question below.";
+  if (!canListen() && !small) heard.textContent = "This browser can't hear. Type your question below.";
   return { nodes: [button, label, heard], stop: () => session?.stop() };
 }

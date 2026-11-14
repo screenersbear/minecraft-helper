@@ -16,3 +16,19 @@ After every finished change, commit and push `main` yourself, without asking (St
 live app at https://screenersbear.github.io/minecraft-helper/ in about a minute: run `npm run build` first if the book,
 pictures or app files changed (it restamps sw.js), then check the live app. HANDOFF.md, .claude/ and .github/workflows/
 stay out of git.
+
+## When Starky pastes a copied list
+
+The grown-ups screen's "Copy the list" gives one line per entry: `"question" | app answered: ... | reason: ... | asked N times, last on DATE`.
+Reasons: Wrong, Hard to understand, Not what I asked, Not in the book, Missing (a kind of answer the book doesn't have yet,
+like "Missing: what panda eats"), Didn't say why.
+
+1. Check every entry against the Minecraft Wiki for Bedrock (minecraft.wiki). Change nothing yet.
+2. Sort them into these groups and report back in this order:
+   1. **The app was wrong**: say what's right, with the wiki page, and the fix.
+   2. **The app was right**: say so and change nothing (the kid probably misheard or misunderstood).
+   3. **Hard to understand**: suggest simpler words for the answer.
+   4. **Missed the question**: the nicknames or wording to add so it matches next time.
+   5. **Not in the book** (and Missing): the fact, where line or guide to add.
+3. Wait for Starky's go-ahead, then make the changes. Where lines go in `tools/book/where.json` (Bedrock, with the
+   wiki link), nicknames in `data/nicknames.json`, guides in `guides/`. Then `npm run build`, test, commit and push.

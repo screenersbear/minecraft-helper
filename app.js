@@ -1,9 +1,13 @@
 // App: opens the book, shows the screen named in the address (after #), and answers questions.
 import { loadBook } from './data/load-book.js';
 import { addRecent } from './data/recent.js';
-import { logQuestion } from './data/questions-log.js';
+import { logQuestion, NOT_IN_BOOK } from './data/questions-log.js';
+import { rememberThing, lastThing } from './data/last-thing.js';
 import { findAnswer } from './logic/find-answer.js';
 import { parseHash, hashForAnswer } from './logic/routes.js';
+import { withLastThing, describeLast, thingOfRoute } from './logic/follow-up.js';
+import { missingLabel } from './logic/say-missing.js';
+import { targetName } from './logic/target-name.js';
 import { speak, stopSpeaking, unlockSpeech } from './speech/speak.js';
 import { fitTitles } from './components/fit-title.js';
 import { el } from './components/el.js';
@@ -21,11 +25,14 @@ import { notFoundPage } from './pages/not-found.js';
 import { grownUpsPage } from './pages/grown-ups.js';
 import { aboutPage } from './pages/about.js';
 import { infoPage } from './pages/info.js';
+import { wherePage } from './pages/where.js';
+import { missingPage } from './pages/missing.js';
 import { isInfo, infoOf } from './logic/info.js';
 
 const PAGES = {
   recipe: recipePage, guide: guidePage, mob: mobPage, fact: factPage, none: notFoundPage, 'grown-ups': grownUpsPage, about: aboutPage,
   biome: infoPage('biome'), enchant: infoPage('enchant'), effect: infoPage('effect'), topic: infoPage('topic'), idea: ideaPage,
+  where: wherePage, missing: missingPage,
 };
 const root = document.getElementById('app');
 let view = null;
@@ -34,6 +41,7 @@ let view = null;
 function pictureFor(answer, book, guides) {
   if (answer.type === 'none') return null;
   if (answer.target.type === 'mob') return { kind: 'mob', id: answer.target.id };
+  if (answer.target.type === 'place') return { kind: 'item', id: book.places?.[answer.target.id]?.pic };
   if (isInfo(answer.target.type)) return { kind: 'item', id: infoOf(book, answer.target)?.pic };
   if (answer.target.type === 'guide') return { kind: 'item', id: guides.find((g) => g.id === answer.target.id)?.picture };
   return { kind: 'item', id: answer.target.id };
@@ -66,7 +74,20 @@ function show(ctx) {
   window.scrollTo(0, 0);
   fitTitles(root);
   (view.focusNode?.() || root.querySelector('h1'))?.focus({ preventScroll: true });
-  if (view.say) speak(view.say);
+  const thing = thingOfRoute(route);
+  if (thing) rememberThing(thing);
+  readOut(view.say);
+}
+
+// Reads the answer out, then tells the page it has finished ('answer-spoken'), so "Did that answer it?" can show.
+// If the phone never says it's done (no voice yet on iPhone), it shows after about as long as reading would take.
+let showing = 0;
+function readOut(text) {
+  const mine = ++showing;
+  const done = () => mine === showing && document.dispatchEvent(new Event('answer-spoken'));
+  if (!text) return done();
+  speak(text, done);
+  setTimeout(done, Math.min(25000, 3000 + text.split(/\s+/).length * 600));
 }
 
 function start({ book, guides, list }) {
@@ -77,10 +98,16 @@ function start({ book, guides, list }) {
     ask(question) {
       const q = String(question || '').trim();
       if (!q) return;
-      const answer = findAnswer(q, list, book, guides);
+      // A follow-up ("how do I get it?") is matched with the last thing put in.
+      const matched = withLastThing(q, describeLast(lastThing(), book, guides));
+      const answer = findAnswer(matched, list, book, guides);
       addRecent({ q, pic: pictureFor(answer, book, guides) });
-      if (answer.type === 'none') logQuestion(q, 'not-in-book');
-      ctx.go(hashForAnswer(answer, q));
+      if (answer.type === 'none') logQuestion({ q, answer: NOT_IN_BOOK, reason: 'not-in-book' });
+      if (answer.type === 'missing') {
+        const missing = missingLabel(targetName(book, guides, answer.target), answer.kind);
+        logQuestion({ q, answer: missing, reason: 'missing', missing });
+      }
+      ctx.go(hashForAnswer(answer, q, matched !== q ? answer.kind : undefined));
     },
     go(hash, { replace = false } = {}) {
       if (hash === location.hash) return show(ctx);
@@ -88,7 +115,7 @@ function start({ book, guides, list }) {
       else location.hash = hash;
     },
     refresh: () => show(ctx),
-    say: (text) => speak(text),
+    say: (text, onDone) => speak(text, onDone),
   };
   window.addEventListener('hashchange', () => show(ctx));
   show(ctx);

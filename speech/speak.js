@@ -8,6 +8,7 @@ let voice = null;
 let unlocked = false;
 let talking = false;
 let stoppedAt = 0;
+let slowRun = 0; // a new slow reading or stopSpeaking() ends the one before
 
 function chooseVoice() {
   const voices = window.speechSynthesis?.getVoices() || [];
@@ -35,22 +36,29 @@ export function unlockSpeech() {
 }
 
 export function stopSpeaking() {
+  slowRun += 1;
   if (canSpeak()) window.speechSynthesis.cancel();
 }
 
 // Says the text. onDone runs when it has finished (or straight away if the phone can't talk).
-export function speak(text, onDone) {
+// rate: how fast, 1 is normal. It also ends a slow reading that was going on.
+export function speak(text, onDone, rate = 0.95) {
+  slowRun += 1;
+  sayLine(text, onDone, rate);
+}
+
+function sayLine(text, onDone, rate) {
   if (!canSpeak() || !text) {
     onDone?.();
     return;
   }
   // Safari can drop a line spoken straight after cancel(), so wait a moment when something was still talking.
   const busy = window.speechSynthesis.speaking || window.speechSynthesis.pending;
-  stopSpeaking();
+  window.speechSynthesis.cancel();
   const line = new SpeechSynthesisUtterance(text);
   if (voice) line.voice = voice;
   line.lang = voice?.lang || 'en-US';
-  line.rate = 0.95;
+  line.rate = rate;
   let done = false;
   talking = true;
   const finish = () => {
@@ -64,6 +72,18 @@ export function speak(text, onDone) {
   line.onerror = finish;
   if (busy) setTimeout(() => window.speechSynthesis.speak(line), 120);
   else window.speechSynthesis.speak(line);
+}
+
+// Says it again more simply: slower, one sentence at a time with a short pause between.
+export function speakSlowly(text, onDone) {
+  const run = ++slowRun;
+  const sentences = String(text || '').match(/[^.!?]+[.!?]*/g)?.map((x) => x.trim()).filter(Boolean) || [];
+  const next = (i) => {
+    if (run !== slowRun) return;
+    if (i >= sentences.length) return onDone?.();
+    sayLine(sentences[i], () => setTimeout(() => next(i + 1), 350), 0.75);
+  };
+  next(0);
 }
 
 // True while the app is talking and for a moment after, so the guide doesn't hear its own voice say "next".

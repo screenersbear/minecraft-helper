@@ -1,7 +1,8 @@
 // Picture: shows an item, block or mob from images/items.png (all pictures in one image, 16 by 16 each).
 // Things without a picture yet get their first letters on a grey square instead.
 import { el } from './el.js';
-import { isInfo, infoOf, infoName } from '../logic/info.js';
+import { isInfo, infoOf } from '../logic/info.js';
+export { targetName } from '../logic/target-name.js';
 
 // index: the picture's place in items.png. size: CSS pixels (a multiple of 8 keeps pixels even on iPhone).
 export function pictureAt(book, index, size, name = '') {
@@ -36,18 +37,11 @@ export function mobPicture(book, id, size) {
   return pictureAt(book, mob?.pic, size, mob?.name || id);
 }
 
-// A picture for a search target: { type: 'item' | 'mob' | 'guide' | an info type, id }.
+// A picture for a search target: { type: 'item' | 'mob' | 'guide' | 'place' | an info type, id }.
 export function targetPicture(book, guides, target, size) {
   if (target.type === 'mob') return mobPicture(book, target.id, size);
+  if (target.type === 'place') return itemPicture(book, book.places?.[target.id]?.pic || '', size);
   if (isInfo(target.type)) return itemPicture(book, infoOf(book, target)?.pic || '', size);
   if (target.type === 'guide') return itemPicture(book, guides.find((g) => g.id === target.id)?.picture || '', size);
   return itemPicture(book, target.id, size);
-}
-
-// A plain name for a search target, for buttons.
-export function targetName(book, guides, target) {
-  if (target.type === 'mob') return book.mobs[target.id]?.name || target.id;
-  if (isInfo(target.type)) return infoName(book, target);
-  if (target.type === 'guide') return guides.find((g) => g.id === target.id)?.title || target.id;
-  return book.items[target.id]?.name || target.id;
 }

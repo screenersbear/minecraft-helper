@@ -1,12 +1,11 @@
-// For grown-ups: questions to add (everything the book couldn't answer, newest first) and ideas to build.
-// Copy the list to paste into Claude Code, or clear it. Opened by holding the title on the Ask screen.
+// For grown-ups: questions to look at (grouped by what went wrong, X to take one off when it's done) and ideas to
+// build. Copy the list copies what's still on it, to paste into Claude Code. Opened by holding the title on Ask.
 import { el } from '../components/el.js';
 import { topBar } from '../components/top-bar.js';
 import { blockButton } from '../components/buttons.js';
 import { ideasList } from '../components/ideas-list.js';
-import { listQuestions, clearQuestions, detailText, copyText, WHY } from '../data/questions-log.js';
-import { whenLabel } from '../logic/routes.js';
-import { tidyQuestion } from '../logic/say.js';
+import { questionLog } from '../components/question-log.js';
+import { listQuestions, clearQuestions, copyText } from '../data/questions-log.js';
 
 async function copy(text) {
   try {
@@ -24,29 +23,14 @@ async function copy(text) {
   }
 }
 
-function rows(list) {
-  if (!list.length) return el('p', { class: 'say' }, "Nothing to add yet. Questions the book can't answer show up here.");
-  return el(
-    'ul',
-    { class: 'log' },
-    list.map((e) =>
-      el(
-        'li',
-        {},
-        el('div', {}, el('p', { class: 'log-q' }, tidyQuestion(e.q)), el('p', { class: 'log-when' }, `${whenLabel(e.last)} · ${detailText(e)}`)),
-        el('span', { class: `tag ${e.why === 'not-in-book' ? 'tag-mango' : 'tag-grey'}` }, WHY[e.why]),
-      ),
-    ),
-  );
-}
-
 export function grownUpsPage(ctx) {
-  const list = listQuestions();
+  const log = questionLog(listQuestions());
   const copyButton = blockButton({
     label: 'Copy the list',
     tone: 'green',
     onClick: async () => {
-      const ok = list.length && (await copy(copyText(list)));
+      const left = log.entries();
+      const ok = left.length && (await copy(copyText(left)));
       copyButton.textContent = ok ? 'Copied!' : 'Nothing to copy';
       setTimeout(() => (copyButton.textContent = 'Copy the list'), 2000);
     },
@@ -57,8 +41,9 @@ export function grownUpsPage(ctx) {
     tone: 'grey',
     extra: { 'data-test-skip': 'deletes the saved questions' },
     onClick: () => {
-      if (!list.length) return;
-      if (!window.confirm(`Clear all ${list.length} questions? This can't be undone.`)) return;
+      const count = log.entries().length;
+      if (!count) return;
+      if (!window.confirm(`Clear all ${count} questions? This can't be undone.`)) return;
       clearQuestions();
       ctx.refresh();
     },
@@ -72,18 +57,18 @@ export function grownUpsPage(ctx) {
       el(
         'div',
         { class: 'answer-head' },
-        el('h1', { class: 'log-title', tabindex: '-1' }, 'Questions', el('br'), 'to add'),
-        el('p', { class: 'say' }, "Everything it couldn't answer, plus answers kids said didn't help, and ideas they saved to build. Newest first."),
+        el('h1', { class: 'log-title', tabindex: '-1' }, 'Questions', el('br'), 'to look at'),
+        el('p', { class: 'say' }, "What the app couldn't answer, and answers kids said didn't help, grouped by what went wrong. Tap the X when one is done."),
       ),
-      rows(list),
+      log.node,
       el(
         'div',
         { class: 'log-actions' },
-        el('p', { class: 'hint' }, 'Paste the list into Claude Code and ask it to add these to the book.'),
+        el('p', { class: 'hint' }, 'Copy the list and paste it into Claude Code. It checks each one and reports back before changing anything.'),
         el('div', { class: 'copy-row' }, copyButton, clearButton),
       ),
       ideasList(ctx),
     ),
   ];
-  return { nodes, title: 'Questions to add' };
+  return { nodes, title: 'Questions to look at' };
 }

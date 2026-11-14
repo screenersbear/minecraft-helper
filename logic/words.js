@@ -33,7 +33,7 @@ export function stem(word) {
 // Words that don't say what the question is about.
 const FILLER = new Set(
   (
-    'a an the i you we me my our your it its this that these those to of for in on at with and or is are am was be ' +
+    'a an the i you we me my our your it its this that these those they them he she him her to of for in on at with and or is are am was be ' +
     'how do does did can could would should will what whats which where wheres who why when there theres some any ' +
     'please hey ok okay so um uh like just really need want get got make made making craft crafting crafted build building ' +
     'create creating minecraft bedrock game guide tell show about one thing things way recipe recipes'

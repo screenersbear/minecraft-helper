@@ -102,3 +102,50 @@
     font-size: 44px;
   }
 }
+
+/* Grown-ups: questions grouped by reason, each with an X to take it off the list */
+.log-group-title {
+  font-family: var(--pixel);
+  font-weight: 700;
+  font-size: 20px;
+  margin-top: 22px;
+}
+
+.log-group .log {
+  margin-top: 8px;
+}
+
+.log li {
+  align-items: flex-start;
+}
+
+.log-text {
+  min-width: 0;
+}
+
+.log-answer {
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.log-x {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border: 3px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.log-x:active {
+  transform: translateY(2px);
+}
+
+.log li.log-removed {
+  align-items: center;
+  font-size: 15px;
+}

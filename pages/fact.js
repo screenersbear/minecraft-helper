@@ -5,12 +5,14 @@ import { answerHead } from '../components/answer-head.js';
 import { thingList } from '../components/thing-list.js';
 import { itemPicture, mobPicture } from '../components/picture.js';
 import { blockButton } from '../components/buttons.js';
-import { feedbackArea } from '../components/feedback-area.js';
+import { answerFooter } from '../components/answer-footer.js';
 import { factSentence } from '../logic/say.js';
 import { drumsticks } from '../logic/say-facts.js';
 import { mobPlural } from '../logic/plural.js';
 import { questionKind } from '../logic/understand.js';
 import { toHash, backHash } from '../logic/routes.js';
+import { answerLabel } from '../logic/target-name.js';
+import { targetKey } from '../logic/where.js';
 
 function whereRows(book, fact) {
   const blocks = (fact.fromBlocks || []).map((b) => ({
@@ -36,12 +38,19 @@ export function factPage(ctx, route) {
   const fact = book.facts[route.id];
   const item = book.items[route.id];
   if (!fact || !item) return null;
-  const kind = questionKind(route.q);
+  const kind = route.kind || questionKind(route.q);
   const say = factSentence(route.id, book, kind);
   const tool = fact.mineWith
     ? [{ picture: itemPicture(book, fact.mineWith, 24), text: book.items[fact.mineWith]?.name || fact.mineWith, note: fact.mineWith === 'wooden_pickaxe' ? 'or any pickaxe' : 'or better' }]
     : [];
   const canMake = (book.recipes[route.id] || []).length > 0;
+  const target = { type: 'item', id: route.id };
+  const small = (label, href) => blockButton({ label, tone: 'grey', href, extra: { class: 'block-btn notch tone-grey small-btn' } });
+  const more = [
+    canMake ? small('How to make it', toHash({ page: 'recipe', id: route.id, q: route.q, from: route.from })) : null,
+    book.where?.item?.[route.id] ? small('Where to find it', toHash({ page: 'where', id: targetKey(target), q: route.q, from: route.from })) : null,
+  ].filter(Boolean);
+  const footer = answerFooter(ctx, { feedback: { question: route.q, answer: answerLabel('fact', item.name), target, say } });
 
   const nodes = [
     ...topBar({ left: { label: 'Back', href: backHash(route) }, right: LABEL[kind] || (fact.food && !fact.fromBlocks && !fact.fromMobs ? 'Food' : 'Facts') }),
@@ -54,11 +63,9 @@ export function factPage(ctx, route) {
       thingList(whereRows(book, fact), 'Where to get it'),
       thingList(tool, 'Mine it with'),
       kind !== 'food' ? thingList(foodRows(book, route.id, fact.food), 'Food') : null,
-      canMake
-        ? el('div', { class: 'another' }, blockButton({ label: 'How to make it', tone: 'grey', href: toHash({ page: 'recipe', id: route.id, q: route.q, from: route.from }), extra: { class: 'block-btn notch tone-grey small-btn' } }))
-        : null,
-      feedbackArea(ctx, route.q, item.name),
+      more.length ? el('div', { class: 'another' }, more) : null,
+      footer.node,
     ),
   ];
-  return { nodes, say, title: item.name };
+  return { nodes, say, title: item.name, cleanup: footer.stop };
 }

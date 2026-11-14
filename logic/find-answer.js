@@ -4,6 +4,7 @@ import { keyWords } from './words.js';
 import { wordMatch } from './spelling.js';
 import { questionKind, fitIndex, KIND_WORDS, WEATHER_WORDS } from './understand.js';
 import { isInfo, infoOf } from './info.js';
+import { whereOf } from './where.js';
 
 // The question's words, plus each pair joined ("pick axe" -> pickaxe, "book shelf" -> bookshelf).
 // A match on a joined pair counts a little extra, since it explains two words.
@@ -34,26 +35,36 @@ export function scoreEntry(entry, asked) {
 // "how do I mine iron", and "how much does bread fill you" needs how much food it is.
 const FACT_NEEDS = {
   mine: (f) => Boolean(f.mineWith || f.fromBlocks),
+  find: (f) => Boolean(f.fromBlocks || f.fromMobs),
   food: (f) => Boolean(f.food),
 };
 
+const PLACE_KINDS = new Set(['find', 'get', 'about', 'any']);
+
 // What kind of answer a target gives: a recipe, a fact, a mob card, a guide, an info page (biome, enchant,
-// effect, topic), or nothing yet. Things with both a recipe and facts (stone) give the fact when the question
-// suits facts better ("what tool for stone").
+// effect, topic), a where line, or nothing yet. Things with both a recipe and facts (stone) give the fact when the
+// question suits facts better ("what tool for stone"). A where question always gets the where line if there is one,
+// never the description; so does "how do I get" something you can't craft, and "how do I make" a mob you build.
 export function answerType(target, book, guides, kind = 'any') {
   if (target.type === 'guide') return guides.some((g) => g.id === target.id) ? 'guide' : null;
+  // A place (a village) answers where it is, and what it is. "How do I build a village" isn't in the book.
+  if (target.type === 'place') return book.places?.[target.id] && PLACE_KINDS.has(kind) ? 'where' : null;
+  const recipes = book.recipes[target.id];
+  const realRecipe = target.type === 'item' && (recipes || []).some((r) => !r.unpack);
+  const where = whereOf(book, target);
+  const built = where?.build && (kind === 'make' || kind === 'get');
+  if (where && (kind === 'find' || (kind === 'get' && !realRecipe) || built)) return 'where';
   if (target.type === 'mob') return book.mobs[target.id] ? 'mob' : null;
   if (isInfo(target.type)) return infoOf(book, target) ? target.type : null;
-  const recipes = book.recipes[target.id];
   const at = (type) => fitIndex(kind, type);
   const factFirst = at('fact') >= 0 && (at('recipe') < 0 || at('fact') < at('recipe'));
   const fact = book.facts[target.id];
   const hasFact = Boolean(fact) && (!FACT_NEEDS[kind] || FACT_NEEDS[kind](fact));
   if (hasFact && factFirst) return 'fact';
-  if (recipes && !recipes.every((r) => r.unpack)) return 'recipe';
+  if (realRecipe) return 'recipe';
   if (hasFact) return 'fact';
   if (recipes) return 'unpack';
-  return null;
+  return where ? 'where' : null;
 }
 
 // In a mining question the tool it names ("which pickaxe for diamonds") is the tool, not the thing asked about.
@@ -65,7 +76,7 @@ const sameTarget = (a, b) => a.type === b.type && a.id === b.id;
 // Order full matches by how well they fit the kind of question, then by score.
 function pick(candidates, kind, guides) {
   const usable = candidates.filter((c) => {
-    if (c.type === 'unpack') return !['tame', 'drops', 'max', 'weather', 'food'].includes(kind);
+    if (c.type === 'unpack') return !['tame', 'drops', 'max', 'weather', 'food', 'eats', 'danger', 'does'].includes(kind);
     if (kind === 'tame') return c.type === 'guide' && isTameGuide(guides, c.target.id);
     return fitIndex(kind, c.type) >= 0;
   });
@@ -77,11 +88,17 @@ function pick(candidates, kind, guides) {
   return [...top].sort((a, b) => rankOf(a) - rankOf(b) || b.score - a.score)[0];
 }
 
-// list: from buildSearchList. Returns { type, target, kind, suggestions }.
+// Kinds of question where knowing the thing isn't enough: if the book has no answer of that kind, it says so.
+const NEEDS_KIND = new Set(['find', 'get', 'make', 'drops', 'tame', 'mine', 'food', 'eats', 'danger', 'does', 'max', 'weather']);
+const KNOWN_TYPES = new Set(['mob', 'item', 'place']);
+
+// list: from buildSearchList. Returns { type, target, kind, suggestions }. The type is an answer type, 'none'
+// (not in the book), or 'missing' (it knows the thing, but not this kind of answer: "where do pandas live").
 export function findAnswer(question, list, book, guides) {
-  const kind = questionKind(question);
+  let kind = questionKind(question);
   const asked = questionWords(question, kind === 'weather' ? WEATHER_WORDS : undefined);
   const scored = [];
+  const known = [];
   // A match has to come from the question's own words, not only its kind words: "find" alone doesn't make
   // "find a stronghold" a match for "where do I find diamonds", and "tool" isn't a misspelled "wool".
   const thingWords = asked.filter((a) => !KIND_WORDS.has(a.w));
@@ -90,12 +107,16 @@ export function findAnswer(question, list, book, guides) {
     if (!s.matched || !scoreEntry(entry, thingWords).matched) continue;
     const type = answerType(entry.target, book, guides, kind);
     if (type) scored.push({ ...s, type, target: entry.target, label: entry.label, size: entry.words.length });
+    if (s.full && KNOWN_TYPES.has(entry.target.type) && (type || answerType(entry.target, book, guides))) known.push({ ...s, target: entry.target });
   }
   const full = scored.filter((s) => s.full);
+  const best = (list2) => [...list2].sort((a, b) => b.score - a.score)[0];
+  const exact = best(full);
+  // "What do pandas eat": eating, about a mob.
+  if (kind === 'food' && exact?.target.type === 'mob') kind = 'eats';
   let chosen = pick(full, kind, guides);
   // If something said more exactly can't answer this kind of question ("make an iron golem"), don't answer with
   // something smaller it contains ("iron"): say it's not in the book, and offer the exact thing first.
-  const exact = [...full].sort((a, b) => b.score - a.score)[0];
   const toolInMiningQuestion = kind === 'mine' && exact && isTool(exact.target);
   if (chosen && exact && !toolInMiningQuestion && exact.score >= chosen.score + 5 && !sameTarget(exact.target, chosen.target)) chosen = null;
   // An unpack-only item ("a diamond from a diamond block") is a weak answer: a guide or fact about it is better.
@@ -105,8 +126,11 @@ export function findAnswer(question, list, book, guides) {
     answer = better || { ...chosen, type: 'recipe' };
   }
   const suggestions = suggest(scored, answer, kind, guides);
-  if (!answer) return { type: 'none', kind, suggestions };
-  return { type: answer.type, target: answer.target, kind, suggestions };
+  if (answer) return { type: answer.type, target: answer.target, kind, suggestions };
+  // It knows the thing, but not this kind of answer yet.
+  const thing = NEEDS_KIND.has(kind) && best(known);
+  if (thing) return { type: 'missing', target: thing.target, kind, suggestions: suggestions.filter((t) => !sameTarget(t, thing.target)) };
+  return { type: 'none', kind, suggestions };
 }
 
 // Up to 3 other things the question might have meant, best first, never the answer itself.

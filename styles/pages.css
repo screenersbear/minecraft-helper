@@ -196,3 +196,53 @@
     padding: 14px 0;
   }
 }
+
+/* "Did that answer it?" waits, out of sight but keeping its place, until the answer has been read out */
+.feedback.is-waiting {
+  visibility: hidden;
+}
+
+/* "What was wrong?": four big buttons, two by two */
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.why-grid .block-btn {
+  height: 72px;
+  font-size: 18px;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.undo-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 15px;
+}
+
+/* A thing in a crafting grid you can tap to see how to get it */
+.slot-link {
+  cursor: pointer;
+}
+
+.slot-link:active {
+  transform: translateY(2px);
+}
+
+.slot-link:focus-visible {
+  outline: 3px solid var(--mango);
+  outline-offset: 2px;
+}
+
+.answer .tap-hint {
+  padding-top: 8px;
+}
+
+/* "I know about pandas, but...": a gap before what it does know */
+.missing .known-label {
+  padding-top: 20px;
+}

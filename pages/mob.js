@@ -1,11 +1,13 @@
-// Mob answer: what a mob is like (friendly, neutral, hostile or a boss) and what it drops.
+// Mob answer: what a mob is like (friendly, neutral, hostile or a boss), what it drops, and a button to where it lives.
 import { el } from '../components/el.js';
-import { backHash } from '../logic/routes.js';
+import { backHash, toHash } from '../logic/routes.js';
+import { answerLabel } from '../logic/target-name.js';
 import { topBar } from '../components/top-bar.js';
 import { answerHead } from '../components/answer-head.js';
 import { thingList } from '../components/thing-list.js';
 import { itemPicture, mobPicture } from '../components/picture.js';
-import { feedbackArea } from '../components/feedback-area.js';
+import { answerFooter } from '../components/answer-footer.js';
+import { blockButton } from '../components/buttons.js';
 import { mobSentence } from '../logic/say.js';
 
 const KIND = { hostile: 'Hostile', neutral: 'Neutral', passive: 'Friendly', boss: 'Boss' };
@@ -16,6 +18,10 @@ export function mobPage(ctx, route) {
   if (!mob) return null;
   const say = mobSentence(route.id, book);
   const drops = mob.drops.map((id) => ({ picture: itemPicture(book, id, 24), text: book.items[id]?.name || id }));
+  const where = book.where?.mob?.[route.id]
+    ? blockButton({ label: 'Where to find it', tone: 'grey', href: toHash({ page: 'where', id: `mob:${route.id}`, q: route.q, from: route.from }), extra: { class: 'block-btn notch tone-grey small-btn' } })
+    : null;
+  const footer = answerFooter(ctx, { feedback: { question: route.q, answer: answerLabel('mob', mob.name), target: { type: 'mob', id: route.id }, say } });
 
   const nodes = [
     ...topBar({ left: { label: 'Back', href: backHash(route) }, right: 'Mobs' }),
@@ -30,8 +36,9 @@ export function mobPage(ctx, route) {
         el('span', { class: `tag kind-${mob.kind}` }, KIND[mob.kind]),
       ),
       thingList(drops, 'Drops'),
-      feedbackArea(ctx, route.q, mob.name),
+      where ? el('div', { class: 'another' }, where) : null,
+      footer.node,
     ),
   ];
-  return { nodes, say, title: mob.name };
+  return { nodes, say, title: mob.name, cleanup: footer.stop };
 }

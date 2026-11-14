@@ -1,6 +1,6 @@
 // Search list: every name the app knows, as simple words, pointing at an answer. Built once from the book,
 // the guides and the nicknames. Each entry: { words, target: { type, id }, label }. The type is 'item', 'mob',
-// 'guide', or one of the info types (biome, enchant, effect, topic).
+// 'guide', 'place' (a village, a stronghold), or one of the info types (biome, enchant, effect, topic).
 import { keyWords } from './words.js';
 import { INFO_TYPES } from './info.js';
 
@@ -39,10 +39,10 @@ export function plainNames(items, hasAnswer) {
   return out;
 }
 
-// A nickname's target: "mob:wolf", "guide:nether-portal", "biome:taiga", or an item id.
+// A nickname's target: "mob:wolf", "guide:nether-portal", "biome:taiga", "place:village", or an item id.
 const target = (text) => {
   const [type, id] = text.split(':');
-  if (id && ['mob', 'guide', ...INFO_TYPES].includes(type)) return { type, id };
+  if (id && ['mob', 'guide', 'place', ...INFO_TYPES].includes(type)) return { type, id };
   return { type: 'item', id: text };
 };
 
@@ -63,6 +63,10 @@ function addInfo(book, add, taken) {
     for (const phrase of [`${e.name} effect`, `potion of ${e.name}`, `${e.name} potion`, ...e.also]) add(phrase, t, e.name);
   }
   for (const [id, topic] of Object.entries(book.topics || {})) for (const phrase of topic.askedAs) add(phrase, { type: 'topic', id }, topic.title);
+  // Places you can find, like villages and strongholds.
+  for (const [id, place] of Object.entries(book.places || {})) {
+    for (const phrase of [place.name, ...place.askedAs]) add(phrase, { type: 'place', id }, place.name);
+  }
 }
 
 // book: data/book.json; guides: data/guides.json; nicknames: data/nicknames.json.
@@ -72,7 +76,7 @@ export function buildSearchList(book, guides, nicknames) {
     const words = keyWords(phrase);
     if (words.length) list.push({ words, target: t, label: label || phrase });
   };
-  const hasAnswer = (id) => Boolean(book.recipes[id] || book.facts[id]);
+  const hasAnswer = (id) => Boolean(book.recipes[id] || book.facts[id] || book.where?.item?.[id]);
   for (const [id, item] of Object.entries(book.items)) if (!id.startsWith('@')) add(item.name, { type: 'item', id }, item.name);
   for (const p of plainNames(book.items, hasAnswer)) add(p.phrase, { type: 'item', id: p.id });
   for (const [id, mob] of Object.entries(book.mobs)) add(mob.name, { type: 'mob', id }, mob.name);

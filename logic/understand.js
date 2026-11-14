@@ -3,19 +3,30 @@
 import { splitWords } from './words.js';
 import { isInfo } from './info.js';
 
-// The first rule whose words appear wins, so more specific kinds come first.
+// The first rule whose words appear wins, so more specific kinds come first. A rule with a test uses that instead.
+// "what do pandas eat" is a food question here; with a mob it becomes 'eats' (what it eats) when the answer is found.
 const KINDS = [
   { kind: 'tame', words: ['tame', 'taming', 'befriend', 'breed', 'breeding', 'ride', 'riding', 'pet', 'adopt'] },
   { kind: 'drops', words: ['drop', 'drops', 'dropped', 'loot'] },
   { kind: 'mine', words: ['mine', 'mining', 'break', 'breaking', 'dig', 'pickaxe', 'tool'] },
   { kind: 'max', words: ['max', 'maximum', 'highest', 'strongest', 'top'] },
-  { kind: 'find', words: ['find', 'where', 'wheres', 'locate', 'spawn', 'spawns', 'level'] },
+  { kind: 'find', words: ['find', 'where', 'wheres', 'locate', 'spawn', 'spawns', 'level', 'live', 'lives', 'living'] },
   { kind: 'get', words: ['get', 'obtain', 'collect'] },
   { kind: 'make', words: ['make', 'craft', 'build', 'create', 'need', 'recipe', 'made', 'crafted', 'cook', 'smelt'] },
-  { kind: 'food', words: ['food', 'foods', 'fill', 'fills', 'filling', 'full', 'eat', 'eating', 'hungry', 'drumstick', 'drumsticks'] },
+  { kind: 'food', words: ['food', 'foods', 'fill', 'fills', 'filling', 'full', 'eat', 'eats', 'eating', 'hungry', 'drumstick', 'drumsticks'] },
   { kind: 'weather', words: ['snow', 'snows', 'snowing', 'rain', 'rains', 'raining', 'weather', 'thunder', 'storm'] },
-  { kind: 'about', words: ['what', 'whats', 'who', 'dangerous', 'friendly', 'hostile', 'nice', 'mean', 'attack'] },
+  { kind: 'danger', words: ['dangerous', 'danger', 'safe', 'hostile', 'friendly', 'peaceful', 'attack', 'attacks', 'hurt', 'hurts', 'scary', 'mean', 'nice', 'bite', 'bites'] },
+  { kind: 'does', words: ['use', 'used', 'uses', 'useful', 'purpose'], test: isDoesQuestion },
+  { kind: 'about', words: ['what', 'whats', 'who'] },
 ];
+
+// "what does a totem do", "what is a lead for", "what can I do with a saddle", "how do I use a compass".
+function isDoesQuestion(words) {
+  if (words.some((w) => ['use', 'used', 'uses', 'useful', 'purpose'].includes(w))) return true;
+  const what = words.includes('what') || words.includes('whats');
+  const last = words[words.length - 1];
+  return what && (last === 'do' || last === 'does' || last === 'for' || words.join(' ').includes('do with'));
+}
 
 // Weather words make a weather question, but they're also things ("how do I make snow"), so they still count
 // as words about the thing. In a weather question they're left out of matching instead (WEATHER_WORDS).
@@ -34,24 +45,33 @@ export function questionKind(text) {
   const at = words.indexOf('pickaxe');
   if (at >= 0 && words.indexOf('for', at) > at) return 'mine';
   const mining = words.some((w) => MINING_WORDS.includes(w));
-  const found = KINDS.filter((k) => (k.kind !== 'mine' || mining) && k.words.some((w) => words.includes(w)));
+  const says = (k) => (k.test ? k.test(words) : k.words.some((w) => words.includes(w)));
+  const found = KINDS.filter((k) => (k.kind !== 'mine' || mining) && says(k));
   return found.length ? found[0].kind : 'any';
 }
 
 // Which kinds of answer suit a question kind, best first. 'info' is a biome, enchantment, potion effect or topic.
+// 'where' is a line from where.json (or a place, like a village). An empty list means the book has no answers of
+// that kind yet ("what do pandas eat"), so the app says it doesn't know that yet.
 export const FITS = {
   tame: ['guide'],
   drops: ['mob', 'fact'],
   mine: ['fact', 'guide'],
-  find: ['guide', 'fact', 'recipe'],
-  get: ['recipe', 'guide', 'fact'],
-  make: ['recipe', 'guide', 'fact'],
+  find: ['where', 'guide', 'fact', 'recipe'],
+  get: ['recipe', 'guide', 'fact', 'where'],
+  make: ['recipe', 'guide', 'fact', 'where'],
   max: ['info'],
   food: ['fact', 'info'],
+  eats: [],
   weather: ['info'],
-  about: ['mob', 'fact', 'info', 'recipe', 'guide'],
-  any: ['recipe', 'guide', 'mob', 'fact', 'info'],
+  danger: ['mob'],
+  does: ['info', 'guide'],
+  about: ['mob', 'fact', 'info', 'recipe', 'guide', 'where'],
+  any: ['recipe', 'guide', 'mob', 'fact', 'info', 'where'],
 };
+
+// Every kind of question, for checking a kind read from the address.
+export const ALL_KINDS = Object.keys(FITS);
 
 // Where an answer type sits in a question kind's list (lower is better), or -1 if it doesn't suit it.
 export function fitIndex(kind, type) {

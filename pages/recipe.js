@@ -1,14 +1,16 @@
-// Recipe answer: how to make something. The grid in slots, what you need, and "Did that answer it?".
-// Things with more than one recipe get an "Another way" button.
+// Recipe answer: how to make something. The grid in slots (tap a thing in it to see how to get that), what you
+// need, "Did that answer it?" and a button to ask more. Things with more than one recipe get an "Another way" button.
 import { el } from '../components/el.js';
 import { topBar } from '../components/top-bar.js';
 import { answerHead } from '../components/answer-head.js';
 import { recipeView } from '../components/slots.js';
 import { needsList } from '../components/thing-list.js';
 import { blockButton } from '../components/buttons.js';
-import { feedbackArea } from '../components/feedback-area.js';
+import { answerFooter } from '../components/answer-footer.js';
 import { recipeSentence, backSentence } from '../logic/say.js';
 import { toHash, backHash } from '../logic/routes.js';
+import { ingredientHash } from '../logic/ingredient-link.js';
+import { answerLabel } from '../logic/target-name.js';
 
 const WHERE = { crafting: 'Crafting', furnace: 'Furnace', stonecutter: 'Stonecutter', smithing: 'Smithing' };
 
@@ -33,19 +35,23 @@ export function recipePage(ctx, route) {
         })
       : null;
 
+  const footer = answerFooter(ctx, { feedback: { question: route.q, answer: answerLabel('recipe', item.name), target: { type: 'item', id: route.id }, say } });
+  const linkFor = (cell) => (cell.split('|')[0] === route.id ? '' : ingredientHash(cell, ctx, `recipe/${route.id}`));
+
   const nodes = [
     ...topBar({ left: { label: 'Back', href: backHash(route) }, right: WHERE[recipe.how] }),
     el(
       'div',
       { class: 'page answer' },
       answerHead({ question: route.q, title: item.name, sentence: main, onSay: () => ctx.say(say) }),
-      recipeView(book, recipe, route.id),
+      recipeView(book, recipe, route.id, linkFor),
+      el('p', { class: 'small-label tap-hint' }, 'Tap a block to see how to get it.'),
       needsList(book, recipe),
       back ? el('p', { class: 'note' }, back) : null,
       recipe.maybeDifferent ? el('p', { class: 'note' }, 'Check this one in the game. It might be a little different in your game.') : null,
       another ? el('div', { class: 'another' }, another) : null,
-      feedbackArea(ctx, route.q, item.name),
+      footer.node,
     ),
   ];
-  return { nodes, say, title: item.name };
+  return { nodes, say, title: item.name, cleanup: footer.stop };
 }

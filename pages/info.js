@@ -6,11 +6,12 @@ import { answerHead } from '../components/answer-head.js';
 import { thingList } from '../components/thing-list.js';
 import { itemPicture } from '../components/picture.js';
 import { blockButton } from '../components/buttons.js';
-import { feedbackArea } from '../components/feedback-area.js';
+import { answerFooter } from '../components/answer-footer.js';
 import { biomeSentence, enchantSentence, effectSentence, drumsticks } from '../logic/say-facts.js';
 import { questionKind } from '../logic/understand.js';
 import { infoOf, infoName } from '../logic/info.js';
 import { toHash, backHash } from '../logic/routes.js';
+import { answerLabel } from '../logic/target-name.js';
 
 const WEATHER_ROW = {
   dry: ['sand', 'No rain or snow'],
@@ -78,7 +79,8 @@ export function infoPage(type) {
     if (!info) return null;
     const how = TYPES[type];
     const name = infoName(book, target);
-    const say = how.say(book, route.id, questionKind(route.q));
+    const say = how.say(book, route.id, route.kind || questionKind(route.q));
+    const footer = answerFooter(ctx, { feedback: { question: route.q, answer: answerLabel(type, name), target, say } });
     const tag = how.tag?.(info);
     const nodes = [
       ...topBar({ left: { label: 'Back', href: backHash(route) }, right: how.label }),
@@ -94,9 +96,9 @@ export function infoPage(type) {
         ),
         how.rows(book, info).map((part) => thingList(part.rows, part.heading)),
         how.extra?.(book, info, route),
-        feedbackArea(ctx, route.q, name),
+        footer.node,
       ),
     ];
-    return { nodes, say, title: name };
+    return { nodes, say, title: name, cleanup: footer.stop };
   };
 }

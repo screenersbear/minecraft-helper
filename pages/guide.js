@@ -1,9 +1,12 @@
 // Guide answer: one step at a time, with a progress bar, a big step number, a picture and Back / Again / Next.
-// Saying "next", "again" or "back" works too, while the guide is open.
+// Saying "next", "again" or "back" works too, while the guide is open. The small talk button asks something else
+// (the guide stops listening while it's held), and "Did that answer it?" comes after the last step.
 import { el } from '../components/el.js';
 import { topBar } from '../components/top-bar.js';
 import { blockButton } from '../components/buttons.js';
 import { feedbackArea } from '../components/feedback-area.js';
+import { askMore } from '../components/ask-more.js';
+import { answerLabel } from '../logic/target-name.js';
 import { stepPicture } from '../components/step-picture.js';
 import { guideVoice } from '../speech/guide-voice.js';
 import { stepSentence } from '../logic/say.js';
@@ -28,13 +31,18 @@ export function guidePage(ctx, route) {
   const hint = el('p', { class: 'hint' });
   const showDone = () => {
     guideVoice.stop();
-    bottom.replaceChildren(feedbackArea(ctx, route.q, guide.title));
-    ctx.say('Did that answer it?');
+    const asked = feedbackArea(ctx, { question: route.q, answer: answerLabel('guide', guide.title), target: { type: 'guide', id: guide.id }, say, waitForAnswer: false });
+    bottom.replaceChildren(asked.node, more.node);
+    ctx.say('Did that answer it?', asked.show);
   };
   const actions = {
     back: () => n > 1 && goStep(n - 1),
     again: () => ctx.say(say),
-    next: () => (n < total ? goStep(n + 1) : showDone()),
+    next: () => {
+      if (n < total) return goStep(n + 1);
+      finished = true;
+      showDone();
+    },
   };
   bottom.append(
     hint,
@@ -48,16 +56,32 @@ export function guidePage(ctx, route) {
   );
 
   // Voice commands: keep one listener for the whole guide, so it isn't restarted at every step.
-  guideVoice.use(guide.id, {
-    onCommand: (text) => {
+  let finished = false;
+  const listen = () =>
+    !finished &&
+    guideVoice.use(guide.id, {
+      onCommand: (text) => {
+        const command = parseCommand(text);
+        if (command) actions[command]();
+      },
+      onState: (on) => {
+        hint.textContent = on ? 'Say "next", "again" or "back"' : '';
+      },
+    });
+  listen();
+  hint.textContent = guideVoice.on ? 'Say "next", "again" or "back"' : '';
+  // Asking more: "next" said into it still turns the page.
+  const more = askMore(ctx, {
+    onStart: () => guideVoice.stop(),
+    onIdle: listen,
+    onQuestion: (text) => {
       const command = parseCommand(text);
-      if (command) actions[command]();
-    },
-    onState: (on) => {
-      hint.textContent = on ? 'Say "next", "again" or "back"' : '';
+      if (!command) return ctx.ask(text);
+      listen();
+      actions[command]();
     },
   });
-  hint.textContent = guideVoice.on ? 'Say "next", "again" or "back"' : '';
+  bottom.append(more.node);
 
   const nodes = [
     ...topBar({ left: { label: 'Back', href: backHash(route) }, right: 'Guide' }),
@@ -78,6 +102,7 @@ export function guidePage(ctx, route) {
     ),
   ];
   const cleanup = () => {
+    more.stop();
     const next = parseHash(location.hash);
     if (next.page !== 'guide' || next.id !== guide.id) guideVoice.stop();
   };

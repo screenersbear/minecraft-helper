@@ -1,5 +1,5 @@
-// Not in the book: shown when nothing fits a question, and after "Not really". The question is already saved
-// for the grown-ups list. Offers the closest answers as big buttons, plus "None of these".
+// Not in the book: shown when nothing fits a question. The question is already saved for the grown-ups list.
+// Offers the closest answers as big buttons, plus "None of these", and the small talk button to ask again.
 import { el } from '../components/el.js';
 import { icon } from '../components/icons.js';
 import { topBar } from '../components/top-bar.js';
@@ -9,7 +9,8 @@ import { findAnswer, answerType } from '../logic/find-answer.js';
 import { hashForAnswer } from '../logic/routes.js';
 import { askedLine } from '../logic/say.js';
 import { listWords } from '../logic/plural.js';
-import { logQuestion } from '../data/questions-log.js';
+import { logQuestion, updateQuestion, questionKey, NOT_IN_BOOK } from '../data/questions-log.js';
+import { askMore } from '../components/ask-more.js';
 
 export function notFoundPage(ctx, route) {
   const { book, guides, list } = ctx;
@@ -19,22 +20,23 @@ export function notFoundPage(ctx, route) {
   const names = picks.map((t) => targetName(book, guides, t));
 
   const bottom = el('div', { class: 'bottom' });
-  const askAgain = () => blockButton({ label: 'Ask something else', tone: 'mango', href: '#/' });
   if (picks.length) {
     bottom.append(
       blockButton({
         label: 'None of these',
         tone: 'mango',
         onClick: () => {
-          logQuestion(q, 'none-of-these');
-          bottom.replaceChildren(el('p', { class: 'feedback-q', role: 'status' }, 'Okay! A grown-up can add it to the book.'), askAgain());
+          // The question was saved as not in the book; this notes that none of the picks fit either.
+          const key = questionKey(q, NOT_IN_BOOK);
+          if (!updateQuestion(key, { noneFit: true })) logQuestion({ q, answer: NOT_IN_BOOK, reason: 'not-in-book' }) && updateQuestion(key, { noneFit: true });
+          bottom.replaceChildren(el('p', { class: 'feedback-q', role: 'status' }, 'Okay! A grown-up can add it to the book.'), more.node);
           ctx.say('Okay! A grown-up can add it to the book.');
         },
       }),
     );
-  } else {
-    bottom.append(askAgain());
   }
+  const more = askMore(ctx);
+  bottom.append(more.node);
 
   const heading = afterNotReally ? ['Sorry about', el('br'), 'that'] : ['Not in my', el('br'), 'book yet'];
   const first = afterNotReally ? "Sorry about that. I saved your question so a better answer can be added." : "That's not in my book yet. I saved your question.";
@@ -64,5 +66,5 @@ export function notFoundPage(ctx, route) {
       bottom,
     ),
   ];
-  return { nodes, say, title: 'Not in the book' };
+  return { nodes, say, title: 'Not in the book', cleanup: more.stop };
 }
