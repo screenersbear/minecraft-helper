@@ -2,17 +2,24 @@
 // a clean-up takes away lone blocks and specks, so it's easy to build. An outline can go around the thing.
 // Grids are size by size, one group number per square, top row first.
 
-// labels: a group number for each pixel (width by width). Returns the most common group in each square (not the
-// average, so no in-between colours). A tie goes to the lower group number.
-export function cellModes(labels, width, size) {
+// labels: a group number for each pixel (width by width). square: the part of the photo to use ({ x, y, side },
+// all of it if left out). Returns the most common group in each square of the grid (not the average, so no
+// in-between colours). A tie goes to the lower group number. Each square looks at 1 pixel or more.
+export function cellModes(labels, width, size, square = { x: 0, y: 0, side: width }) {
   const cells = new Int16Array(size * size);
-  const step = width / size;
+  const step = square.side / size;
   const count = new Map();
+  const span = (i, from) => {
+    const start = Math.min(width - 1, from + Math.floor(i * step));
+    return [start, Math.min(width, Math.max(start + 1, from + Math.floor((i + 1) * step)))];
+  };
   for (let row = 0; row < size; row++) {
+    const [y0, y1] = span(row, square.y);
     for (let col = 0; col < size; col++) {
+      const [x0, x1] = span(col, square.x);
       count.clear();
-      for (let y = Math.floor(row * step); y < Math.floor((row + 1) * step); y++) {
-        for (let x = Math.floor(col * step); x < Math.floor((col + 1) * step); x++) {
+      for (let y = y0; y < y1; y++) {
+        for (let x = x0; x < x1; x++) {
           const g = labels[y * width + x];
           count.set(g, (count.get(g) || 0) + 1);
         }

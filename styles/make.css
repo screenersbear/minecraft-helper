@@ -44,10 +44,11 @@
   margin-bottom: 6px;
 }
 
+/* How big? on the crop page: 8, 12, 16, 24 and 32 blocks across */
 .size-row {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
   margin-bottom: 6px;
 }
 
@@ -74,6 +75,12 @@
 
 .size-btn span {
   font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.make-sizes .size-note {
+  margin: 0;
+  min-height: 2.6em;
 }
 
 .size-btn[aria-pressed='true'] {

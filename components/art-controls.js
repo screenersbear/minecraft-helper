@@ -1,5 +1,5 @@
-// The pixel art's settings: a Fewer / More colours slider, and Outline and Wool only switches.
-// Each change is handed to the page, which makes the blocks again.
+// The pixel art's settings: a Fewer / More colours slider (it starts at the number picked automatically), and
+// Outline and Wool only switches. Each change is handed to the page, which makes the blocks again.
 import { el } from './el.js';
 import { COLOURS } from '../logic/pixel-convert.js';
 
@@ -13,17 +13,20 @@ const toggle = (label, on, onChange) => {
   return button;
 };
 
-// look: { colours, outline, woolOnly }. canOutline: false hides Outline (no background to draw it on).
-export function artControls(look, canOutline, { onColours, onOutline, onWool }) {
-  const count = el('output', { class: 'colour-count', for: 'colours' }, String(look.colours));
+// look: { colours (null: automatic), outline, woolOnly }. auto: the automatic number of colours. most: the most
+// there can be. canOutline: false hides Outline (no background to draw it on).
+export function artControls({ look, auto, most, canOutline }, { onColours, onOutline, onWool }) {
+  const top = Math.min(COLOURS.most, Math.max(COLOURS.fewest + 1, Number(most) || COLOURS.most));
+  const now = Math.min(top, look.colours || Number(auto) || 4);
+  const count = el('output', { class: 'colour-count', for: 'colours' }, String(now));
   const slider = el('input', {
     id: 'colours',
     class: 'colour-slider',
     type: 'range',
     min: String(COLOURS.fewest),
-    max: String(COLOURS.most),
+    max: String(top),
     step: '1',
-    value: String(look.colours),
+    value: String(now),
     'aria-label': 'Colours',
   });
   slider.addEventListener('input', () => {

@@ -1,6 +1,6 @@
-// Cutting the thing down to a few colours (k-means): start with a few colours from the picture, give every pixel
-// the closest one, move each colour to the middle of its pixels, and repeat. Works in half-lightness Lab, so a
-// shadow and the lit side of the same thing end up as one colour.
+// Cutting the thing into a few colours (k-means): start with a few colours from the picture, give every pixel the
+// closest one, move each colour to the middle of its pixels, and repeat. The pieces it makes are then joined into
+// colour groups by hue (see pixel-shades.js).
 
 const ROUNDS = 12;
 const MOST_SAMPLES = 4000;
@@ -58,7 +58,7 @@ function closest(lab, p, centres) {
   return best;
 }
 
-// lab: halfLightLab of the picture. pixels: which pixels to colour (the thing, not the background). k: how many
+// lab: the picture in Lab (see labPicture in pixel.js). pixels: which pixels to colour (the thing, not the background). k: how many
 // colours. The colours are worked out on a sample of the pixels (quicker, and just as good), then every pixel gets
 // the closest. Returns a colour number for each pixel, in the same order; colours nothing ended up in are left out,
 // so there may be fewer than k, numbered 0, 1, 2... in the order they first appear.

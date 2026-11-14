@@ -5,7 +5,7 @@ import { el } from './el.js';
 const SHOW = 600; // pixels drawn across the box (it's shown smaller, so it stays sharp)
 const MOST_ZOOM = 5;
 
-// source: a canvas holding the photo. onChange(): the crop moved. Returns { node, zoomBy(f), drawTo(canvas, px) }.
+// source: a canvas holding the photo. onChange(): the crop moved. Returns { node, zoomBy(f), drawTo(canvas, px, part) }.
 export function cropBox(source, onChange) {
   const canvas = el('canvas', { class: 'crop-canvas', width: SHOW, height: SHOW, 'aria-label': 'The photo, cropped to a square', role: 'img' });
   const node = el('div', { class: 'crop-box' }, canvas);
@@ -21,12 +21,14 @@ export function cropBox(source, onChange) {
     cx = Math.min(Math.max(cx, half), source.width - half);
     cy = Math.min(Math.max(cy, half), source.height - half);
   };
-  const drawTo = (target, px) => {
+  // Draws the square (or a part of it: { x, y, side } as fractions of the square) px by px into a canvas.
+  const drawTo = (target, px, part = { x: 0, y: 0, side: 1 }) => {
     const c = target.getContext('2d');
     c.imageSmoothingEnabled = true;
     c.imageSmoothingQuality = 'high';
     c.clearRect(0, 0, px, px);
-    c.drawImage(source, cx - side() / 2, cy - side() / 2, side(), side(), 0, 0, px, px);
+    const s = side();
+    c.drawImage(source, cx - s / 2 + part.x * s, cy - s / 2 + part.y * s, part.side * s, part.side * s, 0, 0, px, px);
   };
   const redraw = () => {
     clamp();

@@ -1,14 +1,12 @@
 // My pixel art: pictures made of blocks, saved on the phone so a kid can come back to a half-built one.
 // Each: { id, name, size, blocks (block ids), cells (a place in blocks for each square, top row first), photo (a
-// small picture of the photo, to make the blocks again), colours, outline, woolOnly, edits (squares the kid changed),
-// swaps (blocks the kid swapped everywhere), background (whether the photo had one), row (rows built so far), made }.
+// picture of the photo, to make the blocks again), colours (how many; null when picked automatically),
+// autoColours (the automatic number), mostColours, outline, woolOnly, edits (squares the kid changed), swaps
+// (blocks the kid swapped everywhere), background (whether the photo had one), row (rows built so far), made }.
 import { load, save } from './store.js';
 
 const KEY = 'mc-helper.pixel-art';
-const SIZE_KEY = 'mc-helper.pixel-size';
 const KEEP = 12;
-
-export const SIZES = [16, 24, 32];
 
 export function listArt() {
   return load(KEY, []);
@@ -37,11 +35,3 @@ export function removeArt(id) {
 }
 
 export const newArtId = (now = Date.now()) => now.toString(36);
-
-// The size picked last time on the Make page.
-export function chosenSize() {
-  const size = load(SIZE_KEY, 16);
-  return SIZES.includes(size) ? size : 16;
-}
-
-export const chooseSize = (size) => save(SIZE_KEY, size);

@@ -6,7 +6,7 @@ const SAME_EDGE = 12 ** 2; // edge pixels this close count as the same colour (s
 const NEAR_BACKGROUND = 18 ** 2; // how far from the background colour the fill may go
 const SMALL_STEP = 7 ** 2; // and each step of the fill must be this small, so it stops at edges
 const MOST_EDGE = 0.35; // the background must cover at least this much of the edge
-const MOST_PICTURE = 0.92; // a "background" covering more than this is really the thing itself
+const MOST_PICTURE = 0.985; // a "background" covering more than this is really the thing itself (a small thing is fine)
 
 // Every pixel on the picture's edge, once each.
 export function edgePixels(width) {

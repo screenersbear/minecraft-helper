@@ -10,7 +10,7 @@ import { openBlockPicker } from '../components/block-picker.js';
 import { itemPicture } from '../components/picture.js';
 import { getArt, updateArt, removeArt } from '../data/pixel-store.js';
 import { photoPixels } from '../data/art-photo.js';
-import { convert, lookOf, DETAIL } from '../logic/pixel-convert.js';
+import { prepareClose, blocksFrom, lookOf, WORK } from '../logic/pixel-convert.js';
 import { editSquare, swapBlock } from '../logic/pixel-edits.js';
 import { choices } from '../logic/pixel.js';
 import { blockCounts, countText } from '../logic/pixel-rows.js';
@@ -80,22 +80,25 @@ export function pixelResultPage(ctx, route) {
     );
   }
 
-  // Makes the blocks again from the photo with new settings. Only the newest request counts.
+  // Makes the blocks again from the photo with new settings. The photo is prepared once (the slow part), then each
+  // change only redoes the blocks. Only the newest request counts.
   let asked = 0;
+  let prep = null;
   const remake = async (changes) => {
     const mine = ++asked;
-    const width = art.size * DETAIL;
     const look = { ...art, ...changes };
     try {
-      const made = convert(await photoPixels(art.photo, width), width, art.size, book.palette, look);
+      prep = prep || (await prepareClose((part) => photoPixels(art.photo, WORK, part)));
+      const made = blocksFrom(prep, art.size, book.palette, look);
       if (mine !== asked) return;
-      save({ ...changes, blocks: made.blocks, cells: made.cells, background: made.background, rgb: undefined });
+      const { blocks, cells, background, autoColours, mostColours } = made;
+      save({ ...changes, blocks, cells, background, autoColours, mostColours, rgb: undefined });
     } catch {
       if (mine === asked) save(changes);
     }
   };
   let waiting = 0;
-  const controls = artControls(lookOf(art), art.background !== false, {
+  const controls = artControls({ look: lookOf(art), auto: art.autoColours, most: art.mostColours, canOutline: art.background !== false }, {
     onColours: (colours) => {
       clearTimeout(waiting);
       waiting = setTimeout(() => remake({ colours }), 60);
