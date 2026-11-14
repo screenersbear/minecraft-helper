@@ -20,12 +20,18 @@ function half(side, y0, y1) {
   return box(8, y0, 0, 16, y1, 16);
 }
 
-// A thin plate against one side of the block: a ladder on a wall.
-function plate(side) {
-  if (side === 'north') return box(0, 0, 0, 16, 16, 1);
-  if (side === 'south') return box(0, 0, 15, 16, 16, 16);
-  if (side === 'west') return box(0, 0, 0, 1, 16, 16);
-  return box(15, 0, 0, 16, 16, 16);
+// A plate t pixels thick against one side of the block: a ladder on a wall (1), a door or an open trapdoor (3).
+function plate(side, t = 1) {
+  if (side === 'north') return box(0, 0, 0, 16, 16, t);
+  if (side === 'south') return box(0, 0, 16 - t, 16, 16, 16);
+  if (side === 'west') return box(0, 0, 0, t, 16, 16);
+  return box(16 - t, 0, 0, 16, 16, 16);
+}
+
+// A fence gate across the block, along x (left to right) or z (back to front): a post at each end and two bars.
+function gate(along) {
+  const parts = [[0, 5, 2, 16], [14, 5, 16, 16], [2, 6, 14, 9], [2, 12, 14, 15]];
+  return parts.map(([a0, y0, a1, y1]) => (along === 'x' ? box(a0, y0, 7, a1, y1, 9) : box(7, y0, a0, 9, y1, a1)));
 }
 
 // Fence bars from the post out to one side.
@@ -43,14 +49,20 @@ export function isFull(info) {
   return !!info && (!info.shape || info.shape === 'cube') && !info.see;
 }
 
-// The boxes for one block. block: { id, facing, part } from the build. info: the block's look (shape, see).
-// joins(side): whether a fence reaches out that way (another fence, or a full block).
+// The boxes for one block. block: { id, facing, part, half, open } from the build. info: the block's look (shape,
+// see). joins(side): whether a fence reaches out that way (another fence or gate, or a full block). A door or a
+// trapdoor's facing is the side of its space it's against; half: 'top' turns stairs upside down and puts a slab or
+// a shut trapdoor at the top.
 export function boxesOf(block, info, joins = () => false) {
   const shape = info?.shape || 'cube';
   const facing = block.facing || 'south';
   if (shape === 'slab') return block.half === 'top' ? [box(0, 8, 0, 16, 16, 16)] : [box(0, 0, 0, 16, 8, 16)];
   if (shape === 'carpet') return [box(0, 0, 0, 16, 1, 16)];
-  if (shape === 'stairs') return [box(0, 0, 0, 16, 8, 16), half(facing, 8, 16)];
+  if (shape === 'stairs') return block.half === 'top' ? [box(0, 8, 0, 16, 16, 16), half(facing, 0, 8)] : [box(0, 0, 0, 16, 8, 16), half(facing, 8, 16)];
+  if (shape === 'path') return [box(0, 0, 0, 16, 15, 16)];
+  if (shape === 'door') return [plate(facing, 3)];
+  if (shape === 'trapdoor') return block.open ? [plate(facing, 3)] : block.half === 'top' ? [box(0, 13, 0, 16, 16, 16)] : [box(0, 0, 0, 16, 3, 16)];
+  if (shape === 'gate') return gate(joins('north') || joins('south') ? 'z' : 'x');
   if (shape === 'bed') return [box(0, 0, 0, 16, 9, 16)];
   if (shape === 'campfire') return [box(1, 0, 1, 15, 6, 15)];
   if (shape === 'ladder') return [plate(opposite(facing))];

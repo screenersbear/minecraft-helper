@@ -1,5 +1,6 @@
 // A build, layer by layer (#/build/<id>/<layer>): the layer seen from above with the one below faded, what to put
 // down, and how many of each block. The voice reads it out and waits for "next", "again" or "back", like a guide.
+// A half-built starter (Finish it) ends with "Your turn!" and ideas for finishing it, instead of "All done".
 import { el } from '../components/el.js';
 import { topBar } from '../components/top-bar.js';
 import { blockButton } from '../components/buttons.js';
@@ -28,12 +29,24 @@ export function buildLayerPage(ctx, route) {
 
   const bottom = el('div', { class: 'bottom' });
   const hint = el('p', { class: 'hint' });
+  const yourTurn = () => {
+    const { say: words, ideas } = build.yourTurn;
+    bottom.replaceChildren(
+      el('p', { class: 'feedback-q', role: 'status' }, 'Your turn!'),
+      el('p', { class: 'say' }, words),
+      el('ul', { class: 'turn-ideas' }, ideas.map((idea) => el('li', {}, idea))),
+      el('div', { class: 'two-up' }, blockButton({ label: 'Save a photo', tone: 'green', href: '#/mine/new' }), blockButton({ label: 'More to finish', tone: 'grey', href: '#/finish' })),
+    );
+    bottom.scrollIntoView({ block: 'end' });
+    ctx.say(`Your turn! ${words} Here are some ideas. ${ideas.join(' ')}`);
+  };
   const finish = () => {
     guideVoice.stop();
+    if (build.yourTurn) return yourTurn();
     const done = `All done! Your ${build.name.toLowerCase()} is finished.`;
     bottom.replaceChildren(
       el('p', { class: 'feedback-q', role: 'status' }, done),
-      el('div', { class: 'two-up' }, blockButton({ label: 'Back to Make', tone: 'mango', href: '#/make' }), blockButton({ label: 'Look at it', tone: 'grey', href: cover })),
+      el('div', { class: 'two-up' }, blockButton({ label: build.group === 'Finish it' ? 'More to finish' : 'More builds', tone: 'green', href: build.group === 'Finish it' ? '#/finish' : '#/builds' }), blockButton({ label: 'Look at it', tone: 'grey', href: cover })),
     );
     ctx.say(done);
   };
@@ -49,7 +62,7 @@ export function buildLayerPage(ctx, route) {
       { class: 'three-up' },
       blockButton({ label: 'Back', tone: 'grey', onClick: actions.back }),
       blockButton({ label: 'Again', tone: 'grey', onClick: actions.again }),
-      blockButton({ label: n < total ? 'Next' : 'Done', tone: 'mango', onClick: actions.next }),
+      blockButton({ label: n < total ? 'Next' : build.yourTurn ? 'Your turn' : 'Done', tone: 'green', onClick: actions.next }),
     ),
   );
   guideVoice.use(`build-${build.id}`, {

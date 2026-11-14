@@ -1,0 +1,56 @@
+{
+  "order": 9,
+  "name": "Hidden lights",
+  "pic": "glowstone",
+  "about": "A light you can't see.",
+  "wiki": "https://minecraft.wiki/w/Carpet",
+  "key": {
+    "P": "oak_planks",
+    "L": {
+      "id": "glowstone",
+      "was": "P"
+    },
+    "c": "red_carpet",
+    "w": "white_carpet"
+  },
+  "layers": [
+    {
+      "rows": [
+        "PPPPP",
+        "PPPPP",
+        "PPLPP",
+        "PPPPP",
+        "PPPPP"
+      ]
+    },
+    {
+      "rows": [
+        ".....",
+        ".www.",
+        ".wcw.",
+        ".www.",
+        "....."
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "A plain floor",
+      "add": "P",
+      "say": "Rooms get dark without lights. Here's a plain wooden floor.",
+      "tip": "Torches work, but lots of them on the walls can look messy."
+    },
+    {
+      "title": "A light in the floor",
+      "add": "L",
+      "say": "Break one floor block in the middle and put glowstone in its place.",
+      "tip": "Sea lanterns and shroomlights work too."
+    },
+    {
+      "title": "Carpet on top",
+      "add": "wc",
+      "say": "Put carpet over the glowstone and around it. The light still shines up through the carpet.",
+      "tip": "Carpet doesn't block light, so the room is bright and you can't see the lamp."
+    }
+  ]
+}

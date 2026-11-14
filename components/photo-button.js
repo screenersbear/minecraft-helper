@@ -15,6 +15,6 @@ export const photoButtons = (onPhoto) =>
   el(
     'div',
     { class: 'photo-row' },
-    photoButton({ label: 'Take a photo', pic: 'camera', tone: 'mango', camera: true, onPhoto }),
+    photoButton({ label: 'Take a photo', pic: 'camera', tone: 'green', camera: true, onPhoto }),
     photoButton({ label: 'Pick a photo', pic: 'photo', tone: 'grey', camera: false, onPhoto }),
   );

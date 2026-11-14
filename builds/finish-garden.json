@@ -1,0 +1,56 @@
+{
+  "name": "A garden with no paths",
+  "difficulty": "Easy",
+  "group": "Finish it",
+  "about": "A fenced garden with flowers and a pond, but no way through.",
+  "key": {
+    "g": {
+      "id": "grass_block",
+      "ground": true
+    },
+    "W": "water",
+    "f": "oak_fence",
+    "n": "oak_fence_gate",
+    "o": "poppy",
+    "y": "dandelion",
+    "c": "cornflower",
+    "r": "red_tulip"
+  },
+  "layers": [
+    {
+      "name": "Grass and a pond",
+      "tip": "Start on flat grass. Dig a hole two blocks by two at the back and fill it with water.",
+      "rows": [
+        "ggggggg",
+        "ggggggg",
+        "ggggWWg",
+        "ggggWWg",
+        "ggggggg",
+        "ggggggg",
+        "ggggggg"
+      ]
+    },
+    {
+      "name": "Fence and flowers",
+      "tip": "Fence all the way round, with a gate in the front. Plant flowers in the corners.",
+      "rows": [
+        "fffffff",
+        "foy.rrf",
+        "fy....f",
+        "f.....f",
+        "f....of",
+        "fcc..yf",
+        "fffnfff"
+      ]
+    }
+  ],
+  "yourTurn": {
+    "say": "Now add paths, so you can walk round without stepping on the flowers.",
+    "ideas": [
+      "A dirt path. Use a shovel on the grass. Builder tricks has more.",
+      "Stepping stones of gravel or stone slabs.",
+      "A little bridge over the pond, made of slabs.",
+      "A bench to sit on, made of stairs."
+    ]
+  }
+}

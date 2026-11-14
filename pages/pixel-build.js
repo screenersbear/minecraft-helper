@@ -29,7 +29,7 @@ export function pixelBuildPage(ctx, route) {
     updateArt(art.id, { row: art.size });
     bottom.replaceChildren(
       el('p', { class: 'feedback-q', role: 'status' }, 'All done! It looks great.'),
-      blockButton({ label: 'Back to Make', tone: 'mango', href: '#/make' }),
+      blockButton({ label: 'Back to Pixel art', tone: 'grey', href: '#/pixel' }),
     );
     ctx.say('All done! It looks great.');
   };
@@ -49,7 +49,7 @@ export function pixelBuildPage(ctx, route) {
       { class: 'three-up' },
       blockButton({ label: 'Back', tone: 'grey', onClick: actions.back, extra: n === 1 ? { disabled: true } : {} }),
       blockButton({ label: 'Again', tone: 'grey', onClick: actions.again }),
-      blockButton({ label: n < art.size ? 'Next' : 'Done', tone: 'mango', onClick: actions.next }),
+      blockButton({ label: n < art.size ? 'Next' : 'Done', tone: 'green', onClick: actions.next }),
     ),
   );
 

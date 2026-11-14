@@ -28,8 +28,10 @@ const OWN = {
   smooth_stone_slab: { shape: 'slab', top: 'smooth_stone', side: 'smooth_stone_slab_side' },
   beehive: { top: 'beehive_end', side: 'beehive_side', front: 'beehive_front' },
   farmland: { top: 'farmland_moist', side: 'dirt' },
-  // The lantern's block picture is a cut-out sheet, so it borrows the item picture.
+  // The lantern's block picture is a cut-out sheet, so it borrows the item picture. So does the flower pot.
   lantern: { shape: 'sprite', sprite: '../item/lantern' },
+  flower_pot: { shape: 'sprite', sprite: '../item/flower_pot' },
+  dirt_path: { shape: 'path', top: 'grass_path_top', side: 'grass_path_side' },
 };
 
 // Crops are named by what you plant, and show fully grown.
@@ -63,8 +65,9 @@ export function lookFor(id, has) {
   if (bed) return has(`${bed[1]}_wool`) ? { shape: 'bed', top: `${bed[1]}_wool`, side: `${bed[1]}_wool`, pillow: 'white_wool' } : null;
   const carpet = /^(.+)_carpet$/.exec(id);
   if (carpet) return has(`${carpet[1]}_wool`) ? { shape: 'carpet', top: `${carpet[1]}_wool`, side: `${carpet[1]}_wool` } : null;
-  // A fence gate is drawn like a piece of fence.
-  for (const [end, shape] of [['_stairs', 'stairs'], ['_slab', 'slab'], ['_fence_gate', 'fence'], ['_fence', 'fence']]) {
+  // Trapdoors, and each half of a door ("oak_door_top"), use their own picture.
+  if (/(_trapdoor|_door_top|_door_bottom)$/.test(id)) return has(id) ? { shape: id.endsWith('_trapdoor') ? 'trapdoor' : 'door', top: id, side: id } : null;
+  for (const [end, shape] of [['_stairs', 'stairs'], ['_slab', 'slab'], ['_fence_gate', 'gate'], ['_fence', 'fence']]) {
     if (!id.endsWith(end)) continue;
     const from = material(id.slice(0, -end.length), has);
     return from ? { shape, top: from, side: from } : null;

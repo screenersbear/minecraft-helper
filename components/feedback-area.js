@@ -41,7 +41,7 @@ export function feedbackArea(ctx, { question = '', answer = '', target = null, s
     clearTimeout(undoTimer);
     box.replaceChildren(
       el('p', { class: 'feedback-q' }, 'Did that answer it?'),
-      el('div', { class: 'two-up' }, blockButton({ label: 'Yes!', tone: 'green', onClick: yes }), blockButton({ label: 'Not really', tone: 'mango', onClick: notReally })),
+      el('div', { class: 'two-up' }, blockButton({ label: 'Yes!', tone: 'green', onClick: yes }), blockButton({ label: 'Not really', tone: 'grey', onClick: notReally })),
     );
   };
   const takeBack = () => {
@@ -75,7 +75,7 @@ export function feedbackArea(ctx, { question = '', answer = '', target = null, s
       return ctx.say('Thanks for telling me. I saved it so a grown-up can check the answer.');
     }
     if (reason === 'hard') {
-      const again = blockButton({ label: 'Say it more simply', tone: 'mango', onClick: () => speakSlowly(say) });
+      const again = blockButton({ label: 'Say it more simply', tone: 'green', onClick: () => speakSlowly(say) });
       box.replaceChildren(...[status('Thanks. Want me to say it more simply?'), say && again].filter(Boolean));
       return ctx.say('Thanks. Want me to say it more simply?');
     }

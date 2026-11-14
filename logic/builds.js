@@ -1,5 +1,5 @@
 // Builds: things to make block by block, one layer at a time from the bottom up. A build: { id, name, difficulty
-// (Easy, Medium or Big), group (Builds or Room ideas), about, creative, key, layers }. Each layer has rows of
+// (Easy, Medium or Big), group (Builds, Room ideas or Finish it), about, creative, key, layers, yourTurn }. Each layer has rows of
 // letters from the back (the first row) to the front (the last row, the door side); key says which block each
 // letter is, and '.' is air. A key entry is a block id, or { id, facing, part, half, ground } for blocks that point
 // a way (facing: the side a stair's tall back is on, or a bed's head), half of a bed, a slab in the top half, or

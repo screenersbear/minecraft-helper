@@ -1,0 +1,74 @@
+{
+  "order": 4,
+  "name": "Doors and porches",
+  "pic": "oak_door",
+  "about": "A step up and a little roof.",
+  "wiki": "https://minecraft.wiki/w/Door",
+  "key": {
+    "C": "cobblestone",
+    "L": "oak_log",
+    "P": "oak_planks",
+    "d": {
+      "id": "oak_door",
+      "look": "oak_door_bottom",
+      "facing": "south"
+    },
+    "u": {
+      "id": "oak_door",
+      "look": "oak_door_top",
+      "facing": "south"
+    },
+    "s": {
+      "id": "oak_stairs",
+      "facing": "north"
+    },
+    "f": "oak_fence",
+    "h": "oak_slab"
+  },
+  "layers": [
+    {
+      "rows": [
+        "CCCCC",
+        "..s.."
+      ]
+    },
+    {
+      "rows": [
+        "LPdPL",
+        ".f.f."
+      ]
+    },
+    {
+      "rows": [
+        "LPuPL",
+        ".f.f."
+      ]
+    },
+    {
+      "rows": [
+        "LPPPL",
+        ".hhh."
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "A door one block up",
+      "add": "CLPdu",
+      "say": "Build the wall on a row of stone, so the door sits one block up.",
+      "tip": "Doors are two blocks tall. An iron door needs a button or a lever to open it."
+    },
+    {
+      "title": "A step",
+      "add": "s",
+      "say": "Put a stair in front of the door, as a step. The low side goes away from the door.",
+      "tip": "Stand in front of the door to place it. The low side of a stair always faces you."
+    },
+    {
+      "title": "Posts and a roof",
+      "add": "fh",
+      "say": "Put two fence posts out front, two high, with a row of slabs on top. Now it's a porch.",
+      "tip": "Use the same wood for the door, the posts and the roof, so it all goes together."
+    }
+  ]
+}

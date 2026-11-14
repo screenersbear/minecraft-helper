@@ -1,0 +1,72 @@
+{
+  "order": 7,
+  "name": "Fences and gates",
+  "pic": "oak_fence_gate",
+  "about": "A pen with posts and a gate.",
+  "wiki": "https://minecraft.wiki/w/Fence",
+  "key": {
+    "g": {
+      "id": "grass_block",
+      "ground": true
+    },
+    "f": "oak_fence",
+    "a": {
+      "id": "oak_fence_gate",
+      "was": "f"
+    },
+    "L": {
+      "id": "oak_log",
+      "was": "f"
+    },
+    "n": "lantern"
+  },
+  "layers": [
+    {
+      "rows": [
+        "gggggg",
+        "gggggg",
+        "gggggg",
+        "gggggg",
+        "gggggg"
+      ]
+    },
+    {
+      "rows": [
+        "LffffL",
+        "f....f",
+        "f....f",
+        "f....f",
+        "LfaffL"
+      ]
+    },
+    {
+      "rows": [
+        "n....n",
+        "......",
+        "......",
+        "......",
+        "n....n"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "A ring of fence",
+      "add": "gf",
+      "say": "Put fence all the way round. Fences join up to each other by themselves.",
+      "tip": "Animals can't jump over a fence, so it keeps them in."
+    },
+    {
+      "title": "A gate",
+      "add": "a",
+      "say": "Swap one fence for a fence gate, so you can get in and out.",
+      "tip": "Tap the gate to open it. Shut it behind you!"
+    },
+    {
+      "title": "Posts at the corners",
+      "add": "Ln",
+      "say": "Swap the corner fences for logs, and put a lantern on each.",
+      "tip": "Light keeps monsters from spawning inside the pen."
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "order": 6,
+  "name": "Your own trees",
+  "pic": "oak_sapling",
+  "about": "Bigger and rounder than real ones.",
+  "wiki": "https://minecraft.wiki/w/Leaves",
+  "key": {
+    "g": {
+      "id": "grass_block",
+      "ground": true
+    },
+    "T": "oak_log",
+    "R": "oak_log",
+    "l": "oak_leaves",
+    "h": "oak_leaves"
+  },
+  "layers": [
+    {
+      "rows": [
+        "ggggg",
+        "ggggg",
+        "ggggg",
+        "ggggg",
+        "ggggg"
+      ]
+    },
+    {
+      "rows": [
+        ".....",
+        "..R..",
+        ".RTR.",
+        "..R..",
+        "....."
+      ]
+    },
+    {
+      "rows": [
+        ".....",
+        ".....",
+        "..T..",
+        ".....",
+        "....."
+      ]
+    },
+    {
+      "rows": [
+        ".....",
+        ".....",
+        "h.T..",
+        "....h",
+        ".h..."
+      ]
+    },
+    {
+      "rows": [
+        ".lll.",
+        "llll.",
+        "llTll",
+        "lllll",
+        ".lll."
+      ]
+    },
+    {
+      "rows": [
+        ".lll.",
+        "lllll",
+        "llTll",
+        ".llll",
+        ".lll."
+      ]
+    },
+    {
+      "rows": [
+        ".....",
+        ".lll.",
+        ".lll.",
+        ".lll.",
+        "....."
+      ]
+    },
+    {
+      "rows": [
+        ".....",
+        "..l..",
+        ".lll.",
+        "..l..",
+        "....."
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "A trunk with roots",
+      "add": "gTR",
+      "say": "Stack logs five high for the trunk. Put one more log on each side at the bottom, like roots.",
+      "tip": "A tree you build can be any shape you like."
+    },
+    {
+      "title": "A ball of leaves",
+      "add": "l",
+      "say": "Put leaves all around the top of the trunk. Make it round, but miss out a few corners.",
+      "tip": "Leaves you place yourself never fall off, even far from a log."
+    },
+    {
+      "title": "Leaves hanging down",
+      "add": "h",
+      "say": "Add a few single leaves hanging under the edges. It makes the tree look soft.",
+      "tip": "Use shears to pick up leaves. Without shears, you only get a sapling or a stick now and then."
+    }
+  ]
+}

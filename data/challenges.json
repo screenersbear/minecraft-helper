@@ -1,0 +1,644 @@
+[
+ {
+  "id": "c001",
+  "text": "Build a house for a fox using only 3 kinds of blocks.",
+  "hint": "Foxes sleep in the day, so give it a cozy bed.",
+  "palette": "forest"
+ },
+ {
+  "id": "c002",
+  "text": "Build something that floats on water.",
+  "hint": "It could be a raft, a boat or a whole island.",
+  "palette": "ocean"
+ },
+ {
+  "id": "c003",
+  "text": "Build a tiny copy of your real house.",
+  "hint": "Count your windows and doors first.",
+  "palette": "town"
+ },
+ {
+  "id": "c004",
+  "text": "Build a bakery that sells cake.",
+  "hint": "Add a counter and somewhere to sit.",
+  "palette": "candy"
+ },
+ {
+  "id": "c005",
+  "text": "Build a secret hideout in a tree.",
+  "hint": "Nobody should be able to see the door.",
+  "palette": "forest"
+ },
+ {
+  "id": "c006",
+  "text": "Build a castle gate with a bridge over water.",
+  "hint": "Make the gate wide enough for a horse.",
+  "palette": "castle"
+ },
+ {
+  "id": "c007",
+  "text": "Build a lighthouse on a rock.",
+  "hint": "Put a light at the very top.",
+  "palette": "ocean"
+ },
+ {
+  "id": "c008",
+  "text": "Build a cabin with a fireplace.",
+  "hint": "A campfire looks great in a fireplace.",
+  "palette": "cozy-cabin"
+ },
+ {
+  "id": "c009",
+  "text": "Build a pet shop with three animals in it.",
+  "hint": "Each animal needs its own pen or tank.",
+  "palette": "town"
+ },
+ {
+  "id": "c010",
+  "text": "Build a giant cupcake.",
+  "hint": "Use one colour for the cake and another for the icing.",
+  "palette": "candy"
+ },
+ {
+  "id": "c011",
+  "text": "Build a house that is taller than it is wide.",
+  "hint": "Stack the rooms on top of each other.",
+  "palette": "town"
+ },
+ {
+  "id": "c012",
+  "text": "Build a home for a frog by a pond.",
+  "hint": "Lily pads go on the water.",
+  "palette": "forest"
+ },
+ {
+  "id": "c013",
+  "text": "Build a desert market with three stalls.",
+  "hint": "Wool on top of fences makes a nice shade.",
+  "palette": "desert"
+ },
+ {
+  "id": "c014",
+  "text": "Build a snowy hut for a polar bear.",
+  "hint": "Polar bears live on ice, so add an icy floor.",
+  "palette": "snowy"
+ },
+ {
+  "id": "c015",
+  "text": "Build a haunted house that is more silly than scary.",
+  "hint": "Jack o'lanterns make good windows.",
+  "palette": "spooky"
+ },
+ {
+  "id": "c016",
+  "text": "Build a fairy house inside a giant flower.",
+  "hint": "Start with a big stem, then add the petals.",
+  "palette": "fairy"
+ },
+ {
+  "id": "c017",
+  "text": "Build a bridge across a river using no wood.",
+  "hint": "Stone and stone bricks make strong bridges.",
+  "palette": "castle"
+ },
+ {
+  "id": "c018",
+  "text": "Build a treehouse with two rooms.",
+  "hint": "Join the rooms with a little bridge.",
+  "palette": "forest"
+ },
+ {
+  "id": "c019",
+  "text": "Build a train station.",
+  "hint": "Rails go along the ground. Add a bench to wait on.",
+  "palette": "town"
+ },
+ {
+  "id": "c020",
+  "text": "Build a beach hut on stilts.",
+  "hint": "Logs make good stilts.",
+  "palette": "ocean"
+ },
+ {
+  "id": "c021",
+  "text": "Build a house that is round, not square.",
+  "hint": "Make each layer a circle. Start small.",
+  "palette": "cozy-cabin"
+ },
+ {
+  "id": "c022",
+  "text": "Build a home for a turtle on the beach.",
+  "hint": "Turtles lay eggs on sand.",
+  "palette": "ocean"
+ },
+ {
+  "id": "c023",
+  "text": "Build a library with tall bookshelves.",
+  "hint": "Add a ladder to reach the top shelves.",
+  "palette": "cozy-cabin"
+ },
+ {
+  "id": "c024",
+  "text": "Build a garden that spells your name in flowers.",
+  "hint": "Plan the letters on the ground first.",
+  "palette": "forest"
+ },
+ {
+  "id": "c025",
+  "text": "Build a giant mushroom you can live in.",
+  "hint": "The cap is the roof. The stem is the door.",
+  "palette": "fairy"
+ },
+ {
+  "id": "c026",
+  "text": "Build a stable for two horses.",
+  "hint": "Give each horse a stall and some hay.",
+  "palette": "cozy-cabin"
+ },
+ {
+  "id": "c027",
+  "text": "Build a pyramid.",
+  "hint": "Each layer is one block smaller on every side.",
+  "palette": "desert"
+ },
+ {
+  "id": "c028",
+  "text": "Build a snow fort for a snowball fight.",
+  "hint": "Leave holes in the walls to throw through.",
+  "palette": "snowy"
+ },
+ {
+  "id": "c029",
+  "text": "Build a cafe with an outdoor patio.",
+  "hint": "Fences with a pressure plate on top make tables.",
+  "palette": "town"
+ },
+ {
+  "id": "c030",
+  "text": "Build a wizard tower with a pointy roof.",
+  "hint": "Make each floor of the roof a little smaller.",
+  "palette": "castle"
+ },
+ {
+  "id": "c031",
+  "text": "Build a pirate ship.",
+  "hint": "Wool makes great sails.",
+  "palette": "cozy-cabin"
+ },
+ {
+  "id": "c032",
+  "text": "Build a house using only one kind of block.",
+  "hint": "Use shapes like stairs and slabs to add detail.",
+  "palette": "castle"
+ },
+ {
+  "id": "c033",
+  "text": "Build a playground with a slide and swings.",
+  "hint": "Stairs going down make a good slide.",
+  "palette": "candy"
+ },
+ {
+  "id": "c034",
+  "text": "Build a fish tank in a wall.",
+  "hint": "Glass on the front, water inside, and a fish or two.",
+  "palette": "ocean"
+ },
+ {
+  "id": "c035",
+  "text": "Build a bedroom for a giant.",
+  "hint": "Make the bed five times bigger than a real one.",
+  "palette": "cozy-cabin"
+ },
+ {
+  "id": "c036",
+  "text": "Build a mini golf hole with a ramp.",
+  "hint": "A hopper or a hole in the ground can be the cup.",
+  "palette": "candy"
+ },
+ {
+  "id": "c037",
+  "text": "Build a farm with five different crops.",
+  "hint": "Every crop needs water nearby.",
+  "palette": "forest"
+ },
+ {
+  "id": "c038",
+  "text": "Build a rocket ship ready to launch.",
+  "hint": "Make it tall and pointy, with fins at the bottom.",
+  "palette": "town"
+ },
+ {
+  "id": "c039",
+  "text": "Build a hot air balloon.",
+  "hint": "Wool for the balloon, a little wood basket under it.",
+  "palette": "candy"
+ },
+ {
+  "id": "c040",
+  "text": "Build an ice palace.",
+  "hint": "Packed ice and snow, with tall pointy towers.",
+  "palette": "snowy"
+ },
+ {
+  "id": "c041",
+  "text": "Build a house in the side of a hill.",
+  "hint": "Dig into the hill and add a round door.",
+  "palette": "forest"
+ },
+ {
+  "id": "c042",
+  "text": "Build a windmill.",
+  "hint": "The sails can be fences or wool.",
+  "palette": "cozy-cabin"
+ },
+ {
+  "id": "c043",
+  "text": "Build a bus stop for villagers.",
+  "hint": "Add a bench and a roof.",
+  "palette": "town"
+ },
+ {
+  "id": "c044",
+  "text": "Build a dragon statue.",
+  "hint": "Start with the body, then the head, wings and tail.",
+  "palette": "castle"
+ },
+ {
+  "id": "c045",
+  "text": "Build a cozy reading nook.",
+  "hint": "Bookshelves, a seat and a lamp.",
+  "palette": "cozy-cabin"
+ },
+ {
+  "id": "c046",
+  "text": "Build a home for bees with lots of flowers.",
+  "hint": "Bees need flowers nearby to make honey.",
+  "palette": "forest"
+ },
+ {
+  "id": "c047",
+  "text": "Build a museum with three things on show.",
+  "hint": "Item frames are great for showing things.",
+  "palette": "town"
+ },
+ {
+  "id": "c048",
+  "text": "Build a giant ice cream cone.",
+  "hint": "Terracotta makes a good cone colour.",
+  "palette": "candy"
+ },
+ {
+  "id": "c049",
+  "text": "Build a waterfall that falls into a pool.",
+  "hint": "Put the water source at the top.",
+  "palette": "forest"
+ },
+ {
+  "id": "c050",
+  "text": "Build a house in only 10 minutes.",
+  "hint": "Walls, a roof and a door. Go!",
+  "palette": "cozy-cabin"
+ },
+ {
+  "id": "c051",
+  "text": "Build a door that nobody can find.",
+  "hint": "A bookshelf wall or a painting can hide it.",
+  "palette": "castle"
+ },
+ {
+  "id": "c052",
+  "text": "Build a sailboat statue in the sea.",
+  "hint": "It doesn't have to move. It just has to look good.",
+  "palette": "ocean"
+ },
+ {
+  "id": "c053",
+  "text": "Build a clock tower.",
+  "hint": "The clock face can be made of wool.",
+  "palette": "town"
+ },
+ {
+  "id": "c054",
+  "text": "Build a house for a cat with a scratching post.",
+  "hint": "Cats like to sit on beds and chests.",
+  "palette": "candy"
+ },
+ {
+  "id": "c055",
+  "text": "Build a rainbow bridge.",
+  "hint": "One stripe of each colour of wool.",
+  "palette": "candy"
+ },
+ {
+  "id": "c056",
+  "text": "Build a cave entrance with a hidden treasure room.",
+  "hint": "Put a chest at the very back.",
+  "palette": "castle"
+ },
+ {
+  "id": "c057",
+  "text": "Build a campsite with tents and a campfire.",
+  "hint": "Wool on fences makes a tent shape.",
+  "palette": "forest"
+ },
+ {
+  "id": "c058",
+  "text": "Build a home for an axolotl.",
+  "hint": "Axolotls need water to live in.",
+  "palette": "ocean"
+ },
+ {
+  "id": "c059",
+  "text": "Build a giant version of your favourite food.",
+  "hint": "Pick the colours first.",
+  "palette": "candy"
+ },
+ {
+  "id": "c060",
+  "text": "Build a fire station with a tall door for the truck.",
+  "hint": "Red wool or bricks look good.",
+  "palette": "town"
+ },
+ {
+  "id": "c061",
+  "text": "Build a house with no straight walls.",
+  "hint": "Push some blocks in and some out.",
+  "palette": "desert"
+ },
+ {
+  "id": "c062",
+  "text": "Build a snowman family.",
+  "hint": "Make them different sizes.",
+  "palette": "snowy"
+ },
+ {
+  "id": "c063",
+  "text": "Build a mine entrance with rails going in.",
+  "hint": "Torches every few blocks light the way.",
+  "palette": "castle"
+ },
+ {
+  "id": "c064",
+  "text": "Build a flower shop.",
+  "hint": "Flower pots in the window show what's for sale.",
+  "palette": "fairy"
+ },
+ {
+  "id": "c065",
+  "text": "Build a tiny house that fits in a 5 by 5 space.",
+  "hint": "Every block counts. Can you fit a bed?",
+  "palette": "cozy-cabin"
+ },
+ {
+  "id": "c066",
+  "text": "Build a big house that is 20 blocks long.",
+  "hint": "Plan the rooms before you build the walls.",
+  "palette": "town"
+ },
+ {
+  "id": "c067",
+  "text": "Build a home for a sniffer.",
+  "hint": "Sniffers are big, so make the door big.",
+  "palette": "forest"
+ },
+ {
+  "id": "c068",
+  "text": "Build a ship in a bottle.",
+  "hint": "Glass for the bottle, a tiny boat inside.",
+  "palette": "ocean"
+ },
+ {
+  "id": "c069",
+  "text": "Build a desert well with a roof.",
+  "hint": "Sandstone and a little water in the middle.",
+  "palette": "desert"
+ },
+ {
+  "id": "c070",
+  "text": "Build a spooky graveyard that is actually a garden.",
+  "hint": "Use flowers to make it friendly.",
+  "palette": "spooky"
+ },
+ {
+  "id": "c071",
+  "text": "Build a fountain in a town square.",
+  "hint": "Water flows down from the top.",
+  "palette": "town"
+ },
+ {
+  "id": "c072",
+  "text": "Build an underwater house.",
+  "hint": "Fill the inside with sand first, then dig it out.",
+  "palette": "ocean"
+ },
+ {
+  "id": "c073",
+  "text": "Build an archway made of leaves.",
+  "hint": "Leaves you place stay forever.",
+  "palette": "fairy"
+ },
+ {
+  "id": "c074",
+  "text": "Build a stage for a concert.",
+  "hint": "Note blocks can play the music.",
+  "palette": "town"
+ },
+ {
+  "id": "c075",
+  "text": "Build a home for a panda.",
+  "hint": "Pandas love bamboo.",
+  "palette": "forest"
+ },
+ {
+  "id": "c076",
+  "text": "Build a lookout tower on a mountain.",
+  "hint": "A ladder inside, a lookout on top.",
+  "palette": "cozy-cabin"
+ },
+ {
+  "id": "c077",
+  "text": "Build a giant sword stuck in the ground.",
+  "hint": "The blade, the handle and the guard.",
+  "palette": "castle"
+ },
+ {
+  "id": "c078",
+  "text": "Build a house that a villager would love.",
+  "hint": "Give it a bed and a job block.",
+  "palette": "town"
+ },
+ {
+  "id": "c079",
+  "text": "Build a pumpkin patch with a scarecrow.",
+  "hint": "A carved pumpkin makes a good head.",
+  "palette": "spooky"
+ },
+ {
+  "id": "c080",
+  "text": "Build a mailbox and a post office.",
+  "hint": "A chest makes a good mailbox.",
+  "palette": "town"
+ },
+ {
+  "id": "c081",
+  "text": "Build a home for a parrot.",
+  "hint": "Parrots like jungle trees and seeds.",
+  "palette": "forest"
+ },
+ {
+  "id": "c082",
+  "text": "Build an igloo with a secret basement.",
+  "hint": "Hide the way down under a trapdoor.",
+  "palette": "snowy"
+ },
+ {
+  "id": "c083",
+  "text": "Build a fairy ring of mushrooms.",
+  "hint": "Make a circle on the grass.",
+  "palette": "fairy"
+ },
+ {
+  "id": "c084",
+  "text": "Build a huge chair and table, like you're tiny.",
+  "hint": "Make the table as tall as a house.",
+  "palette": "cozy-cabin"
+ },
+ {
+  "id": "c085",
+  "text": "Build a race track around your house.",
+  "hint": "Rails and a minecart make a ride around it.",
+  "palette": "town"
+ },
+ {
+  "id": "c086",
+  "text": "Build a lantern-lit path through the woods.",
+  "hint": "Put a lantern every few blocks.",
+  "palette": "forest"
+ },
+ {
+  "id": "c087",
+  "text": "Build an outdoor cinema.",
+  "hint": "A big wall of wool for the screen, rows of seats.",
+  "palette": "town"
+ },
+ {
+  "id": "c088",
+  "text": "Build a home for a llama.",
+  "hint": "Llamas can wear a carpet. Add some hay.",
+  "palette": "desert"
+ },
+ {
+  "id": "c089",
+  "text": "Build a crystal cave.",
+  "hint": "Amethyst and glass make it sparkle.",
+  "palette": "fairy"
+ },
+ {
+  "id": "c090",
+  "text": "Build a garden maze.",
+  "hint": "Leaves make tall hedges. Put a prize in the middle.",
+  "palette": "forest"
+ },
+ {
+  "id": "c091",
+  "text": "Build an animal hospital.",
+  "hint": "One room for each kind of animal.",
+  "palette": "town"
+ },
+ {
+  "id": "c092",
+  "text": "Build a picnic spot by a lake.",
+  "hint": "A blanket made of carpet and a basket.",
+  "palette": "forest"
+ },
+ {
+  "id": "c093",
+  "text": "Build a snow globe.",
+  "hint": "Glass dome, snow inside, a tiny house in the middle.",
+  "palette": "snowy"
+ },
+ {
+  "id": "c094",
+  "text": "Build a pizza shop.",
+  "hint": "Red and yellow wool make a pizza sign.",
+  "palette": "town"
+ },
+ {
+  "id": "c095",
+  "text": "Build a bunk bed room for a sleepover.",
+  "hint": "Beds stack with a slab in between.",
+  "palette": "candy"
+ },
+ {
+  "id": "c096",
+  "text": "Build a tree that's a different colour than normal.",
+  "hint": "Use wool or concrete for the leaves.",
+  "palette": "candy"
+ },
+ {
+  "id": "c097",
+  "text": "Build an old ruin, half fallen down.",
+  "hint": "Mossy and cracked stone bricks look old.",
+  "palette": "castle"
+ },
+ {
+  "id": "c098",
+  "text": "Build a home for a goat on a cliff.",
+  "hint": "Goats love high places.",
+  "palette": "snowy"
+ },
+ {
+  "id": "c099",
+  "text": "Build something that matches the weather today.",
+  "hint": "Look outside first.",
+  "palette": "town"
+ },
+ {
+  "id": "c100",
+  "text": "Build a giant letter of your name.",
+  "hint": "Make it at least 10 blocks tall.",
+  "palette": "candy"
+ },
+ {
+  "id": "c101",
+  "text": "Build a toy store.",
+  "hint": "Show the toys on shelves in the window.",
+  "palette": "candy"
+ },
+ {
+  "id": "c102",
+  "text": "Build a cozy winter cabin with lights in the windows.",
+  "hint": "Lanterns inside make the windows glow.",
+  "palette": "snowy"
+ },
+ {
+  "id": "c103",
+  "text": "Build a home for a mob nobody likes.",
+  "hint": "Maybe a creeper deserves a house too.",
+  "palette": "spooky"
+ },
+ {
+  "id": "c104",
+  "text": "Build a garden on a roof.",
+  "hint": "Grass, flowers and a little bench up high.",
+  "palette": "fairy"
+ },
+ {
+  "id": "c105",
+  "text": "Build a dock with a boat tied to it.",
+  "hint": "Fences make good posts.",
+  "palette": "ocean"
+ },
+ {
+  "id": "c106",
+  "text": "Build a castle with four towers.",
+  "hint": "One tower in each corner, walls in between.",
+  "palette": "castle"
+ },
+ {
+  "id": "c107",
+  "text": "Build a vegetable stand with a sign.",
+  "hint": "Put the crops in barrels or composters.",
+  "palette": "forest"
+ }
+]

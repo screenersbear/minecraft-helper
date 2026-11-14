@@ -1,7 +1,8 @@
 // Draws a build's faces as a small 3D picture (isometric, seen from the front right and above), one pixel at a
 // time, into an RGBA array a canvas can show. s: screen pixels for each pixel of a block's picture (a block is 16).
 // atlas: { data, width } of the block pictures, 16 by 16 each, in rows. Nearer faces cover farther ones (each
-// pixel remembers how near it is); see-through faces (glass and water) are drawn last, farthest first.
+// pixel remembers how near it is); see-through faces (glass and water) are drawn last, farthest first. In a builder
+// trick, blocks from earlier steps are drawn darker and the new ones get a yellow edge.
 
 export function isoSize(W, H, D, s) {
   return { width: Math.ceil((W + D) * 16 * s), height: Math.ceil(((W + D) * 8 + H * 16) * s) };
@@ -10,6 +11,15 @@ export function isoSize(W, H, D, s) {
 // How light each face is: the top in full light, the front a little darker, the right side darker again.
 const SHADE = { top: 1, front: 0.8, right: 0.64 };
 const clamp16 = (n) => (n < 0 ? 0 : n > 15 ? 15 : n | 0);
+const DIM = 0.6;
+const MARK = [255, 255, 85, 255];
+
+// Whether a spot on a face (from hit) is within e block-picture pixels of the face's edge.
+export function nearEdge(f, at, e) {
+  const a = f.kind === 'right' ? f.bz + 16 - at.u : at.u + f.bx;
+  const b = f.kind === 'top' ? at.v + f.bz : f.by + 16 - at.v;
+  return a - f.a0 < e || f.a1 - a < e || b - f.b0 < e || f.b1 - b < e;
+}
 
 // For a screen point (p, q) in block-picture units: where it lands on the face, how near it is (bigger is nearer),
 // and the spot on the face's picture (u, v); or null when the point misses the face.
@@ -79,19 +89,29 @@ export function drawScene(scene, s, atlas) {
       }
     }
   };
-  // Solid pixels: a see-through spot in the picture (between glass edges, around a flower) shows what's behind.
-  const solid = (tile, shade) => (i, at) => {
-    if (at.d < near[i]) return;
-    const t = texel(tile, at.u, at.v);
-    if (atlas.data[t + 3] < 128) return;
+  const edge = Math.max(1, 2 / s);
+  // A new block's edge: solid yellow.
+  const marked = (f, i, at) => {
+    if (!f.mark || !nearEdge(f, at, edge)) return false;
     near[i] = at.d;
-    for (let k = 0; k < 3; k++) data[i * 4 + k] = atlas.data[t + k] * shade;
+    data.set(MARK, i * 4);
+    return true;
+  };
+  // Solid pixels: a see-through spot in the picture (between glass edges, around a flower) shows what's behind.
+  const solid = (f, shade) => (i, at) => {
+    if (at.d < near[i]) return;
+    const t = texel(f.tile, at.u, at.v);
+    if (atlas.data[t + 3] < 128 || marked(f, i, at)) return;
+    near[i] = at.d;
+    const light = f.dim ? shade * DIM : shade;
+    for (let k = 0; k < 3; k++) data[i * 4 + k] = atlas.data[t + k] * light;
     data[i * 4 + 3] = 255;
   };
   // See-through pixels (glass and water): mixed over what's already there.
-  const clear = (tile, shade, alpha) => (i, at) => {
-    if (at.d < near[i]) return;
-    const t = texel(tile, at.u, at.v);
+  const clear = (f, light, alpha) => (i, at) => {
+    if (at.d < near[i] || marked(f, i, at)) return;
+    const shade = f.dim ? light * DIM : light;
+    const t = texel(f.tile, at.u, at.v);
     const a = (atlas.data[t + 3] / 255) * alpha;
     const under = data[i * 4 + 3] / 255;
     const all = a + under * (1 - a);
@@ -101,12 +121,12 @@ export function drawScene(scene, s, atlas) {
   };
   const solidFaces = scene.faces.filter((f) => !f.clear);
   const seeThrough = scene.faces.filter((f) => f.clear).sort((a, b) => a.bx + a.by + a.bz - (b.bx + b.by + b.bz));
-  for (const f of solidFaces) each(cornersOf(f), (p, q) => hit(f, p, q), solid(f.tile, SHADE[f.kind]));
+  for (const f of solidFaces) each(cornersOf(f), (p, q) => hit(f, p, q), solid(f, SHADE[f.kind]));
   for (const sp of scene.sprites) {
     const pts = [[sp.x - sp.z - 8, (sp.x + sp.z) / 2 - sp.y], [sp.x - sp.z + 8, (sp.x + sp.z) / 2 - sp.y - 16]];
-    each(pts, (p, q) => hitSprite(sp, p, q), solid(sp.tile, 1));
+    each(pts, (p, q) => hitSprite(sp, p, q), solid(sp, 1));
   }
-  for (const f of seeThrough) each(cornersOf(f), (p, q) => hit(f, p, q), clear(f.tile, SHADE[f.kind], f.alpha));
+  for (const f of seeThrough) each(cornersOf(f), (p, q) => hit(f, p, q), clear(f, SHADE[f.kind], f.alpha));
   return { width, height, data };
 }
 

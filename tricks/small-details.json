@@ -1,0 +1,74 @@
+{
+  "order": 10,
+  "name": "Small details",
+  "pic": "flower_pot",
+  "about": "A bench, a lamp and a plant.",
+  "wiki": "https://minecraft.wiki/w/Trapdoor",
+  "key": {
+    "P": "oak_planks",
+    "s": {
+      "id": "spruce_stairs",
+      "facing": "north"
+    },
+    "a": {
+      "id": "spruce_trapdoor",
+      "facing": "east",
+      "open": true
+    },
+    "b": {
+      "id": "spruce_trapdoor",
+      "facing": "west",
+      "open": true
+    },
+    "f": "oak_fence",
+    "n": "lantern",
+    "B": "barrel",
+    "o": "flower_pot"
+  },
+  "layers": [
+    {
+      "rows": [
+        "PPPPPP",
+        "fBassb"
+      ]
+    },
+    {
+      "rows": [
+        "PPPPPP",
+        "no...."
+      ]
+    },
+    {
+      "rows": [
+        "PPPPPP",
+        "......"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "A plain wall",
+      "add": "P",
+      "say": "Start with a plain wall. Small things in front of it make it feel lived in.",
+      "tip": "Look at real houses for ideas: benches, lamps, plants and boxes."
+    },
+    {
+      "title": "A bench",
+      "add": "sab",
+      "say": "Put two stairs against the wall for a seat. Open trapdoors on each end make the arms.",
+      "tip": "Open trapdoors stand up flat, so they make good arms, shutters and little fences."
+    },
+    {
+      "title": "A lamp post",
+      "add": "fn",
+      "say": "A fence post with a lantern on top makes a little street lamp.",
+      "tip": "A lantern can sit on top of a block, or hang under one."
+    },
+    {
+      "title": "A barrel and a plant",
+      "add": "Bo",
+      "say": "Put a barrel by the wall, with a flower pot on top. Put a flower in the pot.",
+      "tip": "A barrel holds as much as a chest, so a detail can be useful too."
+    }
+  ]
+}

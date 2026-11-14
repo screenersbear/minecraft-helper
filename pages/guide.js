@@ -16,11 +16,7 @@ import { guideVoice } from '../speech/guide-voice.js';
 import { stepSentence } from '../logic/say.js';
 import { toHash, parseHash, backHash } from '../logic/routes.js';
 import { parseCommand } from '../logic/commands.js';
-
-function progress(step, total) {
-  const bars = Array.from({ length: total }, (_, i) => el('span', { class: i < step ? 'done' : '' }));
-  return el('div', { class: 'progress', role: 'img', 'aria-label': `Step ${step} of ${total}` }, bars);
-}
+import { progress } from '../components/progress.js';
 
 export function guidePage(ctx, route) {
   const guide = ctx.guides.find((g) => g.id === route.id);
@@ -57,7 +53,7 @@ export function guidePage(ctx, route) {
       { class: 'three-up' },
       blockButton({ label: 'Back', tone: 'grey', onClick: actions.back, extra: n === 1 ? { disabled: true } : {} }),
       blockButton({ label: 'Again', tone: 'grey', onClick: actions.again }),
-      blockButton({ label: n < total ? 'Next' : 'Done', tone: 'mango', onClick: actions.next }),
+      blockButton({ label: n < total ? 'Next' : 'Done', tone: 'green', onClick: actions.next }),
     ),
   );
 

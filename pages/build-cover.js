@@ -12,8 +12,10 @@ import { toHash, parseHash, backHash } from '../logic/routes.js';
 
 const HINT = 'Say "next" to start';
 
-// Where Back goes: the page it was opened from, or Ask after a question, or Make.
-export const buildBack = (route) => (route.from || route.trail.length || route.q ? backHash(route) : '#/make');
+// Where Back goes: the page it was opened from, or Ask after a question, or the Builds page.
+// Where Back goes from a build: where it was opened from, or its list (Builds, or Finish it for a starter).
+const LISTS = { 'Finish it': '#/finish' };
+export const buildBack = (route, build) => (route.from || route.trail.length || route.q ? backHash(route) : LISTS[build?.group] || '#/builds');
 
 // The coloured tag: Easy, Medium or Big (and Creative, for builds that need Creative blocks).
 export function buildTags(build) {
@@ -33,7 +35,7 @@ export function buildCoverPage(ctx, route) {
   const start = toHash({ page: 'build', id: build.id, step: 1, from: route.from });
   const hint = el('p', { class: 'hint' });
   const actions = {
-    back: () => ctx.go(buildBack(route)),
+    back: () => ctx.go(buildBack(route, build)),
     again: () => ctx.say(say),
     next: () => ctx.go(start),
   };
@@ -53,7 +55,7 @@ export function buildCoverPage(ctx, route) {
     return el('li', { class: 'need' }, itemPicture(book, pictureId(c.id), 28), el('span', {}, el('b', {}, count), ` ${name.join(' ')}`));
   });
   const nodes = [
-    ...topBar({ left: { label: 'Back', href: buildBack(route) }, right: build.group === 'Room ideas' ? 'Room ideas' : 'Builds' }),
+    ...topBar({ left: { label: 'Back', href: buildBack(route, build) }, right: build.group === 'Builds' ? 'Builds' : build.group }),
     el(
       'div',
       { class: 'page build-cover' },
@@ -63,7 +65,7 @@ export function buildCoverPage(ctx, route) {
       el('p', { class: 'say' }, build.about),
       el('h2', { class: 'small-label' }, 'Blocks you need, most first'),
       el('ul', { class: 'need-grid' }, needs),
-      el('div', { class: 'bottom' }, hint, blockButton({ label: 'Start building', tone: 'mango', href: start })),
+      el('div', { class: 'bottom' }, hint, blockButton({ label: 'Start building', tone: 'green', href: start })),
     ),
   ];
   const cleanup = () => {

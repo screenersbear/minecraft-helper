@@ -13,9 +13,7 @@ import { fitTitles } from './components/fit-title.js';
 import { el } from './components/el.js';
 import { homePage, isHome } from './pages/home.js';
 import { bookPage } from './pages/book-page.js';
-import { pixelCropPage } from './pages/pixel-crop.js';
-import { pixelResultPage } from './pages/pixel-result.js';
-import { pixelBuildPage } from './pages/pixel-build.js';
+import { makePageFor } from './pages/make-routes.js';
 import { buildCoverPage } from './pages/build-cover.js';
 import { buildLayerPage } from './pages/build-layer.js';
 import { ideaPage } from './pages/idea.js';
@@ -60,8 +58,9 @@ function pageFor(route) {
   if (route.page === 'book') return bookPage;
   // A chapter of the Guides page: #/guides/ocean.
   if (route.page === 'guides') return chapterPage;
-  // Pixel art: #/pixel/crop, then #/pixel/<id> for the result and #/pixel/<id>/<row> to build it.
-  if (route.page === 'pixel') return route.id === 'crop' ? pixelCropPage : route.step ? pixelBuildPage : pixelResultPage;
+  // Make: Surprise me, Builds, Pixel art, Builder tricks, Block palettes, Finish it, My builds.
+  const make = makePageFor(route);
+  if (make) return make;
   // Builds: #/build/<id> for the cover, #/build/<id>/<layer> to build it layer by layer.
   if (route.page === 'build') return route.step ? buildLayerPage : buildCoverPage;
   return PAGES[route.page];
@@ -106,12 +105,14 @@ function readOut(text) {
   setTimeout(done, Math.min(25000, 3000 + text.split(/\s+/).length * 600));
 }
 
-function start({ book, guides, addons, builds, list }) {
+function start({ book, guides, addons, builds, challenges, tricks, list }) {
   const ctx = {
     book,
     guides,
     addons,
     builds,
+    challenges,
+    tricks,
     list,
     ask(question) {
       const q = String(question || '').trim();

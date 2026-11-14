@@ -1,0 +1,71 @@
+{
+  "name": "An empty room",
+  "difficulty": "Easy",
+  "group": "Finish it",
+  "about": "A room with a floor, walls and windows, and nothing inside yet.",
+  "key": {
+    "P": "oak_planks",
+    "B": "birch_planks",
+    "L": "oak_log",
+    "G": "glass"
+  },
+  "layers": [
+    {
+      "name": "Floor",
+      "tip": "A floor of planks, 7 by 6.",
+      "rows": [
+        "PPPPPPP",
+        "PPPPPPP",
+        "PPPPPPP",
+        "PPPPPPP",
+        "PPPPPPP",
+        "PPPPPPP"
+      ]
+    },
+    {
+      "name": "Bottom of the walls",
+      "tip": "Walls round the edge of the floor, with logs at the corners and a gap for a door.",
+      "rows": [
+        "LBBBBBL",
+        "B.....B",
+        "B.....B",
+        "B.....B",
+        "B.....B",
+        "LBB.BBL"
+      ]
+    },
+    {
+      "name": "Windows",
+      "tip": "Glass for windows at the back and on the sides.",
+      "rows": [
+        "LBGGGBL",
+        "B.....B",
+        "G.....G",
+        "B.....B",
+        "B.....B",
+        "LBB.BBL"
+      ]
+    },
+    {
+      "name": "Top of the walls",
+      "tip": "A full ring of birch planks, right over the door too.",
+      "rows": [
+        "LBBBBBL",
+        "B.....B",
+        "B.....B",
+        "B.....B",
+        "B.....B",
+        "LBBBBBL"
+      ]
+    }
+  ],
+  "yourTurn": {
+    "say": "Now fill it with things. What kind of room will it be?",
+    "ideas": [
+      "A bedroom: a bed, a lamp and a rug made of carpet.",
+      "A kitchen: a smoker, barrels and a table.",
+      "A library: bookshelves on every wall.",
+      "Room ideas in Builds has lots more."
+    ]
+  }
+}

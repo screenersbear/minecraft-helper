@@ -1,0 +1,122 @@
+/* Surprise me (the challenge card, its blocks, the timer and the clock) and the Block palettes page. */
+
+.challenge-label {
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--yellow);
+  text-shadow: 2px 2px 0 #3f3f15;
+}
+
+.challenge-card {
+  margin-top: 12px;
+  padding: 20px 16px;
+}
+
+.challenge-text {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.challenge-hint {
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+.challenge-palette {
+  margin-top: 16px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.challenge-palette a {
+  color: var(--panel-text);
+}
+
+/* A palette's blocks, each with its name under it */
+.swatches {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.swatch {
+  width: 54px;
+  margin: 0 4px 8px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 10px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.swatch .slot {
+  --slot-size: 42px;
+  margin-bottom: 4px;
+}
+
+.timer-label {
+  padding: 16px 0 6px;
+}
+
+.four-up {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.four-up .block-btn {
+  padding: 0 4px;
+  font-size: 14px;
+}
+
+.challenge-clock {
+  padding-top: 24px;
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  color: var(--yellow);
+  text-shadow: 4px 4px 0 #3f3f15;
+  font-variant-numeric: tabular-nums;
+}
+
+.clock-note {
+  text-align: center;
+  padding-top: 8px;
+}
+
+.challenge-done {
+  padding-top: 20px;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.surprise .say {
+  margin-top: 12px;
+}
+
+/* Block palettes: one card each */
+.palette-card {
+  margin-top: 10px;
+  padding: 14px 14px 6px;
+}
+
+.palette-card:last-child {
+  margin-bottom: calc(env(safe-area-inset-bottom) + 24px);
+}
+
+.palette-name {
+  font-size: 17px;
+}
+
+.palette-about {
+  margin-top: 4px;
+  font-size: 12px;
+}

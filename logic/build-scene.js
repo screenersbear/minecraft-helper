@@ -4,12 +4,12 @@
 import { allBlocks, blockAt, sizeOf } from './builds.js';
 import { SIDES, boxesOf, pillowOf, isFull, hasSprite } from './build-shapes.js';
 
-// Whether a fence at (x, y, z) reaches out to its side: towards another fence or a full block.
+// Whether a fence at (x, y, z) reaches out to its side: towards another fence, a gate or a full block.
 function joinsAt(build, looks, x, y, z) {
   return (side) => {
     const n = blockAt(build, x + SIDES[side].dx, y, z + SIDES[side].dz);
     const look = n && looks[n.id];
-    return !!look && (look.shape === 'fence' || isFull(look));
+    return !!look && (look.shape === 'fence' || look.shape === 'gate' || isFull(look));
   };
 }
 
@@ -20,8 +20,9 @@ function lowered(boxes, block, above) {
 }
 
 // Each face: { kind (top, front or right), c (where it is: its y, z or x), a0, a1, b0, b1 (how far it reaches the
-// other two ways), bx, by, bz (the block's corner), tile, alpha, clear (see-through: glass and water) }.
-// Sprites: { tile, x, y, z } (the centre of the bottom).
+// other two ways), bx, by, bz (the block's corner), tile, alpha, clear (see-through: glass and water), dim and mark
+// (a builder trick's blocks from earlier steps, and its new ones) }. Sprites: { tile, x, y, z (the centre of the
+// bottom), dim }.
 export function sceneOf(build, looks) {
   const faces = [];
   const sprites = [];
@@ -43,12 +44,12 @@ export function sceneOf(build, looks) {
     const parts = boxes.map((b) => ({ b, top: look.top, front, right }));
     if (pillow) parts.push({ b: pillow, top: look.pillow, front: look.pillow, right: look.pillow });
     for (const { b, top, front: f, right: r } of parts) {
-      const base = { bx, by, bz, alpha, clear: !!look.see };
+      const base = { bx, by, bz, alpha, clear: !!look.see, dim: !!block.dim, mark: !!block.mark };
       if (!(b.y1 === 16 && hiddenBy(at(0, 1, 0)))) faces.push({ ...base, kind: 'top', c: by + b.y1, a0: bx + b.x0, a1: bx + b.x1, b0: bz + b.z0, b1: bz + b.z1, tile: top });
       if (!(b.z1 === 16 && hiddenBy(at(0, 0, 1)))) faces.push({ ...base, kind: 'front', c: bz + b.z1, a0: bx + b.x0, a1: bx + b.x1, b0: by + b.y0, b1: by + b.y1, tile: f });
       if (!(b.x1 === 16 && hiddenBy(at(1, 0, 0)))) faces.push({ ...base, kind: 'right', c: bx + b.x1, a0: bz + b.z0, a1: bz + b.z1, b0: by + b.y0, b1: by + b.y1, tile: r });
     }
-    if (hasSprite(look)) sprites.push({ tile: look.sprite ?? look.top, x: bx + 8, y: by, z: bz + 8 });
+    if (hasSprite(look)) sprites.push({ tile: look.sprite ?? look.top, x: bx + 8, y: by, z: bz + 8, dim: !!block.dim });
   }
   return { ...sizeOf(build), faces, sprites };
 }

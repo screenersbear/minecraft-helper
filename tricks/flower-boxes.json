@@ -1,0 +1,73 @@
+{
+  "order": 8,
+  "name": "Flower boxes",
+  "pic": "poppy",
+  "about": "Trapdoors round a strip of grass.",
+  "wiki": "https://minecraft.wiki/w/Trapdoor",
+  "key": {
+    "P": "oak_planks",
+    "G": "glass",
+    "d": "grass_block",
+    "t": {
+      "id": "spruce_trapdoor",
+      "facing": "north",
+      "open": true
+    },
+    "e": {
+      "id": "spruce_trapdoor",
+      "facing": "east",
+      "open": true
+    },
+    "w": {
+      "id": "spruce_trapdoor",
+      "facing": "west",
+      "open": true
+    },
+    "o": "poppy",
+    "y": "dandelion",
+    "c": "cornflower"
+  },
+  "layers": [
+    {
+      "rows": [
+        "PPPPP",
+        "edddw",
+        ".ttt."
+      ]
+    },
+    {
+      "rows": [
+        "PGGGP",
+        ".oyc.",
+        "....."
+      ]
+    },
+    {
+      "rows": [
+        "PPPPP",
+        ".....",
+        "....."
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Grass under the window",
+      "add": "PGd",
+      "say": "Put a row of grass or dirt under a window, one block out from the wall.",
+      "tip": "A Silk Touch tool picks up grass blocks. Or just use dirt."
+    },
+    {
+      "title": "Box it in",
+      "add": "tew",
+      "say": "Put open trapdoors on the front and the ends of the grass, so it looks like a box.",
+      "tip": "Point at the side of the grass to place each trapdoor, then tap it to open it."
+    },
+    {
+      "title": "Plant flowers",
+      "add": "oyc",
+      "say": "Plant flowers in the box. Mix two or three colours.",
+      "tip": "Try leaves instead of flowers to make a little hedge."
+    }
+  ]
+}

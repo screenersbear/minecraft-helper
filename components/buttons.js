@@ -2,7 +2,7 @@
 import { el } from './el.js';
 import { icon } from './icons.js';
 
-// tone: 'mango', 'green' or 'grey'. Give onClick for a button or href for a link.
+// tone: 'green' (the next thing to do) or 'grey'. Give onClick for a button or href for a link.
 export function blockButton({ label, tone = 'grey', onClick, href, extra = {} }) {
   const cls = `block-btn tone-${tone}`;
   if (href) return el('a', { class: cls, href, ...extra }, label);
@@ -20,7 +20,7 @@ export function feedback({ onYes, onNo }) {
     'section',
     { class: 'feedback', 'aria-label': 'Did that answer it?' },
     el('p', { class: 'feedback-q' }, 'Did that answer it?'),
-    el('div', { class: 'two-up' }, blockButton({ label: 'Yes!', tone: 'green', onClick: onYes }), blockButton({ label: 'Not really', tone: 'mango', onClick: onNo })),
+    el('div', { class: 'two-up' }, blockButton({ label: 'Yes!', tone: 'green', onClick: onYes }), blockButton({ label: 'Not really', tone: 'grey', onClick: onNo })),
   );
 }
 

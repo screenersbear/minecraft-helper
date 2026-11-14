@@ -129,12 +129,12 @@ export function pixelResultPage(ctx, route) {
     onclick: () => {
       if (!window.confirm(`Delete "${art.name}"? This can't be undone.`)) return;
       removeArt(art.id);
-      ctx.go('#/make', { replace: true });
+      ctx.go('#/pixel', { replace: true });
     },
   }, 'Delete it');
 
   const nodes = [
-    ...topBar({ left: { label: 'Back', href: '#/make' }, right: 'Pixel art' }),
+    ...topBar({ left: { label: 'Back', href: '#/pixel' }, right: 'Pixel art' }),
     el(
       'div',
       { class: 'page pixel-result' },
@@ -151,8 +151,8 @@ export function pixelResultPage(ctx, route) {
         el(
           'div',
           { class: 'two-up' },
-          blockButton({ label: art.row > 0 && art.row < art.size ? 'Keep going' : 'Build it', tone: 'mango', href: toHash({ page: 'pixel', id: art.id, step: next }) }),
-          blockButton({ label: 'Redo', tone: 'grey', href: '#/make' }),
+          blockButton({ label: art.row > 0 && art.row < art.size ? 'Keep going' : 'Build it', tone: 'green', href: toHash({ page: 'pixel', id: art.id, step: next }) }),
+          blockButton({ label: 'Redo', tone: 'grey', href: '#/pixel' }),
         ),
         remove,
       ),

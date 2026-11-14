@@ -24,7 +24,7 @@ export function notFoundPage(ctx, route) {
     bottom.append(
       blockButton({
         label: 'None of these',
-        tone: 'mango',
+        tone: 'grey',
         onClick: () => {
           // The question was saved as not in the book; this notes that none of the picks fit either.
           const key = questionKey(q, NOT_IN_BOOK);

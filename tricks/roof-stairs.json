@@ -1,0 +1,116 @@
+{
+  "order": 1,
+  "name": "A roof from stairs",
+  "pic": "spruce_stairs",
+  "about": "Rows of stairs that step up to the middle.",
+  "wiki": "https://minecraft.wiki/w/Stairs",
+  "key": {
+    "L": "oak_log",
+    "C": "cobblestone",
+    "G": "glass",
+    "a": {
+      "id": "spruce_stairs",
+      "facing": "south"
+    },
+    "z": {
+      "id": "spruce_stairs",
+      "facing": "north"
+    },
+    "P": "spruce_planks",
+    "c": {
+      "id": "spruce_stairs",
+      "facing": "south"
+    },
+    "x": {
+      "id": "spruce_stairs",
+      "facing": "north"
+    },
+    "Q": "spruce_planks",
+    "d": {
+      "id": "spruce_stairs",
+      "facing": "south"
+    },
+    "w": {
+      "id": "spruce_stairs",
+      "facing": "north"
+    }
+  },
+  "layers": [
+    {
+      "rows": [
+        ".....",
+        "LCCCL",
+        "C...C",
+        "C...C",
+        "LC.CL",
+        "....."
+      ]
+    },
+    {
+      "rows": [
+        ".....",
+        "LCCCL",
+        "C...G",
+        "C...G",
+        "LG.GL",
+        "....."
+      ]
+    },
+    {
+      "rows": [
+        "aaaaa",
+        "PPPPP",
+        "PPPPP",
+        "PPPPP",
+        "PPPPP",
+        "zzzzz"
+      ]
+    },
+    {
+      "rows": [
+        ".....",
+        "ccccc",
+        "QQQQQ",
+        "QQQQQ",
+        "xxxxx",
+        "....."
+      ]
+    },
+    {
+      "rows": [
+        ".....",
+        ".....",
+        "ddddd",
+        "wwwww",
+        ".....",
+        "....."
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Walls first",
+      "add": "LCG",
+      "say": "Build four walls, two blocks high. Logs at the corners make it look strong.",
+      "tip": "Leave a gap in the front wall for a door."
+    },
+    {
+      "title": "Stairs along the long sides",
+      "add": "azP",
+      "say": "Put a row of stairs along the front and the back, one block out past the walls. Fill the top of the walls with planks.",
+      "tip": "Stand outside, facing the wall, as you place each stair. The low side faces you, so the tall side points to the middle."
+    },
+    {
+      "title": "Up one and in one",
+      "add": "cxQ",
+      "say": "Put the next row of stairs on top of the planks, one block in from the last row. Fill the middle with planks again.",
+      "tip": "Each row sits one block higher and one block further in. That makes the slope."
+    },
+    {
+      "title": "Close the top",
+      "add": "dw",
+      "say": "The last two rows of stairs meet in the middle, back to back. That's the top of your roof.",
+      "tip": "A roof in a darker wood than the walls stands out. Try spruce or dark oak."
+    }
+  ]
+}

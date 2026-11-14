@@ -1,0 +1,76 @@
+{
+  "order": 3,
+  "name": "Windows and shutters",
+  "pic": "spruce_trapdoor",
+  "about": "Trapdoors make shutters and ledges.",
+  "wiki": "https://minecraft.wiki/w/Trapdoor",
+  "key": {
+    "P": "oak_planks",
+    "G": "glass",
+    "u": {
+      "id": "spruce_trapdoor",
+      "facing": "north",
+      "open": true
+    },
+    "s": {
+      "id": "spruce_trapdoor",
+      "half": "top"
+    },
+    "t": {
+      "id": "spruce_stairs",
+      "facing": "north"
+    }
+  },
+  "layers": [
+    {
+      "rows": [
+        "PPPPPPP",
+        "..sss.."
+      ]
+    },
+    {
+      "rows": [
+        "PPGGGPP",
+        ".u...u."
+      ]
+    },
+    {
+      "rows": [
+        "PPGGGPP",
+        ".u...u."
+      ]
+    },
+    {
+      "rows": [
+        "PPPPPPP",
+        ".ttttt."
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "A window",
+      "add": "PG",
+      "say": "Make a hole in the wall and fill it with glass. This one is 3 wide and 2 high.",
+      "tip": "Glass panes are thinner than glass blocks, so the window looks set into the wall."
+    },
+    {
+      "title": "Shutters",
+      "add": "u",
+      "say": "Put trapdoors on the wall on each side of the window, two high. Open them, and they look like shutters.",
+      "tip": "A trapdoor sticks to the block you point at. Tap it to open or shut it."
+    },
+    {
+      "title": "A ledge under it",
+      "add": "s",
+      "say": "Put trapdoors under the window and leave them shut. Point high on the wall, so they sit at the top of the space.",
+      "tip": "Point at the top half of a block's side, and the trapdoor goes at the top."
+    },
+    {
+      "title": "A little roof",
+      "add": "t",
+      "say": "Put a row of stairs above the window, against the wall, like a little roof.",
+      "tip": "Use the same wood for the shutters and the roof, so they go together."
+    }
+  ]
+}

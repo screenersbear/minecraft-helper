@@ -37,19 +37,19 @@ function noPhoto() {
     { class: 'page' },
     el('h1', { class: 'home-title', tabindex: '-1' }, 'No photo'),
     el('p', { class: 'say' }, 'The photo was closed. Pick it again on the Make page.'),
-    el('div', { class: 'bottom' }, blockButton({ label: 'Back to Make', tone: 'mango', href: '#/make' })),
+    el('div', { class: 'bottom' }, blockButton({ label: 'Back to Pixel art', tone: 'grey', href: '#/pixel' })),
   );
 }
 
 export function pixelCropPage(ctx) {
   const file = getPhoto('pixel');
-  const bar = topBar({ left: { label: 'Back', href: '#/make' }, right: 'Pixel art' });
+  const bar = topBar({ left: { label: 'Back', href: '#/pixel' }, right: 'Pixel art' });
   if (!file) return { nodes: [...bar, noPhoto()], title: 'Pixel art' };
 
   const stage = el('div', { class: 'crop-stage' }, el('p', { class: 'loading' }, 'Opening the photo...'));
   const preview = el('div', { class: 'crop-preview' });
   const name = el('input', { id: 'art-name', type: 'text', maxlength: '30', placeholder: 'Name it', autocomplete: 'off', enterkeyhint: 'done' });
-  const make = blockButton({ label: 'Make it', tone: 'mango', extra: { disabled: true } });
+  const make = blockButton({ label: 'Make it', tone: 'green', extra: { disabled: true } });
   let crop = null;
   let pending = 0;
   let prep = null; // the photo, ready to make any size (see prepare in pixel-convert.js)

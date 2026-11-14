@@ -1,0 +1,71 @@
+{
+  "order": 5,
+  "name": "Paths that look real",
+  "pic": "iron_shovel",
+  "about": "Wiggly, mixed and full of flowers.",
+  "wiki": "https://minecraft.wiki/w/Dirt_Path",
+  "key": {
+    "g": {
+      "id": "grass_block",
+      "ground": true
+    },
+    "p": {
+      "id": "dirt_path",
+      "was": "g"
+    },
+    "r": {
+      "id": "gravel",
+      "was": "p"
+    },
+    "c": {
+      "id": "coarse_dirt",
+      "was": "p"
+    },
+    "o": "poppy",
+    "d": "dandelion",
+    "f": "fern",
+    "y": "oxeye_daisy"
+  },
+  "layers": [
+    {
+      "rows": [
+        "ggggpcg",
+        "gggprgg",
+        "ggcppgg",
+        "gprpggg",
+        "gcpgggg",
+        "ggprggg"
+      ]
+    },
+    {
+      "rows": [
+        "...o..f",
+        "..d..y.",
+        ".f...o.",
+        "d...f..",
+        "...y...",
+        ".o..d.."
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "A wiggly path",
+      "add": "gp",
+      "say": "Use a shovel on grass to make a dirt path. Let it wiggle a little, and make it wider in places.",
+      "tip": "A shovel turns grass or dirt into a dirt path. Straight paths look less natural."
+    },
+    {
+      "title": "Mix it up",
+      "add": "rc",
+      "say": "Swap some path blocks for gravel and coarse dirt. Put them here and there, not in a pattern.",
+      "tip": "Messy edges make a path look like people have walked on it for years."
+    },
+    {
+      "title": "Flowers along the sides",
+      "add": "odfy",
+      "say": "Put flowers and ferns along the sides of the path. Leave some gaps.",
+      "tip": "Bone meal on grass grows grass and flowers around it."
+    }
+  ]
+}

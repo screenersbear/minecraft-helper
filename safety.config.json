@@ -10,10 +10,8 @@
     "service-worker.js"
   ],
   "serveDir": ".",
-  "port": 4173,
-  "pages": [
-    "/"
-  ],
+  "port": 4417,
+  "pages": ["/", "/#/make", "/#/surprise", "/#/trick/roof-stairs/1"],
   "coverage": 100,
   "mutationScore": 80,
   "clickDepth": 2,

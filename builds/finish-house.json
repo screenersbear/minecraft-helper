@@ -1,0 +1,59 @@
+{
+  "name": "A house with no roof",
+  "difficulty": "Medium",
+  "group": "Finish it",
+  "about": "Four walls with windows and a door. The roof is up to you.",
+  "key": {
+    "L": "oak_log",
+    "C": "cobblestone",
+    "P": "oak_planks",
+    "G": "glass"
+  },
+  "layers": [
+    {
+      "name": "Stone bottom",
+      "tip": "A ring of cobblestone with logs at the corners. Leave a gap in the front for the door.",
+      "rows": [
+        "LCCCCCL",
+        "C.....C",
+        "C.....C",
+        "C.....C",
+        "C.....C",
+        "LCC.CCL"
+      ]
+    },
+    {
+      "name": "Windows",
+      "tip": "Planks, with glass for the windows. Keep the door gap open.",
+      "rows": [
+        "LPPGPPL",
+        "P.....P",
+        "G.....G",
+        "P.....P",
+        "P.....P",
+        "LPG.GPL"
+      ]
+    },
+    {
+      "name": "Top of the walls",
+      "tip": "A full ring of planks, right over the door too.",
+      "rows": [
+        "LPPPPPL",
+        "P.....P",
+        "P.....P",
+        "P.....P",
+        "P.....P",
+        "LPPPPPL"
+      ]
+    }
+  ],
+  "yourTurn": {
+    "say": "Now give it a roof. Any roof you like!",
+    "ideas": [
+      "Stairs that step up to the middle. Builder tricks shows you how.",
+      "A flat roof with a fence round it, for a roof garden.",
+      "A glass roof, so you can see the stars.",
+      "A roof of wool in your favourite colours."
+    ]
+  }
+}

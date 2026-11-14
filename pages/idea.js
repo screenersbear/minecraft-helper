@@ -15,13 +15,13 @@ export function ideaPage(ctx) {
   const saved = () => {
     area.replaceChildren(
       el('p', { class: 'feedback-q', role: 'status' }, 'Saved! A grown-up will see it.'),
-      el('div', { class: 'bottom' }, blockButton({ label: 'Back to Make', tone: 'mango', href: '#/make' })),
+      el('div', { class: 'bottom' }, blockButton({ label: 'Back to Make', tone: 'green', href: '#/make' })),
     );
     ctx.say('Saved! A grown-up will see it.');
   };
   const save = blockButton({
     label: 'Save idea',
-    tone: 'mango',
+    tone: 'green',
     onClick: () => {
       if (!photo) return;
       if (saveIdea({ title: title.value.trim() || 'An idea', photo })) saved();

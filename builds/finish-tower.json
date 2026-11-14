@@ -1,0 +1,81 @@
+{
+  "name": "A tower with no top",
+  "difficulty": "Medium",
+  "group": "Finish it",
+  "about": "A stone tower with a ladder inside. How will you top it off?",
+  "key": {
+    "S": "stone_bricks",
+    "M": "mossy_stone_bricks",
+    "G": "glass",
+    "l": {
+      "id": "ladder",
+      "facing": "south"
+    }
+  },
+  "layers": [
+    {
+      "name": "Bottom",
+      "tip": "Stone bricks, with a gap in the front for a door. The ladder goes on the inside of the back wall.",
+      "rows": [
+        "SSSSS",
+        "S.l.S",
+        "S...S",
+        "S...M",
+        "SS.SS"
+      ]
+    },
+    {
+      "name": "Side windows",
+      "tip": "Glass on both sides. Keep the door gap and the ladder going.",
+      "rows": [
+        "SMSSS",
+        "S.l.S",
+        "G...G",
+        "S...S",
+        "SS.SS"
+      ]
+    },
+    {
+      "name": "Over the door",
+      "tip": "Close the wall over the door.",
+      "rows": [
+        "SSSSS",
+        "S.l.S",
+        "S...S",
+        "M...S",
+        "SSSSS"
+      ]
+    },
+    {
+      "name": "Front window",
+      "tip": "A window in the front and the back.",
+      "rows": [
+        "SSGSS",
+        "S.l.S",
+        "S...S",
+        "S...S",
+        "SSGSS"
+      ]
+    },
+    {
+      "name": "Top of the walls",
+      "tip": "One more ring of stone bricks. The ladder reaches the top.",
+      "rows": [
+        "SSSSS",
+        "S.l.S",
+        "S...S",
+        "S...S",
+        "SSSMS"
+      ]
+    }
+  ],
+  "yourTurn": {
+    "say": "Now top it off. Make it yours!",
+    "ideas": [
+      "Castle tops: blocks with gaps between them, all round the edge.",
+      "A pointy roof made of stairs.",
+      "A lookout with fences round the edge and a lantern.",
+      "A flag made of wool on a fence post."
+    ]
+  }
+}

@@ -1,19 +1,4 @@
-/* Builds: the Builds and Pixel art switch on the Make page, the build tiles and filter buttons, ready-made pixel
-   art, a build's cover, and the layer screen. */
-
-.make-switch {
-  margin-top: 18px;
-}
-
-/* Builds or Pixel art: the open part has a white edge. */
-.make-switch .switch-btn {
-  min-height: 48px;
-  font-size: 18px;
-}
-
-.make-switch .switch-btn[aria-pressed='true'] {
-  border-color: var(--white);
-}
+/* Builds: the build tiles and filter buttons, ready-made pixel art, a build's cover, and the layer screen. */
 
 .make-note {
   margin: 16px 0 0;

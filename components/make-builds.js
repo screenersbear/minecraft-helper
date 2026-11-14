@@ -1,5 +1,6 @@
 // The Builds part of the Make page: picture tiles of every build, with buttons to show only Easy, Medium or Big
-// ones. Room ideas (small builds for inside a house) have their own list under the builds.
+// ones. Room ideas (small builds for inside a house) have their own list under the builds. Half-built starters
+// (Finish it) have their own page.
 import { el } from './el.js';
 import { buildPicture } from './build-picture.js';
 import { DIFFICULTIES, filterBuilds, buildCounts, totalOf } from '../logic/builds.js';
@@ -7,7 +8,7 @@ import { toHash } from '../logic/routes.js';
 
 const SHOW = ['All', ...DIFFICULTIES];
 
-function tile(build, looks) {
+export function buildTile(build, looks) {
   const total = totalOf(buildCounts(build));
   return el(
     'a',
@@ -20,7 +21,7 @@ function tile(build, looks) {
 
 function group(title, builds, looks) {
   if (!builds.length) return null;
-  return el('section', { class: 'build-group' }, el('h2', { class: 'small-label' }, title), el('div', { class: 'build-grid' }, builds.map((b) => tile(b, looks))));
+  return el('section', { class: 'build-group' }, el('h2', { class: 'small-label' }, title), el('div', { class: 'build-grid' }, builds.map((b) => buildTile(b, looks))));
 }
 
 // showing: 'All', 'Easy', 'Medium' or 'Big'. onShow(which): when a filter button is tapped.
@@ -36,7 +37,7 @@ export function makeBuilds(ctx, showing, onShow) {
     'div',
     { class: 'make-part' },
     filters,
-    group('Builds', shown.filter((b) => b.group !== 'Room ideas'), blocks),
+    group('Builds', shown.filter((b) => b.group === 'Builds'), blocks),
     group('Room ideas, for inside a house', shown.filter((b) => b.group === 'Room ideas'), blocks),
   );
 }

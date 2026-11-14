@@ -1,0 +1,89 @@
+{
+  "order": 2,
+  "name": "Walls with depth",
+  "pic": "spruce_log",
+  "about": "Logs, trim and a deep window.",
+  "wiki": "https://minecraft.wiki/w/Stairs",
+  "key": {
+    "P": "oak_planks",
+    "G": "glass",
+    "L": "spruce_log",
+    "s": {
+      "id": "spruce_stairs",
+      "facing": "north",
+      "half": "top"
+    },
+    "t": {
+      "id": "spruce_stairs",
+      "facing": "north",
+      "half": "top"
+    },
+    "S": {
+      "id": "stone_bricks",
+      "was": "P"
+    }
+  },
+  "layers": [
+    {
+      "rows": [
+        ".......",
+        "SSSSSSS",
+        "L.....L"
+      ]
+    },
+    {
+      "rows": [
+        ".......",
+        "PPPPPPP",
+        "L.ttt.L"
+      ]
+    },
+    {
+      "rows": [
+        "..GGG..",
+        "PP...PP",
+        "L.....L"
+      ]
+    },
+    {
+      "rows": [
+        "..GGG..",
+        "PP...PP",
+        "L.....L"
+      ]
+    },
+    {
+      "rows": [
+        ".......",
+        "PPPPPPP",
+        "LsssssL"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "A wall with a deep window",
+      "add": "PG",
+      "say": "Build a flat wall with a hole for a window. Put the glass one block further in, not in line with the wall.",
+      "tip": "A deep window makes a wall look thick and strong."
+    },
+    {
+      "title": "Logs that stick out",
+      "add": "L",
+      "say": "Put a column of logs at each end, one block out in front of the wall.",
+      "tip": "On a long wall, add a column of logs every 4 or 5 blocks."
+    },
+    {
+      "title": "Upside-down stairs",
+      "add": "st",
+      "say": "Put upside-down stairs along the top, between the logs. Put three more under the window, as a ledge.",
+      "tip": "To place a stair upside down, point at the top half of the block's side."
+    },
+    {
+      "title": "A stone bottom row",
+      "add": "S",
+      "say": "Swap the bottom row of planks for stone bricks. It gives the wall a strong base.",
+      "tip": "Two or three kinds of block in one wall look better than one."
+    }
+  ]
+}
