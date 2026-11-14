@@ -1,6 +1,6 @@
-// Home: the four pages you swipe between, Make, Ask, The book and Guides, under one top bar with four squares.
-// The app opens on Ask. Swiping (or tapping a square) slides to the next page and keeps the address up to date
-// (#/make, #/, #/book, #/guides) without adding a step to Back.
+// Home: the five pages you swipe between, Make, Ask, The book, Guides and Add-ons, under one top bar with five
+// squares. The app opens on Ask. Swiping (or tapping a square) slides to the next page and keeps the address up to
+// date (#/make, #/, #/book, #/guides, #/addons) without adding a step to Back.
 import { el } from '../components/el.js';
 import { swipePanels } from '../components/swipe.js';
 import { pageDots } from '../components/page-dots.js';
@@ -9,15 +9,17 @@ import { makePanel } from './make.js';
 import { askPanel } from './ask.js';
 import { bookPanel } from './book.js';
 import { guidesPanel } from './guides.js';
+import { addonsPanel } from './addons.js';
 
 const PAGES = [
   { page: 'make', name: 'Make', label: 'Make', build: makePanel },
   { page: 'ask', name: 'Ask', label: 'Bedrock guide', build: askPanel },
   { page: 'book', name: 'The book', label: 'The book', build: bookPanel },
   { page: 'guides', name: 'Guides', label: 'Guides', build: guidesPanel },
+  { page: 'addons', name: 'Add-ons', label: 'Add-ons', build: addonsPanel },
 ];
 
-// Is this address one of the four home pages? (#/book is, #/book/tools is a page of the book.)
+// Is this address one of the five home pages? (#/book is, #/book/tools is a page of the book.)
 export const isHome = (route) => PAGES.some((p) => p.page === route.page) && !route.id;
 
 const hashOf = (i) => (PAGES[i].page === 'ask' ? '#/' : `#/${PAGES[i].page}`);

@@ -1,4 +1,4 @@
-// The book: one of the four home pages. Eight big tiles (Tools, Weapons, Food...); each opens a page of everything in it.
+// The book: one of the five home pages. Eight big tiles (Tools, Weapons, Food...); each opens a page of everything in it.
 import { el } from '../components/el.js';
 import { itemPicture, mobPicture } from '../components/picture.js';
 import { CATEGORIES } from '../data/categories.js';

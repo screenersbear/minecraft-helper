@@ -1,7 +1,7 @@
 // Follow-up buttons: 2 or 3 questions a kid might ask next, under every answer. Made from what the answer
 // mentions and the facts about its topic. After the cat guide's last step: What gifts?, What do cats eat?,
 // Where do cats live? Kids can tap them or say them (saying one works because of topic memory: see follow-up.js).
-import { fieldOf, fieldForKind } from './fields.js';
+import { fieldOf, fieldForKind, expectedFacts, kindOfField } from './fields.js';
 import { questionKind } from './understand.js';
 import { isInfo } from './info.js';
 import { targetName } from './target-name.js';
@@ -9,6 +9,7 @@ import { mobPlural, plural, article } from './plural.js';
 import { linkAnswer } from './link-hash.js';
 import { hashForAnswer } from './routes.js';
 import { plainNames } from './search-list.js';
+import { missingLabel } from './say-missing.js';
 
 const MAX = 3;
 // The topic's facts, in the order they're offered. Gifts come last: they only matter once they're mentioned.
@@ -63,7 +64,8 @@ const answerOf = (target, field) => (field === 'where' ? { type: 'where', target
 // topic: what the answer is about ({ type, id }). links: what its words link to ([{ target, field? }]).
 // here: the address of the answer on screen, so no button leads back to it. guide: the id of the guide on screen,
 // so the fact it's all about ("how do I tame a cat" on Tame a cat) isn't offered on it. shown: addresses the page
-// already has buttons for. Returns [{ label, hash }].
+// already has buttons for. Returns [{ label, hash, missing }]: missing is what the grown-ups list says when a
+// button's answer isn't in the book yet ("Missing: zombie, are zombies dangerous").
 export function chipsFor({ topic, links = [], here = '', guide = '', shown = [] }, book, guides) {
   const out = [];
   const address = (hash) => decodeURIComponent(hash.split('?')[0]);
@@ -102,5 +104,14 @@ export function chipsFor({ topic, links = [], here = '', guide = '', shown = [] 
   }
   // 4. More facts about the topic, if there's room.
   for (const f of topicFacts.slice(2)) add(answerOf(topic, f), fieldQuestion(topic, f, topicName));
+  // 5. Facts it should have that the book doesn't yet, if there's room. They still show: tapping one says "I don't
+  // know that yet" and saves it. Not on the "I don't know" page itself.
+  const missing = topic && !address(here).startsWith('#/missing/') ? expectedFacts(book, topic).filter((f) => !fieldOf(book, topic, f)) : [];
+  for (const f of missing) {
+    if (out.length >= MAX) break;
+    const label = fieldQuestion(topic, f, topicName);
+    const kind = kindOfField(f);
+    out.push({ label, hash: hashForAnswer({ type: 'missing', target: topic, kind }, label), missing: missingLabel(name(topic), label, kind) });
+  }
   return out;
 }

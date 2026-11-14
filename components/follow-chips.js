@@ -1,7 +1,7 @@
-// Ask next: the follow-up buttons under an answer ("What gifts?", "What do cats eat?"), made by logic/chips.js.
-// Tapping one opens its answer, asked as that question. Saying it works too.
-import { el } from './el.js';
-import { blockButton } from './buttons.js';
+// Want to know more?: the buttons under a regular answer ("What gifts?", "What do cats eat?"), made by
+// logic/chips.js and shown by dig-deeper.js. Tapping one opens its answer, asked as that question, with this answer
+// in the trail. Saying it works too, because of topic memory.
+import { digDeeper } from './dig-deeper.js';
 import { chipsFor } from '../logic/chips.js';
 import { linksIn } from '../logic/links.js';
 
@@ -11,8 +11,5 @@ export function followChips(ctx, { topic = null, text = '', here = '', guide = '
   const links = linksIn(text);
   const chips = chipsFor({ topic, links, here, guide, shown }, ctx.book, ctx.guides);
   const memory = { topic, mentions: links.map((l) => ({ target: l.target, ...(l.field ? { field: l.field } : {}) })) };
-  if (!chips.length) return { node: null, memory };
-  const buttons = chips.map((c) => blockButton({ label: c.label, tone: 'grey', href: c.hash, extra: { class: 'block-btn notch tone-grey chip-btn' } }));
-  const node = el('section', { class: 'follow-chips', 'aria-label': 'Ask next' }, el('h2', { class: 'small-label' }, 'Ask next'), buttons);
-  return { node, memory };
+  return { node: digDeeper(chips.map((c) => ({ label: c.label, hash: c.hash, missing: c.missing })), here || location.hash), memory };
 }

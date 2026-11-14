@@ -1,4 +1,4 @@
-// Answer footer: the bottom of every answer. "Ask next" buttons (see follow-chips.js), "Did that answer it?" (see
+// Answer footer: the bottom of every answer. "Want to know more?" buttons (see follow-chips.js), "Did that answer it?" (see
 // feedback-area.js), then the small talk button to ask more. Pages call stop() when they close, so it stops
 // listening, and hand memory to the app, so a follow-up knows the topic.
 import { el } from './el.js';

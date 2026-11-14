@@ -39,7 +39,7 @@
   background: var(--mango);
 }
 
-/* The four pages sit in a row; only one shows. */
+/* The five pages sit in a row; only one shows. */
 .swipe {
   flex: 1 1 auto;
   min-height: 0;

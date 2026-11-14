@@ -1,6 +1,7 @@
-// Load book: fetches the book, the guides and the nicknames (the service worker keeps them for offline use),
-// and builds the search list once.
+// Load book: fetches the book, the guides, the nicknames and the add-on packs (the service worker keeps them for
+// offline use), and builds the search list once.
 import { buildSearchList } from '../logic/search-list.js';
+import { loadAddons } from './load-addons.js';
 
 const getJson = async (path) => {
   const res = await fetch(path);
@@ -9,10 +10,11 @@ const getJson = async (path) => {
 };
 
 export async function loadBook() {
-  const [book, guides, nicknames] = await Promise.all([
+  const [book, guides, nicknames, addons] = await Promise.all([
     getJson('data/book.json'),
     getJson('data/guides.json'),
     getJson('data/nicknames.json'),
+    loadAddons(),
   ]);
-  return { book, guides, list: buildSearchList(book, guides, nicknames) };
+  return { book, guides, addons, list: buildSearchList(book, guides, nicknames) };
 }

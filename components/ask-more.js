@@ -3,7 +3,7 @@
 import { el } from './el.js';
 import { talkButton } from './talk-button.js';
 
-// talk: { onQuestion, onStart, onIdle }; the question goes to ctx.ask unless onQuestion says otherwise.
+// talk: { onQuestion, onStart, onIdle, about }; the question goes to ctx.ask unless onQuestion says otherwise.
 export function askMore(ctx, talk = {}) {
   const { nodes, stop } = talkButton({
     small: true,
@@ -11,6 +11,7 @@ export function askMore(ctx, talk = {}) {
     onNoMic: () => ctx.go('#/'),
     onStart: talk.onStart,
     onIdle: talk.onIdle,
+    about: talk.about,
   });
   const [button, label, heard] = nodes;
   const node = el('section', { class: 'ask-more', 'aria-label': 'Ask more' }, button, el('div', { class: 'ask-more-text' }, label, heard));

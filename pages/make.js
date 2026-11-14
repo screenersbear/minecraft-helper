@@ -1,4 +1,4 @@
-// Make: one of the four home pages. Turn a photo into pixel art: take or pick a photo (how big is picked on the
+// Make: one of the five home pages. Turn a photo into pixel art: take or pick a photo (how big is picked on the
 // next page, to fit the thing), and come back to pictures already started. A small link at the bottom saves a photo as an idea for a 3D build.
 import { el } from '../components/el.js';
 import { photoButtons } from '../components/photo-button.js';

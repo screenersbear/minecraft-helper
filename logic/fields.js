@@ -11,6 +11,18 @@ export const FIELD_LABEL = {
 
 // Which field answers each kind of question: "what do pandas eat" -> eats, "are creepers dangerous" -> dangerous.
 const KIND_FIELD = { find: 'where', eats: 'eats', tame: 'tame', breed: 'breed', gifts: 'gifts', danger: 'dangerous', does: 'uses' };
+// The other way round: the kind of question a field answers ('dangerous' -> 'danger').
+export const kindOfField = (field) => Object.keys(KIND_FIELD).find((kind) => KIND_FIELD[kind] === field) || '';
+
+// The facts every thing of its sort should have: where every mob lives, how dangerous a mob that fights is, and
+// what an item is for (food is for eating, so not food). When the book doesn't have one yet, its button still shows
+// (see chips.js).
+export function expectedFacts(book, target) {
+  if (target?.type === 'mob') return book.mobs[target.id]?.kind === 'passive' ? ['where'] : ['where', 'dangerous'];
+  if (target?.type === 'item') return book.facts?.[target.id]?.food || book.categories?.food?.includes(target.id) ? [] : ['uses'];
+  return [];
+}
+
 export function fieldForKind(kind, target) {
   if (kind === 'food' && target?.type === 'mob') return 'eats';
   return KIND_FIELD[kind] || null;

@@ -1,4 +1,4 @@
-// Guides: one of the four home pages. Every guide as a row with its picture, its name and how many steps it has,
+// Guides: one of the five home pages. Every guide as a row with its picture, its name and how many steps it has,
 // in groups (Getting started, Finding things, Animals...). The groups come from each guide's "group".
 import { el } from '../components/el.js';
 import { itemPicture } from '../components/picture.js';
@@ -29,7 +29,7 @@ export function guidesPanel(ctx) {
     el('h1', { class: 'home-title', tabindex: '-1' }, 'Guides'),
     el('p', { class: 'home-intro' }, 'Step by step. I read each step and wait for you.'),
     guideGroups(ctx.guides).map(group),
-    el('p', { class: 'swipe-hint' }, 'Swipe back for the book'),
+    el('p', { class: 'swipe-hint' }, 'Swipe for add-ons, or back to the book'),
   );
   return { node };
 }

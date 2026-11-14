@@ -3,7 +3,8 @@
 // A quick tap works too: it listens until you stop talking, or until you tap again.
 // If the phone won't start listening the moment a finger goes down, it switches to tap to talk by itself.
 // small: the "Hold to ask more" button at the bottom of an answer. onStart runs when it starts listening, onIdle
-// when it stops without a question (so a guide can listen for "next" again).
+// when it stops without a question (so a guide can listen for "next" again). about: what the small button asks
+// about ("Hold to ask about The Bloop"); "more" when it's left out.
 import { el } from './el.js';
 import { icon } from './icons.js';
 import { canListen, listenOnce } from '../speech/listen.js';
@@ -20,7 +21,7 @@ const MESSAGES = {
 };
 const HOLD = 400; // a press longer than this is a hold, shorter is a tap
 
-export function talkButton({ onQuestion, onNoMic, small = false, onStart, onIdle }) {
+export function talkButton({ onQuestion, onNoMic, small = false, onStart, onIdle, about = 'more' }) {
   const mic = icon('mic', small ? 36 : 76);
   const button = el('button', { class: `talk-btn notch${small ? ' talk-small' : ''}`, type: 'button', 'aria-label': 'Hold to talk' }, mic);
   const label = el('div', { class: 'talk-label' });
@@ -32,7 +33,7 @@ export function talkButton({ onQuestion, onNoMic, small = false, onStart, onIdle
   let retryOnRelease = false;
 
   const show = () => {
-    const idle = small ? (tapOnly ? 'Tap to ask more' : 'Hold to ask more') : tapOnly ? 'Tap to talk' : 'Hold to talk';
+    const idle = small ? `${tapOnly ? 'Tap' : 'Hold'} to ask ${about}` : tapOnly ? 'Tap to talk' : 'Hold to talk';
     const text = { idle, holding: 'Listening...', tapped: 'Listening... tap to stop', finishing: 'One moment...' }[mode];
     label.textContent = canListen() ? text : small ? 'Tap to type a question' : 'Type it below';
     button.setAttribute('aria-label', label.textContent);

@@ -25,8 +25,9 @@ function otherAnswers(ctx, question, target) {
 // question: what was asked (empty if the answer was opened by tapping). answer: what was shown, like "Cake (recipe)".
 // target: what the answer is about. say: the answer's words, to say again more simply.
 // waitForAnswer: show it once the app has finished reading the answer (the 'answer-spoken' event). With false, it
-// stays hidden until the page calls show().
-export function feedbackArea(ctx, { question = '', answer = '', target = null, say = '', waitForAnswer = true }) {
+// stays hidden until the page calls show(). suggest: false for add-on answers, so "Not what I asked" never offers
+// answers from the regular game.
+export function feedbackArea(ctx, { question = '', answer = '', target = null, say = '', waitForAnswer = true, suggest = true }) {
   const box = el('section', { class: 'feedback is-waiting', 'aria-label': 'Did that answer it?', inert: '' });
   const q = question || answer;
   let saved = null; // what Undo needs, once Not really saved the moment
@@ -78,7 +79,7 @@ export function feedbackArea(ctx, { question = '', answer = '', target = null, s
       box.replaceChildren(...[status('Thanks. Want me to say it more simply?'), say && again].filter(Boolean));
       return ctx.say('Thanks. Want me to say it more simply?');
     }
-    const others = otherAnswers(ctx, question, target);
+    const others = suggest ? otherAnswers(ctx, question, target) : [];
     const picks = others.map((t) =>
       pickButton({
         picture: targetPicture(ctx.book, ctx.guides, t, 32),

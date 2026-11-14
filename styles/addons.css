@@ -1,0 +1,95 @@
+/* Add-ons: the fifth home page and an add-on's answers. Each add-on gets a plain colour cover with its name (never
+   its own pictures or logo). Its colour comes from its pack, as --pack. Also the breadcrumb under the top bar. */
+
+.addon {
+  padding-top: 18px;
+}
+
+.addon-cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+  min-height: 144px;
+  padding: 18px 18px 24px;
+  background: var(--pack, var(--ink));
+  color: var(--paper);
+  box-shadow: inset 0 -8px 0 rgb(0 0 0 / 0.28);
+}
+
+.addon-kind {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.addon-name {
+  font-family: var(--pixel);
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.addon-by {
+  font-size: 15px;
+}
+
+.addon-type {
+  padding-top: 14px;
+}
+
+.addon-topics {
+  padding-top: 22px;
+}
+
+.addon-tag {
+  background: var(--pack, var(--ink));
+  color: var(--paper);
+}
+
+.addon-answer .dig-deeper {
+  padding-top: 22px;
+}
+
+/* "This might be different in your version": quiet, under the tag. */
+.maybe {
+  padding-top: 10px;
+  font-size: 15px;
+}
+
+/* The breadcrumb: The Bloop › Inside the Bloop › The boss fight. Each step is a link tall enough to tap. */
+.trail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 6px;
+  padding: 0 var(--side);
+  background: var(--paper);
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.trail-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--mango-dark);
+  text-underline-offset: 3px;
+  touch-action: manipulation;
+}
+
+.trail-here {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 700;
+}
+
+.trail-sep {
+  font-weight: 700;
+}

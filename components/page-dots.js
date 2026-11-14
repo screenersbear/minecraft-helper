@@ -1,4 +1,4 @@
-// Page squares: the four small squares in the top bar, one per page. The open page's square is mango.
+// Page squares: the five small squares in the top bar, one per page. The open page's square is mango.
 // Each square is a button too, so tapping one opens that page.
 import { el } from './el.js';
 

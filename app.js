@@ -27,12 +27,15 @@ import { aboutPage } from './pages/about.js';
 import { infoPage } from './pages/info.js';
 import { fieldPage } from './pages/field.js';
 import { missingPage } from './pages/missing.js';
+import { addonAnswerPage } from './pages/addon-answer.js';
+import { trailNav } from './components/trail.js';
+import { crumbsFor } from './logic/trail.js';
 import { isInfo, infoOf } from './logic/info.js';
 
 const PAGES = {
   recipe: recipePage, guide: guidePage, mob: mobPage, fact: factPage, none: notFoundPage, 'grown-ups': grownUpsPage, about: aboutPage,
   biome: infoPage('biome'), enchant: infoPage('enchant'), effect: infoPage('effect'), topic: infoPage('topic'), idea: ideaPage,
-  where: fieldPage, field: fieldPage, missing: missingPage,
+  where: fieldPage, field: fieldPage, missing: missingPage, addon: addonAnswerPage,
 };
 const root = document.getElementById('app');
 let view = null;
@@ -47,7 +50,8 @@ function pictureFor(answer, book, guides) {
   return { kind: 'item', id: answer.target.id };
 }
 
-// Which screen an address shows. The four home pages (Make, Ask, The book, Guides) are one screen you swipe across.
+// Which screen an address shows. The five home pages (Make, Ask, The book, Guides, Add-ons) are one screen you swipe
+// across.
 function pageFor(route) {
   if (isHome(route)) return homePage;
   if (route.page === 'book') return bookPage;
@@ -69,7 +73,11 @@ function show(ctx) {
     if (location.hash && location.hash !== '#/') return location.replace('#/');
     view = homePage(ctx, route);
   }
-  root.replaceChildren(...view.nodes.filter(Boolean));
+  // The breadcrumb (The Bloop › Inside the Bloop › The boss fight) goes under the top bar and its grass strip.
+  const nodes = view.nodes.filter(Boolean);
+  const trail = trailNav(crumbsFor(route, ctx));
+  if (trail) nodes.splice(2, 0, trail);
+  root.replaceChildren(...nodes);
   document.title = view.title && view.title !== 'Ask' ? `${view.title} · Ask the guide` : 'Ask the guide';
   window.scrollTo(0, 0);
   fitTitles(root);
@@ -91,10 +99,11 @@ function readOut(text) {
   setTimeout(done, Math.min(25000, 3000 + text.split(/\s+/).length * 600));
 }
 
-function start({ book, guides, list }) {
+function start({ book, guides, addons, list }) {
   const ctx = {
     book,
     guides,
+    addons,
     list,
     ask(question) {
       const q = String(question || '').trim();

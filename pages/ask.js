@@ -1,4 +1,4 @@
-// Ask: the page the app opens on (one of the four home pages). Hold the mango button and ask, or type it.
+// Ask: the page the app opens on (one of the five home pages). Hold the mango button and ask, or type it.
 // "Asked before" shows the last few questions. A long press on the title opens the grown-ups screen.
 import { el } from '../components/el.js';
 import { talkButton } from '../components/talk-button.js';

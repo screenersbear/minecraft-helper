@@ -1,0 +1,198 @@
+{
+  "id": "the-bloop",
+  "name": "The Bloop",
+  "by": "Mythicus",
+  "colour": "#0f4c6b",
+  "game": "Bedrock 1.21.120 and newer, add-on version 1.0.9",
+  "checked": "2026-11-14",
+  "sources": {
+    "article": { "name": "Let's Play: The Bloop (minecraft.net)", "url": "https://www.minecraft.net/en-us/article/let-s-play-the-bloop", "official": true },
+    "store": { "name": "The Bloop on the Marketplace (minecraft.net)", "url": "https://www.minecraft.net/en-us/marketplace/pdp/mythicus/the-bloop-add--on/0096ef77-80f6-431a-b421-25d79ff02c44", "official": true },
+    "mobs": { "name": "The Bloop mob list (mcpewiki, unofficial)", "url": "https://mcpewiki.com/addons/mythicus/the-bloop/wiki/mobs/", "official": false }
+  },
+  "topics": ["what", "inside", "boss", "creatures", "changed", "gear", "villages"],
+  "answers": {
+    "what": {
+      "title": "What is it?",
+      "say": "The Bloop is a giant sea monster. It's not in the regular game: it comes from an add-on by Mythicus. It hunts players in the oceans of your world, and it's about 50 times bigger than you.",
+      "words": ["bloop", "giant", "big", "size", "hunt", "live", "addon", "add"],
+      "from": ["article", "store"],
+      "more": [
+        { "ask": "How do I know it's coming?", "id": "coming" },
+        { "ask": "Can it leave the water?", "id": "reach" },
+        { "ask": "How do I stay safe?", "id": "safe" }
+      ]
+    },
+    "coming": {
+      "title": "When it's coming",
+      "say": "Loud music starts playing when the Bloop is coming. In sea villages the villagers hum a tune, and the humming turns fast and worried when it's near. If you hear either one, get ready.",
+      "words": ["music", "sound", "hear", "hum", "humming", "coming", "near", "close", "warning", "know"],
+      "from": ["article"],
+      "more": [
+        { "ask": "What if it gets me?", "id": "inside" },
+        { "ask": "How do I stay safe?", "id": "safe" }
+      ]
+    },
+    "reach": {
+      "title": "Leaving the water",
+      "say": "Yes. The Bloop can follow you through the sea, on land, and even up in the sky. It can burst out of the sea to grab villagers, and it can eat a whole ocean village, or a house you build in the ocean.",
+      "words": ["land", "sky", "leave", "water", "follow", "chase", "house", "base", "eat", "fly"],
+      "from": ["article", "store"],
+      "more": [{ "ask": "Is the village safe?", "id": "village-safe" }]
+    },
+    "safe": {
+      "title": "Staying safe",
+      "say": "Get a diving suit from a sea village first. Bring food, golden apples, night vision potions and a trident. Sleep in a bed near the sea, so if things go wrong you come back close by.",
+      "words": ["safe", "survive", "prepare", "ready", "tip", "bring", "pack", "stay"],
+      "from": ["article"],
+      "more": [
+        { "ask": "Where do I get a diving suit?", "id": "gear" },
+        { "ask": "What if I die?", "id": "die" }
+      ]
+    },
+    "inside": {
+      "title": "Inside the Bloop",
+      "say": "If the Bloop swallows you, you don't die. You're taken to a place inside it, with pools of bubbling water and old bones. There's no door out. The way out is to beat the boss that lives in there.",
+      "words": ["inside", "swallow", "swallowed", "eat", "eaten", "ate", "belly", "stomach", "dimension", "gets"],
+      "from": ["article", "store"],
+      "more": [
+        { "ask": "How do I get out?", "id": "boss" },
+        { "ask": "What if I die in there?", "id": "die" },
+        { "ask": "Do I keep my things?", "id": "keep-things" }
+      ]
+    },
+    "die": {
+      "title": "If you die",
+      "say": "You come back at your bed, or at your world's spawn if you haven't slept in a bed. Get ready again before you go back in the sea.",
+      "words": ["die", "died", "dead", "death", "respawn", "lose"],
+      "from": ["article"],
+      "more": [
+        { "ask": "Do I keep my things?", "id": "keep-things" },
+        { "ask": "How do I stay safe?", "id": "safe" }
+      ]
+    },
+    "boss": {
+      "title": "The boss fight",
+      "say": "Inside the Bloop you fight the Soul of the Bloop. It floats in the air, so throw a trident to hit it, then go pick the trident up. Its big attack spreads across the floor and is hard to jump over, and it sends small monsters running at you.",
+      "words": ["boss", "soul", "fight", "beat", "defeat", "kill", "out", "escape", "leave"],
+      "from": ["article"],
+      "more": [
+        { "ask": "How strong is it?", "id": "boss-health" },
+        { "ask": "What are the small monsters?", "id": "boss-monsters" },
+        { "ask": "What do I get for winning?", "id": "boss-reward" }
+      ]
+    },
+    "boss-health": {
+      "title": "How strong it is",
+      "say": "The Soul of the Bloop has 400 health. That's 200 hearts, twice as much as the Ender Dragon. Bring lots of food.",
+      "words": ["strong", "health", "heart", "hp", "hit", "tough"],
+      "from": ["mobs"]
+    },
+    "creatures": {
+      "title": "New sea creatures",
+      "say": "Deep in the ocean there are new sea creatures that chase swimmers. The more you hide under the water, the more of them notice you.",
+      "words": ["creature", "mob", "monster", "new", "fish", "animal", "hide"],
+      "from": ["article", "store"],
+      "more": [
+        { "ask": "How do I fight them?", "id": "fight" },
+        { "ask": "What's a Bloop louse?", "id": "louse" },
+        { "ask": "What other creatures are there?", "id": "more-creatures" }
+      ]
+    },
+    "fight": {
+      "title": "Fighting them",
+      "say": "A trident works well under the water. Hit, then swim back, then hit again. Eat golden apples when you're hurt.",
+      "words": ["fight", "kill", "attack", "beat", "weapon", "trident", "monster", "creature"],
+      "from": ["article"]
+    },
+    "louse": {
+      "title": "Bloop louse",
+      "say": "A small bug-like monster. It has 8 health (4 hearts), and its bite takes away 2 hearts. It's quick, so hit it before it reaches you.",
+      "words": ["louse", "lice", "bug", "bite"],
+      "from": ["mobs"]
+    },
+    "more-creatures": {
+      "title": "More creatures",
+      "say": "There's a prismarine golem, with 100 health (50 hearts), as much as an iron golem. There's also an anglerfish, a deep sea fish with 8 health (4 hearts).",
+      "words": ["golem", "prismarine", "anglerfish", "angler", "other", "more"],
+      "from": ["mobs"]
+    },
+    "changed": {
+      "title": "Changed ocean mobs",
+      "say": "In this add-on some ocean mobs have deep sea versions that fight swimmers, like the dolphin, the nautilus and the drowned. Wear a diving suit and carry a trident.",
+      "words": ["changed", "change", "different", "dolphin", "nautilus", "drowned", "deep", "version"],
+      "from": ["article"],
+      "more": [
+        { "ask": "What's different about drowned?", "id": "drowned" },
+        { "ask": "Is the dolphin still friendly?", "id": "dolphin" },
+        { "ask": "Which other mobs change?", "id": "more-changed" }
+      ]
+    },
+    "drowned": {
+      "title": "Drowned",
+      "say": "Deep sea drowned have one longer arm for grabbing swimmers. Keep your distance: hit, swim back, and eat golden apples when you're hurt.",
+      "words": ["drowned", "zombie", "arm", "grab"],
+      "from": ["article"]
+    },
+    "dolphin": {
+      "title": "Dolphin",
+      "say": "The deep sea dolphin isn't. It fights swimmers. It has 35 health (about 17 hearts), and its bite takes away 1 and a half hearts.",
+      "words": ["dolphin", "friendly"],
+      "from": ["mobs"]
+    },
+    "more-changed": {
+      "title": "More changed mobs",
+      "say": "There are deep sea versions of the pufferfish, salmon, squid and turtle too. The deep sea drowned and nautilus are the toughest, with 60 health (30 hearts) each.",
+      "words": ["pufferfish", "salmon", "squid", "turtle", "nautilus", "other", "more"],
+      "from": ["mobs"]
+    },
+    "gear": {
+      "title": "Submarine and diving gear",
+      "say": "Going deep without gear is hard: you run out of air and can't see far. Villagers in sea villages trade a diving suit that lets you breathe under the water. Night vision potions help you see.",
+      "words": ["gear", "diving", "suit", "dive", "breathe", "air", "underwater", "equipment", "night", "vision", "see"],
+      "from": ["article", "store"],
+      "more": [
+        { "ask": "Is there a submarine?", "id": "submarine" },
+        { "ask": "What's the harpoon?", "id": "harpoon" },
+        { "ask": "What are the new enchantments?", "id": "enchantments" }
+      ]
+    },
+    "submarine": {
+      "title": "Submarine",
+      "say": "Yes, the add-on has a submarine for getting around under the water. It has 100 health, so it can take some hits.",
+      "words": ["submarine", "sub", "boat", "ride", "vehicle"],
+      "from": ["mobs"],
+      "more": [{ "ask": "How do I get a submarine?", "id": "submarine-get" }]
+    },
+    "harpoon": {
+      "title": "Harpoon",
+      "say": "There's a harpoon that fires harpoon shots, and a mounted harpoon that stays in one place. The mounted harpoon has 100 health.",
+      "words": ["harpoon", "spear", "gun", "shoot", "mounted"],
+      "from": ["mobs"],
+      "more": [{ "ask": "How do I get a harpoon?", "id": "harpoon-get" }]
+    },
+    "villages": {
+      "title": "Ocean villages and trenches",
+      "say": "There are villages in the ocean, with villagers who wear fancy hats. Trade with them for a diving suit, but they won't sell their hats. Deep ocean trenches are new, very deep parts of the ocean.",
+      "words": ["village", "villager", "trade", "hat", "trench", "biome"],
+      "from": ["article", "store"],
+      "more": [
+        { "ask": "What are the trenches like?", "id": "trenches" },
+        { "ask": "Is the village safe?", "id": "village-safe" },
+        { "ask": "What else can I trade for?", "id": "trades" }
+      ]
+    },
+    "trenches": {
+      "title": "Trenches",
+      "say": "Deep ocean trenches are very deep parts of the ocean. You sink slowly, and it's a long way back up to the surface. Wear a diving suit and bring night vision potions.",
+      "words": ["trench", "deep", "bottom", "biome", "sink"],
+      "from": ["store", "article"]
+    },
+    "village-safe": {
+      "title": "Is the village safe?",
+      "say": "Not always. The Bloop can burst out of the sea and eat villagers, or even a whole ocean village. Listen to the villagers' humming: when it turns fast and worried, the Bloop is close.",
+      "words": ["safe", "village", "hum", "humming"],
+      "from": ["article", "store"]
+    }
+  }
+}

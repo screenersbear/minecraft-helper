@@ -1,5 +1,5 @@
-/* Linked words and Ask next: the things an answer mentions are underlined words you can tap, and the questions a
-   kid might ask next are big buttons under the answer. */
+/* Linked words and Want to know more?: the things an answer mentions are underlined words you can tap, and the
+   questions a kid might ask next are big buttons under the answer, each one step deeper. */
 
 a.mention {
   color: inherit;
@@ -17,14 +17,14 @@ a.mention:active {
   background: var(--mango);
 }
 
-.follow-chips {
+.dig-deeper {
   display: flex;
   flex-direction: column;
   gap: 8px;
   padding-bottom: 8px;
 }
 
-.chip-btn {
+.dig-btn {
   height: auto;
   min-height: 56px;
   padding: 8px 14px 14px;
@@ -33,7 +33,7 @@ a.mention:active {
   text-align: center;
 }
 
-.page.guide .follow-chips {
+.page.guide .dig-deeper {
   padding-top: 16px;
 }
 
