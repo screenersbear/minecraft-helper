@@ -1,0 +1,58 @@
+{
+  "id": "use-anvil",
+  "title": "Use an anvil to fix and name things",
+  "group": "Magic",
+  "topic": "item:anvil",
+  "picture": "anvil",
+  "askedAs": [
+    "use an anvil",
+    "make an anvil",
+    "fix my tools",
+    "fix my sword",
+    "repair a tool",
+    "name a pet",
+    "rename something",
+    "name tag"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Anvil",
+    "https://minecraft.wiki/w/Name_Tag",
+    "https://minecraft.wiki/w/Enchanted_Book",
+    "https://minecraft.wiki/w/Block_of_Iron"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Craft an anvil",
+      "say": "You need 3 [blocks of iron](item:iron_block) on top and 4 [iron ingots](item:iron_ingot) below. That is 31 iron ingots in all.",
+      "item": "anvil"
+    },
+    {
+      "title": "Fix a tool",
+      "say": "Put the tool in the first slot and what it is made of in the second, like [diamonds](item:diamond) for a [diamond sword](item:diamond_sword).",
+      "item": "diamond"
+    },
+    {
+      "title": "Join 2 tools",
+      "say": "Or put 2 of the same tool in. You get one fixed tool, with the enchantments of both."
+    },
+    {
+      "title": "Add an enchanted book",
+      "say": "Put a tool in the first slot and an [enchanted book](item:enchanted_book) in the second to add its enchantment.",
+      "item": "enchanted_book"
+    },
+    {
+      "title": "Give it a name",
+      "say": "Type a new name at the top before you take it out. Name a [name tag](item:name_tag) this way, then use it on a pet.",
+      "item": "name_tag"
+    },
+    {
+      "title": "It costs XP",
+      "say": "Each use costs experience levels. If it says too expensive, the cost is over 39 levels."
+    },
+    {
+      "title": "It wears out",
+      "say": "Every use can crack the anvil a little. After a while it breaks, so keep iron for a new one."
+    }
+  ]
+}

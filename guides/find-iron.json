@@ -1,0 +1,56 @@
+{
+  "id": "find-iron",
+  "title": "Find iron",
+  "group": "Finding things",
+  "topic": "item:raw_iron",
+  "picture": "raw_iron",
+  "askedAs": [
+    "find iron",
+    "get iron",
+    "where is iron",
+    "where do i find iron",
+    "iron ore",
+    "mine iron",
+    "need iron"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Iron_Ore",
+    "https://minecraft.wiki/w/Raw_Iron",
+    "https://minecraft.wiki/w/Iron_Ingot",
+    "https://minecraft.wiki/w/Furnace",
+    "https://minecraft.wiki/w/Iron_Golem",
+    "https://minecraft.wiki/w/Cave"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Bring a stone pickaxe",
+      "say": "You need a [stone pickaxe](item:stone_pickaxe) or better. A [wooden pickaxe](item:wooden_pickaxe) breaks [iron ore](item:iron_ore) but gives you nothing.",
+      "item": "stone_pickaxe"
+    },
+    {
+      "title": "Know what it looks like",
+      "say": "[Iron ore](item:iron_ore) is [stone](item:stone) with light brown and orange spots. Deep down it is in dark [deepslate](item:deepslate) instead.",
+      "item": "iron_ore"
+    },
+    {
+      "title": "Look in caves",
+      "say": "Explore caves with [torches](item:torch) and check the walls. Iron is very common around level 16.",
+      "item": "torch"
+    },
+    {
+      "title": "Or climb a mountain",
+      "say": "There is lots of iron high up in mountains too. Look for spots on cliff sides."
+    },
+    {
+      "title": "Mine it",
+      "say": "Each [iron ore](item:iron_ore) gives you raw iron. A [pickaxe](item:wooden_pickaxe) with Fortune can give you more.",
+      "item": "raw_iron"
+    },
+    {
+      "title": "Smelt it",
+      "say": "Put raw iron in a [furnace](item:furnace) with fuel like [coal](item:coal). Each one turns into an [iron ingot](item:iron_ingot).",
+      "item": "iron_ingot"
+    }
+  ]
+}

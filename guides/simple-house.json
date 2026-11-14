@@ -1,6 +1,7 @@
 {
   "id": "simple-house",
   "title": "Build a simple house",
+  "group": "Building",
   "picture": "oak_door",
   "askedAs": [
     "build a house",
@@ -29,22 +30,22 @@
   "steps": [
     {
       "title": "Gather your wood",
-      "say": "Find a flat, grassy spot near trees, and start in the daytime. Chop about 30 logs and craft them into planks. Each log makes 4 planks.",
+      "say": "Find a flat, grassy spot near trees, and start in the daytime. Chop about 30 [logs](item:oak_log) and craft them into [planks](item:oak_planks). Each log makes 4 planks.",
       "item": "oak_log"
     },
     {
       "title": "Lay the floor",
-      "say": "Place planks on the ground in a square, 5 blocks long and 5 blocks wide. That's 25 planks.",
+      "say": "Place [planks](item:oak_planks) on the ground in a square, 5 blocks long and 5 blocks wide. That's 25 planks.",
       "item": "oak_planks"
     },
     {
       "title": "Place the door",
-      "say": "Craft 6 planks into 3 doors at a crafting table. Stand outside and place 1 door on the middle block of the front edge of the floor.",
+      "say": "Craft 6 [planks](item:oak_planks) into 3 [doors](item:oak_door) at a [crafting table](item:crafting_table). Stand outside and place 1 door on the middle block of the front edge of the floor.",
       "item": "oak_door"
     },
     {
       "title": "Build the walls",
-      "say": "Build walls 3 high on the edge of the floor, up to the door. Leave a hole on each side of the door's top half for windows. That's 44 planks.",
+      "say": "Build walls 3 high on the edge of the floor, up to the [door](item:oak_door). Leave a hole on each side of the door's top half for windows. That's 44 [planks](item:oak_planks).",
       "pattern": [
         "PPPPP",
         "P.D.P",
@@ -58,12 +59,12 @@
     },
     {
       "title": "Add the windows",
-      "say": "Smelt 2 sand in a furnace to make 2 glass. Place 1 glass in each window hole.",
+      "say": "Smelt 2 [sand](item:sand) in a [furnace](item:furnace) to make 2 [glass](item:glass). Place 1 glass in each window hole.",
       "item": "glass"
     },
     {
       "title": "Put on the roof",
-      "say": "Cover the top with a flat roof of planks, 5 by 5, using 25 planks. A roof stops spiders from climbing in over the walls.",
+      "say": "Cover the top with a flat roof of [planks](item:oak_planks), 5 by 5, using 25 planks. A roof stops [spiders](mob:spider) from climbing in over the walls.",
       "pattern": [
         "PPPPP",
         "PPPPP",
@@ -79,12 +80,12 @@
     },
     {
       "title": "Light it up",
-      "say": "Craft torches from coal and sticks. Put 1 on an inside wall, 1 on the roof and a few on the ground outside. Light helps stop monsters from appearing.",
+      "say": "Craft [torches](item:torch) from [coal](item:coal) and [sticks](item:stick). Put 1 on an inside wall, 1 on the roof and a few on the ground outside. Light helps stop monsters from appearing.",
       "item": "torch"
     },
     {
       "title": "Place your bed",
-      "say": "Craft a bed from 3 wool of the same color and 3 planks. Place it by the back wall. Sleep in it at night, and you'll respawn here.",
+      "say": "Craft a [bed](item:white_bed) from 3 [wool](item:white_wool) of the same color and 3 [planks](item:oak_planks). Place it by the back wall. Sleep in it at night, and you'll respawn here.",
       "item": "white_bed"
     }
   ]

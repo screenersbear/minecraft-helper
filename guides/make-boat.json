@@ -1,0 +1,55 @@
+{
+  "id": "make-boat",
+  "title": "Make a boat",
+  "group": "Building",
+  "topic": "item:oak_boat",
+  "picture": "oak_boat",
+  "askedAs": [
+    "make a boat",
+    "craft a boat",
+    "ride a boat",
+    "use a boat",
+    "boat"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Boat",
+    "https://minecraft.wiki/w/Boat_with_Chest",
+    "https://minecraft.wiki/w/Planks"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Craft it",
+      "say": "Put 5 [planks](item:oak_planks) of the same wood in a U shape: 2 on top at the sides and 3 across the bottom.",
+      "pattern": [
+        "P.P",
+        "PPP"
+      ],
+      "key": {
+        "P": "oak_planks"
+      }
+    },
+    {
+      "title": "Put it on water",
+      "say": "Look at the water and use the boat to place it.",
+      "item": "oak_boat"
+    },
+    {
+      "title": "Get in",
+      "say": "Use the boat to climb in. Use the move [buttons](item:oak_button) to paddle and turn."
+    },
+    {
+      "title": "Bring a friend",
+      "say": "A boat has 2 seats. A friend or an animal can ride with you."
+    },
+    {
+      "title": "Carry more",
+      "say": "Craft a boat with a [chest](item:chest) to carry your things. It only has 1 seat.",
+      "item": "oak_chest_boat"
+    },
+    {
+      "title": "Pick it up",
+      "say": "Hit the boat a few times to break it and get it back."
+    }
+  ]
+}

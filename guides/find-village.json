@@ -1,0 +1,50 @@
+{
+  "id": "find-village",
+  "title": "Find a village",
+  "group": "Finding things",
+  "topic": "place:village",
+  "picture": "bell",
+  "askedAs": [
+    "find a village",
+    "where is a village",
+    "where are villages",
+    "find villagers",
+    "look for a village",
+    "find a town"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Village",
+    "https://minecraft.wiki/w/Biome",
+    "https://minecraft.wiki/w/Villager",
+    "https://minecraft.wiki/w/Iron_Golem",
+    "https://minecraft.wiki/w/Bell"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Pick the right land",
+      "say": "Villages are in [plains](biome:plains), [deserts](biome:desert), [savannas](biome:savanna), [taigas](biome:taiga), [meadows](biome:meadow) and [snowy plains](biome:snowy_plains). Start your search there."
+    },
+    {
+      "title": "Look from up high",
+      "say": "Climb a hill or a tall tree and look around. Villages have roofs, paths and fields you can see from far away."
+    },
+    {
+      "title": "Follow a path",
+      "say": "[Dirt](item:dirt) paths [lead](item:lead) into villages. If you find one, follow it."
+    },
+    {
+      "title": "Find the middle",
+      "say": "The [bell](item:bell) sits in the middle of the village, where villagers meet during the day.",
+      "item": "bell"
+    },
+    {
+      "title": "Be kind",
+      "say": "Do not hit villagers. The [iron golem](mob:iron_golem) protects them and fights back."
+    },
+    {
+      "title": "Remember the way",
+      "say": "Write down the coordinates, or build a tall tower of blocks with a [torch](item:torch) on top. Then you can find it again."
+    }
+  ]
+}

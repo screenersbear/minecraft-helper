@@ -6,14 +6,16 @@ import { isInfo } from './info.js';
 // The first rule whose words appear wins, so more specific kinds come first. A rule with a test uses that instead.
 // "what do pandas eat" is a food question here; with a mob it becomes 'eats' (what it eats) when the answer is found.
 const KINDS = [
-  { kind: 'tame', words: ['tame', 'taming', 'befriend', 'breed', 'breeding', 'ride', 'riding', 'pet', 'adopt'] },
+  { kind: 'gifts', words: ['gift', 'gifts', 'present', 'presents'] },
+  { kind: 'breed', words: ['breed', 'breeding', 'baby', 'babies', 'mate'] },
+  { kind: 'tame', words: ['tame', 'taming', 'befriend', 'trust', 'ride', 'riding', 'pet', 'adopt'] },
   { kind: 'drops', words: ['drop', 'drops', 'dropped', 'loot'] },
   { kind: 'mine', words: ['mine', 'mining', 'break', 'breaking', 'dig', 'pickaxe', 'tool'] },
   { kind: 'max', words: ['max', 'maximum', 'highest', 'strongest', 'top'] },
   { kind: 'find', words: ['find', 'where', 'wheres', 'locate', 'spawn', 'spawns', 'level', 'live', 'lives', 'living'] },
   { kind: 'get', words: ['get', 'obtain', 'collect'] },
   { kind: 'make', words: ['make', 'craft', 'build', 'create', 'need', 'recipe', 'made', 'crafted', 'cook', 'smelt'] },
-  { kind: 'food', words: ['food', 'foods', 'fill', 'fills', 'filling', 'full', 'eat', 'eats', 'eating', 'hungry', 'drumstick', 'drumsticks'] },
+  { kind: 'food', words: ['food', 'foods', 'fill', 'fills', 'filling', 'full', 'eat', 'eats', 'eating', 'feed', 'feeding', 'hungry', 'drumstick', 'drumsticks'] },
   { kind: 'weather', words: ['snow', 'snows', 'snowing', 'rain', 'rains', 'raining', 'weather', 'thunder', 'storm'] },
   { kind: 'danger', words: ['dangerous', 'danger', 'safe', 'hostile', 'friendly', 'peaceful', 'attack', 'attacks', 'hurt', 'hurts', 'scary', 'mean', 'nice', 'bite', 'bites'] },
   { kind: 'does', words: ['use', 'used', 'uses', 'useful', 'purpose'], test: isDoesQuestion },
@@ -51,21 +53,23 @@ export function questionKind(text) {
 }
 
 // Which kinds of answer suit a question kind, best first. 'info' is a biome, enchantment, potion effect or topic.
-// 'where' is a line from where.json (or a place, like a village). An empty list means the book has no answers of
-// that kind yet ("what do pandas eat"), so the app says it doesn't know that yet.
+// 'where' is a line from where.json (or a place, like a village). 'field' is one fact in its own slot (what a cat
+// eats, what gifts it brings: see fields.js). With no fitting answer, the app says it doesn't know that yet.
 export const FITS = {
-  tame: ['guide'],
+  gifts: ['field'],
+  breed: ['field', 'guide'],
+  tame: ['guide', 'field'],
   drops: ['mob', 'fact'],
   mine: ['fact', 'guide'],
   find: ['where', 'guide', 'fact', 'recipe'],
   get: ['recipe', 'guide', 'fact', 'where'],
   make: ['recipe', 'guide', 'fact', 'where'],
   max: ['info'],
-  food: ['fact', 'info'],
-  eats: [],
+  food: ['fact', 'info', 'guide'],
+  eats: ['field'],
   weather: ['info'],
-  danger: ['mob'],
-  does: ['info', 'guide'],
+  danger: ['field', 'mob', 'guide'],
+  does: ['field', 'info', 'guide'],
   about: ['mob', 'fact', 'info', 'recipe', 'guide', 'where'],
   any: ['recipe', 'guide', 'mob', 'fact', 'info', 'where'],
 };

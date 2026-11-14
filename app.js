@@ -5,7 +5,7 @@ import { logQuestion, NOT_IN_BOOK } from './data/questions-log.js';
 import { rememberThing, lastThing } from './data/last-thing.js';
 import { findAnswer } from './logic/find-answer.js';
 import { parseHash, hashForAnswer } from './logic/routes.js';
-import { withLastThing, describeLast, thingOfRoute } from './logic/follow-up.js';
+import { withLastThing, describeLast, thingOfRoute, followUp } from './logic/follow-up.js';
 import { missingLabel } from './logic/say-missing.js';
 import { targetName } from './logic/target-name.js';
 import { speak, stopSpeaking, unlockSpeech } from './speech/speak.js';
@@ -25,14 +25,14 @@ import { notFoundPage } from './pages/not-found.js';
 import { grownUpsPage } from './pages/grown-ups.js';
 import { aboutPage } from './pages/about.js';
 import { infoPage } from './pages/info.js';
-import { wherePage } from './pages/where.js';
+import { fieldPage } from './pages/field.js';
 import { missingPage } from './pages/missing.js';
 import { isInfo, infoOf } from './logic/info.js';
 
 const PAGES = {
   recipe: recipePage, guide: guidePage, mob: mobPage, fact: factPage, none: notFoundPage, 'grown-ups': grownUpsPage, about: aboutPage,
   biome: infoPage('biome'), enchant: infoPage('enchant'), effect: infoPage('effect'), topic: infoPage('topic'), idea: ideaPage,
-  where: wherePage, missing: missingPage,
+  where: fieldPage, field: fieldPage, missing: missingPage,
 };
 const root = document.getElementById('app');
 let view = null;
@@ -74,8 +74,9 @@ function show(ctx) {
   window.scrollTo(0, 0);
   fitTitles(root);
   (view.focusNode?.() || root.querySelector('h1'))?.focus({ preventScroll: true });
+  // Topic memory: what this answer is about and what it mentions, for a follow-up like "what gifts?".
   const thing = thingOfRoute(route);
-  if (thing) rememberThing(thing);
+  if (thing) rememberThing({ ...thing, ...view.memory });
   readOut(view.say);
 }
 
@@ -98,16 +99,20 @@ function start({ book, guides, list }) {
     ask(question) {
       const q = String(question || '').trim();
       if (!q) return;
-      // A follow-up ("how do I get it?") is matched with the last thing put in.
-      const matched = withLastThing(q, describeLast(lastThing(), book, guides));
-      const answer = findAnswer(matched, list, book, guides);
+      // A follow-up that names nothing ("what gifts?", "how do I get it?") is answered from topic memory. One
+      // that names an ingredient of the last recipe ("what about the sugar?") is matched with it put in.
+      const memory = lastThing();
+      const alone = findAnswer(q, list, book, guides);
+      const follow = alone.type === 'none' ? followUp(q, memory, book, guides, list) : null;
+      const matched = follow ? q : withLastThing(q, describeLast(memory, book, guides));
+      const answer = follow || findAnswer(matched, list, book, guides);
       addRecent({ q, pic: pictureFor(answer, book, guides) });
       if (answer.type === 'none') logQuestion({ q, answer: NOT_IN_BOOK, reason: 'not-in-book' });
       if (answer.type === 'missing') {
-        const missing = missingLabel(targetName(book, guides, answer.target), answer.kind);
+        const missing = missingLabel(targetName(book, guides, answer.target), q, answer.kind);
         logQuestion({ q, answer: missing, reason: 'missing', missing });
       }
-      ctx.go(hashForAnswer(answer, q, matched !== q ? answer.kind : undefined));
+      ctx.go(hashForAnswer(answer, q, follow || matched !== q ? answer.kind : undefined));
     },
     go(hash, { replace = false } = {}) {
       if (hash === location.hash) return show(ctx);

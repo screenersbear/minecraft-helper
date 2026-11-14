@@ -3,11 +3,15 @@
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { plainText } from '../logic/links.js';
 
 const app = join(dirname(fileURLToPath(import.meta.url)), '..');
 const book = JSON.parse(readFileSync(join(app, 'data/book.json'), 'utf8'));
 const problems = [];
 const warn = (guide, msg) => problems.push(`${guide}: ${msg}`);
+
+// The groups on the Guides page, in order.
+const GROUPS = ['Getting started', 'Finding things', 'Animals', 'Farming', 'Building', 'Redstone', 'Nether and End', 'Magic', 'Villagers', 'Danger'];
 
 const guides = [];
 for (const file of readdirSync(join(app, 'guides')).filter((f) => f.endsWith('.json')).sort()) {
@@ -18,8 +22,9 @@ for (const file of readdirSync(join(app, 'guides')).filter((f) => f.endsWith('.j
   g.steps.forEach((s, i) => {
     const where = `step ${i + 1}`;
     if (!s.title || !s.say) warn(file, `${where} needs a title and say`);
-    const words = s.say.split(/\s+/).length;
-    const sentences = s.say.split(/[.!?](\s|$)/).filter((x) => x && x.trim()).length;
+    const said = plainText(s.say);
+    const words = said.split(/\s+/).length;
+    const sentences = said.split(/[.!?](\s|$)/).filter((x) => x && x.trim()).length;
     if (words > 35) warn(file, `${where} is ${words} words (keep it under about 30)`);
     if (sentences > 3) warn(file, `${where} has ${sentences} sentences (keep it to 3 short ones at most)`);
     if (/[—–]/.test(s.say + s.title)) warn(file, `${where} has a long dash`);
@@ -27,7 +32,9 @@ for (const file of readdirSync(join(app, 'guides')).filter((f) => f.endsWith('.j
     for (const [k, v] of Object.entries(s.key || {})) if (!book.items[v]) warn(file, `${where} pattern "${k}" = "${v}" isn't in the book`);
     if (s.pattern && new Set(s.pattern.map((r) => r.length)).size > 1) warn(file, `${where} pattern rows aren't the same length`);
   });
-  guides.push({ id: g.id, title: g.title, picture: g.picture, askedAs: g.askedAs, steps: g.steps });
+    if (g.group && !GROUPS.includes(g.group)) warn(file, `group "${g.group}" isn't one of: ${GROUPS.join(', ')}`);
+  // topic: what the guide is about ("mob:cat"), so "what do they eat?" after it is about cats.
+  guides.push({ id: g.id, title: g.title, picture: g.picture, askedAs: g.askedAs, group: g.group, topic: g.topic, steps: g.steps });
 }
 
 writeFileSync(join(app, 'data/guides.json'), JSON.stringify(guides));

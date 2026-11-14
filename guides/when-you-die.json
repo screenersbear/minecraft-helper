@@ -1,0 +1,57 @@
+{
+  "id": "when-you-die",
+  "title": "What to do when you die",
+  "group": "Getting started",
+  "topic": "item:recovery_compass",
+  "picture": "compass",
+  "askedAs": [
+    "i died",
+    "when you die",
+    "get my stuff back",
+    "get my items back",
+    "lost my stuff",
+    "lost my items",
+    "where did i die",
+    "find my stuff"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Death",
+    "https://minecraft.wiki/w/Item_(entity)",
+    "https://minecraft.wiki/w/Recovery_Compass",
+    "https://minecraft.wiki/w/Echo_Shard",
+    "https://minecraft.wiki/w/Coordinates",
+    "https://minecraft.wiki/w/Game_rule"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Your things drop",
+      "say": "When you die, everything you carry falls on the ground where you died. You also drop some of your experience."
+    },
+    {
+      "title": "Know where you were",
+      "say": "Turn on Show Coordinates in the world settings. Then you can see where you are, and write down where you died."
+    },
+    {
+      "title": "Go back fast",
+      "say": "Your things vanish after 5 minutes on the ground near you. Run back the same way you came."
+    },
+    {
+      "title": "Stay safe on the way",
+      "say": "Whatever got you is probably still there. Bring a [sword](item:wooden_sword), some food and a few blocks."
+    },
+    {
+      "title": "Make a recovery compass",
+      "say": "Put 8 [echo shards](item:echo_shard) around a [compass](item:compass). It points to where you last died. Echo shards are in [chests](item:chest) in [ancient cities](place:ancient_city).",
+      "item": "echo_shard"
+    },
+    {
+      "title": "Things lost for good",
+      "say": "Things that fall into lava, or into the empty space under the End, are gone. Next time, keep away from edges."
+    },
+    {
+      "title": "Keep your things",
+      "say": "A grown-up can turn on Keep Inventory in the world settings, under Cheats. Then you keep everything when you die."
+    }
+  ]
+}

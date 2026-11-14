@@ -1,0 +1,70 @@
+{
+  "id": "keep-bees",
+  "title": "Keep bees and get honey",
+  "group": "Farming",
+  "topic": "mob:bee",
+  "picture": "honey_bottle",
+  "askedAs": [
+    "keep bees",
+    "get honey",
+    "honey bottle",
+    "get honeycomb",
+    "bee farm",
+    "make a beehive",
+    "collect honey"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Bee",
+    "https://minecraft.wiki/w/Bee_Nest",
+    "https://minecraft.wiki/w/Beehive",
+    "https://minecraft.wiki/w/Honey_Bottle",
+    "https://minecraft.wiki/w/Honeycomb",
+    "https://minecraft.wiki/w/Campfire"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Find a bee nest",
+      "say": "[Bee nests](item:bee_nest) hang from trees in [meadows](biome:meadow), [plains](biome:plains) and [flower forests](biome:flower_forest). Bees fly in and out of them.",
+      "item": "bee_nest"
+    },
+    {
+      "title": "Light a campfire under it",
+      "say": "Put a [campfire](item:campfire) on the ground a few blocks below the nest. The smoke keeps the bees calm.",
+      "pattern": [
+        "N",
+        ".",
+        ".",
+        "C"
+      ],
+      "key": {
+        "N": "bee_nest",
+        "C": "campfire"
+      }
+    },
+    {
+      "title": "Wait for honey",
+      "say": "When the nest is full, honey drips out of it and you can see honey on its sides."
+    },
+    {
+      "title": "Get honey",
+      "say": "Use a [glass bottle](item:glass_bottle) on the full nest to get a [honey bottle](item:honey_bottle).",
+      "item": "honey_bottle"
+    },
+    {
+      "title": "Get honeycomb",
+      "say": "Or use [shears](item:shears) on the full nest to get 3 [honeycomb](item:honeycomb).",
+      "item": "honeycomb"
+    },
+    {
+      "title": "Make your own hive",
+      "say": "Craft a [beehive](item:beehive) from 6 [planks](item:oak_planks) and 3 [honeycomb](item:honeycomb). Hold a flower and bees follow you to it.",
+      "item": "beehive"
+    },
+    {
+      "title": "Plant flowers",
+      "say": "Plant flowers near the hive so the bees stay busy. They help your crops grow too.",
+      "item": "poppy"
+    }
+  ]
+}

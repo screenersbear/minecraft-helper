@@ -1,6 +1,8 @@
 {
   "id": "find-diamonds",
   "title": "Find diamonds",
+  "group": "Finding things",
+  "topic": "item:diamond",
   "picture": "diamond",
   "askedAs": [
     "find diamonds",
@@ -27,7 +29,7 @@
   "steps": [
     {
       "title": "Pack for the trip",
-      "say": "Bring an iron pickaxe or better, a spare pickaxe, food, torches and a water bucket. A weaker pickaxe breaks diamond ore but gives you nothing.",
+      "say": "Bring an [iron pickaxe](item:iron_pickaxe) or better, a spare [pickaxe](item:wooden_pickaxe), food, [torches](item:torch) and a [water bucket](item:water_bucket). A weaker pickaxe breaks [diamond ore](item:diamond_ore) but gives you nothing.",
       "item": "iron_pickaxe"
     },
     {
@@ -44,22 +46,22 @@
     },
     {
       "title": "Watch for lava",
-      "say": "Lava can still show up down here. Pour water from your bucket onto it to turn it into obsidian or cobblestone.",
+      "say": "Lava can still show up down here. Pour water from your [bucket](item:bucket) onto it to turn it into [obsidian](item:obsidian) or [cobblestone](item:cobblestone).",
       "item": "water_bucket"
     },
     {
       "title": "Dig long tunnels",
-      "say": "Dig a long, flat tunnel 2 blocks high and 1 block wide. Place torches as you go so you can see and fewer monsters spawn.",
+      "say": "Dig a long, flat tunnel 2 blocks high and 1 block wide. Place [torches](item:torch) as you go so you can see and fewer monsters spawn.",
       "item": "torch"
     },
     {
       "title": "Avoid the sculk",
-      "say": "If your tunnel opens into a cave covered in sculk, turn back and dig somewhere else. Sculk shriekers there can call the Warden, a very strong monster.",
+      "say": "If your tunnel opens into a cave covered in [sculk](item:sculk), turn back and dig somewhere else. Sculk shriekers there can call the [Warden](mob:warden), a very strong monster.",
       "item": "sculk"
     },
     {
       "title": "Mine the diamonds",
-      "say": "When you find diamond ore, mine the blocks around it first so no diamond can fall into lava. Each ore gives 1 diamond.",
+      "say": "When you find [diamond ore](item:diamond_ore), mine the blocks around it first so no diamond can fall into lava. Each ore gives 1 diamond.",
       "item": "deepslate_diamond_ore"
     }
   ]

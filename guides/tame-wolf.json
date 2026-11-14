@@ -1,6 +1,8 @@
 {
   "id": "tame-wolf",
   "title": "Tame a wolf",
+  "group": "Animals",
+  "topic": "mob:wolf",
   "picture": "bone",
   "askedAs": [
     "tame a wolf",
@@ -25,16 +27,16 @@
   "steps": [
     {
       "title": "Get some bones",
-      "say": "Skeletons often drop bones when you defeat them. Collect several, because a wolf can take a few bones to tame.",
+      "say": "[Skeletons](mob:skeleton) often drop [bones](item:bone) when you defeat them. Collect several, because a wolf can take a few bones to tame.",
       "item": "bone"
     },
     {
       "title": "Find a wolf",
-      "say": "Look for wolves in forests and spruce forests, even snowy ones. Never hit a wolf, or its whole pack gets angry and can't be tamed."
+      "say": "Look for wolves in [forests](biome:forest) and spruce forests, even snowy ones. Never hit a wolf, or its whole pack gets angry and can't be tamed."
     },
     {
       "title": "Feed it bones",
-      "say": "Hold a bone near the wolf and it tilts its head at you. Feed it bones 1 at a time.",
+      "say": "Hold a [bone](item:bone) near the wolf and it tilts its head at you. Feed it bones 1 at a time.",
       "item": "bone"
     },
     {
@@ -51,12 +53,12 @@
     },
     {
       "title": "Heal your wolf",
-      "say": "If its tail hangs low, your wolf is hurt. Feed it meat like steak or cooked chicken to heal it. Even rotten flesh works.",
+      "say": "If its tail hangs low, your wolf is hurt. Feed it meat like [steak](item:cooked_beef) or [cooked chicken](item:cooked_chicken) to heal it. Even [rotten flesh](item:rotten_flesh) works.",
       "item": "cooked_beef"
     },
     {
       "title": "Color its collar",
-      "say": "Want a new look? Use any dye on your wolf to change its collar color.",
+      "say": "Want a new look? Use any [dye](item:white_dye) on your wolf to change its collar color.",
       "item": "light_blue_dye"
     }
   ]

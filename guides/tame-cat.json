@@ -1,6 +1,8 @@
 {
   "id": "tame-cat",
   "title": "Tame a cat",
+  "group": "Animals",
+  "topic": "mob:cat",
   "picture": "cod",
   "askedAs": [
     "tame a cat",
@@ -26,12 +28,12 @@
   "steps": [
     {
       "title": "Get raw fish",
-      "say": "Get a few raw cod or raw salmon. Fishing with a fishing rod is a great way to catch them. Keep the fish raw, not cooked.",
+      "say": "Get a few [raw cod](item:cod) or [raw salmon](item:salmon). Fishing with a [fishing rod](item:fishing_rod) is a great way to catch them. Keep the fish raw, not cooked.",
       "item": "cod"
     },
     {
       "title": "Find a stray cat",
-      "say": "Look for stray cats in villages. They like to wander, so check around the houses and nearby."
+      "say": "Look for stray cats in [villages](place:village). They like to wander, so check around the houses and nearby."
     },
     {
       "title": "Hold the fish",
@@ -53,12 +55,12 @@
     },
     {
       "title": "Heal your cat",
-      "say": "If your cat gets hurt, feed it raw cod or raw salmon to heal it.",
+      "say": "If your cat gets hurt, feed it [raw cod](item:cod) or [raw salmon](item:salmon) to heal it.",
       "item": "cod"
     },
     {
       "title": "See what cats do",
-      "say": "Creepers stay away from cats, so your cat helps keep you safe. It might sleep on your bed and leave you a gift in the morning."
+      "say": "[Creepers](mob:creeper) stay away from cats, so your cat helps keep you safe. It might sleep on your [bed](item:white_bed) and leave you a [gift](mob:cat#gifts) in the morning."
     }
   ]
 }

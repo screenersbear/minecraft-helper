@@ -1,0 +1,62 @@
+{
+  "id": "netherite",
+  "title": "Find ancient debris and make netherite",
+  "group": "Finding things",
+  "topic": "item:netherite_ingot",
+  "picture": "netherite_ingot",
+  "askedAs": [
+    "find ancient debris",
+    "ancient debris",
+    "make netherite",
+    "get netherite",
+    "netherite ingot",
+    "netherite armor",
+    "netherite tools",
+    "netherite scrap"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Ancient_Debris",
+    "https://minecraft.wiki/w/Netherite_Scrap",
+    "https://minecraft.wiki/w/Netherite_Ingot",
+    "https://minecraft.wiki/w/Netherite_Upgrade",
+    "https://minecraft.wiki/w/Smithing_Table",
+    "https://minecraft.wiki/w/Bastion_Remnant"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Bring a diamond pickaxe",
+      "say": "Only a [diamond](item:diamond) or [netherite pickaxe](item:netherite_pickaxe) mines [ancient debris](item:ancient_debris). Go to the Nether with food, armor and blocks.",
+      "item": "diamond_pickaxe"
+    },
+    {
+      "title": "Go to level 15",
+      "say": "[Ancient debris](item:ancient_debris) is deep in the Nether, most of all around level 15. Dig long tunnels there."
+    },
+    {
+      "title": "Spot it",
+      "say": "[Ancient debris](item:ancient_debris) is brown with swirly lines on the sides. It never touches air, so you have to dig to find it.",
+      "item": "ancient_debris"
+    },
+    {
+      "title": "Smelt it",
+      "say": "Put [ancient debris](item:ancient_debris) in a [furnace](item:furnace). Each one becomes 1 [netherite scrap](item:netherite_scrap).",
+      "item": "netherite_scrap"
+    },
+    {
+      "title": "Make an ingot",
+      "say": "Craft 4 [netherite scrap](item:netherite_scrap) with 4 [gold ingots](item:gold_ingot) to make 1 netherite ingot.",
+      "item": "netherite_ingot"
+    },
+    {
+      "title": "Find an upgrade",
+      "say": "You also need a [netherite upgrade template](item:netherite_upgrade_smithing_template), found in [chests](item:chest) in [bastions](place:bastion). Copy it with 7 [diamonds](item:diamond) and 1 [netherrack](item:netherrack).",
+      "item": "netherite_upgrade_smithing_template"
+    },
+    {
+      "title": "Upgrade your gear",
+      "say": "At a [smithing table](item:smithing_table), put in the template, a [diamond](item:diamond) tool or armor, and the netherite ingot. Netherite things float in lava.",
+      "item": "smithing_table"
+    }
+  ]
+}

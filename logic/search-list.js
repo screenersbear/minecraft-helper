@@ -1,7 +1,7 @@
 // Search list: every name the app knows, as simple words, pointing at an answer. Built once from the book,
 // the guides and the nicknames. Each entry: { words, target: { type, id }, label }. The type is 'item', 'mob',
 // 'guide', 'place' (a village, a stronghold), or one of the info types (biome, enchant, effect, topic).
-import { keyWords } from './words.js';
+import { keyWords, allWords } from './words.js';
 import { INFO_TYPES } from './info.js';
 
 // "Red Bed" -> "Bed", "Oak Planks" -> "Planks", "Wooden Pickaxe" -> "Pickaxe": the plain name, and which kind is the default.
@@ -74,16 +74,21 @@ export function buildSearchList(book, guides, nicknames) {
   const list = [];
   const add = (phrase, t, label) => {
     const words = keyWords(phrase);
-    if (words.length) list.push({ words, target: t, label: label || phrase });
+    if (!words.length) return null;
+    const entry = { words, target: t, label: label || phrase };
+    list.push(entry);
+    return entry;
   };
-  const hasAnswer = (id) => Boolean(book.recipes[id] || book.facts[id] || book.where?.item?.[id]);
+  const hasAnswer = (id) => Boolean(book.recipes[id] || book.facts[id] || book.fields?.item?.[id]);
   for (const [id, item] of Object.entries(book.items)) if (!id.startsWith('@')) add(item.name, { type: 'item', id }, item.name);
   for (const p of plainNames(book.items, hasAnswer)) add(p.phrase, { type: 'item', id: p.id });
   for (const [id, mob] of Object.entries(book.mobs)) add(mob.name, { type: 'mob', id }, mob.name);
-  for (const g of guides) {
-    add(g.title, { type: 'guide', id: g.id }, g.title);
-    for (const phrase of g.askedAs) add(phrase, { type: 'guide', id: g.id }, g.title);
-  }
+  // Guides keep every word of the phrase too, so "how do I get food" can match "get food" said word for word.
+  const addGuide = (phrase, g) => {
+    const entry = add(phrase, { type: 'guide', id: g.id }, g.title);
+    if (entry) entry.phrase = allWords(phrase).join(' ');
+  };
+  for (const g of guides) [g.title, ...g.askedAs].forEach((phrase) => addGuide(phrase, g));
   const taken = new Set([...Object.values(book.items), ...Object.values(book.mobs)].map((x) => x.name.toLowerCase()));
   addInfo(book, add, taken);
   for (const [phrase, to] of Object.entries(nicknames)) if (!phrase.startsWith('_')) add(phrase, target(to));

@@ -1,0 +1,56 @@
+{
+  "id": "cure-zombie-villager",
+  "title": "Cure a zombie villager",
+  "group": "Villagers",
+  "topic": "mob:zombie_villager",
+  "picture": "golden_apple",
+  "askedAs": [
+    "cure a zombie villager",
+    "cure zombie villager",
+    "turn a zombie villager back",
+    "save a zombie villager",
+    "zombie villager"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Zombie_Villager",
+    "https://minecraft.wiki/w/Potion_of_Weakness",
+    "https://minecraft.wiki/w/Fermented_Spider_Eye",
+    "https://minecraft.wiki/w/Golden_Apple",
+    "https://minecraft.wiki/w/Splash_Potion"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Find a zombie villager",
+      "say": "It looks like a [zombie](mob:zombie) with a villager nose and clothes. They come out at night."
+    },
+    {
+      "title": "Trap it in the shade",
+      "say": "[Lead](item:lead) it into a hole or a room with a roof, so it can not reach you and sunlight can not burn it."
+    },
+    {
+      "title": "Make a weakness potion",
+      "say": "Brew a water bottle with a [fermented spider eye](item:fermented_spider_eye). Add [gunpowder](item:gunpowder) to make it a [splash potion](item:splash_potion).",
+      "item": "fermented_spider_eye"
+    },
+    {
+      "title": "Throw it",
+      "say": "Throw the [splash potion](item:splash_potion) of weakness at the zombie villager.",
+      "item": "splash_potion"
+    },
+    {
+      "title": "Feed it a golden apple",
+      "say": "Right away, use a [golden apple](item:golden_apple) on it. Use a plain one, not an enchanted one.",
+      "item": "golden_apple"
+    },
+    {
+      "title": "Wait",
+      "say": "It starts to shake. After 3 to 5 minutes it turns back into a villager."
+    },
+    {
+      "title": "Get a thank-you",
+      "say": "A villager you cured gives you lower prices when you trade.",
+      "item": "emerald"
+    }
+  ]
+}

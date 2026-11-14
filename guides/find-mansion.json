@@ -1,0 +1,52 @@
+{
+  "id": "find-mansion",
+  "title": "Find a woodland mansion",
+  "group": "Finding things",
+  "topic": "place:woodland_mansion",
+  "picture": "dark_oak_log",
+  "askedAs": [
+    "find a woodland mansion",
+    "woodland mansion",
+    "find a mansion",
+    "where is the mansion",
+    "mansion map",
+    "explorer map"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Woodland_Mansion",
+    "https://minecraft.wiki/w/Cartographer",
+    "https://minecraft.wiki/w/Explorer_Map",
+    "https://minecraft.wiki/w/Vindicator",
+    "https://minecraft.wiki/w/Evoker",
+    "https://minecraft.wiki/w/Totem_of_Undying"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Know where they are",
+      "say": "Woodland mansions are in [dark forests](biome:dark_forest) and [pale gardens](biome:pale_garden). They are rare, and often thousands of blocks away."
+    },
+    {
+      "title": "Get a map",
+      "say": "A master cartographer villager sells a map to a woodland mansion for [emeralds](item:emerald) and a [compass](item:compass).",
+      "item": "compass"
+    },
+    {
+      "title": "Follow the map",
+      "say": "Hold the map and walk until your marker reaches the mansion mark. It is a long trip, so bring food."
+    },
+    {
+      "title": "Get ready to fight",
+      "say": "[Vindicators](mob:vindicator) swing [axes](item:wooden_axe), and [evokers](mob:evoker) send flying [vexes](mob:vex). Wear armor and bring a [shield](item:shield)."
+    },
+    {
+      "title": "Look around inside",
+      "say": "Mansions have many rooms, with [chests](item:chest) and sometimes [allays](mob:allay) in cages."
+    },
+    {
+      "title": "Win a totem",
+      "say": "[Evokers](mob:evoker) drop a [totem of undying](item:totem_of_undying). Hold it, and it saves you once from dying.",
+      "item": "totem_of_undying"
+    }
+  ]
+}

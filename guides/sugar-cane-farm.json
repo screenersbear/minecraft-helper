@@ -1,0 +1,62 @@
+{
+  "id": "sugar-cane-farm",
+  "title": "Make a sugar cane farm",
+  "group": "Farming",
+  "topic": "item:sugar_cane",
+  "picture": "sugar_cane",
+  "askedAs": [
+    "sugar cane farm",
+    "grow sugar cane",
+    "plant sugar cane",
+    "farm sugar cane",
+    "get sugar cane",
+    "get paper",
+    "make paper"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Sugar_Cane",
+    "https://minecraft.wiki/w/Paper",
+    "https://minecraft.wiki/w/Sugar",
+    "https://minecraft.wiki/w/Bone_Meal"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Find sugar cane",
+      "say": "Sugar cane grows next to water, on [beaches](biome:beach) and by [rivers](biome:river) and [swamps](biome:swamp). Break it to collect it.",
+      "item": "sugar_cane"
+    },
+    {
+      "title": "Dig a water line",
+      "say": "Dig a long, straight ditch 1 block wide and fill it with water from a [bucket](item:bucket).",
+      "item": "water_bucket"
+    },
+    {
+      "title": "Plant both sides",
+      "say": "Plant sugar cane on the [dirt](item:dirt), grass or [sand](item:sand) right next to the water, on both sides.",
+      "pattern": [
+        "CCCCC",
+        "WWWWW",
+        "CCCCC"
+      ],
+      "key": {
+        "C": "sugar_cane",
+        "W": "water"
+      }
+    },
+    {
+      "title": "Let it grow",
+      "say": "Sugar cane grows up to 3 blocks tall, even in the dark. [Bone meal](item:bone_meal) makes it grow right away.",
+      "item": "bone_meal"
+    },
+    {
+      "title": "Harvest it",
+      "say": "Break the second block up, not the bottom one. The bottom stays and grows again."
+    },
+    {
+      "title": "Use it",
+      "say": "Craft sugar cane into [sugar](item:sugar), or 3 sugar cane into 3 [paper](item:paper) for maps and [books](item:book).",
+      "item": "paper"
+    }
+  ]
+}

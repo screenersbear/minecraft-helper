@@ -1,0 +1,59 @@
+{
+  "id": "make-map",
+  "title": "Make a map",
+  "group": "Building",
+  "topic": "item:map",
+  "picture": "map",
+  "askedAs": [
+    "make a map",
+    "craft a map",
+    "use a map",
+    "locator map",
+    "zoom out a map",
+    "map wall"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Map",
+    "https://minecraft.wiki/w/Paper",
+    "https://minecraft.wiki/w/Compass",
+    "https://minecraft.wiki/w/Cartography_Table",
+    "https://minecraft.wiki/w/Item_Frame"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Make paper",
+      "say": "Craft 3 [sugar cane](item:sugar_cane) in a row to get 3 [paper](item:paper).",
+      "item": "paper"
+    },
+    {
+      "title": "Craft a map",
+      "say": "Fill the whole crafting grid with 9 [paper](item:paper) to make an empty map.",
+      "item": "map"
+    },
+    {
+      "title": "Add a compass",
+      "say": "For a map that shows where you are, put a [compass](item:compass) in the middle with 8 [paper](item:paper) around it.",
+      "item": "empty_locator_map"
+    },
+    {
+      "title": "Fill it in",
+      "say": "Hold the map and use it. It draws the land around you, and more appears as you walk."
+    },
+    {
+      "title": "Zoom out",
+      "say": "At a [cartography table](item:cartography_table), add [paper](item:paper) to your map to show more land. You can do it 4 times.",
+      "item": "cartography_table"
+    },
+    {
+      "title": "Make a copy",
+      "say": "At a [cartography table](item:cartography_table), add an empty map to copy yours, so a friend can have one.",
+      "item": "cartography_table"
+    },
+    {
+      "title": "Hang them up",
+      "say": "Put maps in [item frames](item:item_frame) on a wall, side by side, to make one big map.",
+      "item": "item_frame"
+    }
+  ]
+}

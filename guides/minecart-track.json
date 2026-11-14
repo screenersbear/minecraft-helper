@@ -1,0 +1,67 @@
+{
+  "id": "minecart-track",
+  "title": "Build a minecart track",
+  "group": "Building",
+  "topic": "item:rail",
+  "picture": "rail",
+  "askedAs": [
+    "build a minecart track",
+    "minecart track",
+    "make rails",
+    "railroad",
+    "ride a minecart",
+    "powered rails",
+    "make a minecart"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Rail",
+    "https://minecraft.wiki/w/Powered_Rail",
+    "https://minecraft.wiki/w/Minecart",
+    "https://minecraft.wiki/w/Redstone_Torch"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Make rails",
+      "say": "Craft 6 [iron ingots](item:iron_ingot) and 1 [stick](item:stick) into 16 rails.",
+      "item": "rail"
+    },
+    {
+      "title": "Make a minecart",
+      "say": "Craft 5 [iron ingots](item:iron_ingot) in a U shape into a [minecart](item:minecart).",
+      "item": "minecart"
+    },
+    {
+      "title": "Lay the track",
+      "say": "Put rails down in a line on solid ground. They curve on their own when you turn a corner.",
+      "item": "rail"
+    },
+    {
+      "title": "Add powered rails",
+      "say": "[Powered rails](item:powered_rail) push you along. Craft them from 6 [gold ingots](item:gold_ingot), 1 [stick](item:stick) and 1 [redstone dust](item:redstone).",
+      "item": "powered_rail"
+    },
+    {
+      "title": "Turn them on",
+      "say": "A [powered rail](item:powered_rail) needs power. Put a [redstone torch](item:redstone_torch) right next to it. Add more powered rails along the way, most of all going uphill.",
+      "pattern": [
+        "RRPRR",
+        "..T.."
+      ],
+      "key": {
+        "R": "rail",
+        "P": "powered_rail",
+        "T": "redstone_torch"
+      }
+    },
+    {
+      "title": "Ride it",
+      "say": "Put the [minecart](item:minecart) on the rails and get in. Start on a [powered rail](item:powered_rail) to get going.",
+      "item": "minecart"
+    },
+    {
+      "title": "Stop at the end",
+      "say": "A [powered rail](item:powered_rail) with no power works like a brake. Put one at the end of your track."
+    }
+  ]
+}

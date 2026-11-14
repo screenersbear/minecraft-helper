@@ -1,0 +1,55 @@
+{
+  "id": "find-geode",
+  "title": "Find an amethyst geode",
+  "group": "Finding things",
+  "topic": "place:amethyst_geode",
+  "picture": "amethyst_shard",
+  "askedAs": [
+    "find a geode",
+    "amethyst geode",
+    "find amethyst",
+    "get amethyst",
+    "amethyst shards",
+    "where is amethyst"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Amethyst_Geode",
+    "https://minecraft.wiki/w/Amethyst_Shard",
+    "https://minecraft.wiki/w/Budding_Amethyst",
+    "https://minecraft.wiki/w/Amethyst_Cluster",
+    "https://minecraft.wiki/w/Smooth_Basalt",
+    "https://minecraft.wiki/w/Spyglass"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Look underground",
+      "say": "Geodes are big round rocks underground, from the bottom of the world up to level 30."
+    },
+    {
+      "title": "Spot the outside",
+      "say": "The outside is a layer of dark gray [smooth basalt](item:smooth_basalt), then white [calcite](item:calcite). You often see it in cave walls.",
+      "item": "smooth_basalt"
+    },
+    {
+      "title": "Break in",
+      "say": "Dig through the layers. Inside is purple amethyst, with crystals growing on the walls.",
+      "item": "amethyst_block"
+    },
+    {
+      "title": "Collect the shards",
+      "say": "Break the big, fully grown crystals with a [pickaxe](item:wooden_pickaxe) to get [amethyst shards](item:amethyst_shard). Small ones give nothing.",
+      "item": "amethyst_shard"
+    },
+    {
+      "title": "Leave the budding blocks",
+      "say": "[Budding amethyst](item:budding_amethyst) grows new crystals but breaks if you mine it. Leave it, and come back later for more.",
+      "item": "budding_amethyst"
+    },
+    {
+      "title": "Use your shards",
+      "say": "Make a [spyglass](item:spyglass) from 1 [amethyst shard](item:amethyst_shard) and 2 [copper ingots](item:copper_ingot), or [tinted glass](item:tinted_glass) from shards and [glass](item:glass).",
+      "item": "spyglass"
+    }
+  ]
+}

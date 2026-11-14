@@ -1,0 +1,61 @@
+{
+  "id": "blaze-rods",
+  "title": "Find a fortress and get blaze rods",
+  "group": "Nether and End",
+  "topic": "mob:blaze",
+  "picture": "blaze_rod",
+  "askedAs": [
+    "get blaze rods",
+    "blaze rods",
+    "blaze rod",
+    "find a fortress",
+    "nether fortress",
+    "find a nether fortress",
+    "kill blazes",
+    "blaze spawner"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Nether_Fortress",
+    "https://minecraft.wiki/w/Blaze",
+    "https://minecraft.wiki/w/Blaze_Rod",
+    "https://minecraft.wiki/w/Blaze_Powder",
+    "https://minecraft.wiki/w/Snowball",
+    "https://minecraft.wiki/w/Wither_Skeleton"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Find the fortress",
+      "say": "Nether fortresses are big castles of dark [Nether bricks](item:nether_bricks) with long bridges, often over lava. Explore the Nether until you see one.",
+      "item": "nether_bricks"
+    },
+    {
+      "title": "Find the blazes",
+      "say": "Look for a blaze spawner, a cage with fire inside, often on a raised platform.",
+      "item": "spawner"
+    },
+    {
+      "title": "Get ready",
+      "say": "Blazes fly and shoot fireballs. A [shield](item:shield) and a [potion](item:potion) of fire resistance help a lot."
+    },
+    {
+      "title": "Fight them",
+      "say": "Hit them with a [sword](item:wooden_sword), or shoot [arrows](item:arrow). [Snowballs](item:snowball) hurt blazes too.",
+      "item": "snowball"
+    },
+    {
+      "title": "Collect the rods",
+      "say": "Blazes sometimes drop a [blaze rod](item:blaze_rod). Keep fighting until you have about 6 or more.",
+      "item": "blaze_rod"
+    },
+    {
+      "title": "Make powder",
+      "say": "Craft each [blaze rod](item:blaze_rod) into 2 [blaze powder](item:blaze_powder), for [brewing stands](item:brewing_stand) and [eyes of ender](item:ender_eye).",
+      "item": "blaze_powder"
+    },
+    {
+      "title": "Watch out",
+      "say": "[Wither skeletons](mob:wither_skeleton) live in fortresses too. Their hits turn your hearts black and drain your health."
+    }
+  ]
+}

@@ -2,9 +2,9 @@
 // Examples: #/recipe/cake?q=how do I make a cake   #/guide/nether-portal/2   #/grown-ups   #/fact/apple?from=book/food
 // "from" is the page an answer was opened from (a page of the book), so Back goes there instead of to Ask.
 // "k" is the kind of question, when it can't be told from the question itself (a follow-up like "what about wolves").
-import { targetKey } from './where.js';
+import { targetKey, fieldKey } from './where.js';
 
-const SAFE_FROM = /^[a-z0-9_/-]+$/;
+const SAFE_FROM = /^[a-z0-9_/:-]+$/;
 const SAFE_KIND = /^[a-z]{2,12}$/;
 
 export function toHash({ page = 'ask', id, step, way, q, from, kind } = {}) {
@@ -43,6 +43,7 @@ export function hashForAnswer(answer, question, kind) {
   if (answer.type === 'none') return toHash({ page: 'none', q: question });
   if (answer.type === 'guide') return toHash({ page: 'guide', id: answer.target.id, step: 1, q: question });
   if (answer.type === 'where') return toHash({ page: 'where', id: targetKey(answer.target), q: question, kind });
+  if (answer.type === 'field') return toHash({ page: 'field', id: fieldKey(answer.target, answer.field), q: question, kind });
   if (answer.type === 'missing') return toHash({ page: 'missing', id: targetKey(answer.target), q: question, kind: answer.kind });
   return toHash({ page: answer.type === 'unpack' ? 'recipe' : answer.type, id: answer.target.id, q: question, kind });
 }

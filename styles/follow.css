@@ -1,0 +1,48 @@
+/* Linked words and Ask next: the things an answer mentions are underlined words you can tap, and the questions a
+   kid might ask next are big buttons under the answer. */
+
+a.mention {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--mango-dark);
+  text-underline-offset: 3px;
+  /* A taller place to tap than the line itself, without moving the lines apart. */
+  padding: 10px 0;
+  margin: -10px 0;
+  touch-action: manipulation;
+}
+
+a.mention:active {
+  background: var(--mango);
+}
+
+.follow-chips {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 8px;
+}
+
+.chip-btn {
+  height: auto;
+  min-height: 56px;
+  padding: 8px 14px 14px;
+  font-size: 18px;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.page.guide .follow-chips {
+  padding-top: 16px;
+}
+
+/* The Guides page, in groups */
+.guide-group h2 {
+  padding-top: 20px;
+  padding-bottom: 6px;
+}
+
+.guide-group .guide-rows {
+  padding-top: 0;
+}

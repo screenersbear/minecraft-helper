@@ -1,0 +1,69 @@
+{
+  "id": "lever-and-lamp",
+  "title": "Make a lever and lamp",
+  "group": "Redstone",
+  "topic": "item:redstone_lamp",
+  "picture": "redstone_lamp",
+  "askedAs": [
+    "lever and lamp",
+    "redstone lamp",
+    "make a lamp",
+    "light switch",
+    "turn on a light",
+    "how does a lever work",
+    "first redstone"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Redstone_Lamp",
+    "https://minecraft.wiki/w/Lever",
+    "https://minecraft.wiki/w/Redstone_Dust",
+    "https://minecraft.wiki/w/Glowstone",
+    "https://minecraft.wiki/w/Redstone_Repeater"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Get redstone",
+      "say": "Mine [redstone ore](item:redstone_ore) with an [iron pickaxe](item:iron_pickaxe) or better. It gives you [redstone dust](item:redstone).",
+      "item": "redstone"
+    },
+    {
+      "title": "Make a lamp",
+      "say": "Put 1 [glowstone](item:glowstone) in the middle with 4 [redstone dust](item:redstone) around its sides.",
+      "item": "redstone_lamp"
+    },
+    {
+      "title": "Make a lever",
+      "say": "Put 1 [stick](item:stick) on top of 1 [cobblestone](item:cobblestone) in the crafting grid.",
+      "item": "lever"
+    },
+    {
+      "title": "Put them together",
+      "say": "Place the lamp, then put the [lever](item:lever) right on its side. Flip the lever and the lamp lights up.",
+      "pattern": [
+        "LA"
+      ],
+      "key": {
+        "L": "lever",
+        "A": "redstone_lamp"
+      }
+    },
+    {
+      "title": "Go farther",
+      "say": "To put the [lever](item:lever) farther away, draw a line of [redstone dust](item:redstone) on the ground from the lever to the lamp.",
+      "pattern": [
+        "LRRRA"
+      ],
+      "key": {
+        "L": "lever",
+        "R": "redstone",
+        "A": "redstone_lamp"
+      }
+    },
+    {
+      "title": "Even farther",
+      "say": "[Redstone dust](item:redstone) only carries power 15 blocks. A [redstone repeater](item:repeater) in the line makes it go farther.",
+      "item": "repeater"
+    }
+  ]
+}

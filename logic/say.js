@@ -1,6 +1,7 @@
 // Say: the sentences the app speaks and shows. Short and plain, made only from what's in the book.
 import { plural, mobPlural, counted, article, listWords, capitalize } from './plural.js';
 import { foodSentence } from './say-facts.js';
+import { plainText } from './links.js';
 
 // The name of a recipe cell: "coal", "wood planks", "red mushroom or brown mushroom".
 export function cellName(cell, book) {
@@ -100,7 +101,7 @@ export function mobSentence(id, book) {
 }
 
 // What's read out for a guide step.
-export const stepSentence = (step, number) => `Step ${number}. ${step.title}. ${step.say}`;
+export const stepSentence = (step, number) => `Step ${number}. ${step.title}. ${plainText(step.say)}`;
 
 // A question as heard, tidied for lists: "how do I make a cake" -> "How do I make a cake?"
 export function tidyQuestion(question) {

@@ -1,6 +1,8 @@
 {
   "id": "ender-dragon",
   "title": "Beat the Ender Dragon",
+  "group": "Nether and End",
+  "topic": "mob:ender_dragon",
   "picture": "dragon_egg",
   "askedAs": [
     "kill the ender dragon",
@@ -9,9 +11,6 @@
     "beat the dragon",
     "kill the dragon",
     "fight the dragon",
-    "get to the end",
-    "go to the end",
-    "find a stronghold",
     "dragon egg"
   ],
   "wiki": [
@@ -30,21 +29,21 @@
   "steps": [
     {
       "title": "Get your gear ready",
-      "say": "This is a big, tough fight. Bring armor, a sword, a bow, lots of arrows, food and blocks. Never sleep in a bed in the End, because it explodes.",
+      "say": "This is a big, tough fight. Bring armor, a [sword](item:wooden_sword), a [bow](item:bow), lots of [arrows](item:arrow), food and blocks. Never sleep in a [bed](item:white_bed) in the End, because it explodes.",
       "item": "iron_chestplate"
     },
     {
       "title": "Make eyes of ender",
-      "say": "Craft each eye of ender from 1 blaze powder and 1 ender pearl. Make at least 12, plus a few spares, because some eyes break when you throw them.",
+      "say": "Craft each [eye of ender](item:ender_eye) from 1 [blaze powder](item:blaze_powder) and 1 [ender pearl](item:ender_pearl). Make at least 12, plus a few spares, because some eyes break when you throw them.",
       "item": "ender_eye"
     },
     {
       "title": "Find the stronghold",
-      "say": "Throw an eye of ender and follow it. Pick it up if it drops. When it flies down instead of up, dig down to find the stronghold."
+      "say": "Throw an [eye of ender](item:ender_eye) and follow it. Pick it up if it drops. When it flies down instead of up, dig down to find the [stronghold](place:stronghold)."
     },
     {
       "title": "Open the End portal",
-      "say": "Place an eye in every empty portal frame. When all 12 have eyes, the portal opens. Jump in, then stay away from the edges and don't look at endermen.",
+      "say": "Place an eye in every empty portal frame. When all 12 have eyes, the portal opens. Jump in, then stay away from the edges and don't look at [endermen](mob:enderman).",
       "pattern": [
         "-FFF-",
         "F...F",
@@ -58,17 +57,17 @@
     },
     {
       "title": "Break the crystals",
-      "say": "Shoot the crystals on the towers first, because they heal the dragon. For the 2 in cages, build up, break some bars, then shoot from a few blocks away.",
+      "say": "Shoot the crystals on the towers first, because they heal the dragon. For the 2 in cages, build up, break some [bars](item:iron_bars), then shoot from a few blocks away.",
       "item": "end_crystal"
     },
     {
       "title": "Fight the dragon",
-      "say": "Shoot the dragon with arrows while it flies. When it lands on the portal in the middle, hit it with your sword. Stay out of its breath and purple clouds.",
+      "say": "Shoot the dragon with [arrows](item:arrow) while it flies. When it lands on the portal in the middle, hit it with your [sword](item:wooden_sword). Stay out of its breath and purple clouds.",
       "item": "diamond_sword"
     },
     {
       "title": "Collect the egg",
-      "say": "Hit the egg once and it jumps to the ground nearby. Put a torch 2 blocks under it, then break the block it sits on, so it drops for you.",
+      "say": "Hit the egg once and it jumps to the ground nearby. Put a [torch](item:torch) 2 blocks under it, then break the block it sits on, so it drops for you.",
       "pattern": [
         ".E.",
         "SSS",
@@ -83,7 +82,7 @@
     },
     {
       "title": "Go home",
-      "say": "When the dragon is beaten, the portal in the middle turns on. Jump in to go home. You'll come back at your bed, or where you first started."
+      "say": "When the dragon is beaten, the portal in the middle turns on. Jump in to go home. You'll come back at your [bed](item:white_bed), or where you first started."
     }
   ]
 }

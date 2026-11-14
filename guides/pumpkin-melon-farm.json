@@ -1,0 +1,66 @@
+{
+  "id": "pumpkin-melon-farm",
+  "title": "Make a pumpkin and melon farm",
+  "group": "Farming",
+  "picture": "melon",
+  "askedAs": [
+    "pumpkin farm",
+    "melon farm",
+    "grow pumpkins",
+    "grow melons",
+    "plant pumpkins",
+    "plant melons",
+    "pumpkin seeds",
+    "melon seeds"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Pumpkin_Seeds",
+    "https://minecraft.wiki/w/Melon_Seeds",
+    "https://minecraft.wiki/w/Pumpkin",
+    "https://minecraft.wiki/w/Melon",
+    "https://minecraft.wiki/w/Farmland",
+    "https://minecraft.wiki/w/Stem"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Get seeds",
+      "say": "Craft a [pumpkin](item:pumpkin) into 4 [pumpkin seeds](item:pumpkin_seeds), or a [melon slice](item:melon_slice) into 1 [melon](item:melon) seed. Pumpkins grow wild in grassy places, and melons in [jungles](biome:jungle).",
+      "item": "pumpkin_seeds"
+    },
+    {
+      "title": "Make farmland",
+      "say": "Use a [hoe](item:wooden_hoe) on [dirt](item:dirt) or grass next to water. Seeds grow best with water close by.",
+      "item": "wooden_hoe"
+    },
+    {
+      "title": "Leave room",
+      "say": "Each stem grows its [pumpkin](item:pumpkin) or [melon](item:melon) on an empty block next to it. Leave a strip of plain [dirt](item:dirt) beside every row.",
+      "pattern": [
+        "DDDDD",
+        "SSSSS",
+        "WWWWW",
+        "SSSSS",
+        "DDDDD"
+      ],
+      "key": {
+        "D": "dirt",
+        "S": "pumpkin_seeds",
+        "W": "water"
+      }
+    },
+    {
+      "title": "Plant and wait",
+      "say": "Plant the seeds on the [farmland](item:farmland). The stems grow, then a [pumpkin](item:pumpkin) or [melon](item:melon) pops out next to them."
+    },
+    {
+      "title": "Harvest the fruit",
+      "say": "Break only the [pumpkin](item:pumpkin) or [melon](item:melon), not the stem. The stem grows another one."
+    },
+    {
+      "title": "Use them",
+      "say": "A [melon](item:melon) gives 3 to 7 [melon slices](item:melon_slice) to eat. Use [shears](item:shears) on a [pumpkin](item:pumpkin) to carve a face in it.",
+      "item": "melon_slice"
+    }
+  ]
+}

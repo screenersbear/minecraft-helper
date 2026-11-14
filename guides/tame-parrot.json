@@ -1,0 +1,50 @@
+{
+  "id": "tame-parrot",
+  "title": "Tame a parrot",
+  "group": "Animals",
+  "topic": "mob:parrot",
+  "picture": "wheat_seeds",
+  "askedAs": [
+    "tame a parrot",
+    "get a parrot",
+    "parrot on my shoulder",
+    "tame parrot",
+    "pet parrot"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Parrot",
+    "https://minecraft.wiki/w/Wheat_Seeds",
+    "https://minecraft.wiki/w/Jukebox",
+    "https://minecraft.wiki/w/Cookie"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Find a parrot",
+      "say": "Parrots live in [jungles](biome:jungle). They are red, blue, green, cyan or gray."
+    },
+    {
+      "title": "Bring seeds",
+      "say": "Any seeds work, like [wheat seeds](item:wheat_seeds), [melon seeds](item:melon_seeds) or [pumpkin seeds](item:pumpkin_seeds). Never use [cookies](item:cookie): they kill parrots.",
+      "item": "wheat_seeds"
+    },
+    {
+      "title": "Feed it",
+      "say": "Feed the parrot seeds until hearts show. It can take a few tries.",
+      "item": "wheat_seeds"
+    },
+    {
+      "title": "Shoulder ride",
+      "say": "Walk into your parrot and it hops on your shoulder. You can carry 2, one on each side."
+    },
+    {
+      "title": "Make it sit",
+      "say": "Use your parrot to make it sit and stay. Use it again to let it follow you."
+    },
+    {
+      "title": "Dance party",
+      "say": "Play music on a [jukebox](item:jukebox) near your parrot, and it dances.",
+      "item": "jukebox"
+    }
+  ]
+}

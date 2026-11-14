@@ -1,0 +1,62 @@
+{
+  "id": "brew-potions",
+  "title": "Brew potions",
+  "group": "Magic",
+  "topic": "item:brewing_stand",
+  "picture": "brewing_stand",
+  "askedAs": [
+    "brew potions",
+    "make potions",
+    "make a potion",
+    "brewing",
+    "brewing stand",
+    "potion of healing",
+    "how do i brew"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Brewing",
+    "https://minecraft.wiki/w/Brewing_Stand",
+    "https://minecraft.wiki/w/Nether_Wart",
+    "https://minecraft.wiki/w/Potion",
+    "https://minecraft.wiki/w/Blaze_Powder",
+    "https://minecraft.wiki/w/Glass_Bottle"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Make a brewing stand",
+      "say": "Craft 1 [blaze rod](item:blaze_rod) on top of 3 [cobblestone](item:cobblestone).",
+      "item": "brewing_stand"
+    },
+    {
+      "title": "Add fuel",
+      "say": "Put [blaze powder](item:blaze_powder) in the fuel slot. 1 powder brews 20 times.",
+      "item": "blaze_powder"
+    },
+    {
+      "title": "Fill bottles",
+      "say": "Make [glass bottles](item:glass_bottle) from [glass](item:glass), fill them at water, and put up to 3 in the bottom slots.",
+      "item": "glass_bottle"
+    },
+    {
+      "title": "Add nether wart",
+      "say": "Put [nether wart](item:nether_wart) in the top slot to make awkward [potions](item:potion). Nether wart grows in Nether fortresses.",
+      "item": "nether_wart"
+    },
+    {
+      "title": "Pick a power",
+      "say": "Add one more thing on top: [sugar](item:sugar) for speed, a [golden carrot](item:golden_carrot) for night vision, or a [glistering melon slice](item:glistering_melon_slice) for healing.",
+      "item": "golden_carrot"
+    },
+    {
+      "title": "More potions",
+      "say": "[Magma cream](item:magma_cream) makes fire resistance, a [pufferfish](mob:pufferfish) makes water breathing, and [blaze powder](item:blaze_powder) makes strength.",
+      "item": "magma_cream"
+    },
+    {
+      "title": "Make them better",
+      "say": "[Glowstone dust](item:glowstone_dust) makes a [potion](item:potion) stronger, and redstone makes it last longer. [Gunpowder](item:gunpowder) turns it into a [splash potion](item:splash_potion) you throw.",
+      "item": "glowstone_dust"
+    }
+  ]
+}

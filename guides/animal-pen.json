@@ -1,0 +1,64 @@
+{
+  "id": "animal-pen",
+  "title": "Build an animal pen",
+  "group": "Animals",
+  "picture": "oak_fence",
+  "askedAs": [
+    "build an animal pen",
+    "animal pen",
+    "make a pen",
+    "fence for animals",
+    "animal farm",
+    "keep animals"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Fence",
+    "https://minecraft.wiki/w/Fence_Gate",
+    "https://minecraft.wiki/w/Lead",
+    "https://minecraft.wiki/w/Torch",
+    "https://minecraft.wiki/w/Breeding"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Make fences",
+      "say": "Craft [fences](item:oak_fence) from 4 [planks](item:oak_planks) and 2 [sticks](item:stick). Each craft makes 3 fences.",
+      "item": "oak_fence"
+    },
+    {
+      "title": "Make a gate",
+      "say": "Craft a [fence gate](item:oak_fence_gate) from 4 [sticks](item:stick) and 2 [planks](item:oak_planks).",
+      "item": "oak_fence_gate"
+    },
+    {
+      "title": "Build the square",
+      "say": "Pick a flat grassy spot. Put [fences](item:oak_fence) in a square, and use the gate as one of the sides.",
+      "pattern": [
+        "FFFFF",
+        "F...F",
+        "F...G",
+        "F...F",
+        "FFFFF"
+      ],
+      "key": {
+        "F": "oak_fence",
+        "G": "oak_fence_gate"
+      }
+    },
+    {
+      "title": "Light it up",
+      "say": "Put [torches](item:torch) on the [fence](item:oak_fence) posts so monsters can not spawn inside.",
+      "item": "torch"
+    },
+    {
+      "title": "Bring animals in",
+      "say": "Hold their food and they follow you. Walk them through the gate, then close it behind you.",
+      "item": "wheat"
+    },
+    {
+      "title": "Or use a lead",
+      "say": "Use a [lead](item:lead) on an animal to walk it like a dog. Tie the lead to a [fence](item:oak_fence) post to keep it there.",
+      "item": "lead"
+    }
+  ]
+}

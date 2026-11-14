@@ -1,0 +1,69 @@
+{
+  "id": "food-fast",
+  "title": "Get food fast",
+  "group": "Getting started",
+  "picture": "cooked_beef",
+  "askedAs": [
+    "get food",
+    "find food",
+    "need food",
+    "get food fast",
+    "food fast",
+    "starving",
+    "running out of food",
+    "best food",
+    "what food is best"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Food",
+    "https://minecraft.wiki/w/Hunger",
+    "https://minecraft.wiki/w/Cow",
+    "https://minecraft.wiki/w/Furnace",
+    "https://minecraft.wiki/w/Apple",
+    "https://minecraft.wiki/w/Bread",
+    "https://minecraft.wiki/w/Sweet_Berries",
+    "https://minecraft.wiki/w/Fishing"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Watch your hunger bar",
+      "say": "The drumsticks show your hunger. When they get low you can not sprint, and when they are gone you start losing health."
+    },
+    {
+      "title": "Find animals",
+      "say": "[Cows](mob:cow), [pigs](mob:pig), [sheep](mob:sheep) and [chickens](mob:chicken) drop raw meat. Look for them on grassy land.",
+      "item": "beef"
+    },
+    {
+      "title": "Cook the meat",
+      "say": "Cook raw meat in a [furnace](item:furnace) with [coal](item:coal) or wood as fuel. Cooked meat fills you up much more.",
+      "item": "furnace"
+    },
+    {
+      "title": "Pick apples",
+      "say": "Break the leaves on oak and dark oak trees. Sometimes an [apple](item:apple) drops out.",
+      "item": "apple"
+    },
+    {
+      "title": "Bake bread",
+      "say": "Put 3 wheat in a row at a [crafting table](item:crafting_table) to make [bread](item:bread). [Village](place:village) farms have wheat, [carrots](item:carrot) and [potatoes](item:potato).",
+      "item": "bread"
+    },
+    {
+      "title": "Grab berries",
+      "say": "[Sweet berry bushes](item:sweet_berry_bush) grow in [taigas](biome:taiga). Pick the red berries and eat them right away.",
+      "item": "sweet_berries"
+    },
+    {
+      "title": "Go fishing",
+      "say": "Fish with a [fishing rod](item:fishing_rod) when there are no animals around. Cook [raw cod](item:cod) or [raw salmon](item:salmon) before you eat it.",
+      "item": "fishing_rod"
+    },
+    {
+      "title": "Eat the best food",
+      "say": "[Steak](item:cooked_beef) and cooked porkchops fill 4 drumsticks. [Golden carrots](item:golden_carrot) keep you full the longest.",
+      "item": "golden_carrot"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "id": "find-stronghold",
+  "title": "Find a stronghold",
+  "group": "Finding things",
+  "topic": "place:stronghold",
+  "picture": "ender_eye",
+  "askedAs": [
+    "find a stronghold",
+    "where is the stronghold",
+    "find the end portal",
+    "eyes of ender",
+    "eye of ender",
+    "get to the end",
+    "go to the end",
+    "end portal"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Stronghold",
+    "https://minecraft.wiki/w/Eye_of_Ender",
+    "https://minecraft.wiki/w/Ender_Pearl",
+    "https://minecraft.wiki/w/Blaze_Powder",
+    "https://minecraft.wiki/w/End_Portal_Frame",
+    "https://minecraft.wiki/w/End_Portal"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Get ender pearls",
+      "say": "Defeat [endermen](mob:enderman) to get [ender pearls](item:ender_pearl). You need about 12 or more.",
+      "item": "ender_pearl"
+    },
+    {
+      "title": "Get blaze powder",
+      "say": "Get [blaze rods](item:blaze_rod) from [blazes](mob:blaze) in a [Nether fortress](place:nether_fortress). Each rod makes 2 [blaze powder](item:blaze_powder).",
+      "item": "blaze_powder"
+    },
+    {
+      "title": "Make eyes of ender",
+      "say": "Put 1 [ender pearl](item:ender_pearl) and 1 [blaze powder](item:blaze_powder) together in the crafting grid to make an [eye of ender](item:ender_eye).",
+      "item": "ender_eye"
+    },
+    {
+      "title": "Throw one",
+      "say": "Throw an [eye of ender](item:ender_eye) in the Overworld. It flies toward the nearest stronghold, so walk that way.",
+      "item": "ender_eye"
+    },
+    {
+      "title": "Pick it back up",
+      "say": "Most eyes drop down so you can take them again, but 1 in 5 breaks. Bring extra."
+    },
+    {
+      "title": "Dig down",
+      "say": "When the eye flies down into the ground, the stronghold is under you. Dig down carefully, never straight below your feet."
+    },
+    {
+      "title": "Find the portal room",
+      "say": "Look for a room with a lava pool and steps up to a ring of 12 frame blocks.",
+      "pattern": [
+        "-FFF-",
+        "F...F",
+        "F...F",
+        "F...F",
+        "-FFF-"
+      ],
+      "key": {
+        "F": "end_portal_frame"
+      }
+    },
+    {
+      "title": "Fill the frame",
+      "say": "Put an eye in every frame that needs one. The portal to the End opens, and the [Ender Dragon](mob:ender_dragon) is waiting.",
+      "item": "ender_eye"
+    }
+  ]
+}

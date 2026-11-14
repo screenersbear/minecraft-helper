@@ -1,0 +1,58 @@
+{
+  "id": "breed-animals",
+  "title": "Breed animals",
+  "group": "Animals",
+  "picture": "wheat",
+  "askedAs": [
+    "breed animals",
+    "how do i breed",
+    "make baby animals",
+    "baby animals",
+    "get more animals",
+    "breed cows",
+    "breed sheep",
+    "breed pigs"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Breeding",
+    "https://minecraft.wiki/w/Cow",
+    "https://minecraft.wiki/w/Pig",
+    "https://minecraft.wiki/w/Chicken",
+    "https://minecraft.wiki/w/Sheep",
+    "https://minecraft.wiki/w/Fence"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Find 2 animals",
+      "say": "You need 2 grown-up animals of the same kind, close together."
+    },
+    {
+      "title": "Use their favorite food",
+      "say": "[Cows](mob:cow) and [sheep](mob:sheep) like wheat, [pigs](mob:pig) like [carrots](item:carrot), and [chickens](mob:chicken) like seeds.",
+      "item": "wheat"
+    },
+    {
+      "title": "Feed both",
+      "say": "Feed one animal, then the other. Hearts float up, and they walk to each other.",
+      "item": "wheat"
+    },
+    {
+      "title": "Meet the baby",
+      "say": "A baby animal appears, and you get a little experience."
+    },
+    {
+      "title": "Wait to do it again",
+      "say": "Each parent has to wait 5 minutes before it can breed again."
+    },
+    {
+      "title": "Watch it grow",
+      "say": "Babies grow up in about 20 minutes. Feeding a baby makes it grow faster."
+    },
+    {
+      "title": "Keep them close",
+      "say": "Animals follow you while you hold their food. [Lead](item:lead) them into a fenced pen so they stay.",
+      "item": "oak_fence"
+    }
+  ]
+}

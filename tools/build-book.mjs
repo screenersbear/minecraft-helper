@@ -15,7 +15,8 @@ import { writeAtlas } from './book/atlas.mjs';
 import { buildBiomes, buildEnchants, buildEffects, buildFoods, buildTopics, extraPictures } from './book/extras.mjs';
 import { buildPalette } from './book/palette.mjs';
 import { buildCategories } from './book/categories.mjs';
-import { buildWhere } from './book/where.mjs';
+import { buildFields } from './book/fields.mjs';
+import { linksIn } from '../logic/links.js';
 
 const app = join(dirname(fileURLToPath(import.meta.url)), '..');
 const data = join(app, '.cache/minecraft-data');
@@ -62,6 +63,7 @@ for (const f of readdirSync(guideDir).filter((x) => x.endsWith('.json'))) {
   used.add(g.picture);
   for (const s of g.steps) {
     if (s.item) used.add(s.item);
+    for (const l of linksIn(s.say)) if (l.target.type === 'item') used.add(l.target.id);
     for (const v of Object.values(s.key || {})) used.add(v);
   }
 }
@@ -100,8 +102,9 @@ for (const [id, food] of Object.entries(buildFoods(sources.javaFoods, explain)))
 const palette = buildPalette(pack);
 for (const id of [...extraPictures(biomes, enchants, effects, topics), ...palette.map((p) => p.id)]) if (nameOf(id)) used.add(id);
 
-// 3c. Where to find things (where.json): every mob, plus ores, rare items and structures.
-const found = buildWhere(join(app, 'tools/book/where.json'), nameOf, mobs, guideIds);
+// 3c. Facts in named slots: where to find things (where.json: every mob, ores, rare items, structures), and
+// what mobs eat, taming, breeding, gifts, danger and what items are for (fields.json).
+const found = buildFields(join(app, 'tools/book/where.json'), join(app, 'tools/book/fields.json'), nameOf, mobs, guideIds);
 found.ids.forEach((id) => used.add(id));
 
 // 4. Names and pictures.
@@ -162,7 +165,7 @@ const book = {
   topics,
   palette,
   categories,
-  where: found.where,
+  fields: found.fields,
   places: found.places,
 };
 writeFileSync(join(app, 'data/book.json'), JSON.stringify(book));
@@ -171,6 +174,7 @@ const size = (readFileSync(join(app, 'data/book.json')).length / 1024).toFixed(0
 console.log(`book: ${Object.keys(items).length} things, ${Object.keys(recipes).length} with recipes, ${Object.keys(facts).length} facts, ${Object.keys(mobs).length} mobs, ${size} KB`);
 console.log(`more: ${Object.keys(biomes).length} biomes, ${Object.keys(enchants).length} enchantments, ${Object.keys(effects).length} effects, ${palette.length} pixel art colours`);
 console.log(`book pages: ${Object.entries(categories).map(([k, v]) => `${k} ${v.length}`).join(', ')}`);
-console.log(`where to find: ${Object.keys(found.where.mob).length} mobs, ${Object.keys(found.where.item).length} items, ${Object.keys(found.places).length} places${found.noLine.length ? `; mobs with no line: ${found.noLine.join(', ')}` : ''}${found.problems.length ? `; problems: ${found.problems.join('; ')}` : ''}`);
+const factCount = (type) => Object.values(found.fields[type]).reduce((n, f) => n + Object.keys(f).length, 0);
+console.log(`facts: ${factCount('mob')} about ${Object.keys(found.fields.mob).length} mobs, ${factCount('item')} about ${Object.keys(found.fields.item).length} items, ${Object.keys(found.places).length} places${found.noLine.length ? `; mobs with no line: ${found.noLine.join(', ')}` : ''}${found.problems.length ? `; problems: ${found.problems.join('; ')}` : ''}`);
 console.log(`pictures: ${specs.length} (${atlas.width}x${atlas.height}); no picture: ${noPicture.length}; no name: ${noName.length}`);
 console.log(`left out (not in the released game yet): ${review.unreleased.length}; Bedrock-only crafting: ${review.bedrockOnly.length}; maybe different on Bedrock: ${review.maybeDifferent.length}; details in .cache/build-review.json`);

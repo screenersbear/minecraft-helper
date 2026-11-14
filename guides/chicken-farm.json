@@ -1,0 +1,56 @@
+{
+  "id": "chicken-farm",
+  "title": "Make a chicken and egg farm",
+  "group": "Farming",
+  "topic": "mob:chicken",
+  "picture": "egg",
+  "askedAs": [
+    "chicken farm",
+    "egg farm",
+    "get eggs",
+    "get chickens",
+    "collect eggs",
+    "more chickens",
+    "get feathers"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Chicken",
+    "https://minecraft.wiki/w/Egg",
+    "https://minecraft.wiki/w/Feather",
+    "https://minecraft.wiki/w/Wheat_Seeds",
+    "https://minecraft.wiki/w/Fence"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Find chickens",
+      "say": "Chickens live on grassy land. Hold seeds and they follow you.",
+      "item": "wheat_seeds"
+    },
+    {
+      "title": "Make a pen",
+      "say": "Build a small fenced pen with a gate, and bring the chickens inside.",
+      "item": "oak_fence"
+    },
+    {
+      "title": "Collect eggs",
+      "say": "Every grown-up chicken lays an egg every 5 to 10 minutes. Walk over the eggs to pick them up.",
+      "item": "egg"
+    },
+    {
+      "title": "Throw eggs",
+      "say": "Throw an egg, and 1 time in 8 a chick hatches. Sometimes you even get 4!",
+      "item": "egg"
+    },
+    {
+      "title": "Breed them",
+      "say": "Feed 2 chickens seeds and a chick is born. It grows up in about 20 minutes.",
+      "item": "wheat_seeds"
+    },
+    {
+      "title": "Get the rest",
+      "say": "Chickens drop [feathers](item:feather) and [raw chicken](item:chicken). Cook the chicken first, because raw chicken can make you sick.",
+      "item": "feather"
+    }
+  ]
+}

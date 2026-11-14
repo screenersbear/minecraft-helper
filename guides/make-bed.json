@@ -1,0 +1,67 @@
+{
+  "id": "make-bed",
+  "title": "Make a bed and set your spawn",
+  "group": "Getting started",
+  "topic": "item:white_bed",
+  "picture": "red_bed",
+  "askedAs": [
+    "make a bed",
+    "craft a bed",
+    "set my spawn",
+    "set spawn",
+    "spawn point",
+    "respawn point",
+    "sleep",
+    "skip the night",
+    "how do i sleep"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Bed",
+    "https://minecraft.wiki/w/Wool",
+    "https://minecraft.wiki/w/Sheep",
+    "https://minecraft.wiki/w/Shears",
+    "https://minecraft.wiki/w/Spawn"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Get 3 wool",
+      "say": "Use [shears](item:shears) on a [sheep](mob:sheep), or defeat one, to get [wool](item:white_wool). You need 3 wool of the same color.",
+      "item": "white_wool"
+    },
+    {
+      "title": "Craft the bed",
+      "say": "At a [crafting table](item:crafting_table), put 3 [wool](item:white_wool) across the middle row and 3 [planks](item:oak_planks) under them. Any kind of planks works.",
+      "pattern": [
+        "...",
+        "WWW",
+        "PPP"
+      ],
+      "key": {
+        "W": "white_wool",
+        "P": "oak_planks"
+      }
+    },
+    {
+      "title": "Put it somewhere safe",
+      "say": "Place the bed inside your house, where monsters can not reach it. It takes up 2 blocks.",
+      "item": "white_bed"
+    },
+    {
+      "title": "Set your spawn",
+      "say": "Use the bed, even in the daytime. You see \"Respawn point set\", and you come back here if you die."
+    },
+    {
+      "title": "Sleep at night",
+      "say": "Use the bed at night or in a thunderstorm to sleep and skip to morning. Everyone in the world has to sleep."
+    },
+    {
+      "title": "If you can not sleep",
+      "say": "If it says monsters are nearby, find them and fight them, or block them out. Then try again."
+    },
+    {
+      "title": "Keep your bed safe",
+      "say": "If your bed breaks or gets blocked in, you come back at the world spawn instead. Never sleep in the Nether or the End: beds explode there."
+    }
+  ]
+}

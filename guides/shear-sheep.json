@@ -1,0 +1,59 @@
+{
+  "id": "shear-sheep",
+  "title": "Shear sheep and dye wool",
+  "group": "Animals",
+  "topic": "mob:sheep",
+  "picture": "shears",
+  "askedAs": [
+    "shear sheep",
+    "shear a sheep",
+    "get wool",
+    "dye wool",
+    "dye a sheep",
+    "colored wool",
+    "pink sheep",
+    "make shears"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Sheep",
+    "https://minecraft.wiki/w/Shears",
+    "https://minecraft.wiki/w/Wool",
+    "https://minecraft.wiki/w/Dye"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Make shears",
+      "say": "Put 2 [iron ingots](item:iron_ingot) across from each other, corner to corner, in the crafting grid.",
+      "item": "shears"
+    },
+    {
+      "title": "Shear a sheep",
+      "say": "Use the [shears](item:shears) on a sheep. You get 1 to 3 [wool](item:white_wool) and the sheep is not hurt.",
+      "item": "white_wool"
+    },
+    {
+      "title": "Let it grow back",
+      "say": "The sheep eats grass and its [wool](item:white_wool) grows back. Then you can shear it again."
+    },
+    {
+      "title": "Make dye",
+      "say": "Many flowers make [dye](item:white_dye). A [poppy](item:poppy) makes [red dye](item:red_dye), a [dandelion](item:dandelion) yellow, and a [cornflower](item:cornflower) blue.",
+      "item": "red_dye"
+    },
+    {
+      "title": "Dye the sheep",
+      "say": "Use [dye](item:white_dye) on a sheep and its [wool](item:white_wool) changes color for good. Every shearing gives that color.",
+      "item": "red_dye"
+    },
+    {
+      "title": "Or dye the wool",
+      "say": "Put [wool](item:white_wool) and a [dye](item:white_dye) together in the crafting grid to change its color.",
+      "item": "red_wool"
+    },
+    {
+      "title": "Mix colors",
+      "say": "Breed a red sheep with a white sheep and the lamb can be pink."
+    }
+  ]
+}

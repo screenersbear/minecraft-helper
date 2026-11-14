@@ -1,10 +1,11 @@
 // Find answer: matches a question to the book. Returns the answer to show, or none plus the closest things to offer.
 // It never makes anything up: if nothing in the book fits, the answer is { type: 'none' }.
-import { keyWords } from './words.js';
+import { keyWords, allWords } from './words.js';
 import { wordMatch } from './spelling.js';
 import { questionKind, fitIndex, KIND_WORDS, WEATHER_WORDS } from './understand.js';
 import { isInfo, infoOf } from './info.js';
 import { whereOf } from './where.js';
+import { fieldForKind, fieldOf } from './fields.js';
 
 // The question's words, plus each pair joined ("pick axe" -> pickaxe, "book shelf" -> bookshelf).
 // A match on a joined pair counts a little extra, since it explains two words.
@@ -12,7 +13,7 @@ import { whereOf } from './where.js';
 function questionWords(text, skip = new Set()) {
   const words = keyWords(text).filter((w) => !skip.has(w)).map((w) => ({ w, bonus: 0 }));
   const joined = [];
-  for (let i = 0; i < words.length - 1; i++) joined.push({ w: words[i].w + words[i + 1].w, bonus: 0.5 });
+  for (let i = 0; i < words.length - 1; i++) joined.push({ w: words[i].w + words[i + 1].w, bonus: 0.5, parts: [words[i].w, words[i + 1].w] });
   return [...words, ...joined];
 }
 
@@ -20,15 +21,17 @@ function questionWords(text, skip = new Set()) {
 export function scoreEntry(entry, asked) {
   let matched = 0;
   let quality = 0;
+  let fuzzy = false;
   for (const w of entry.words) {
     const best = Math.max(0, ...asked.map((a) => (wordMatch(a.w, w) ? wordMatch(a.w, w) + a.bonus : 0)));
     if (best) {
       matched += 1;
       quality += best;
+      fuzzy ||= !asked.some((a) => wordMatch(a.w, w) === 1);
     }
   }
   const full = matched === entry.words.length;
-  return { full, matched, score: full ? entry.words.length * 10 + quality : quality };
+  return { full, matched, fuzzy, score: full ? entry.words.length * 10 + quality : quality };
 }
 
 // What a fact needs to answer some kinds of question: "iron golems drop iron ingots" doesn't answer
@@ -54,6 +57,9 @@ export function answerType(target, book, guides, kind = 'any') {
   const where = whereOf(book, target);
   const built = where?.build && (kind === 'make' || kind === 'get');
   if (where && (kind === 'find' || (kind === 'get' && !realRecipe) || built)) return 'where';
+  // One fact in its own slot answers its kind of question: "what do cats eat", "what gifts do cats bring".
+  const field = fieldForKind(kind, target);
+  if (field && field !== 'where' && fieldOf(book, target, field)) return 'field';
   if (target.type === 'mob') return book.mobs[target.id] ? 'mob' : null;
   if (isInfo(target.type)) return infoOf(book, target) ? target.type : null;
   const at = (type) => fitIndex(kind, type);
@@ -76,20 +82,24 @@ const sameTarget = (a, b) => a.type === b.type && a.id === b.id;
 // Order full matches by how well they fit the kind of question, then by score.
 function pick(candidates, kind, guides) {
   const usable = candidates.filter((c) => {
-    if (c.type === 'unpack') return !['tame', 'drops', 'max', 'weather', 'food', 'eats', 'danger', 'does'].includes(kind);
-    if (kind === 'tame') return c.type === 'guide' && isTameGuide(guides, c.target.id);
+    if (c.type === 'unpack') return !['tame', 'breed', 'gifts', 'drops', 'max', 'weather', 'food', 'eats', 'danger', 'does'].includes(kind);
+    // "Ride a boat" is a taming word with no animal: any guide said in full answers it.
+    if (kind === 'tame') return c.type === 'guide' || c.type === 'field';
     return fitIndex(kind, c.type) >= 0;
   });
   if (!usable.length) return null;
   const best = Math.max(...usable.map((c) => c.score));
   // Among the strongest matches, the kind of answer that suits the question wins. Unpacking a block comes last.
-  const top = usable.filter((c) => c.score >= best - 0.5);
+  // A misspelling ("leather" for "feathers") never beats a name said exactly.
+  const close = usable.filter((c) => c.score >= best - 0.5);
+  const exactOnes = close.filter((c) => !c.fuzzy);
+  const top = exactOnes.length ? exactOnes : close;
   const rankOf = (c) => (c.type === 'unpack' ? 99 : fitIndex(kind, c.type));
   return [...top].sort((a, b) => rankOf(a) - rankOf(b) || b.score - a.score)[0];
 }
 
 // Kinds of question where knowing the thing isn't enough: if the book has no answer of that kind, it says so.
-const NEEDS_KIND = new Set(['find', 'get', 'make', 'drops', 'tame', 'mine', 'food', 'eats', 'danger', 'does', 'max', 'weather']);
+const NEEDS_KIND = new Set(['find', 'get', 'make', 'drops', 'tame', 'breed', 'gifts', 'mine', 'food', 'eats', 'danger', 'does', 'max', 'weather']);
 const KNOWN_TYPES = new Set(['mob', 'item', 'place']);
 
 // list: from buildSearchList. Returns { type, target, kind, suggestions }. The type is an answer type, 'none'
@@ -101,17 +111,23 @@ export function findAnswer(question, list, book, guides) {
   const known = [];
   // A match has to come from the question's own words, not only its kind words: "find" alone doesn't make
   // "find a stronghold" a match for "where do I find diamonds", and "tool" isn't a misspelled "wool".
-  const thingWords = asked.filter((a) => !KIND_WORDS.has(a.w));
+  // A question made only of kind words ("how do I get food") can still match a guide whose phrase it says word for
+  // word, if the phrase has at least 2 words ("get food"). One word ("eat") is too little: that's a follow-up.
+  const thingWords = asked.filter((a) => !KIND_WORDS.has(a.w) && !(a.parts && a.parts.every((p) => KIND_WORDS.has(p))));
+  const said = ` ${allWords(question).join(' ')} `;
+  const saysPhrase = (entry) => entry.phrase?.includes(' ') && said.includes(` ${entry.phrase} `);
+  const kindOnly = (entry, s) => !thingWords.length && entry.target.type === 'guide' && s.full && saysPhrase(entry);
   for (const entry of list) {
     const s = scoreEntry(entry, asked);
-    if (!s.matched || !scoreEntry(entry, thingWords).matched) continue;
+    if (!s.matched || !(scoreEntry(entry, thingWords).matched || kindOnly(entry, s))) continue;
     const type = answerType(entry.target, book, guides, kind);
     if (type) scored.push({ ...s, type, target: entry.target, label: entry.label, size: entry.words.length });
     if (s.full && KNOWN_TYPES.has(entry.target.type) && (type || answerType(entry.target, book, guides))) known.push({ ...s, target: entry.target });
   }
   const full = scored.filter((s) => s.full);
   const best = (list2) => [...list2].sort((a, b) => b.score - a.score)[0];
-  const exact = best(full);
+  // The thing said most exactly. A misspelt match ("good food" for "wood") only counts if nothing was said exactly.
+  const exact = best(full.filter((s) => !s.fuzzy)) || best(full);
   // "What do pandas eat": eating, about a mob.
   if (kind === 'food' && exact?.target.type === 'mob') kind = 'eats';
   let chosen = pick(full, kind, guides);
@@ -126,6 +142,7 @@ export function findAnswer(question, list, book, guides) {
     answer = better || { ...chosen, type: 'recipe' };
   }
   const suggestions = suggest(scored, answer, kind, guides);
+  if (answer?.type === 'field') return { type: 'field', target: answer.target, field: fieldForKind(kind, answer.target), kind, suggestions };
   if (answer) return { type: answer.type, target: answer.target, kind, suggestions };
   // It knows the thing, but not this kind of answer yet.
   const thing = NEEDS_KIND.has(kind) && best(known);

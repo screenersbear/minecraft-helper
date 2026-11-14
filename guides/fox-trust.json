@@ -1,0 +1,51 @@
+{
+  "id": "fox-trust",
+  "title": "Get a fox to trust you",
+  "group": "Animals",
+  "topic": "mob:fox",
+  "picture": "sweet_berries",
+  "askedAs": [
+    "tame a fox",
+    "get a fox",
+    "fox trust",
+    "pet fox",
+    "befriend a fox",
+    "make a fox trust me"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Fox",
+    "https://minecraft.wiki/w/Sweet_Berries",
+    "https://minecraft.wiki/w/Glow_Berries",
+    "https://minecraft.wiki/w/Lead"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Find foxes",
+      "say": "Red foxes live in [taigas](biome:taiga). White foxes live in [snowy taigas](biome:snowy_taiga) and [groves](biome:grove)."
+    },
+    {
+      "title": "Get berries",
+      "say": "Pick [sweet berries](item:sweet_berries) from bushes in [taigas](biome:taiga), or [glow berries](item:glow_berries) in [lush caves](biome:lush_caves).",
+      "item": "sweet_berries"
+    },
+    {
+      "title": "Sneak up",
+      "say": "Foxes run from you. Sneak slowly so they stay put. They are easiest to reach while they sleep in the daytime."
+    },
+    {
+      "title": "Feed 2 foxes",
+      "say": "Feed berries to 2 grown-up foxes. Hearts show and a baby fox is born.",
+      "item": "sweet_berries"
+    },
+    {
+      "title": "The baby trusts you",
+      "say": "Grown-up foxes never trust you, but the baby does. It will not run from you."
+    },
+    {
+      "title": "Take it home",
+      "say": "Put a [lead](item:lead) on the baby fox and walk it home. A fox that trusts you attacks mobs that hurt you.",
+      "item": "lead"
+    }
+  ]
+}

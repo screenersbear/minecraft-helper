@@ -1,0 +1,62 @@
+{
+  "id": "deal-with-creepers",
+  "title": "Deal with creepers",
+  "group": "Danger",
+  "topic": "mob:creeper",
+  "picture": "gunpowder",
+  "askedAs": [
+    "deal with creepers",
+    "stop creepers",
+    "creeper blew up",
+    "kill a creeper",
+    "fight a creeper",
+    "creepers keep blowing up my house",
+    "get gunpowder"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Creeper",
+    "https://minecraft.wiki/w/Shield",
+    "https://minecraft.wiki/w/Gunpowder",
+    "https://minecraft.wiki/w/Cat",
+    "https://minecraft.wiki/w/Light"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Listen for the hiss",
+      "say": "A creeper hisses when it gets close. It explodes 1.5 seconds later."
+    },
+    {
+      "title": "Back away",
+      "say": "When you hear the hiss, run away right away. If you get far enough, it stops and does not explode."
+    },
+    {
+      "title": "Hit and step back",
+      "say": "Hit it with a [sword](item:wooden_sword), then step back. Hitting knocks it away, so it can not explode next to you.",
+      "item": "stone_sword"
+    },
+    {
+      "title": "Use a bow",
+      "say": "Shoot creepers from far away with a [bow](item:bow) and [arrows](item:arrow). That is the safest way.",
+      "item": "bow"
+    },
+    {
+      "title": "Block with a shield",
+      "say": "Hold up a [shield](item:shield) to block most of the blast."
+    },
+    {
+      "title": "Get a cat",
+      "say": "Creepers run away from [cats](mob:cat) and [ocelots](mob:ocelot). A cat at home keeps them away."
+    },
+    {
+      "title": "Light up your home",
+      "say": "Creepers spawn in the dark. [Torches](item:torch) around your house stop them spawning there.",
+      "item": "torch"
+    },
+    {
+      "title": "Collect gunpowder",
+      "say": "Creepers drop [gunpowder](item:gunpowder). Use it for [TNT](item:tnt), [firework rockets](item:firework_rocket) and [splash potions](item:splash_potion).",
+      "item": "gunpowder"
+    }
+  ]
+}

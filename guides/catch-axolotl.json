@@ -1,0 +1,52 @@
+{
+  "id": "catch-axolotl",
+  "title": "Catch an axolotl in a bucket",
+  "group": "Animals",
+  "topic": "mob:axolotl",
+  "picture": "water_bucket",
+  "askedAs": [
+    "catch an axolotl",
+    "get an axolotl",
+    "axolotl in a bucket",
+    "bucket of axolotl",
+    "pet axolotl",
+    "find an axolotl"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Axolotl",
+    "https://minecraft.wiki/w/Bucket_of_Aquatic_Mob",
+    "https://minecraft.wiki/w/Lush_Caves",
+    "https://minecraft.wiki/w/Water_Bucket"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Find a lush cave",
+      "say": "Axolotls swim in the water in [lush caves](biome:lush_caves). Look for green moss, glowing berries and an [azalea](item:azalea) tree above."
+    },
+    {
+      "title": "Fill a bucket",
+      "say": "Make a [bucket](item:bucket) from 3 [iron ingots](item:iron_ingot), then fill it with water.",
+      "item": "water_bucket"
+    },
+    {
+      "title": "Scoop it up",
+      "say": "Use the [water bucket](item:water_bucket) on the axolotl. Now it is in your [bucket](item:bucket).",
+      "item": "water_bucket"
+    },
+    {
+      "title": "Bring it home",
+      "say": "Use the [bucket](item:bucket) where you want it to live, like a pond. It needs water, or it dries out.",
+      "item": "water_bucket"
+    },
+    {
+      "title": "Feed it",
+      "say": "Axolotls eat [buckets of tropical fish](item:tropical_fish_bucket). Catch [tropical fish](mob:tropical_fish) the same way, with a [water bucket](item:water_bucket).",
+      "item": "tropical_fish_bucket"
+    },
+    {
+      "title": "Team up",
+      "say": "Axolotls fight [drowned](mob:drowned) and [guardians](mob:guardian) with you. A hurt axolotl plays dead to heal."
+    }
+  ]
+}

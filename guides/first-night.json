@@ -1,0 +1,69 @@
+{
+  "id": "first-night",
+  "title": "Survive your first night",
+  "group": "Getting started",
+  "picture": "torch",
+  "askedAs": [
+    "survive the first night",
+    "first night",
+    "first day",
+    "what do i do first",
+    "how do i start",
+    "survive the night",
+    "just started",
+    "new world",
+    "beginner"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Tutorial:The_first_day/Beginner%27s_guide",
+    "https://minecraft.wiki/w/Log",
+    "https://minecraft.wiki/w/Crafting_Table",
+    "https://minecraft.wiki/w/Wooden_Pickaxe",
+    "https://minecraft.wiki/w/Torch",
+    "https://minecraft.wiki/w/Coal_Ore",
+    "https://minecraft.wiki/w/Bed",
+    "https://minecraft.wiki/w/Light"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Chop some trees",
+      "say": "Hold the attack [button](item:oak_button) on a tree trunk to break it. Collect about 10 [logs](item:oak_log) before the sun goes down.",
+      "item": "oak_log"
+    },
+    {
+      "title": "Make planks and a table",
+      "say": "Turn your [logs](item:oak_log) into [planks](item:oak_planks) in your inventory. Then make a [crafting table](item:crafting_table) from 4 planks and put it down.",
+      "item": "crafting_table"
+    },
+    {
+      "title": "Make a pickaxe",
+      "say": "Make [sticks](item:stick) from 2 [planks](item:oak_planks). A [wooden pickaxe](item:wooden_pickaxe) takes 3 planks and 2 sticks at the [crafting table](item:crafting_table).",
+      "item": "wooden_pickaxe"
+    },
+    {
+      "title": "Get some stone",
+      "say": "Mine [stone](item:stone) with your [pickaxe](item:wooden_pickaxe) to get [cobblestone](item:cobblestone). Make a [stone pickaxe](item:stone_pickaxe) and a [stone sword](item:stone_sword). They are stronger than wood.",
+      "item": "stone_pickaxe"
+    },
+    {
+      "title": "Make torches",
+      "say": "Look for [stone](item:stone) with black spots: that is [coal ore](item:coal_ore). 1 [coal](item:coal) and 1 [stick](item:stick) make 4 [torches](item:torch).",
+      "item": "torch"
+    },
+    {
+      "title": "Build a shelter",
+      "say": "Before dark, dig into a hill or build a small hut. Block the doorway and put [torches](item:torch) inside.",
+      "item": "cobblestone"
+    },
+    {
+      "title": "Stay inside at night",
+      "say": "[Zombies](mob:zombie), [skeletons](mob:skeleton), [spiders](mob:spider) and [creepers](mob:creeper) come out in the dark. Stay inside, mine, and craft until the sun comes up."
+    },
+    {
+      "title": "Make a bed",
+      "say": "Get 3 [wool](item:white_wool) of the same color from [sheep](mob:sheep) and add 3 [planks](item:oak_planks) to make a [bed](item:white_bed). Sleeping skips the night.",
+      "item": "white_bed"
+    }
+  ]
+}

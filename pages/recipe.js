@@ -35,7 +35,8 @@ export function recipePage(ctx, route) {
         })
       : null;
 
-  const footer = answerFooter(ctx, { feedback: { question: route.q, answer: answerLabel('recipe', item.name), target: { type: 'item', id: route.id }, say } });
+  const target = { type: 'item', id: route.id };
+  const footer = answerFooter(ctx, { feedback: { question: route.q, answer: answerLabel('recipe', item.name), target, say }, follow: { topic: target, here: location.hash } });
   const linkFor = (cell) => (cell.split('|')[0] === route.id ? '' : ingredientHash(cell, ctx, `recipe/${route.id}`));
 
   const nodes = [
@@ -53,5 +54,5 @@ export function recipePage(ctx, route) {
       footer.node,
     ),
   ];
-  return { nodes, say, title: item.name, cleanup: footer.stop };
+  return { nodes, say, title: item.name, cleanup: footer.stop, memory: footer.memory };
 }

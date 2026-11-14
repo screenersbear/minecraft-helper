@@ -1,0 +1,58 @@
+{
+  "id": "go-fishing",
+  "title": "Go fishing",
+  "group": "Farming",
+  "topic": "item:fishing_rod",
+  "picture": "fishing_rod",
+  "askedAs": [
+    "go fishing",
+    "how do i fish",
+    "catch fish",
+    "fishing",
+    "use a fishing rod",
+    "get fish"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Fishing",
+    "https://minecraft.wiki/w/Fishing_Rod",
+    "https://minecraft.wiki/w/String",
+    "https://minecraft.wiki/w/Pufferfish",
+    "https://minecraft.wiki/w/Lure",
+    "https://minecraft.wiki/w/Luck_of_the_Sea"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Make a fishing rod",
+      "say": "Craft a fishing rod from 3 [sticks](item:stick) and 2 [string](item:string). [Spiders](mob:spider) drop string.",
+      "item": "fishing_rod"
+    },
+    {
+      "title": "Find water",
+      "say": "Any water works, like a lake, a [river](biome:river) or the [ocean](biome:ocean)."
+    },
+    {
+      "title": "Cast the line",
+      "say": "Use the rod while looking at the water. The bobber lands and floats.",
+      "item": "fishing_rod"
+    },
+    {
+      "title": "Watch for bubbles",
+      "say": "Wait for a little line of bubbles to swim to the bobber. When the bobber dips under, use the rod to reel in."
+    },
+    {
+      "title": "See what you got",
+      "say": "You get fish most of the time, sometimes junk, and sometimes treasure like a [name tag](item:name_tag) or an [enchanted book](item:enchanted_book).",
+      "item": "cod"
+    },
+    {
+      "title": "Do not eat pufferfish",
+      "say": "[Pufferfish](mob:pufferfish) make you sick and poison you. Cook your [raw cod](item:cod) and [raw salmon](item:salmon) instead.",
+      "item": "pufferfish"
+    },
+    {
+      "title": "Fish faster",
+      "say": "Fish bite faster in the rain. Lure and Luck of the Sea enchantments help too."
+    }
+  ]
+}

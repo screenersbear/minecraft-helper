@@ -1,0 +1,51 @@
+{
+  "id": "find-slimes",
+  "title": "Find slimes",
+  "group": "Finding things",
+  "topic": "mob:slime",
+  "picture": "slime_ball",
+  "askedAs": [
+    "find slimes",
+    "where are slimes",
+    "get slimeballs",
+    "slime ball",
+    "slimeballs",
+    "slime chunk",
+    "find a slime"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Slime",
+    "https://minecraft.wiki/w/Slimeball",
+    "https://minecraft.wiki/w/Swamp",
+    "https://minecraft.wiki/w/Frog"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Go to a swamp at night",
+      "say": "Slimes come out in [swamps](biome:swamp) and [mangrove swamps](biome:mangrove_swamp) at night. A full moon brings the most."
+    },
+    {
+      "title": "Or dig down",
+      "say": "Underground, below level 40, slimes appear in some areas called slime chunks, even in the light."
+    },
+    {
+      "title": "Find a slime chunk",
+      "say": "Dig a big room below level 40. If slimes keep showing up there, you found one."
+    },
+    {
+      "title": "Fight them",
+      "say": "Big slimes split into smaller ones. The tiniest ones drop [slimeballs](item:slime_ball).",
+      "item": "slime_ball"
+    },
+    {
+      "title": "Let frogs help",
+      "say": "[Frogs](mob:frog) eat tiny slimes and leave a [slimeball](item:slime_ball) behind."
+    },
+    {
+      "title": "Use the slimeballs",
+      "say": "Make a [lead](item:lead), a [sticky piston](item:sticky_piston), or a [slime block](item:slime_block) that you can bounce on.",
+      "item": "slime_block"
+    }
+  ]
+}

@@ -80,7 +80,7 @@ export function infoPage(type) {
     const how = TYPES[type];
     const name = infoName(book, target);
     const say = how.say(book, route.id, route.kind || questionKind(route.q));
-    const footer = answerFooter(ctx, { feedback: { question: route.q, answer: answerLabel(type, name), target, say } });
+    const footer = answerFooter(ctx, { feedback: { question: route.q, answer: answerLabel(type, name), target, say }, follow: { topic: target, here: location.hash } });
     const tag = how.tag?.(info);
     const nodes = [
       ...topBar({ left: { label: 'Back', href: backHash(route) }, right: how.label }),
@@ -99,6 +99,6 @@ export function infoPage(type) {
         footer.node,
       ),
     ];
-    return { nodes, say, title: name, cleanup: footer.stop };
+    return { nodes, say, title: name, cleanup: footer.stop, memory: footer.memory };
   };
 }

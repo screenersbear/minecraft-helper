@@ -1,0 +1,58 @@
+{
+  "id": "tool-upgrades",
+  "title": "Tool upgrades: wood, stone, iron, diamond",
+  "group": "Getting started",
+  "picture": "iron_pickaxe",
+  "askedAs": [
+    "tool upgrades",
+    "upgrade my tools",
+    "better tools",
+    "best pickaxe",
+    "better pickaxe",
+    "tool order",
+    "stronger tools",
+    "best tools"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Tiers",
+    "https://minecraft.wiki/w/Pickaxe",
+    "https://minecraft.wiki/w/Iron_Ore",
+    "https://minecraft.wiki/w/Diamond",
+    "https://minecraft.wiki/w/Netherite_Ingot",
+    "https://minecraft.wiki/w/Smithing_Table",
+    "https://minecraft.wiki/w/Anvil"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Wood first",
+      "say": "A [wooden pickaxe](item:wooden_pickaxe) is made from [planks](item:oak_planks) and [sticks](item:stick). It mines [stone](item:stone) and [coal ore](item:coal_ore), and breaks fast.",
+      "item": "wooden_pickaxe"
+    },
+    {
+      "title": "Then stone",
+      "say": "Use [cobblestone](item:cobblestone) instead of [planks](item:oak_planks) for a [stone pickaxe](item:stone_pickaxe). It mines [iron ore](item:iron_ore), [copper ore](item:copper_ore) and [lapis lazuli ore](item:lapis_ore).",
+      "item": "stone_pickaxe"
+    },
+    {
+      "title": "Then iron",
+      "say": "Smelt [raw iron](item:raw_iron) in a [furnace](item:furnace) to get [iron ingots](item:iron_ingot). An [iron pickaxe](item:iron_pickaxe) mines [diamond ore](item:diamond_ore), [gold ore](item:gold_ore), [redstone ore](item:redstone_ore) and [emerald ore](item:emerald_ore).",
+      "item": "iron_pickaxe"
+    },
+    {
+      "title": "Then diamond",
+      "say": "A [diamond pickaxe](item:diamond_pickaxe) takes 3 [diamonds](item:diamond) and 2 [sticks](item:stick). It is the only kind that mines [obsidian](item:obsidian) and [ancient debris](item:ancient_debris), besides netherite.",
+      "item": "diamond_pickaxe"
+    },
+    {
+      "title": "Netherite is best",
+      "say": "At a [smithing table](item:smithing_table), add a [netherite ingot](item:netherite_ingot) and a [netherite upgrade template](item:netherite_upgrade_smithing_template) to a [diamond](item:diamond) tool. It turns into netherite.",
+      "item": "netherite_pickaxe"
+    },
+    {
+      "title": "Fix your tools",
+      "say": "Put 2 worn tools of the same kind together in the crafting grid to make one fixed tool. An [anvil](item:anvil) fixes them and keeps their enchantments.",
+      "item": "anvil"
+    }
+  ]
+}

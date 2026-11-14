@@ -1,0 +1,60 @@
+{
+  "id": "end-city-elytra",
+  "title": "Find an End city and get elytra",
+  "group": "Nether and End",
+  "topic": "item:elytra",
+  "picture": "elytra",
+  "askedAs": [
+    "find an end city",
+    "end city",
+    "get elytra",
+    "find elytra",
+    "get wings",
+    "how do i fly",
+    "end ship"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/End_City",
+    "https://minecraft.wiki/w/End_Ship",
+    "https://minecraft.wiki/w/Elytra",
+    "https://minecraft.wiki/w/End_Gateway",
+    "https://minecraft.wiki/w/Shulker",
+    "https://minecraft.wiki/w/Firework_Rocket"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Beat the dragon",
+      "say": "First defeat the [Ender Dragon](mob:ender_dragon). A small gateway portal opens near the edge of the main island."
+    },
+    {
+      "title": "Go through the gateway",
+      "say": "The gateway is a tiny portal floating in bedrock. Throw an [ender pearl](item:ender_pearl) into it to go through.",
+      "item": "ender_pearl"
+    },
+    {
+      "title": "Look for purple towers",
+      "say": "On the outer islands, look for tall purple towers. That is an [End city](place:end_city). Bring blocks to bridge between islands.",
+      "item": "purpur_block"
+    },
+    {
+      "title": "Watch out for shulkers",
+      "say": "[Shulkers](mob:shulker) hide in boxes and shoot bullets that make you float up. Stay close to the ground, so the fall back down is short.",
+      "item": "shulker_shell"
+    },
+    {
+      "title": "Find the ship",
+      "say": "Some [End cities](place:end_city) have a ship floating nearby. The elytra hang in an [item frame](item:item_frame) at the back of the ship."
+    },
+    {
+      "title": "Wear your wings",
+      "say": "Put the elytra on in your [chest](item:chest) armor slot.",
+      "item": "elytra"
+    },
+    {
+      "title": "Fly!",
+      "say": "Jump off something high, then jump again in the air to glide. Use [firework rockets](item:firework_rocket) to fly faster and higher.",
+      "item": "firework_rocket"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 // Guide answer: one step at a time, with a progress bar, a big step number, a picture and Back / Again / Next.
-// Saying "next", "again" or "back" works too, while the guide is open. The small talk button asks something else
-// (the guide stops listening while it's held), and "Did that answer it?" comes after the last step.
+// Saying "next", "again" or "back" works too, while the guide is open. Things the step mentions are links, with Ask
+// next buttons under it. The small talk button asks something else (the guide stops listening while it's held),
+// and "Did that answer it?" comes after the last step.
 import { el } from '../components/el.js';
 import { topBar } from '../components/top-bar.js';
 import { blockButton } from '../components/buttons.js';
@@ -8,6 +9,9 @@ import { feedbackArea } from '../components/feedback-area.js';
 import { askMore } from '../components/ask-more.js';
 import { answerLabel } from '../logic/target-name.js';
 import { stepPicture } from '../components/step-picture.js';
+import { linkedText } from '../components/linked-text.js';
+import { followChips } from '../components/follow-chips.js';
+import { parseTarget } from '../logic/where.js';
 import { guideVoice } from '../speech/guide-voice.js';
 import { stepSentence } from '../logic/say.js';
 import { toHash, parseHash, backHash } from '../logic/routes.js';
@@ -25,6 +29,8 @@ export function guidePage(ctx, route) {
   const n = Math.min(route.step || 1, total);
   const step = guide.steps[n - 1];
   const say = stepSentence(step, n);
+  // What the guide is about ("mob:cat"), so "what do they eat?" after it is about cats.
+  const chips = followChips(ctx, { topic: parseTarget(guide.topic), text: step.say, here: location.hash, guide: guide.id });
   const goStep = (to) => ctx.go(toHash({ page: 'guide', id: guide.id, step: to, q: route.q, from: route.from }), { replace: true });
 
   const bottom = el('div', { class: 'bottom' });
@@ -96,8 +102,9 @@ export function guidePage(ctx, route) {
         el('div', { class: 'step-number', 'aria-hidden': 'true' }, String(n)),
         el('div', {}, el('p', { class: 'small-label' }, `Step ${n} of ${total}`), el('h1', { class: 'step-title', 'data-fit': '3', tabindex: '-1' }, step.title)),
       ),
-      el('p', { class: 'say' }, step.say),
+      linkedText(ctx, step.say),
       stepPicture(ctx.book, step, guide.steps[n]),
+      chips.node,
       bottom,
     ),
   ];
@@ -106,5 +113,5 @@ export function guidePage(ctx, route) {
     const next = parseHash(location.hash);
     if (next.page !== 'guide' || next.id !== guide.id) guideVoice.stop();
   };
-  return { nodes, say, title: guide.title, cleanup };
+  return { nodes, say, title: guide.title, cleanup, memory: chips.memory };
 }

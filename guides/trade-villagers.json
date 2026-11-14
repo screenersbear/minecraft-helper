@@ -1,0 +1,56 @@
+{
+  "id": "trade-villagers",
+  "title": "Trade with villagers",
+  "group": "Villagers",
+  "topic": "place:village",
+  "picture": "emerald",
+  "askedAs": [
+    "trade with villagers",
+    "trade with a villager",
+    "villager trading",
+    "get emeralds",
+    "how do i trade",
+    "villager jobs",
+    "give a villager a job"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Trading",
+    "https://minecraft.wiki/w/Villager",
+    "https://minecraft.wiki/w/Emerald",
+    "https://minecraft.wiki/w/Librarian",
+    "https://minecraft.wiki/w/Lectern"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Find a villager with a job",
+      "say": "Villagers with jobs wear aprons, hats or other work clothes. Ones in plain robes have no job yet."
+    },
+    {
+      "title": "See their trades",
+      "say": "Use a villager to see what they want and what they give."
+    },
+    {
+      "title": "Get emeralds",
+      "say": "[Emeralds](item:emerald) are like money. Sell things villagers want, like wheat, [paper](item:paper) or [coal](item:coal), to get them.",
+      "item": "emerald"
+    },
+    {
+      "title": "Buy things",
+      "say": "Spend your [emeralds](item:emerald) on tools, food, maps, [enchanted books](item:enchanted_book) and more."
+    },
+    {
+      "title": "Unlock more trades",
+      "say": "The more you trade with a villager, the more they level up and the more trades they offer."
+    },
+    {
+      "title": "Give them a job",
+      "say": "Place a job block near a villager with no job. A [lectern](item:lectern) makes a librarian, and a [composter](item:composter) makes a farmer.",
+      "item": "lectern"
+    },
+    {
+      "title": "Keep them safe",
+      "say": "[Zombies](mob:zombie) attack villagers at night. Light up the village and build walls."
+    }
+  ]
+}

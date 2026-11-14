@@ -1,0 +1,60 @@
+{
+  "id": "build-beacon",
+  "title": "Build a beacon",
+  "group": "Magic",
+  "topic": "item:beacon",
+  "picture": "beacon",
+  "askedAs": [
+    "build a beacon",
+    "make a beacon",
+    "beacon",
+    "beacon pyramid",
+    "nether star",
+    "beacon powers"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Beacon",
+    "https://minecraft.wiki/w/Nether_Star",
+    "https://minecraft.wiki/w/Wither",
+    "https://minecraft.wiki/w/Block_of_Iron"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Get a nether star",
+      "say": "Defeating the [Wither](mob:wither) drops a [nether star](item:nether_star). The Wither is a very strong boss, so get help from a grown-up or a friend.",
+      "item": "nether_star"
+    },
+    {
+      "title": "Craft the beacon",
+      "say": "Put the [nether star](item:nether_star) in the middle, 5 [glass](item:glass) around the top, and 3 [obsidian](item:obsidian) along the bottom.",
+      "item": "beacon"
+    },
+    {
+      "title": "Build the base",
+      "say": "Make a 3 by 3 square of 9 [blocks of iron](item:iron_block), gold, [emerald](item:emerald) or [diamond](item:diamond). You can mix them.",
+      "item": "iron_block"
+    },
+    {
+      "title": "Put the beacon on top",
+      "say": "Place the beacon in the middle of the square. Nothing can block the sky above it, except [glass](item:glass).",
+      "pattern": [
+        ".B.",
+        "III"
+      ],
+      "key": {
+        "B": "beacon",
+        "I": "iron_block"
+      }
+    },
+    {
+      "title": "Pick a power",
+      "say": "Open the beacon, pick a power like speed or haste, and pay with an [iron ingot](item:iron_ingot), [gold ingot](item:gold_ingot), [emerald](item:emerald) or [diamond](item:diamond).",
+      "item": "iron_ingot"
+    },
+    {
+      "title": "Make it stronger",
+      "say": "Add bigger layers under it: 5 by 5, then 7 by 7, then 9 by 9. Each one unlocks more powers."
+    }
+  ]
+}

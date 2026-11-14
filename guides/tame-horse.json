@@ -1,0 +1,58 @@
+{
+  "id": "tame-horse",
+  "title": "Tame and ride a horse",
+  "group": "Animals",
+  "topic": "mob:horse",
+  "picture": "saddle",
+  "askedAs": [
+    "tame a horse",
+    "ride a horse",
+    "get a horse",
+    "tame horse",
+    "horse saddle",
+    "tame a donkey",
+    "ride a donkey"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Horse",
+    "https://minecraft.wiki/w/Donkey",
+    "https://minecraft.wiki/w/Saddle",
+    "https://minecraft.wiki/w/Horse_Armor",
+    "https://minecraft.wiki/w/Lead"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Find a horse",
+      "say": "Horses live in [plains](biome:plains) and [savannas](biome:savanna). [Donkeys](mob:donkey) live there too, and in [meadows](biome:meadow)."
+    },
+    {
+      "title": "Climb on",
+      "say": "Use the horse with an empty hand to get on. At first it bucks you off."
+    },
+    {
+      "title": "Try again",
+      "say": "Keep getting back on. Feeding it [apples](item:apple), [sugar](item:sugar) or wheat first helps it calm down faster.",
+      "item": "apple"
+    },
+    {
+      "title": "Look for hearts",
+      "say": "When hearts appear, the horse is yours."
+    },
+    {
+      "title": "Get a saddle",
+      "say": "Craft a [saddle](item:saddle) from 3 [leather](item:leather) and 1 [iron ingot](item:iron_ingot). You can also find them in [chests](item:chest).",
+      "item": "saddle"
+    },
+    {
+      "title": "Saddle up",
+      "say": "Put the [saddle](item:saddle) on, then get on. Now you can steer, and use jump to leap over [fences](item:oak_fence).",
+      "item": "saddle"
+    },
+    {
+      "title": "Keep it safe",
+      "say": "Tie your horse to a [fence](item:oak_fence) with a [lead](item:lead) so it does not wander off. [Horse armor](item:leather_horse_armor) protects it.",
+      "item": "lead"
+    }
+  ]
+}

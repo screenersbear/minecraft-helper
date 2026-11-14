@@ -10,7 +10,7 @@ const SAME = new Set(
     'magma lava water milk end purpur popcorn bread cake stew soup flesh'
   ).split(' '),
 );
-const SPECIAL = { drowned: 'drowned', leaf: 'leaves', wolf: 'wolves', loaf: 'loaves', foot: 'feet', enderman: 'endermen', knife: 'knives', shelf: 'shelves' };
+const SPECIAL = { potato: 'potatoes', drowned: 'drowned', leaf: 'leaves', wolf: 'wolves', loaf: 'loaves', foot: 'feet', enderman: 'endermen', knife: 'knives', shelf: 'shelves' };
 
 function pluralWord(word) {
   if (SPECIAL[word]) return SPECIAL[word];

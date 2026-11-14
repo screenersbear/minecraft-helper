@@ -1,0 +1,59 @@
+{
+  "id": "note-blocks",
+  "title": "Play note blocks",
+  "group": "Redstone",
+  "topic": "item:note_block",
+  "picture": "note_block",
+  "askedAs": [
+    "note blocks",
+    "note block",
+    "make music",
+    "play music",
+    "make a song",
+    "note block song"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Note_Block",
+    "https://minecraft.wiki/w/Redstone_Dust",
+    "https://minecraft.wiki/w/Redstone_Repeater"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Craft a note block",
+      "say": "Put 1 [redstone dust](item:redstone) in the middle with 8 [planks](item:oak_planks) around it.",
+      "item": "note_block"
+    },
+    {
+      "title": "Play a note",
+      "say": "Hit the note block to hear its note. Use it to make the note higher, 25 steps in all.",
+      "item": "note_block"
+    },
+    {
+      "title": "Change the sound",
+      "say": "The block under it changes the sound. Wood plays bass, [stone](item:stone) plays a drum, [sand](item:sand) a snare and [glass](item:glass) a click.",
+      "pattern": [
+        "N",
+        "G"
+      ],
+      "key": {
+        "N": "note_block",
+        "G": "gold_block"
+      }
+    },
+    {
+      "title": "More sounds",
+      "say": "A gold block makes a ringing sound, [wool](item:white_wool) a guitar, [clay](item:clay) a flute and [packed ice](item:packed_ice) chimes. Most other blocks play a piano sound."
+    },
+    {
+      "title": "Play it with redstone",
+      "say": "A [button](item:oak_button), a [lever](item:lever) or [redstone dust](item:redstone) next to the note block plays it.",
+      "item": "stone_button"
+    },
+    {
+      "title": "Make a song",
+      "say": "Line up note blocks with [redstone repeaters](item:repeater) between them. Each repeater adds a short wait.",
+      "item": "repeater"
+    }
+  ]
+}

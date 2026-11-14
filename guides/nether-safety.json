@@ -1,0 +1,61 @@
+{
+  "id": "nether-safety",
+  "title": "Stay safe in the Nether",
+  "group": "Nether and End",
+  "picture": "golden_helmet",
+  "askedAs": [
+    "stay safe in the nether",
+    "nether safety",
+    "survive the nether",
+    "nether tips",
+    "what to bring to the nether",
+    "nether dangers"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/The_Nether",
+    "https://minecraft.wiki/w/Piglin",
+    "https://minecraft.wiki/w/Ghast",
+    "https://minecraft.wiki/w/Golden_Helmet",
+    "https://minecraft.wiki/w/Potion_of_Fire_Resistance",
+    "https://minecraft.wiki/w/Bed"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Pack well",
+      "say": "Bring armor, a [sword](item:wooden_sword), a [bow](item:bow), food, lots of blocks, and your [flint and steel](item:flint_and_steel) to relight the portal.",
+      "item": "flint_and_steel"
+    },
+    {
+      "title": "Wear some gold",
+      "say": "[Piglins](mob:piglin) attack unless you wear at least 1 piece of gold armor. A [golden helmet](item:golden_helmet) is enough.",
+      "item": "golden_helmet"
+    },
+    {
+      "title": "Watch for lava",
+      "say": "Lava is everywhere. Walk carefully, and never dig straight down below your feet."
+    },
+    {
+      "title": "Do not sleep",
+      "say": "[Beds](item:white_bed) explode in the Nether. Water from a [bucket](item:bucket) disappears too."
+    },
+    {
+      "title": "Fight ghasts",
+      "say": "[Ghasts](mob:ghast) shoot fireballs. Hit a fireball to send it back, or hide behind [cobblestone](item:cobblestone): it can not break it.",
+      "item": "cobblestone"
+    },
+    {
+      "title": "Leave them alone",
+      "say": "[Zombified piglins](mob:zombified_piglin) are calm until you hit one. Then the whole group comes after you."
+    },
+    {
+      "title": "Bring fire resistance",
+      "say": "A [potion](item:potion) of fire resistance keeps you safe in lava and fire for a few minutes.",
+      "item": "potion"
+    },
+    {
+      "title": "Find your way back",
+      "say": "Write down the coordinates of your portal before you explore."
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "id": "light-up-area",
+  "title": "Light up an area so mobs don't spawn",
+  "group": "Building",
+  "topic": "item:torch",
+  "picture": "torch",
+  "askedAs": [
+    "light up an area",
+    "stop mobs spawning",
+    "stop monsters spawning",
+    "keep mobs away",
+    "mob proof",
+    "where do torches go",
+    "how many torches"
+  ],
+  "wiki": [
+    "https://minecraft.wiki/w/Light",
+    "https://minecraft.wiki/w/Spawn",
+    "https://minecraft.wiki/w/Torch",
+    "https://minecraft.wiki/w/Lantern",
+    "https://minecraft.wiki/w/Glowstone",
+    "https://minecraft.wiki/w/Mushroom_Fields"
+  ],
+  "checked": "2026-11-14",
+  "steps": [
+    {
+      "title": "Monsters need dark",
+      "say": "[Zombies](mob:zombie), [skeletons](mob:skeleton), [creepers](mob:creeper) and [spiders](mob:spider) only spawn where it is really dark. Any light from a torch stops them."
+    },
+    {
+      "title": "Make lots of torches",
+      "say": "Each [coal](item:coal) and [stick](item:stick) makes 4 torches. [Charcoal](item:charcoal) from burning [logs](item:oak_log) works too.",
+      "item": "torch"
+    },
+    {
+      "title": "Spread them out",
+      "say": "Put a torch about every 10 blocks, all over the area. Do not leave dark patches between them.",
+      "item": "torch"
+    },
+    {
+      "title": "Light caves as you go",
+      "say": "In caves, put torches on your right as you walk in. On the way out, keep them on your left.",
+      "item": "torch"
+    },
+    {
+      "title": "Brighter lights",
+      "say": "[Lanterns](item:lantern), [glowstone](item:glowstone) and [sea lanterns](item:sea_lantern) give even more light, and look nice in a house.",
+      "item": "lantern"
+    },
+    {
+      "title": "A safe place",
+      "say": "In [mushroom fields](biome:mushroom_fields), monsters do not spawn on the land, even in the dark."
+    }
+  ]
+}

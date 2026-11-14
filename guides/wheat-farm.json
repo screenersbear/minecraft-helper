@@ -1,6 +1,8 @@
 {
   "id": "wheat-farm",
   "title": "Make a wheat farm",
+  "group": "Farming",
+  "topic": "item:wheat",
   "picture": "wheat",
   "askedAs": [
     "make a farm",
@@ -32,44 +34,62 @@
   "steps": [
     {
       "title": "Make a hoe",
-      "say": "Make a wooden hoe at a crafting table with 2 planks and 2 sticks. A stone or iron hoe works too.",
+      "say": "Make a [wooden hoe](item:wooden_hoe) at a [crafting table](item:crafting_table) with 2 [planks](item:oak_planks) and 2 [sticks](item:stick). A [stone](item:stone) or [iron hoe](item:iron_hoe) works too.",
       "item": "wooden_hoe"
     },
     {
       "title": "Collect wheat seeds",
-      "say": "Break grass to find wheat seeds. Only some grass drops a seed, so keep going until you have a handful.",
+      "say": "Break grass to find [wheat seeds](item:wheat_seeds). Only some grass drops a seed, so keep going until you have a handful.",
       "item": "wheat_seeds"
     },
     {
       "title": "Add the water",
-      "say": "Pick a flat grassy spot and dig 1 hole in the middle. Fill a bucket at a lake or river and pour the water in.",
-      "pattern": ["GGGGG", "GGGGG", "GGWGG", "GGGGG", "GGGGG"],
-      "key": { "G": "grass_block", "W": "water" }
+      "say": "Pick a flat grassy spot and dig 1 hole in the middle. Fill a [bucket](item:bucket) at a lake or [river](biome:river) and pour the water in.",
+      "pattern": [
+        "GGGGG",
+        "GGGGG",
+        "GGWGG",
+        "GGGGG",
+        "GGGGG"
+      ],
+      "key": {
+        "G": "grass_block",
+        "W": "water"
+      }
     },
     {
       "title": "Hoe the ground",
-      "say": "Use your hoe on the ground all around the water to make farmland. Water keeps farmland wet up to 4 blocks away in every direction.",
-      "pattern": ["FFFFF", "FFFFF", "FFWFF", "FFFFF", "FFFFF"],
-      "key": { "F": "farmland", "W": "water" }
+      "say": "Use your [hoe](item:wooden_hoe) on the ground all around the water to make [farmland](item:farmland). Water keeps farmland wet up to 4 blocks away in every direction.",
+      "pattern": [
+        "FFFFF",
+        "FFFFF",
+        "FFWFF",
+        "FFFFF",
+        "FFFFF"
+      ],
+      "key": {
+        "F": "farmland",
+        "W": "water"
+      }
     },
     {
       "title": "Plant the seeds",
-      "say": "Place 1 seed on each farmland block. Walk on your farm but never jump, because jumping on farmland turns it back into dirt.",
+      "say": "Place 1 seed on each [farmland](item:farmland) block. Walk on your farm but never jump, because jumping on farmland turns it back into [dirt](item:dirt).",
       "item": "wheat_seeds"
     },
     {
       "title": "Protect your farm",
-      "say": "Build a fence with a gate around your farm to keep mobs from trampling it. Put torches on the fence posts so monsters don't spawn nearby.",
+      "say": "Build a [fence](item:oak_fence) with a gate around your farm to keep mobs from trampling it. Put [torches](item:torch) on the fence posts so monsters don't spawn nearby.",
       "item": "oak_fence"
     },
     {
       "title": "Speed it up",
-      "say": "Wheat takes time to grow. Use bone meal on a wheat plant to help it grow faster. You can make bone meal from a bone.",
+      "say": "Wheat takes time to grow. Use [bone meal](item:bone_meal) on a wheat plant to help it grow faster. You can make bone meal from a [bone](item:bone).",
       "item": "bone_meal"
     },
     {
       "title": "Harvest and replant",
-      "say": "When the wheat turns brown, break it to get wheat and usually some seeds. Plant seeds back in each spot. 3 wheat make 1 bread!",
+      "say": "When the wheat turns brown, break it to get wheat and usually some seeds. Plant seeds back in each spot. 3 wheat make 1 [bread](item:bread)!",
       "item": "wheat"
     }
   ]

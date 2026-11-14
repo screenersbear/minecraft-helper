@@ -4,8 +4,8 @@
   "type": "module",
   "description": "Ask the guide: a voice-first Minecraft (Bedrock) helper that works offline.",
   "scripts": {
-    "build": "node tools/build-book.mjs && node tools/join-guides.mjs && node tools/make-icons.mjs && node tools/stamp-sw.mjs",
-    "build:guides": "node tools/join-guides.mjs && node tools/stamp-sw.mjs",
+    "build": "node tools/build-book.mjs && node tools/join-guides.mjs && node tools/check-links.mjs && node tools/make-icons.mjs && node tools/stamp-sw.mjs",
+    "build:guides": "node tools/join-guides.mjs && node tools/check-links.mjs && node tools/stamp-sw.mjs",
     "fetch-sources": "node tools/fetch-sources.mjs",
     "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "vitest run --coverage --config vitest.config.mjs",

@@ -12,7 +12,6 @@ import { mobPlural } from '../logic/plural.js';
 import { questionKind } from '../logic/understand.js';
 import { toHash, backHash } from '../logic/routes.js';
 import { answerLabel } from '../logic/target-name.js';
-import { targetKey } from '../logic/where.js';
 
 function whereRows(book, fact) {
   const blocks = (fact.fromBlocks || []).map((b) => ({
@@ -48,9 +47,8 @@ export function factPage(ctx, route) {
   const small = (label, href) => blockButton({ label, tone: 'grey', href, extra: { class: 'block-btn notch tone-grey small-btn' } });
   const more = [
     canMake ? small('How to make it', toHash({ page: 'recipe', id: route.id, q: route.q, from: route.from })) : null,
-    book.where?.item?.[route.id] ? small('Where to find it', toHash({ page: 'where', id: targetKey(target), q: route.q, from: route.from })) : null,
   ].filter(Boolean);
-  const footer = answerFooter(ctx, { feedback: { question: route.q, answer: answerLabel('fact', item.name), target, say } });
+  const footer = answerFooter(ctx, { feedback: { question: route.q, answer: answerLabel('fact', item.name), target, say }, follow: { topic: target, here: location.hash } });
 
   const nodes = [
     ...topBar({ left: { label: 'Back', href: backHash(route) }, right: LABEL[kind] || (fact.food && !fact.fromBlocks && !fact.fromMobs ? 'Food' : 'Facts') }),
@@ -67,5 +65,5 @@ export function factPage(ctx, route) {
       footer.node,
     ),
   ];
-  return { nodes, say, title: item.name, cleanup: footer.stop };
+  return { nodes, say, title: item.name, cleanup: footer.stop, memory: footer.memory };
 }

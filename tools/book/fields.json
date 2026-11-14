@@ -1,0 +1,220 @@
+{
+  "_how": "Facts in named slots, for follow-ups like 'what do cats eat?' or 'what gifts?'. Fields: eats (what you feed it), tame, breed, gifts, dangerous (for mobs), uses (what an item is for). Where to find things is in where.json. One or two short sentences each, written for Bedrock and checked against the Minecraft Wiki (the page is in 'wiki'). Every mention of a thing is a link: [words](item:id), [words](mob:id), [words](place:id), [words](guide:id), or [words](mob:id#field) for one of its facts. 'also': other ids that get the same line. 'guide': a guide to offer with it. The build checks every link and fails if a mention has none (tools/check-links.mjs).",
+  "mobs": {
+    "cat": {
+      "eats": { "say": "Cats eat [raw cod](item:cod) and [raw salmon](item:salmon). Feeding a tamed cat heals it.", "wiki": "https://minecraft.wiki/w/Cat" },
+      "tame": { "say": "Find a stray cat in a [village](place:village). Hold [raw cod](item:cod) or [raw salmon](item:salmon), stand still, and feed it when it comes close.", "guide": "tame-cat", "wiki": "https://minecraft.wiki/w/Cat" },
+      "breed": { "say": "Feed 2 tamed cats [raw cod](item:cod) or [raw salmon](item:salmon), and a kitten is born.", "wiki": "https://minecraft.wiki/w/Cat" },
+      "gifts": { "say": "A tamed cat that sleeps on your [bed](item:white_bed) may leave a gift when you wake up: a [rabbit's foot](item:rabbit_foot), [rabbit hide](item:rabbit_hide), [string](item:string), a [feather](item:feather), [raw chicken](item:chicken), [rotten flesh](item:rotten_flesh) or a [phantom membrane](item:phantom_membrane).", "wiki": "https://minecraft.wiki/w/Cat" },
+      "dangerous": { "say": "Cats are friendly. [Creepers](mob:creeper) run away from cats, and [phantoms](mob:phantom) stay away too.", "wiki": "https://minecraft.wiki/w/Creeper" }
+    },
+    "ocelot": {
+      "eats": { "say": "Ocelots eat [raw cod](item:cod) and [raw salmon](item:salmon).", "wiki": "https://minecraft.wiki/w/Ocelot" },
+      "tame": { "say": "Ocelots can't be tamed, but they can learn to trust you. Hold [raw cod](item:cod) or [raw salmon](item:salmon), stand still, and feed it when it comes close.", "wiki": "https://minecraft.wiki/w/Ocelot" },
+      "breed": { "say": "Feed 2 ocelots [raw cod](item:cod) or [raw salmon](item:salmon), and a baby is born.", "wiki": "https://minecraft.wiki/w/Ocelot" },
+      "dangerous": { "say": "Ocelots run from you, but they hunt [chickens](mob:chicken). [Creepers](mob:creeper) run away from them.", "wiki": "https://minecraft.wiki/w/Ocelot" }
+    },
+    "wolf": {
+      "eats": { "say": "Tamed wolves eat meat, raw or cooked, like [raw beef](item:beef), [raw chicken](item:chicken), [raw porkchop](item:porkchop), [raw mutton](item:mutton) and [raw rabbit](item:rabbit). [Rotten flesh](item:rotten_flesh) is fine too.", "wiki": "https://minecraft.wiki/w/Wolf" },
+      "tame": { "say": "Feed a wild wolf [bones](item:bone) until hearts show and it gets a red collar. It can take a few bones.", "guide": "tame-wolf", "wiki": "https://minecraft.wiki/w/Wolf" },
+      "breed": { "say": "Feed 2 tamed wolves at full health any meat, and a puppy is born.", "wiki": "https://minecraft.wiki/w/Wolf" },
+      "dangerous": { "say": "Wild wolves leave you alone unless you hit one. Then the whole pack attacks. A tamed wolf fights for you.", "wiki": "https://minecraft.wiki/w/Wolf" }
+    },
+    "horse": {
+      "eats": { "say": "Horses eat [sugar](item:sugar), [wheat](item:wheat), [apples](item:apple), [carrots](item:carrot), [hay bales](item:hay_block), [golden carrots](item:golden_carrot) and [golden apples](item:golden_apple).", "also": ["donkey", "mule"], "wiki": "https://minecraft.wiki/w/Horse" },
+      "tame": { "say": "Get on with an empty hand again and again until hearts show. Feeding it first helps it calm down faster.", "guide": "tame-horse", "also": ["donkey", "mule"], "wiki": "https://minecraft.wiki/w/Horse" },
+      "breed": { "say": "Feed 2 tamed horses [golden carrots](item:golden_carrot) or [golden apples](item:golden_apple). A horse and a [donkey](mob:donkey) make a [mule](mob:mule).", "also": ["donkey"], "guide": "breed-animals", "wiki": "https://minecraft.wiki/w/Horse" }
+    },
+    "mule": {
+      "breed": { "say": "Mules can't have babies. You get a mule by breeding a [horse](mob:horse) with a [donkey](mob:donkey).", "wiki": "https://minecraft.wiki/w/Mule" }
+    },
+    "llama": {
+      "eats": { "say": "Llamas eat [wheat](item:wheat) and [hay bales](item:hay_block).", "also": ["trader_llama"], "wiki": "https://minecraft.wiki/w/Llama" },
+      "tame": { "say": "Get on with an empty hand again and again until hearts show. Then it can carry a [chest](item:chest).", "wiki": "https://minecraft.wiki/w/Llama" },
+      "breed": { "say": "Feed 2 tamed llamas [hay bales](item:hay_block), and a baby is born.", "wiki": "https://minecraft.wiki/w/Llama" },
+      "dangerous": { "say": "Llamas spit at [wolves](mob:wolf), and at you if you hit one. The spit only hurts a little.", "wiki": "https://minecraft.wiki/w/Llama" }
+    },
+    "camel": {
+      "eats": { "say": "Camels eat [cactus](item:cactus).", "wiki": "https://minecraft.wiki/w/Camel" },
+      "tame": { "say": "Camels don't need taming. Put a [saddle](item:saddle) on one and ride it. 2 players can ride together.", "wiki": "https://minecraft.wiki/w/Camel" },
+      "breed": { "say": "Feed 2 camels [cactus](item:cactus), and a baby is born.", "wiki": "https://minecraft.wiki/w/Camel" }
+    },
+    "cow": {
+      "eats": { "say": "Cows eat [wheat](item:wheat).", "wiki": "https://minecraft.wiki/w/Cow" },
+      "breed": { "say": "Feed 2 cows [wheat](item:wheat), and a calf is born.", "guide": "breed-animals", "wiki": "https://minecraft.wiki/w/Cow" }
+    },
+    "mooshroom": {
+      "eats": { "say": "Mooshrooms eat [wheat](item:wheat).", "wiki": "https://minecraft.wiki/w/Mooshroom" },
+      "breed": { "say": "Feed 2 mooshrooms [wheat](item:wheat), and a calf is born.", "wiki": "https://minecraft.wiki/w/Mooshroom" }
+    },
+    "sheep": {
+      "eats": { "say": "Sheep eat [wheat](item:wheat). They also eat grass to grow their [wool](item:white_wool) back.", "wiki": "https://minecraft.wiki/w/Sheep" },
+      "breed": { "say": "Feed 2 sheep [wheat](item:wheat), and a lamb is born. Its [wool](item:white_wool) mixes the colours of its parents when it can.", "guide": "breed-animals", "wiki": "https://minecraft.wiki/w/Sheep" }
+    },
+    "goat": {
+      "eats": { "say": "Goats eat [wheat](item:wheat).", "wiki": "https://minecraft.wiki/w/Goat" },
+      "breed": { "say": "Feed 2 goats [wheat](item:wheat), and a kid is born.", "wiki": "https://minecraft.wiki/w/Goat" },
+      "dangerous": { "say": "Goats sometimes run at you and knock you back, even off a cliff.", "wiki": "https://minecraft.wiki/w/Goat" }
+    },
+    "pig": {
+      "eats": { "say": "Pigs eat [carrots](item:carrot), [potatoes](item:potato) and [beetroots](item:beetroot).", "wiki": "https://minecraft.wiki/w/Pig" },
+      "tame": { "say": "Pigs don't need taming. Put a [saddle](item:saddle) on one and steer it with a [carrot on a stick](item:carrot_on_a_stick).", "wiki": "https://minecraft.wiki/w/Pig" },
+      "breed": { "say": "Feed 2 pigs [carrots](item:carrot), [potatoes](item:potato) or [beetroots](item:beetroot), and a piglet is born.", "guide": "breed-animals", "wiki": "https://minecraft.wiki/w/Pig" }
+    },
+    "chicken": {
+      "eats": { "say": "Chickens eat seeds: [wheat seeds](item:wheat_seeds), [melon seeds](item:melon_seeds), [pumpkin seeds](item:pumpkin_seeds), [beetroot seeds](item:beetroot_seeds) and [torchflower seeds](item:torchflower_seeds).", "wiki": "https://minecraft.wiki/w/Chicken" },
+      "breed": { "say": "Feed 2 chickens seeds, and a chick is born. Throwing an [egg](item:egg) sometimes hatches a chick too.", "guide": "chicken-farm", "wiki": "https://minecraft.wiki/w/Chicken" }
+    },
+    "rabbit": {
+      "eats": { "say": "Rabbits eat [dandelions](item:dandelion), [carrots](item:carrot) and [golden carrots](item:golden_carrot).", "wiki": "https://minecraft.wiki/w/Rabbit" },
+      "breed": { "say": "Feed 2 rabbits [dandelions](item:dandelion), [carrots](item:carrot) or [golden carrots](item:golden_carrot), and a baby is born.", "wiki": "https://minecraft.wiki/w/Rabbit" }
+    },
+    "turtle": {
+      "eats": { "say": "Turtles eat [seagrass](item:seagrass).", "wiki": "https://minecraft.wiki/w/Turtle" },
+      "breed": { "say": "Feed 2 turtles [seagrass](item:seagrass). One swims back to the [beach](biome:beach) where it hatched and lays [eggs](item:turtle_egg) in the [sand](item:sand).", "wiki": "https://minecraft.wiki/w/Turtle" }
+    },
+    "panda": {
+      "eats": { "say": "Pandas eat [bamboo](item:bamboo) and [cake](item:cake).", "wiki": "https://minecraft.wiki/w/Panda" },
+      "breed": { "say": "Feed 2 pandas [bamboo](item:bamboo). There must be at least 8 bamboo plants within 5 blocks of them.", "wiki": "https://minecraft.wiki/w/Panda" }
+    },
+    "fox": {
+      "eats": { "say": "Foxes eat [sweet berries](item:sweet_berries) and [glow berries](item:glow_berries).", "wiki": "https://minecraft.wiki/w/Fox" },
+      "tame": { "say": "A grown fox never trusts you. Breed 2 foxes, and the baby trusts you.", "guide": "fox-trust", "wiki": "https://minecraft.wiki/w/Fox" },
+      "breed": { "say": "Sneak up slowly and feed 2 foxes [sweet berries](item:sweet_berries) or [glow berries](item:glow_berries), and a kit is born.", "guide": "fox-trust", "wiki": "https://minecraft.wiki/w/Fox" },
+      "dangerous": { "say": "Foxes run from you, but they hunt [chickens](mob:chicken), [rabbits](mob:rabbit) and fish.", "wiki": "https://minecraft.wiki/w/Fox" }
+    },
+    "parrot": {
+      "eats": { "say": "Parrots eat seeds, like [wheat seeds](item:wheat_seeds) and [melon seeds](item:melon_seeds). Never give a parrot a [cookie](item:cookie): it's poison to them.", "wiki": "https://minecraft.wiki/w/Parrot" },
+      "tame": { "say": "Give a parrot seeds until hearts show. Then it can ride on your shoulder.", "guide": "tame-parrot", "wiki": "https://minecraft.wiki/w/Parrot" },
+      "breed": { "say": "Parrots can't have babies.", "wiki": "https://minecraft.wiki/w/Parrot" }
+    },
+    "bee": {
+      "eats": { "say": "Bees drink from flowers. Hold a flower, like a [dandelion](item:dandelion) or a [poppy](item:poppy), and they follow you.", "wiki": "https://minecraft.wiki/w/Bee" },
+      "breed": { "say": "Feed 2 bees any flower, like a [dandelion](item:dandelion) or a [poppy](item:poppy), and a baby bee is born.", "guide": "keep-bees", "wiki": "https://minecraft.wiki/w/Bee" },
+      "dangerous": { "say": "Bees sting if you hit one, or take honey without a [campfire](item:campfire) under the nest. A sting can poison you.", "guide": "keep-bees", "wiki": "https://minecraft.wiki/w/Bee" }
+    },
+    "strider": {
+      "eats": { "say": "Striders eat [warped fungus](item:warped_fungus).", "wiki": "https://minecraft.wiki/w/Strider" },
+      "tame": { "say": "Striders don't need taming. Put a [saddle](item:saddle) on one and steer it across lava with a [warped fungus on a stick](item:warped_fungus_on_a_stick).", "wiki": "https://minecraft.wiki/w/Strider" },
+      "breed": { "say": "Feed 2 striders [warped fungus](item:warped_fungus), and a baby is born.", "wiki": "https://minecraft.wiki/w/Strider" }
+    },
+    "hoglin": {
+      "eats": { "say": "Hoglins eat [crimson fungus](item:crimson_fungus).", "wiki": "https://minecraft.wiki/w/Hoglin" },
+      "breed": { "say": "Feed 2 hoglins [crimson fungus](item:crimson_fungus), and a baby is born.", "wiki": "https://minecraft.wiki/w/Hoglin" },
+      "dangerous": { "say": "Hoglins attack and hit hard. They're scared of [warped fungus](item:warped_fungus).", "wiki": "https://minecraft.wiki/w/Hoglin" }
+    },
+    "frog": {
+      "eats": { "say": "Frogs eat small [slimes](mob:slime) and small [magma cubes](mob:magma_cube).", "wiki": "https://minecraft.wiki/w/Frog" },
+      "breed": { "say": "Feed 2 frogs [slimeballs](item:slime_ball). One lays frogspawn in water, and [tadpoles](mob:tadpole) hatch from it.", "wiki": "https://minecraft.wiki/w/Frog" }
+    },
+    "axolotl": {
+      "eats": { "say": "Axolotls eat [buckets of tropical fish](item:tropical_fish_bucket).", "wiki": "https://minecraft.wiki/w/Axolotl" },
+      "tame": { "say": "Axolotls can't be tamed, but you can carry one in a [water bucket](item:water_bucket).", "guide": "catch-axolotl", "wiki": "https://minecraft.wiki/w/Axolotl" },
+      "breed": { "say": "Feed 2 axolotls a [bucket of tropical fish](item:tropical_fish_bucket) each, and a baby is born.", "wiki": "https://minecraft.wiki/w/Axolotl" },
+      "dangerous": { "say": "Axolotls are friendly to you. They fight [drowned](mob:drowned) and [guardians](mob:guardian), so they help you underwater.", "wiki": "https://minecraft.wiki/w/Axolotl" }
+    },
+    "sniffer": {
+      "eats": { "say": "Sniffers eat [torchflower seeds](item:torchflower_seeds).", "wiki": "https://minecraft.wiki/w/Sniffer" },
+      "breed": { "say": "Feed 2 sniffers [torchflower seeds](item:torchflower_seeds). One lays a [sniffer egg](item:sniffer_egg).", "wiki": "https://minecraft.wiki/w/Sniffer" }
+    },
+    "armadillo": {
+      "eats": { "say": "Armadillos eat [spider eyes](item:spider_eye).", "wiki": "https://minecraft.wiki/w/Armadillo" },
+      "breed": { "say": "Feed 2 armadillos [spider eyes](item:spider_eye), and a baby is born.", "wiki": "https://minecraft.wiki/w/Armadillo" }
+    },
+    "dolphin": {
+      "eats": { "say": "Dolphins eat [raw cod](item:cod) and [raw salmon](item:salmon).", "wiki": "https://minecraft.wiki/w/Dolphin" }
+    },
+    "creeper": {
+      "dangerous": { "say": "Creepers sneak up and explode. Run when one hisses. They're scared of [cats](mob:cat) and [ocelots](mob:ocelot).", "guide": "deal-with-creepers", "wiki": "https://minecraft.wiki/w/Creeper" }
+    },
+    "enderman": {
+      "dangerous": { "say": "Endermen leave you alone unless you look at their face or hit one. Water hurts them.", "wiki": "https://minecraft.wiki/w/Enderman" }
+    },
+    "zombified_piglin": {
+      "dangerous": { "say": "Zombified piglins leave you alone unless you hit one. Then the whole group attacks.", "wiki": "https://minecraft.wiki/w/Zombified_Piglin" }
+    },
+    "piglin": {
+      "dangerous": { "say": "Piglins attack you unless you wear at least 1 piece of gold armor, like a [golden helmet](item:golden_helmet).", "guide": "nether-safety", "wiki": "https://minecraft.wiki/w/Piglin" }
+    },
+    "warden": {
+      "dangerous": { "say": "The warden is the strongest mob. It can't see, so it finds you by sound. Sneak, and stay away.", "wiki": "https://minecraft.wiki/w/Warden" }
+    },
+    "ghast": {
+      "dangerous": { "say": "Ghasts float in the Nether and shoot fireballs. Hit a fireball to send it back.", "guide": "nether-safety", "wiki": "https://minecraft.wiki/w/Ghast" }
+    },
+    "phantom": {
+      "dangerous": { "say": "Phantoms swoop at you at night when you haven't slept for 3 days. Sleep in a [bed](item:white_bed) to stop them.", "wiki": "https://minecraft.wiki/w/Phantom" }
+    },
+    "zombie": {
+      "dangerous": { "say": "Zombies attack at night. Sunlight burns them, unless they wear a [helmet](item:iron_helmet).", "guide": "first-night", "wiki": "https://minecraft.wiki/w/Zombie" }
+    },
+    "skeleton": {
+      "dangerous": { "say": "Skeletons shoot [arrows](item:arrow) at you. Hide behind blocks or block with a [shield](item:shield). Sunlight burns them.", "guide": "first-night", "wiki": "https://minecraft.wiki/w/Skeleton" }
+    },
+    "spider": {
+      "dangerous": { "say": "Spiders attack in the dark. In daylight, they leave you alone unless you hit one.", "guide": "first-night", "wiki": "https://minecraft.wiki/w/Spider" }
+    },
+    "witch": {
+      "dangerous": { "say": "Witches throw [potions](item:potion) that poison you and slow you down.", "wiki": "https://minecraft.wiki/w/Witch" }
+    },
+    "slime": {
+      "dangerous": { "say": "Big slimes hurt. Each one splits into smaller slimes when it dies. The tiniest ones can't hurt you.", "wiki": "https://minecraft.wiki/w/Slime" }
+    },
+    "drowned": {
+      "dangerous": { "say": "Drowned attack from the water. Some throw [tridents](item:trident).", "wiki": "https://minecraft.wiki/w/Drowned" }
+    },
+    "iron_golem": {
+      "dangerous": { "say": "Iron golems guard [villages](place:village). They attack you only if you hit a villager or the golem.", "wiki": "https://minecraft.wiki/w/Iron_Golem" }
+    },
+    "polar_bear": {
+      "dangerous": { "say": "Polar bears attack if you hit one or get close to a cub.", "wiki": "https://minecraft.wiki/w/Polar_Bear" }
+    },
+    "pufferfish": {
+      "dangerous": { "say": "Pufferfish puff up and poison you if you swim too close.", "wiki": "https://minecraft.wiki/w/Pufferfish" }
+    },
+    "creaking": {
+      "dangerous": { "say": "The creaking only moves when you're not looking at it. You can't hurt it: break its [creaking heart](item:creaking_heart) to stop it.", "wiki": "https://minecraft.wiki/w/Creaking" }
+    },
+    "zombie_villager": {
+      "dangerous": { "say": "Zombie villagers attack like [zombies](mob:zombie), but you can cure them.", "guide": "cure-zombie-villager", "wiki": "https://minecraft.wiki/w/Zombie_Villager" }
+    }
+  },
+  "items": {
+    "compass": { "uses": { "say": "A compass points to the world's spawn, where you first started. Follow it to find your way back.", "wiki": "https://minecraft.wiki/w/Compass" } },
+    "recovery_compass": { "uses": { "say": "A recovery compass points to where you last died, so you can find your things.", "guide": "when-you-die", "wiki": "https://minecraft.wiki/w/Recovery_Compass" } },
+    "clock": { "uses": { "say": "A clock shows if it's day or night, even underground.", "wiki": "https://minecraft.wiki/w/Clock" } },
+    "map": { "uses": { "say": "Use an empty map and it draws the land around you. It fills in as you walk.", "guide": "make-map", "wiki": "https://minecraft.wiki/w/Map" } },
+    "spyglass": { "uses": { "say": "A spyglass lets you zoom in to see things far away.", "wiki": "https://minecraft.wiki/w/Spyglass" } },
+    "lead": { "uses": { "say": "A lead ties to an animal so you can walk it, or tie it to a [fence](item:oak_fence).", "wiki": "https://minecraft.wiki/w/Lead" } },
+    "name_tag": { "uses": { "say": "A name tag gives a mob a name. Write the name on an [anvil](item:anvil) first. Named mobs never vanish.", "guide": "use-anvil", "wiki": "https://minecraft.wiki/w/Name_Tag" } },
+    "saddle": { "uses": { "say": "A saddle lets you ride a [horse](mob:horse), [donkey](mob:donkey), [mule](mob:mule), [pig](mob:pig), [strider](mob:strider) or [camel](mob:camel).", "wiki": "https://minecraft.wiki/w/Saddle" } },
+    "totem_of_undying": { "uses": { "say": "Hold a totem of undying in your hand, and it saves you once from dying.", "wiki": "https://minecraft.wiki/w/Totem_of_Undying" } },
+    "elytra": { "uses": { "say": "Elytra are wings. Wear them, jump off something high, then jump again to glide. [Firework rockets](item:firework_rocket) make you fly faster.", "guide": "end-city-elytra", "wiki": "https://minecraft.wiki/w/Elytra" } },
+    "trident": { "uses": { "say": "A trident is a weapon you can stab with or throw. You only get one from a [drowned](mob:drowned).", "wiki": "https://minecraft.wiki/w/Trident" } },
+    "shield": { "uses": { "say": "Hold a shield in your other hand and sneak to block [arrows](item:arrow), hits and [creeper](mob:creeper) blasts.", "wiki": "https://minecraft.wiki/w/Shield" } },
+    "bucket": { "uses": { "say": "A bucket carries water, lava or milk. It can also catch fish or an [axolotl](mob:axolotl) in water.", "wiki": "https://minecraft.wiki/w/Bucket" } },
+    "milk_bucket": { "uses": { "say": "Drinking milk takes away all effects, like poison.", "wiki": "https://minecraft.wiki/w/Milk_Bucket" } },
+    "bone_meal": { "uses": { "say": "Bone meal makes crops, [saplings](item:oak_sapling) and flowers grow right away.", "wiki": "https://minecraft.wiki/w/Bone_Meal" } },
+    "ender_pearl": { "uses": { "say": "Throw an ender pearl, and you teleport to where it lands. It hurts a little.", "wiki": "https://minecraft.wiki/w/Ender_Pearl" } },
+    "ender_eye": { "uses": { "say": "Throw an eye of ender, and it flies toward the nearest [stronghold](place:stronghold). Eyes also fill the End portal there.", "guide": "find-stronghold", "wiki": "https://minecraft.wiki/w/Eye_of_Ender" } },
+    "flint_and_steel": { "uses": { "say": "Flint and steel starts fires and lights a [Nether portal](guide:nether-portal).", "wiki": "https://minecraft.wiki/w/Flint_and_Steel" } },
+    "shears": { "uses": { "say": "Shears cut the [wool](item:white_wool) off [sheep](mob:sheep) without hurting them. They also cut leaves, [vines](item:vine) and [cobwebs](item:cobweb).", "guide": "shear-sheep", "wiki": "https://minecraft.wiki/w/Shears" } },
+    "fishing_rod": { "uses": { "say": "Cast a fishing rod into water to catch fish, and sometimes treasure.", "guide": "go-fishing", "wiki": "https://minecraft.wiki/w/Fishing_Rod" } },
+    "brush": { "uses": { "say": "Use a brush on [suspicious sand](item:suspicious_sand) or [suspicious gravel](item:suspicious_gravel) to dig out old treasures.", "wiki": "https://minecraft.wiki/w/Brush" } },
+    "white_bed": { "uses": { "say": "Sleep in a bed to skip the night. It also sets where you come back after dying.", "guide": "make-bed", "also": ["orange_bed", "magenta_bed", "light_blue_bed", "yellow_bed", "lime_bed", "pink_bed", "gray_bed", "light_gray_bed", "cyan_bed", "purple_bed", "blue_bed", "brown_bed", "green_bed", "red_bed", "black_bed"], "wiki": "https://minecraft.wiki/w/Bed" } },
+    "torch": { "uses": { "say": "Torches light up dark places, so monsters can't spawn there.", "guide": "light-up-area", "wiki": "https://minecraft.wiki/w/Torch" } },
+    "anvil": { "uses": { "say": "An anvil fixes and names things, and adds [enchanted books](item:enchanted_book) to your gear. It costs XP.", "guide": "use-anvil", "wiki": "https://minecraft.wiki/w/Anvil" } },
+    "beacon": { "uses": { "say": "A beacon on top of a pyramid of iron, gold, [emerald](item:emerald) or [diamond](item:diamond) blocks gives you powers nearby, like speed.", "guide": "build-beacon", "wiki": "https://minecraft.wiki/w/Beacon" } },
+    "brewing_stand": { "uses": { "say": "A brewing stand makes [potions](item:potion). It runs on [blaze powder](item:blaze_powder).", "guide": "brew-potions", "wiki": "https://minecraft.wiki/w/Brewing_Stand" } },
+    "note_block": { "uses": { "say": "A note block plays a note when you hit it or power it. Use it to change the note.", "guide": "note-blocks", "wiki": "https://minecraft.wiki/w/Note_Block" } },
+    "redstone_lamp": { "uses": { "say": "A redstone lamp lights up when it gets power, like from a [lever](item:lever).", "guide": "lever-and-lamp", "wiki": "https://minecraft.wiki/w/Redstone_Lamp" } },
+    "lever": { "uses": { "say": "A lever turns redstone power on and off.", "guide": "lever-and-lamp", "wiki": "https://minecraft.wiki/w/Lever" } },
+    "golden_apple": { "uses": { "say": "A golden apple heals you fast and gives you extra hearts for a while. It also helps cure a [zombie villager](mob:zombie_villager).", "guide": "cure-zombie-villager", "wiki": "https://minecraft.wiki/w/Golden_Apple" } },
+    "carrot_on_a_stick": { "uses": { "say": "Hold it while riding a [pig](mob:pig) with a [saddle](item:saddle) to steer.", "wiki": "https://minecraft.wiki/w/Carrot_on_a_Stick" } },
+    "warped_fungus_on_a_stick": { "uses": { "say": "Hold it while riding a [strider](mob:strider) with a [saddle](item:saddle) to steer.", "wiki": "https://minecraft.wiki/w/Warped_Fungus_on_a_Stick" } },
+    "glass_bottle": { "uses": { "say": "Fill a glass bottle with water to start a [potion](item:potion), or with honey from a full [beehive](item:beehive).", "guide": "brew-potions", "wiki": "https://minecraft.wiki/w/Glass_Bottle" } },
+    "honey_bottle": { "uses": { "say": "Drinking honey takes away poison and fills a little hunger.", "guide": "keep-bees", "wiki": "https://minecraft.wiki/w/Honey_Bottle" } },
+    "campfire": { "uses": { "say": "A campfire cooks food. Under a [bee nest](item:bee_nest) or [beehive](item:beehive), its smoke keeps [bees](mob:bee) calm.", "guide": "keep-bees", "wiki": "https://minecraft.wiki/w/Campfire" } },
+    "rail": { "uses": { "say": "Rails make a track for a [minecart](item:minecart). [Powered rails](item:powered_rail) speed it up.", "guide": "minecart-track", "wiki": "https://minecraft.wiki/w/Rail" } }
+  }
+}
