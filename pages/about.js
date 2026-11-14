@@ -19,7 +19,7 @@ export function aboutPage(ctx) {
       ),
       section(
         'Pictures',
-        el('p', {}, 'Item, block and mob pictures are from ', link('https://github.com/Athemis/PixelPerfectionCE', 'Pixel Perfection CE'), ' by XSSheep and contributors, shared under ', link('https://creativecommons.org/licenses/by-sa/4.0/', 'CC BY-SA 4.0'), '. Pictures of newer things are from ', link('https://codeberg.org/mineclonia/mineclonia', 'Mineclonia'), ' by XSSheep, Nova Wostra and Mineclonia contributors, based on Pixel Perfection, under the same license (a few under CC BY-SA 3.0). Some were cropped or recoloured for this app, and those are shared under the same license.'),
+        el('p', {}, 'Item, block and mob pictures are from ', link('https://github.com/Athemis/PixelPerfectionCE', 'Pixel Perfection CE'), ' by XSSheep and contributors, shared under ', link('https://creativecommons.org/licenses/by-sa/4.0/', 'CC BY-SA 4.0'), '. Pictures of newer things are from ', link('https://codeberg.org/mineclonia/mineclonia', 'Mineclonia'), ' by XSSheep, Nova Wostra and Mineclonia contributors, based on Pixel Perfection, under the same license (a few under CC BY-SA 3.0). Some mob pictures are mob icons from Mineclonia, made by 22i. Some were cropped or recoloured for this app, and those are shared under the same license.'),
       ),
       section(
         'Recipes and facts',

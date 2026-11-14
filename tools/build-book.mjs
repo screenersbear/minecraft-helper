@@ -128,7 +128,7 @@ for (const id of [...used].sort()) {
 }
 for (const [id, mob] of Object.entries(mobs)) {
   const face = FACES[id];
-  const file = face && join(pack, 'assets/minecraft/textures', face.file);
+  const file = face && (face.mineclonia ? join(app, '.cache/mineclonia/mods/ENTITIES/mobs_mc/textures', face.mineclonia) : join(pack, 'assets/minecraft/textures', face.file));
   mob.pic = face && existsSync(file) ? pictureIndex({ ...face, file }) : -1;
 }
 
