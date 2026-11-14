@@ -7,7 +7,8 @@ import { blockButton } from '../components/buttons.js';
 import { itemPicture } from '../components/picture.js';
 import { layerView } from '../components/layer-view.js';
 import { guideVoice } from '../speech/guide-voice.js';
-import { findBuild, layerCounts, countWords, pictureId, layerSentence } from '../logic/builds.js';
+import { layerCounts, countWords, pictureId, layerSentence } from '../logic/builds.js';
+import { remixedBuild } from '../data/remixes.js';
 import { parseCommand } from '../logic/commands.js';
 import { toHash, parseHash } from '../logic/routes.js';
 
@@ -17,7 +18,7 @@ const HINT = 'Say "next", "again" or "back"';
 const upArrow = () => el('span', { class: 'front-arrow', 'aria-hidden': 'true' });
 
 export function buildLayerPage(ctx, route) {
-  const build = findBuild(ctx.builds.builds, route.id);
+  const build = remixedBuild(ctx, route.id);
   if (!build) return null;
   const { book } = ctx;
   const total = build.layers.length;

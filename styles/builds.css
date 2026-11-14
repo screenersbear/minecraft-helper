@@ -248,3 +248,46 @@
 .book-sub + .thing-grid {
   padding: 4px 0 0;
 }
+
+/* Remix: the buttons on a build's cover, and the tag saying it's remixed */
+.remix-tag {
+  margin-top: 6px;
+  display: inline-block;
+  padding: 1px 6px;
+  background: var(--tip);
+  border: 2px solid var(--tip-edge);
+  color: var(--tip-text);
+  font-size: 13px;
+}
+
+.remix-panel {
+  margin: 14px 0 6px;
+  padding: 10px 12px 12px;
+}
+
+.remix-label {
+  margin: 8px 0 6px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--panel-text);
+}
+
+.remix-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -3px;
+}
+
+.remix-row .block-btn {
+  width: auto;
+  flex: 0 0 auto;
+  margin: 3px;
+  min-height: 40px;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+.remix-panel > .block-btn {
+  margin-top: 12px;
+  width: 100%;
+}

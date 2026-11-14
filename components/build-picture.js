@@ -59,7 +59,8 @@ export function buildPicture(build, looks, { w, h, label }) {
     ...(label === '' ? { 'aria-hidden': 'true' } : { role: 'img', 'aria-label': label || `The finished ${build.name.toLowerCase()}` }),
     style: { width: `${width / dense}px`, height: `${height / dense}px` },
   });
-  const key = `${build.id}:${width}x${height}`;
+  // A remixed build (see logic/remix.js) looks different, so it gets its own picture.
+  const key = `${build.id}${build.variant ? `~${build.variant}` : ''}:${width}x${height}`;
   const paint = (pic) => canvas.getContext('2d')?.putImageData(new ImageData(pic.data, pic.width, pic.height), 0, 0);
   if (drawn.has(key)) paint(drawn.get(key));
   else {

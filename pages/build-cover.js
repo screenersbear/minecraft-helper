@@ -1,16 +1,21 @@
 // A build's cover (#/build/<id>): the finished build in 3D, how big it is, and every block it needs, most first.
-// Start building goes to layer 1. Saying "next" starts it too.
+// Start building goes to layer 1. Saying "next" starts it too. Remix opens buttons to build it in another wood or a
+// block palette, or flipped; the picture, the block list and the layers all follow.
 import { el } from '../components/el.js';
 import { topBar } from '../components/top-bar.js';
 import { blockButton, speakerButton } from '../components/buttons.js';
 import { itemPicture } from '../components/picture.js';
 import { buildPicture } from '../components/build-picture.js';
 import { guideVoice } from '../speech/guide-voice.js';
+import { remixPanel } from '../components/remix-panel.js';
 import { findBuild, buildCounts, countWords, pictureId, coverSentence, sizeText } from '../logic/builds.js';
+import { remixOf, setRemix, remixedBuild } from '../data/remixes.js';
 import { parseCommand } from '../logic/commands.js';
 import { toHash, parseHash, backHash } from '../logic/routes.js';
 
 const HINT = 'Say "next" to start';
+// The build whose Remix buttons are open, so they stay open while you try remixes.
+let remixing = null;
 
 // Where Back goes: the page it was opened from, or Ask after a question, or the Builds page.
 // Where Back goes from a build: where it was opened from, or its list (Builds, or Finish it for a starter).
@@ -28,8 +33,18 @@ export function buildTags(build) {
 }
 
 export function buildCoverPage(ctx, route) {
-  const build = findBuild(ctx.builds.builds, route.id);
-  if (!build) return null;
+  const original = findBuild(ctx.builds.builds, route.id);
+  if (!original) return null;
+  const build = remixedBuild(ctx, route.id);
+  const changeRemix = (remix) => {
+    setRemix(build.id, remix);
+    ctx.refresh();
+  };
+  const panel = remixing === build.id ? remixPanel(build, original, ctx.builds.blocks, remixOf(build.id), changeRemix) : null;
+  const toggleRemix = () => {
+    remixing = remixing === build.id ? null : build.id;
+    ctx.refresh();
+  };
   const { book } = ctx;
   const say = coverSentence(book, build);
   const start = toHash({ page: 'build', id: build.id, step: 1, from: route.from });
@@ -62,10 +77,22 @@ export function buildCoverPage(ctx, route) {
       el('div', { class: 'build-hero' }, buildPicture(build, ctx.builds.blocks, { w: 300, h: 200 })),
       el('div', { class: 'title-row' }, el('h1', { class: 'answer-title', 'data-fit': '2', tabindex: '-1' }, build.name), speakerButton(actions.again)),
       el('p', { class: 'build-meta' }, buildTags(build), el('span', {}, sizeText(build))),
+      build.variant ? el('p', { class: 'remix-tag' }, `Remixed: ${build.variant}`) : null,
       el('p', { class: 'say' }, build.about),
+      panel,
       el('h2', { class: 'small-label' }, 'Blocks you need, most first'),
       el('ul', { class: 'need-grid' }, needs),
-      el('div', { class: 'bottom' }, hint, blockButton({ label: 'Start building', tone: 'green', href: start })),
+      el(
+        'div',
+        { class: 'bottom' },
+        hint,
+        el(
+          'div',
+          { class: 'two-up' },
+          blockButton({ label: panel ? 'Close remix' : 'Remix', tone: 'grey', onClick: toggleRemix, extra: { 'aria-expanded': String(!!panel) } }),
+          blockButton({ label: 'Start building', tone: 'green', href: start }),
+        ),
+      ),
     ),
   ];
   const cleanup = () => {

@@ -9,6 +9,7 @@ import { checkBuild } from '../logic/build-check.js';
 import { DIFFICULTIES, buildCounts } from '../logic/builds.js';
 import { looks, addLook, hasLook, writeAtlas } from './builds/atlas.mjs';
 import { readTricks } from './builds/tricks.mjs';
+import { remixIds } from '../logic/remix.js';
 
 const app = fileURLToPath(new URL('..', import.meta.url));
 const SOURCE = join(app, 'builds');
@@ -47,6 +48,8 @@ const pixel = Object.entries(JSON.parse(readFileSync(join(SOURCE, 'pixel-art.jso
 });
 
 const trickList = readTricks(join(app, 'tricks'));
+// Remix can swap in other woods and the palettes' blocks, so their pictures go in too.
+for (const id of remixIds()) if (known(id)) addLook(id);
 problems.push(...trickList.problems);
 
 if (problems.length) {

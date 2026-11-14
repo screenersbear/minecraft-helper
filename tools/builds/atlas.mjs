@@ -1,6 +1,7 @@
 // Block pictures for the builds and the builder tricks: cuts each picture a block needs from Pixel Perfection CE
-// once, and writes them all as one image, images/build-blocks.png (16 by 16 pixels each, 16 to a row). Each block's
-// look (its shape and which pictures go on its top, sides and front) comes from looks.mjs.
+// (or Mineclonia, for the few it doesn't have) once, and writes them all as one image, images/build-blocks.png (16
+// by 16 pixels each, 16 to a row). Each block's look (its shape and which pictures go on its top, sides and front)
+// comes from looks.mjs.
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
@@ -9,12 +10,27 @@ import { lookFor, TINTS } from './looks.mjs';
 
 const app = fileURLToPath(new URL('../..', import.meta.url));
 const TEX = join(app, '.cache/ppce/assets/minecraft/textures/block');
+const MCL = join(app, '.cache/mineclonia/mods/ITEMS');
 const COLUMNS = 16;
+
+// Pictures Pixel Perfection CE doesn't have (cherry wood is newer than it), from Mineclonia instead.
+const CHERRY = 'mcl_cherry_blossom/textures/mcl_cherry_blossom';
+const MINECLONIA = {
+  cherry_planks: `${CHERRY}_planks`,
+  cherry_log: `${CHERRY}_log`,
+  cherry_log_top: `${CHERRY}_log_top`,
+  cherry_leaves: `${CHERRY}_leaves`,
+  cherry_trapdoor: `${CHERRY}_trapdoor`,
+  cherry_door_top: `${CHERRY}_door_top`,
+  cherry_door_bottom: `${CHERRY}_door_bottom`,
+  moss_block: 'mcl_lush_caves/textures/mcl_lush_caves_moss_block',
+};
+const fileOf = (name) => (MINECLONIA[name] ? join(MCL, `${MINECLONIA[name]}.png`) : join(TEX, `${name}.png`));
 
 // The first 16 by 16 picture of a block (moving pictures, like water, are a strip of them), tinted if the game
 // colours it in.
 function picture(name) {
-  const png = PNG.sync.read(readFileSync(join(TEX, `${name}.png`)));
+  const png = PNG.sync.read(readFileSync(fileOf(name)));
   const out = Buffer.alloc(16 * 16 * 4);
   const step = png.width / 16;
   const tint = TINTS[name];
@@ -55,7 +71,7 @@ function pane(name) {
   return out;
 }
 
-export const has = (name) => existsSync(join(TEX, `${name}.png`));
+export const has = (name) => existsSync(fileOf(name));
 const tiles = [];
 const tileOf = new Map();
 function tile(spec, look) {
