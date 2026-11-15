@@ -10,7 +10,7 @@ export function finishPage(ctx) {
   return {
     title: 'Finish it',
     nodes: [
-      ...topBar({ left: { label: 'Make', href: '#/make' }, right: 'Finish it' }),
+      ...topBar({ back: '#/make', right: 'Finish it' }, ctx),
       el(
         'div',
         { class: 'page make' },

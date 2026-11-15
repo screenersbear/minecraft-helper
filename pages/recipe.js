@@ -40,7 +40,7 @@ export function recipePage(ctx, route) {
   const linkFor = (cell) => (cell.split('|')[0] === route.id ? '' : ingredientHash(cell, ctx, `recipe/${route.id}`));
 
   const nodes = [
-    ...topBar({ left: { label: 'Back', href: backHash(route) }, right: WHERE[recipe.how] }),
+    ...topBar({ back: backHash(route), right: WHERE[recipe.how] }, ctx),
     el(
       'div',
       { class: 'page answer' },

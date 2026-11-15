@@ -16,7 +16,7 @@ export function tricksPage(ctx) {
   return {
     title: 'Builder tricks',
     nodes: [
-      ...topBar({ left: { label: 'Make', href: '#/make' }, right: 'Builder tricks' }),
+      ...topBar({ back: '#/make', right: 'Builder tricks' }, ctx),
       el(
         'div',
         { class: 'page make tricks' },

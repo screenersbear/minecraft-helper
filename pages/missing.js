@@ -27,7 +27,7 @@ export function missingPage(ctx, route) {
   const footer = answerFooter(ctx, { follow: { topic: target, text: known, here: location.hash } });
 
   const nodes = [
-    ...topBar({ left: { label: 'Back', href: backHash(route) }, right: 'Not yet' }),
+    ...topBar({ back: backHash(route), right: 'Not yet' }, ctx),
     el(
       'div',
       { class: 'page answer missing' },

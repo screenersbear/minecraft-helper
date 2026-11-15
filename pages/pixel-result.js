@@ -134,7 +134,7 @@ export function pixelResultPage(ctx, route) {
   }, 'Delete it');
 
   const nodes = [
-    ...topBar({ left: { label: 'Back', href: '#/pixel' }, right: 'Pixel art' }),
+    ...topBar({ back: '#/pixel', right: 'Pixel art' }, ctx),
     el(
       'div',
       { class: 'page pixel-result' },

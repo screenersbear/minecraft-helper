@@ -43,7 +43,7 @@ export function bookPage(ctx, route) {
     return el('a', { class: 'thing-tile', href }, el('span', { class: 'slot' }, picture), el('span', { class: 'thing-name' }, name));
   });
   const nodes = [
-    ...topBar({ left: { label: 'Back', href: '#/book' }, right: 'The book' }),
+    ...topBar({ back: '#/book', right: 'The book' }, ctx),
     el(
       'div',
       { class: 'page book-page' },

@@ -31,7 +31,7 @@ export function chapterPage(ctx, route) {
   return {
     title: chapter.name,
     nodes: [
-      ...topBar({ left: { label: 'Guides', href: '#/guides' }, right: 'Guides' }),
+      ...topBar({ back: '#/guides', right: 'Guides' }, ctx),
       el(
         'div',
         { class: 'page chapter-page' },

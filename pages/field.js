@@ -49,7 +49,7 @@ export function fieldPage(ctx, route) {
   const heading = field === 'where' ? (kind === 'make' || kind === 'get' ? 'How to get it' : 'Where to find') : FIELD_LABEL[field];
 
   const nodes = [
-    ...topBar({ left: { label: 'Back', href: backHash(route) }, right: heading }),
+    ...topBar({ back: backHash(route), right: heading }, ctx),
     el(
       'div',
       { class: 'page answer' },

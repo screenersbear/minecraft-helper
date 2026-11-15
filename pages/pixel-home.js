@@ -8,7 +8,7 @@ export function pixelHomePage(ctx) {
   return {
     title: 'Pixel art',
     nodes: [
-      ...topBar({ left: { label: 'Make', href: '#/make' }, right: 'Pixel art' }),
+      ...topBar({ back: '#/make', right: 'Pixel art' }, ctx),
       el(
         'div',
         { class: 'page make' },

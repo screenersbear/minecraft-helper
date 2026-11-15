@@ -83,7 +83,7 @@ export function infoPage(type) {
     const footer = answerFooter(ctx, { feedback: { question: route.q, answer: answerLabel(type, name), target, say }, follow: { topic: target, here: location.hash } });
     const tag = how.tag?.(info);
     const nodes = [
-      ...topBar({ left: { label: 'Back', href: backHash(route) }, right: how.label }),
+      ...topBar({ back: backHash(route), right: how.label }, ctx),
       el(
         'div',
         { class: 'page answer' },

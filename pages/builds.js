@@ -18,7 +18,7 @@ export function buildsPage(ctx) {
   return {
     title: 'Builds',
     nodes: [
-      ...topBar({ left: { label: 'Make', href: '#/make' }, right: 'Builds' }),
+      ...topBar({ back: '#/make', right: 'Builds' }, ctx),
       el(
         'div',
         { class: 'page make' },

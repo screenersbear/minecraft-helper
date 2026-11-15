@@ -52,7 +52,7 @@ export function addonAnswerPage(ctx, route) {
   const allAbout = blockButton({ label: `All about ${pack.name}`, tone: 'grey', href: addonHome(pack), extra: { class: 'block-btn tone-grey small-btn' } });
 
   const nodes = [
-    ...topBar({ left: { label: 'Back', href: backHash(route) }, right: pack.name }),
+    ...topBar({ back: backHash(route), right: pack.name }, ctx),
     el(
       'div',
       { class: 'page answer addon-answer' },

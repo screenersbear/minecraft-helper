@@ -43,7 +43,7 @@ function noPhoto() {
 
 export function pixelCropPage(ctx) {
   const file = getPhoto('pixel');
-  const bar = topBar({ left: { label: 'Back', href: '#/pixel' }, right: 'Pixel art' });
+  const bar = topBar({ back: '#/pixel', right: 'Pixel art' }, ctx);
   if (!file) return { nodes: [...bar, noPhoto()], title: 'Pixel art' };
 
   const stage = el('div', { class: 'crop-stage' }, el('p', { class: 'loading' }, 'Opening the photo...'));

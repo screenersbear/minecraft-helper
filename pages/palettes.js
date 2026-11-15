@@ -18,7 +18,7 @@ export function palettesPage(ctx) {
   return {
     title: 'Block palettes',
     nodes: [
-      ...topBar({ left: { label: 'Make', href: '#/make' }, right: 'Palettes' }),
+      ...topBar({ back: '#/make', right: 'Palettes' }, ctx),
       el(
         'div',
         { class: 'page make palettes' },

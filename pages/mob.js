@@ -22,7 +22,7 @@ export function mobPage(ctx, route) {
   const footer = answerFooter(ctx, { feedback: { question: route.q, answer: answerLabel('mob', mob.name), target, say }, follow: { topic: target, here: location.hash } });
 
   const nodes = [
-    ...topBar({ left: { label: 'Back', href: backHash(route) }, right: 'Mobs' }),
+    ...topBar({ back: backHash(route), right: 'Mobs' }, ctx),
     el(
       'div',
       { class: 'page answer' },

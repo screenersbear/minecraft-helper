@@ -29,7 +29,7 @@ export function minePhotoPage(ctx, route) {
   return {
     title: build.name,
     nodes: [
-      ...topBar({ left: { label: 'My builds', href: '#/mine' }, right: 'My builds' }),
+      ...topBar({ back: '#/mine', right: 'My builds' }, ctx),
       el(
         'div',
         { class: 'page make mine-photo' },

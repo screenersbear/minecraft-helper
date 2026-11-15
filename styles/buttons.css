@@ -6,7 +6,8 @@
 .menu-btn,
 .speaker-btn,
 .undo-btn,
-.talk-btn {
+.talk-btn,
+.back-btn {
   border: 2px solid var(--edge);
   border-radius: 0;
   background: var(--btn);
@@ -23,7 +24,8 @@
 .pick-btn:active,
 .menu-btn:active,
 .speaker-btn:active,
-.undo-btn:active {
+.undo-btn:active,
+.back-btn:active {
   transform: translateY(2px);
   box-shadow: inset 3px 3px 0 var(--btn-lo), inset -3px -3px 0 var(--btn-hi);
 }
@@ -89,6 +91,13 @@
 
 .copy-row {
   grid-template-columns: 2fr 1fr;
+}
+
+/* The last step of a guide or build: a big Done under "‹ Step" and "Again" (see components/step-buttons.js). */
+.done-btn {
+  margin-top: 10px;
+  height: 72px;
+  font-size: 22px;
 }
 
 /* Big menu buttons with a picture: "Did you mean one of these?", guides in a chapter, Asked before */

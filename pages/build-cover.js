@@ -71,7 +71,7 @@ export function buildCoverPage(ctx, route) {
     return el('li', { class: 'need' }, itemPicture(book, pictureId(c.id), 28), el('span', {}, el('b', {}, count), ` ${name.join(' ')}`));
   });
   const nodes = [
-    ...topBar({ left: { label: 'Back', href: buildBack(route, build) }, right: build.group === 'Builds' ? 'Builds' : build.group }),
+    ...topBar({ back: buildBack(route, build), right: build.group === 'Builds' ? 'Builds' : build.group }, ctx),
     el(
       'div',
       { class: 'page build-cover' },

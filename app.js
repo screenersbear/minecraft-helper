@@ -11,6 +11,7 @@ import { targetName } from './logic/target-name.js';
 import { speak, stopSpeaking, unlockSpeech } from './speech/speak.js';
 import { fitTitles } from './components/fit-title.js';
 import { el } from './components/el.js';
+import { edgeSwipe } from './components/edge-swipe.js';
 import { homePage, isHome } from './pages/home.js';
 import { bookPage } from './pages/book-page.js';
 import { makePageFor } from './pages/make-routes.js';
@@ -66,10 +67,16 @@ function pageFor(route) {
   return PAGES[route.page];
 }
 
+// Words to say when the next screen shows, instead of its own: "All done!" after the last step of a build.
+let sayNext = '';
+
 function show(ctx) {
   const route = parseHash(location.hash);
   // Swiping between home pages changes the address, but the screen is already showing.
-  if (view?.update?.(route)) return;
+  if (view?.update?.(route)) {
+    sayNext = '';
+    return;
+  }
   view?.cleanup?.();
   stopSpeaking();
   const page = pageFor(route);
@@ -91,7 +98,8 @@ function show(ctx) {
   // Topic memory: what this answer is about and what it mentions, for a follow-up like "what gifts?".
   const thing = thingOfRoute(route);
   if (thing) rememberThing({ ...thing, ...view.memory });
-  readOut(view.say);
+  readOut(sayNext || view.say);
+  sayNext = '';
 }
 
 // Reads the answer out, then tells the page it has finished ('answer-spoken'), so "Did that answer it?" can show.
@@ -133,7 +141,9 @@ function start({ book, guides, addons, builds, challenges, tricks, list }) {
       }
       ctx.go(hashForAnswer(answer, q, follow || matched !== q ? answer.kind : undefined));
     },
-    go(hash, { replace = false } = {}) {
+    // say: words to say when it gets there, like "All done!".
+    go(hash, { replace = false, say = '' } = {}) {
+      sayNext = say;
       if (hash === location.hash) return show(ctx);
       if (replace) location.replace(hash);
       else location.hash = hash;
@@ -142,6 +152,8 @@ function start({ book, guides, addons, builds, challenges, tricks, list }) {
     say: (text, onDone) => speak(text, onDone),
   };
   window.addEventListener('hashchange', () => show(ctx));
+  // Swiping in from the left edge goes back, like the back button at the top.
+  edgeSwipe(() => root.querySelector('.back-btn'));
   show(ctx);
 }
 

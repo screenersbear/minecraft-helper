@@ -1,9 +1,12 @@
 // A build, layer by layer (#/build/<id>/<layer>): the layer seen from above with the one below faded, what to put
 // down, and how many of each block. The voice reads it out and waits for "next", "again" or "back", like a guide.
-// A half-built starter (Finish it) ends with "Your turn!" and ideas for finishing it, instead of "All done".
+// The last layer's big Done goes back to where the build was opened from, saying "All done!". A half-built starter
+// (Finish it) ends with "Your turn!" and ideas for finishing it first.
 import { el } from '../components/el.js';
 import { topBar } from '../components/top-bar.js';
 import { blockButton } from '../components/buttons.js';
+import { stepButtons } from '../components/step-buttons.js';
+import { buildBack } from './build-cover.js';
 import { itemPicture } from '../components/picture.js';
 import { layerView } from '../components/layer-view.js';
 import { guideVoice } from '../speech/guide-voice.js';
@@ -31,42 +34,32 @@ export function buildLayerPage(ctx, route) {
 
   const bottom = el('div', { class: 'bottom' });
   const hint = el('p', { class: 'hint' });
+  // Done: back to where the build was opened from (the list of builds, the book...), saying it's finished.
+  const done = () => {
+    guideVoice.stop();
+    ctx.go(buildBack(route, build), { say: `All done! Your ${build.name.toLowerCase()} is finished.` });
+  };
+  const doneButton = blockButton({ label: 'Done', tone: 'green', onClick: done, extra: { class: 'block-btn tone-green done-btn' } });
   const yourTurn = () => {
+    guideVoice.stop();
     const { say: words, ideas } = build.yourTurn;
     bottom.replaceChildren(
       el('p', { class: 'feedback-q', role: 'status' }, 'Your turn!'),
       el('p', { class: 'say' }, words),
       el('ul', { class: 'turn-ideas' }, ideas.map((idea) => el('li', {}, idea))),
-      el('div', { class: 'two-up' }, blockButton({ label: 'Save a photo', tone: 'green', href: '#/mine/new' }), blockButton({ label: 'More to finish', tone: 'grey', href: '#/finish' })),
+      blockButton({ label: 'Save a photo of it', tone: 'grey', href: '#/mine/new' }),
+      doneButton,
     );
     bottom.scrollIntoView({ block: 'end' });
     ctx.say(`Your turn! ${words} Here are some ideas. ${ideas.join(' ')}`);
   };
-  const finish = () => {
-    guideVoice.stop();
-    if (build.yourTurn) return yourTurn();
-    const done = `All done! Your ${build.name.toLowerCase()} is finished.`;
-    bottom.replaceChildren(
-      el('p', { class: 'feedback-q', role: 'status' }, done),
-      el('div', { class: 'two-up' }, blockButton({ label: build.group === 'Finish it' ? 'More to finish' : 'More builds', tone: 'green', href: build.group === 'Finish it' ? '#/finish' : '#/builds' }), blockButton({ label: 'Look at it', tone: 'grey', href: cover })),
-    );
-    ctx.say(done);
-  };
+  const last = build.yourTurn ? yourTurn : done;
   const actions = {
-    back: () => (n > 1 ? goLayer(n - 1) : ctx.go(cover, { replace: true })),
+    back: () => n > 1 && goLayer(n - 1),
     again: () => ctx.say(say),
-    next: () => (n < total ? goLayer(n + 1) : finish()),
+    next: () => (n < total ? goLayer(n + 1) : last()),
   };
-  bottom.append(
-    hint,
-    el(
-      'div',
-      { class: 'three-up' },
-      blockButton({ label: 'Back', tone: 'grey', onClick: actions.back }),
-      blockButton({ label: 'Again', tone: 'grey', onClick: actions.again }),
-      blockButton({ label: n < total ? 'Next' : build.yourTurn ? 'Your turn' : 'Done', tone: 'green', onClick: actions.next }),
-    ),
-  );
+  bottom.append(hint, stepButtons({ n, total, actions, done: last, doneLabel: build.yourTurn ? 'Your turn' : 'Done' }));
   guideVoice.use(`build-${build.id}`, {
     onCommand: (text) => {
       const command = parseCommand(text);
@@ -81,7 +74,7 @@ export function buildLayerPage(ctx, route) {
   const view = layerView(build, ctx.builds.blocks, n, { room: wideScreen() ? 440 : 320 });
   const runs = layerCounts(build, n).map((c) => el('li', {}, itemPicture(book, pictureId(c.id), 24), el('span', {}, countWords(book, c))));
   const nodes = [
-    ...topBar({ left: { label: 'Back', href: cover }, right: build.name }),
+    ...topBar({ back: cover, right: 'Build it' }, ctx),
     el(
       'div',
       { class: 'page guide build-layer' },

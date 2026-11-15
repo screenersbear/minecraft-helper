@@ -133,7 +133,7 @@ h1 {
   font-size: 18px;
 }
 
-/* Top bar: Back on the left, where you are on the right, right on the dirt. */
+/* Top bar: the big back button on the left, where you are on the right, right on the dirt. */
 .top-bar {
   padding: calc(env(safe-area-inset-top) + 16px) var(--side) 8px;
   display: flex;
@@ -144,21 +144,78 @@ h1 {
   color: var(--soft);
 }
 
-.top-link {
-  color: var(--white);
-  text-decoration: none;
-  text-shadow: 2px 2px 0 var(--shade);
-  background: none;
-  border: none;
-  font: inherit;
+/* The back button: a grey game button (see buttons.css) with an arrow and where it goes, "‹ Guides". At least
+   56 by 56, so it's easy to hit. A long name is cut short with "...". */
+.back-btn {
+  display: flex;
+  align-items: center;
+  flex: 0 1 auto;
+  min-width: 56px;
+  max-width: 75%;
+  min-height: 56px;
+  padding: 0 16px 0 12px;
   font-weight: 700;
-  padding: 14px 16px 14px 0;
-  margin: -14px 0;
-  cursor: pointer;
+  font-size: 16px;
+  line-height: 1.1;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.top-link::before {
-  content: '\2039  ';
+.back-arrow {
+  flex-shrink: 0;
+  margin-right: 8px;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.back-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Where you are, on one line; the back button's name gets shorter first. */
+.top-label {
+  flex-shrink: 0;
+  max-width: 45%;
+  margin-left: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Swiping in from the left edge to go back: an arrow follows the finger and turns yellow once letting go will go
+   back (see components/edge-swipe.js). It waits just off the left edge. */
+.edge-arrow {
+  position: fixed;
+  top: 50%;
+  left: -56px;
+  z-index: 30;
+  width: 52px;
+  height: 52px;
+  margin-top: -26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--edge);
+  background: var(--btn);
+  color: var(--white);
+  box-shadow: inset 3px 3px 0 var(--btn-hi), inset -3px -3px 0 var(--btn-lo);
+  font: 700 30px/1 var(--text);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.edge-arrow.is-showing {
+  opacity: 1;
+}
+
+.edge-arrow.is-ready {
+  background: var(--yellow);
+  color: var(--edge);
+  box-shadow: none;
 }
 
 /* Pictures: one big image, each picture picked out with background-position */

@@ -5,13 +5,13 @@ import { topBar } from '../components/top-bar.js';
 import { blockButton } from '../components/buttons.js';
 import { listMyBuilds } from '../data/my-builds.js';
 
-export function minePage() {
+export function minePage(ctx) {
   const builds = listMyBuilds();
   const tile = (b) => el('a', { class: 'mine-tile', href: `#/mine/${b.id}` }, el('img', { src: b.photo, alt: '' }), el('b', {}, b.name));
   return {
     title: 'My builds',
     nodes: [
-      ...topBar({ left: { label: 'Make', href: '#/make' }, right: 'My builds' }),
+      ...topBar({ back: '#/make', right: 'My builds' }, ctx),
       el(
         'div',
         { class: 'page make mine' },

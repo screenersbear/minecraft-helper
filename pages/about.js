@@ -7,7 +7,7 @@ const link = (href, text) => el('a', { href, target: '_blank', rel: 'noopener' }
 export function aboutPage(ctx) {
   const section = (heading, ...body) => el('section', { class: 'about-part' }, el('h2', {}, heading), ...body);
   const nodes = [
-    ...topBar({ left: { label: 'Back', href: '#/' }, right: 'About' }),
+    ...topBar({ back: '#/', right: 'About' }, ctx),
     el(
       'div',
       { class: 'page about' },

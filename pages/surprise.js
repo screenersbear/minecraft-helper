@@ -125,7 +125,7 @@ export function surprisePage(ctx) {
     title: 'Surprise me',
     say: sayOf(challenge),
     nodes: [
-      ...topBar({ left: { label: 'Make', href: '#/make' }, right: 'Surprise me' }),
+      ...topBar({ back: '#/make', right: 'Surprise me' }, ctx),
       el('div', { class: 'page surprise' }, el('h1', { class: 'challenge-label', tabindex: '-1' }, 'Your challenge'), area),
     ],
     cleanup: stop,

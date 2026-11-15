@@ -50,7 +50,7 @@ export function grownUpsPage(ctx) {
   });
 
   const nodes = [
-    ...topBar({ left: { label: 'Done', href: '#/' }, right: 'For grown-ups' }),
+    ...topBar({ back: '#/', right: 'For grown-ups' }, ctx),
     el(
       'div',
       { class: 'page grown-ups' },

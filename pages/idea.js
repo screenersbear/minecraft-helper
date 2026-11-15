@@ -46,7 +46,7 @@ export function ideaPage(ctx) {
   area.append(photoButtons(onPhoto));
 
   const nodes = [
-    ...topBar({ left: { label: 'Back', href: '#/make' }, right: 'Ideas' }),
+    ...topBar({ back: '#/make', right: 'Ideas' }, ctx),
     el(
       'div',
       { class: 'page idea' },

@@ -43,7 +43,7 @@ export function notFoundPage(ctx, route) {
   const say = picks.length ? `${first} Did you mean ${listWords(names, 'or')}?` : first;
 
   const nodes = [
-    ...topBar({ left: { label: 'Back', href: '#/' }, right: 'Not in the book' }),
+    ...topBar({ back: '#/', right: 'Not in the book' }, ctx),
     el(
       'div',
       { class: 'page none' },

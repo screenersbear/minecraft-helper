@@ -51,7 +51,7 @@ export function factPage(ctx, route) {
   const footer = answerFooter(ctx, { feedback: { question: route.q, answer: answerLabel('fact', item.name), target, say }, follow: { topic: target, here: location.hash } });
 
   const nodes = [
-    ...topBar({ left: { label: 'Back', href: backHash(route) }, right: LABEL[kind] || (fact.food && !fact.fromBlocks && !fact.fromMobs ? 'Food' : 'Facts') }),
+    ...topBar({ back: backHash(route), right: LABEL[kind] || (fact.food && !fact.fromBlocks && !fact.fromMobs ? 'Food' : 'Facts') }, ctx),
     el(
       'div',
       { class: 'page answer' },

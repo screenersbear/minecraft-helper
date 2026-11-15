@@ -44,7 +44,7 @@ export function mineNewPage(ctx) {
   return {
     title: 'Add a photo',
     nodes: [
-      ...topBar({ left: { label: 'My builds', href: '#/mine' }, right: 'My builds' }),
+      ...topBar({ back: '#/mine', right: 'My builds' }, ctx),
       el(
         'div',
         { class: 'page idea' },

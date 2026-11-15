@@ -1,9 +1,9 @@
 // Pixel art, step 3 (#/pixel/<id>/<row>): build it row by row from the bottom, left to right. The voice reads each
 // row ("Row 1: 3 white wool, 2 orange wool...") and waits for "next", "again" or "back", like a guide.
-// How far you got is saved, so you can come back to it.
+// How far you got is saved, so you can come back to it. The last row's big Done goes back to Pixel art.
 import { el } from '../components/el.js';
 import { topBar } from '../components/top-bar.js';
-import { blockButton } from '../components/buttons.js';
+import { stepButtons } from '../components/step-buttons.js';
 import { blockArt } from '../components/block-art.js';
 import { itemPicture } from '../components/picture.js';
 import { guideVoice } from '../speech/guide-voice.js';
@@ -24,14 +24,10 @@ export function pixelBuildPage(ctx, route) {
 
   const bottom = el('div', { class: 'bottom' });
   const hint = el('p', { class: 'hint' });
-  const finish = () => {
+  const done = () => {
     guideVoice.stop();
     updateArt(art.id, { row: art.size });
-    bottom.replaceChildren(
-      el('p', { class: 'feedback-q', role: 'status' }, 'All done! It looks great.'),
-      blockButton({ label: 'Back to Pixel art', tone: 'grey', href: '#/pixel' }),
-    );
-    ctx.say('All done! It looks great.');
+    ctx.go('#/pixel', { say: 'All done! It looks great.' });
   };
   const actions = {
     back: () => n > 1 && goRow(n - 1),
@@ -39,19 +35,10 @@ export function pixelBuildPage(ctx, route) {
     next: () => {
       updateArt(art.id, { row: Math.max(art.row, n) });
       if (n < art.size) goRow(n + 1);
-      else finish();
+      else done();
     },
   };
-  bottom.append(
-    hint,
-    el(
-      'div',
-      { class: 'three-up' },
-      blockButton({ label: 'Back', tone: 'grey', onClick: actions.back, extra: n === 1 ? { disabled: true } : {} }),
-      blockButton({ label: 'Again', tone: 'grey', onClick: actions.again }),
-      blockButton({ label: n < art.size ? 'Next' : 'Done', tone: 'green', onClick: actions.next }),
-    ),
-  );
+  bottom.append(hint, stepButtons({ n, total: art.size, actions, done }));
 
   guideVoice.use(`pixel-${art.id}`, {
     onCommand: (text) => {
@@ -66,7 +53,7 @@ export function pixelBuildPage(ctx, route) {
 
   const runs = rowRuns(art, n).map((r) => el('li', {}, itemPicture(book, r.id, 24), el('span', {}, countText(book, r))));
   const nodes = [
-    ...topBar({ left: { label: 'Back', href: toHash({ page: 'pixel', id: art.id }) }, right: 'Build it' }),
+    ...topBar({ back: toHash({ page: 'pixel', id: art.id }), name: art.name, right: 'Build it' }, ctx),
     el(
       'div',
       { class: 'page guide pixel-build' },

@@ -1,9 +1,10 @@
 // A builder trick (#/trick/roof-stairs/2), one step at a time like a guide: a progress bar, the step's number and
 // title, what to do, a 3D picture with the new blocks outlined in yellow (and the blocks from before darker), the new
-// blocks by name, and a tip. Back, Again and Next, or say "back", "again" or "next". Done goes back to the tricks.
+// blocks by name, and a tip. "‹ Step", "Again" and "Step ›", or say "back", "again" or "next". The last step's big
+// Done goes back to the tricks.
 import { el } from '../components/el.js';
 import { topBar } from '../components/top-bar.js';
-import { blockButton } from '../components/buttons.js';
+import { stepButtons } from '../components/step-buttons.js';
 import { progress } from '../components/progress.js';
 import { buildPicture } from '../components/build-picture.js';
 import { blockSwatches } from '../components/block-swatches.js';
@@ -24,10 +25,11 @@ export function trickPage(ctx, route) {
   const step = trick.steps[n - 1];
   const say = step.tip ? `${stepSentence(step, n)} Tip: ${step.tip}` : stepSentence(step, n);
   const goStep = (to) => ctx.go(toHash({ page: 'trick', id: trick.id, step: to }), { replace: true });
+  const done = () => ctx.go('#/tricks');
   const actions = {
     back: () => n > 1 && goStep(n - 1),
     again: () => ctx.say(say),
-    next: () => (n < total ? goStep(n + 1) : ctx.go('#/tricks')),
+    next: () => (n < total ? goStep(n + 1) : done()),
   };
 
   // Voice commands: one listener for the whole trick, like a guide.
@@ -46,7 +48,7 @@ export function trickPage(ctx, route) {
   const added = newBlocks(trick, n - 1).filter((id) => ctx.book.items[id]?.pic >= 0);
   const picture = buildPicture(stepBuild(trick, n - 1), ctx.builds.blocks, { ...(wideScreen() ? { w: 480, h: 340 } : { w: 320, h: 230 }), label: `Step ${n}: ${step.title}` });
   const nodes = [
-    ...topBar({ left: { label: 'Builder tricks', href: '#/tricks' }, right: 'Builder trick' }),
+    ...topBar({ back: '#/tricks', right: 'Builder trick' }, ctx),
     el(
       'div',
       { class: 'page guide trick' },
@@ -66,13 +68,7 @@ export function trickPage(ctx, route) {
         'div',
         { class: 'bottom' },
         hint,
-        el(
-          'div',
-          { class: 'three-up' },
-          blockButton({ label: 'Back', tone: 'grey', onClick: actions.back, extra: n === 1 ? { disabled: true } : {} }),
-          blockButton({ label: 'Again', tone: 'grey', onClick: actions.again }),
-          blockButton({ label: n < total ? 'Next' : 'Done', tone: 'green', onClick: actions.next }),
-        ),
+        stepButtons({ n, total, actions, done }),
       ),
     ),
   ];
