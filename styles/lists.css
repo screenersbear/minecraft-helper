@@ -164,3 +164,30 @@
   align-items: center;
   font-size: 15px;
 }
+
+/* Add-on switches, under Ideas to build: one wide switch per add-on, its box filled when it's on. */
+.addon-switches {
+  padding: 0 0 calc(env(safe-area-inset-bottom) + 24px);
+}
+
+.addon-switches > :not(:first-child) {
+  margin-top: 12px;
+}
+
+.addon-switches .say {
+  margin-top: 6px;
+}
+
+.addon-switches .addon-switch {
+  width: 100%;
+  min-height: 56px;
+  padding: 0 16px;
+  justify-content: flex-start;
+  font-size: 16px;
+  text-align: left;
+}
+
+.addon-switches .addon-switch::before {
+  flex: none;
+  margin-right: 12px;
+}

@@ -1,9 +1,10 @@
-// For grown-ups: questions to look at (grouped by what went wrong, X to take one off when it's done) and ideas to
-// build. Copy the list copies what's still on it, to paste into Claude Code. Opened by holding the title on Ask.
+// For grown-ups: questions to look at (grouped by what went wrong, X to take one off when it's done), ideas to
+// build, and a switch per add-on. Copy the list copies what's still on it, to paste into Claude Code. Opened by holding the title on Ask.
 import { el } from '../components/el.js';
 import { topBar } from '../components/top-bar.js';
 import { blockButton } from '../components/buttons.js';
 import { ideasList } from '../components/ideas-list.js';
+import { addonSwitches } from '../components/addon-switches.js';
 import { questionLog } from '../components/question-log.js';
 import { listQuestions, clearQuestions, copyText } from '../data/questions-log.js';
 
@@ -68,6 +69,7 @@ export function grownUpsPage(ctx) {
         el('div', { class: 'copy-row' }, copyButton, clearButton),
       ),
       ideasList(ctx),
+      addonSwitches(ctx.allAddons),
     ),
   ];
   return { nodes, title: 'Questions to look at' };

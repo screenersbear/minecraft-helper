@@ -16,6 +16,9 @@ export function addonOf(packs, key) {
 
 export const addonKey = (pack, id) => (id ? `${pack.id}:${id}` : pack.id);
 
+// The add-ons that are turned on: all of them but the ids in off (the grown-ups screen's switches).
+export const turnedOn = (packs, off) => (packs || []).filter((p) => !(off || []).includes(p.id));
+
 // Is the answer backed by the official article or the Marketplace page, not only an unofficial site?
 export const isSure = (pack, answer) => (answer.from || []).some((source) => pack.sources?.[source]?.official);
 

@@ -13,6 +13,8 @@ import { fitTitles } from './components/fit-title.js';
 import { el } from './components/el.js';
 import { edgeSwipe } from './components/edge-swipe.js';
 import { trackScreenHeight } from './components/screen-height.js';
+import { addonsOff } from './data/addon-switches.js';
+import { turnedOn } from './logic/addon.js';
 import { homePage, isHome } from './pages/home.js';
 import { bookPage } from './pages/book-page.js';
 import { makePageFor } from './pages/make-routes.js';
@@ -119,7 +121,11 @@ function start({ book, guides, addons, builds, challenges, tricks, list }) {
   const ctx = {
     book,
     guides,
-    addons,
+    // Every add-on, and the ones turned on (the grown-ups screen can turn one off).
+    allAddons: addons,
+    get addons() {
+      return turnedOn(addons, addonsOff());
+    },
     builds,
     challenges,
     tricks,
