@@ -1,51 +1,7 @@
-/* Wide screens, like an iPad: the page gets wider, and a build's layer page puts the block list beside the
-   picture. The pictures themselves are drawn bigger (see components/wide-screen.js). */
+/* Wide screens, like an iPad: the page gets wider. The pictures themselves are drawn bigger (see
+   components/wide-screen.js), and step screens fill the screen (styles/step-screen.css). */
 @media (min-width: 700px) {
   #app {
     max-width: 820px;
-  }
-
-  .build-layer {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto auto auto 1fr auto;
-    grid-template-areas:
-      'head head'
-      'say say'
-      'picture label'
-      'picture list'
-      'bottom bottom';
-    grid-column-gap: 28px;
-  }
-
-  .build-layer > .step-head {
-    grid-area: head;
-  }
-
-  .build-layer > .say {
-    grid-area: say;
-  }
-
-  .build-layer > .layer-figure {
-    grid-area: picture;
-  }
-
-  .build-layer > .run-label {
-    grid-area: label;
-    align-self: end;
-  }
-
-  .build-layer > .row-runs {
-    grid-area: list;
-    align-self: start;
-  }
-
-  .build-layer > .bottom {
-    grid-area: bottom;
-  }
-
-  /* Pixel art, row by row: a bigger picture. */
-  .build-view .block-art {
-    width: min(100%, 460px);
   }
 }

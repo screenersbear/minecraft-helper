@@ -2,14 +2,16 @@
 // "Step ›". Saying "next", "again" or "back" works too, while the guide is open. Things the step mentions are links,
 // with Ask next buttons under it. The small talk button asks something else (the guide stops listening while it's
 // held). The last step asks "Did that answer it?" once it has been read out, and has a big Done that goes back to
-// where the guide was opened from.
+// where the guide was opened from. Each step fits one screen (components/step-screen.js): words that don't fit,
+// and "Want to know more?", wait behind More.
 import { el } from '../components/el.js';
 import { topBar } from '../components/top-bar.js';
 import { stepButtons } from '../components/step-buttons.js';
 import { feedbackArea } from '../components/feedback-area.js';
 import { askMore } from '../components/ask-more.js';
 import { answerLabel } from '../logic/target-name.js';
-import { stepPicture } from '../components/step-picture.js';
+import { stepPicture, stepPictureToFit, hasPicture } from '../components/step-picture.js';
+import { stepScreen } from '../components/step-screen.js';
 import { linkedText } from '../components/linked-text.js';
 import { followChips } from '../components/follow-chips.js';
 import { parseTarget } from '../logic/where.js';
@@ -72,11 +74,14 @@ export function guidePage(ctx, route) {
   });
   bottom.append(more.node);
 
-  const nodes = [
-    ...topBar({ back: backHash(route), right: 'Guide' }, ctx),
-    el(
-      'div',
-      { class: 'page guide' },
+  // The picture, as big as fits. A step with no picture shows just what's next, with its words.
+  const nextStep = guide.steps[n];
+  const pictureBox = el('div', { class: 'guide-art' });
+  const art = hasPicture(step) ? { node: pictureBox, fit: (w, h) => stepPictureToFit(pictureBox, ctx.book, step, nextStep, w, h) } : null;
+  const nextUp = art ? null : stepPicture(ctx.book, step, nextStep);
+  const screen = stepScreen({
+    className: 'guide',
+    head: [
       el('p', { class: 'small-label' }, guide.title),
       progress(n, total),
       el(
@@ -85,13 +90,18 @@ export function guidePage(ctx, route) {
         el('div', { class: 'step-number', 'aria-hidden': 'true' }, String(n)),
         el('div', {}, el('p', { class: 'small-label' }, `Step ${n} of ${total}`), el('h1', { class: 'step-title', 'data-fit': '3', tabindex: '-1' }, step.title)),
       ),
-      linkedText(ctx, step.say),
-      stepPicture(ctx.book, step, guide.steps[n]),
-      chips.node,
-      bottom,
-    ),
-  ];
+    ],
+    art,
+    words: [{ node: linkedText(ctx, step.say), min: 2 }, nextUp ? { node: nextUp, min: 99 } : null].filter(Boolean),
+    extras: [chips.node].filter(Boolean),
+    more: () => [linkedText(ctx, step.say), followChips(ctx, { topic: parseTarget(guide.topic), text: step.say, here: location.hash, guide: guide.id }).node],
+    bottom,
+    // A pattern has to be big enough to count its blocks; one item can be small.
+    minArt: step.pattern ? 150 : 64,
+  });
+  const nodes = [...topBar({ back: backHash(route), right: 'Guide' }, ctx), screen.node];
   const cleanup = () => {
+    screen.stop();
     more.stop();
     const next = parseHash(location.hash);
     if (next.page !== 'guide' || next.id !== guide.id) guideVoice.stop();

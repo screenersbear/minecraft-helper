@@ -1,7 +1,8 @@
 // A builder trick (#/trick/roof-stairs/2), one step at a time like a guide: a progress bar, the step's number and
 // title, what to do, a 3D picture with the new blocks outlined in yellow (and the blocks from before darker), the new
 // blocks by name, and a tip. "‹ Step", "Again" and "Step ›", or say "back", "again" or "next". The last step's big
-// Done goes back to the tricks.
+// Done goes back to the tricks. Each step fits one screen (components/step-screen.js): the picture is as big as
+// the room left over, and the tip shows when there's room for it (or behind More).
 import { el } from '../components/el.js';
 import { topBar } from '../components/top-bar.js';
 import { stepButtons } from '../components/step-buttons.js';
@@ -13,7 +14,7 @@ import { stepSentence } from '../logic/say.js';
 import { toHash, parseHash } from '../logic/routes.js';
 import { parseCommand } from '../logic/commands.js';
 import { stepBuild, newBlocks } from '../logic/tricks.js';
-import { wideScreen } from '../components/wide-screen.js';
+import { stepScreen } from '../components/step-screen.js';
 
 const HINT = 'Say "next", "again" or "back"';
 
@@ -46,12 +47,16 @@ export function trickPage(ctx, route) {
   hint.textContent = guideVoice.on ? HINT : '';
 
   const added = newBlocks(trick, n - 1).filter((id) => ctx.book.items[id]?.pic >= 0);
-  const picture = buildPicture(stepBuild(trick, n - 1), ctx.builds.blocks, { ...(wideScreen() ? { w: 480, h: 340 } : { w: 320, h: 230 }), label: `Step ${n}: ${step.title}` });
-  const nodes = [
-    ...topBar({ back: '#/tricks', right: 'Builder trick' }, ctx),
-    el(
-      'div',
-      { class: 'page guide trick' },
+  // The 3D picture, as big as fits in its grey frame (10 pixels of padding and a 2 pixel edge all round).
+  const frame = el('div', { class: 'trick-frame' });
+  const fit = (w, h) => frame.replaceChildren(buildPicture(stepBuild(trick, n - 1), ctx.builds.blocks, { w: w - 24, h: h - 24, label: `Step ${n}: ${step.title}` }));
+  const words = () => el('p', { class: 'say' }, step.say);
+  const label = () => (added.length ? el('h2', { class: 'small-label' }, 'New blocks, outlined in yellow') : null);
+  const swatches = () => (added.length ? blockSwatches(ctx.book, added) : null);
+  const tip = () => (step.tip ? el('div', { class: 'trick-tip' }, el('b', {}, 'Tip'), el('p', {}, step.tip)) : null);
+  const screen = stepScreen({
+    className: 'guide trick',
+    head: [
       el('p', { class: 'small-label' }, trick.name),
       progress(n, total),
       el(
@@ -60,19 +65,16 @@ export function trickPage(ctx, route) {
         el('div', { class: 'step-number', 'aria-hidden': 'true' }, String(n)),
         el('div', {}, el('p', { class: 'small-label' }, `Step ${n} of ${total}`), el('h1', { class: 'step-title', 'data-fit': '3', tabindex: '-1' }, step.title)),
       ),
-      el('p', { class: 'say' }, step.say),
-      el('div', { class: 'trick-frame' }, picture),
-      added.length ? [el('h2', { class: 'small-label' }, 'New blocks, outlined in yellow'), blockSwatches(ctx.book, added)] : null,
-      step.tip ? el('div', { class: 'trick-tip' }, el('b', {}, 'Tip'), el('p', {}, step.tip)) : null,
-      el(
-        'div',
-        { class: 'bottom' },
-        hint,
-        stepButtons({ n, total, actions, done }),
-      ),
-    ),
-  ];
+    ],
+    art: { node: frame, fit },
+    words: [{ node: words(), min: 2 }, added.length && { node: label(), min: 99 }, added.length && { node: swatches(), min: 1 }].filter(Boolean),
+    extras: [tip()].filter(Boolean),
+    more: () => [words(), label(), swatches(), tip()],
+    bottom: el('div', { class: 'bottom' }, hint, stepButtons({ n, total, actions, done })),
+  });
+  const nodes = [...topBar({ back: '#/tricks', right: 'Builder trick' }, ctx), screen.node];
   const cleanup = () => {
+    screen.stop();
     const next = parseHash(location.hash);
     if (next.page !== 'trick' || next.id !== trick.id) guideVoice.stop();
   };

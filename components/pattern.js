@@ -16,10 +16,11 @@ function describe(step, book) {
   return `A picture of what to build with ${names.join(', ')}, ${step.pattern[0].length} blocks wide and ${step.pattern.length} tall.`;
 }
 
-export function patternPicture(book, step) {
+// scale: bigger or smaller than usual (2: twice as big), in steps of an eighth so the pixels stay even.
+export function patternPicture(book, step, scale = 1) {
   const rows = step.pattern.length;
   const cols = step.pattern[0].length;
-  const size = blockSize(rows, cols);
+  const size = Math.round(blockSize(rows, cols) * scale);
   const cells = step.pattern.join('').split('').map((ch) => {
     if (ch === '.') return el('span', { class: 'build-air' });
     if (ch === '-') return el('span', { class: 'build-any' });

@@ -93,9 +93,10 @@ body::before {
   image-rendering: pixelated;
 }
 
+/* --app-height is the real height of the screen, from window.innerHeight (see components/screen-height.js). */
 #app {
   height: 100vh;
-  height: 100dvh;
+  height: var(--app-height);
   overflow: hidden;
   display: flex;
   flex-direction: column;

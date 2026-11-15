@@ -1,7 +1,8 @@
 // A build, layer by layer (#/build/<id>/<layer>): the layer seen from above with the one below faded, what to put
 // down, and how many of each block. The voice reads it out and waits for "next", "again" or "back", like a guide.
 // The last layer's big Done goes back to where the build was opened from, saying "All done!". A half-built starter
-// (Finish it) ends with "Your turn!" and ideas for finishing it first.
+// (Finish it) ends with "Your turn!" and ideas for finishing it first. Each layer fits one screen
+// (components/step-screen.js): the picture is drawn as big as the room left over.
 import { el } from '../components/el.js';
 import { topBar } from '../components/top-bar.js';
 import { blockButton } from '../components/buttons.js';
@@ -12,7 +13,7 @@ import { layerView } from '../components/layer-view.js';
 import { guideVoice } from '../speech/guide-voice.js';
 import { layerCounts, countWords, pictureId, layerSentence } from '../logic/builds.js';
 import { remixedBuild } from '../data/remixes.js';
-import { wideScreen } from '../components/wide-screen.js';
+import { stepScreen } from '../components/step-screen.js';
 import { parseCommand } from '../logic/commands.js';
 import { toHash, parseHash } from '../logic/routes.js';
 
@@ -43,14 +44,13 @@ export function buildLayerPage(ctx, route) {
   const yourTurn = () => {
     guideVoice.stop();
     const { say: words, ideas } = build.yourTurn;
-    bottom.replaceChildren(
+    screen.body.classList.add('is-turn');
+    screen.body.replaceChildren(
       el('p', { class: 'feedback-q', role: 'status' }, 'Your turn!'),
       el('p', { class: 'say' }, words),
       el('ul', { class: 'turn-ideas' }, ideas.map((idea) => el('li', {}, idea))),
-      blockButton({ label: 'Save a photo of it', tone: 'grey', href: '#/mine/new' }),
-      doneButton,
     );
-    bottom.scrollIntoView({ block: 'end' });
+    bottom.replaceChildren(blockButton({ label: 'Save a photo of it', tone: 'grey', href: '#/mine/new' }), doneButton);
     ctx.say(`Your turn! ${words} Here are some ideas. ${ideas.join(' ')}`);
   };
   const last = build.yourTurn ? yourTurn : done;
@@ -71,32 +71,30 @@ export function buildLayerPage(ctx, route) {
   });
   hint.textContent = guideVoice.on ? HINT : '';
 
-  const view = layerView(build, ctx.builds.blocks, n, { room: wideScreen() ? 440 : 320 });
-  const runs = layerCounts(build, n).map((c) => el('li', {}, itemPicture(book, pictureId(c.id), 24), el('span', {}, countWords(book, c))));
-  const nodes = [
-    ...topBar({ back: cover, right: 'Build it' }, ctx),
-    el(
+  // The layer, as big as fits: the frame and the words under it take their room first.
+  const view = layerView(build, ctx.builds.blocks, n);
+  const frame = el('div', { class: 'layer-frame' }, view.node);
+  const caption = el('figcaption', {}, el('span', { class: 'front-mark' }, upArrow(), el('span', {}, 'Front (the door side)')), view.faded ? el('span', {}, 'Faded blocks are the layer below.') : null);
+  const fit = (w, h) => frame.replaceChildren(layerView(build, ctx.builds.blocks, n, { room: w - 24, tall: h - caption.offsetHeight - 30 }).node);
+  const runs = () => el('ul', { class: 'row-runs' }, layerCounts(build, n).map((c) => el('li', {}, itemPicture(book, pictureId(c.id), 24), el('span', {}, countWords(book, c)))));
+  const tip = () => (layer.tip ? el('p', { class: 'say' }, layer.tip) : null);
+  const label = () => el('h2', { class: 'small-label run-label' }, 'This layer');
+  const screen = stepScreen({
+    className: 'guide build-layer',
+    head: el(
       'div',
-      { class: 'page guide build-layer' },
-      el(
-        'div',
-        { class: 'step-head' },
-        el('div', { class: 'step-number', 'aria-hidden': 'true' }, String(n)),
-        el('div', {}, el('p', { class: 'small-label' }, `Layer ${n} of ${total}, from the bottom`), el('h1', { class: 'step-title', tabindex: '-1' }, layer.name)),
-      ),
-      layer.tip ? el('p', { class: 'say' }, layer.tip) : null,
-      el(
-        'figure',
-        { class: 'layer-figure' },
-        el('div', { class: 'layer-frame' }, view.node),
-        el('figcaption', {}, el('span', { class: 'front-mark' }, upArrow(), el('span', {}, 'Front (the door side)')), view.faded ? el('span', {}, 'Faded blocks are the layer below.') : null),
-      ),
-      el('h2', { class: 'small-label run-label' }, 'This layer'),
-      el('ul', { class: 'row-runs' }, runs),
-      bottom,
+      { class: 'step-head' },
+      el('div', { class: 'step-number', 'aria-hidden': 'true' }, String(n)),
+      el('div', {}, el('p', { class: 'small-label' }, `Layer ${n} of ${total}, from the bottom`), el('h1', { class: 'step-title', tabindex: '-1' }, layer.name)),
     ),
-  ];
+    art: { node: el('figure', { class: 'layer-figure' }, frame, caption), fit },
+    words: [tip() && { node: tip(), min: 2 }, { node: label(), min: 99 }, { node: runs(), min: 1 }].filter(Boolean),
+    more: () => [tip(), label(), runs()],
+    bottom,
+  });
+  const nodes = [...topBar({ back: cover, right: 'Build it' }, ctx), screen.node];
   const cleanup = () => {
+    screen.stop();
     const next = parseHash(location.hash);
     if (next.page !== 'build' || next.id !== build.id) guideVoice.stop();
   };

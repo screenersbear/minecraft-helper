@@ -11,14 +11,16 @@ const PAPER = '#FAFAF7';
 const PANEL = '#C6C6C6';
 const GLASS = '#D6E8EE';
 
-// The size of each square, in CSS pixels, so the layer fits the screen: 48 at most, or 72 with more room (an iPad).
-export const cellSize = (W, room = 320) => Math.max(14, Math.min(room > 320 ? 72 : 48, Math.floor((room - (W - 1) * GAP) / W)));
+// The size of each square, in CSS pixels, so a layer W squares wide and D deep fits in room by tall: from 14 to 120.
+export const cellSize = (W, room = 320, D = 1, tall = Infinity) =>
+  Math.max(14, Math.min(120, Math.floor((room - (W - 1) * GAP) / W), Math.floor((tall - (D - 1) * GAP) / D)));
 
-// n: the layer, from 1 at the bottom. Returns { node, faded } (faded: whether any square shows the layer below).
-export function layerView(build, looks, n, { room = 320 } = {}) {
+// n: the layer, from 1 at the bottom. room, tall: the space it may fill, in CSS pixels.
+// Returns { node, faded } (faded: whether any square shows the layer below).
+export function layerView(build, looks, n, { room = 320, tall = Infinity } = {}) {
   const { W, D } = sizeOf(build);
   const y = n - 1;
-  const cell = cellSize(W, room);
+  const cell = cellSize(W, room, D, tall);
   const dense = Math.min(3, window.devicePixelRatio || 1);
   const px = (v) => Math.round(v * dense);
   const width = W * cell + (W - 1) * GAP;

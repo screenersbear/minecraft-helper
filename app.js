@@ -12,6 +12,7 @@ import { speak, stopSpeaking, unlockSpeech } from './speech/speak.js';
 import { fitTitles } from './components/fit-title.js';
 import { el } from './components/el.js';
 import { edgeSwipe } from './components/edge-swipe.js';
+import { trackScreenHeight } from './components/screen-height.js';
 import { homePage, isHome } from './pages/home.js';
 import { bookPage } from './pages/book-page.js';
 import { makePageFor } from './pages/make-routes.js';
@@ -40,6 +41,7 @@ const PAGES = {
   where: fieldPage, field: fieldPage, missing: missingPage, addon: addonAnswerPage,
 };
 const root = document.getElementById('app');
+trackScreenHeight();
 let view = null;
 
 // The picture shown next to a question under "Asked before".

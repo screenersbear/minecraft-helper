@@ -1,10 +1,12 @@
 // Pixel art, step 3 (#/pixel/<id>/<row>): build it row by row from the bottom, left to right. The voice reads each
 // row ("Row 1: 3 white wool, 2 orange wool...") and waits for "next", "again" or "back", like a guide.
-// How far you got is saved, so you can come back to it. The last row's big Done goes back to Pixel art.
+// How far you got is saved, so you can come back to it. The last row's big Done goes back to Pixel art. Each row
+// fits one screen (components/step-screen.js): the picture is as big as the room left over.
 import { el } from '../components/el.js';
 import { topBar } from '../components/top-bar.js';
 import { stepButtons } from '../components/step-buttons.js';
 import { blockArt } from '../components/block-art.js';
+import { stepScreen } from '../components/step-screen.js';
 import { itemPicture } from '../components/picture.js';
 import { guideVoice } from '../speech/guide-voice.js';
 import { getArt, updateArt } from '../data/pixel-store.js';
@@ -51,26 +53,31 @@ export function pixelBuildPage(ctx, route) {
   });
   hint.textContent = guideVoice.on ? HINT : '';
 
-  const runs = rowRuns(art, n).map((r) => el('li', {}, itemPicture(book, r.id, 24), el('span', {}, countText(book, r))));
-  const nodes = [
-    ...topBar({ back: toHash({ page: 'pixel', id: art.id }), name: art.name, right: 'Build it' }, ctx),
-    el(
+  const runs = () => el('ol', { class: 'row-runs' }, rowRuns(art, n).map((r) => el('li', {}, itemPicture(book, r.id, 24), el('span', {}, countText(book, r)))));
+  const label = () => el('h2', { class: 'small-label run-label' }, 'Left to right');
+  // The picture, square, as big as fits. The back button already says its name.
+  const picture = blockArt(book, art, { done: n - 1, current: n });
+  const fit = (w, h) => {
+    const size = `${Math.floor(Math.min(w, h))}px`;
+    Object.assign(picture.style, { width: size, height: size });
+  };
+  const screen = stepScreen({
+    className: 'guide pixel-build',
+    head: el(
       'div',
-      { class: 'page guide pixel-build' },
-      el('p', { class: 'small-label' }, art.name),
-      el(
-        'div',
-        { class: 'step-head' },
-        el('div', { class: 'step-number', 'aria-hidden': 'true' }, String(n)),
-        el('div', {}, el('p', { class: 'small-label' }, `Row ${n} of ${art.size}, from the bottom`), el('h1', { class: 'step-title', tabindex: '-1' }, `Row ${n}`)),
-      ),
-      el('div', { class: 'art-view build-view' }, blockArt(book, art, { done: n - 1, current: n })),
-      el('h2', { class: 'small-label run-label' }, 'Left to right'),
-      el('ol', { class: 'row-runs' }, runs),
-      bottom,
+      { class: 'step-head' },
+      el('div', { class: 'step-number', 'aria-hidden': 'true' }, String(n)),
+      el('div', {}, el('p', { class: 'small-label' }, `Row ${n} of ${art.size}, from the bottom`), el('h1', { class: 'step-title', tabindex: '-1' }, `Row ${n}`)),
     ),
-  ];
+    art: { node: el('div', { class: 'art-view build-view' }, picture), fit },
+    words: [{ node: label(), min: 99 }, { node: runs(), min: 2 }],
+    more: () => [label(), runs()],
+    bottom,
+    minArt: 160,
+  });
+  const nodes = [...topBar({ back: toHash({ page: 'pixel', id: art.id }), name: art.name, right: 'Build it' }, ctx), screen.node];
   const cleanup = () => {
+    screen.stop();
     const next = parseHash(location.hash);
     if (next.page !== 'pixel' || next.id !== art.id || !next.step) guideVoice.stop();
   };

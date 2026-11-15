@@ -1,0 +1,196 @@
+/* Step screens (a guide, a build's layers, a builder trick, pixel art row by row): one screen, no scrolling. The
+   top and the step buttons stay put, and the picture gets the space between. components/step-screen.js draws the
+   picture to fit and cuts words that don't fit; the rest waits behind More. */
+.step-screen {
+  padding-top: 2px;
+}
+
+.step-top {
+  flex: none;
+}
+
+.step-screen .progress {
+  margin: 6px 0 10px;
+}
+
+.step-body {
+  flex: 1 1 0;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.step-art {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.step-side {
+  flex: none;
+  padding-top: 10px;
+}
+
+.step-side .say,
+.step-side .swatches,
+.step-side .row-runs,
+.step-side .dig-deeper,
+.step-side .trick-tip {
+  margin-top: 0;
+}
+
+.step-side > :not(:first-child) {
+  margin-top: 8px;
+}
+
+.step-side .small-label + * {
+  margin-top: 4px;
+}
+
+.more-btn {
+  width: auto;
+  padding: 0 24px;
+  height: 44px;
+}
+
+.more-btn[hidden] {
+  display: none;
+}
+
+/* The pictures, with no space of their own: the step screen gives them their room. */
+.step-art .layer-figure,
+.step-art .trick-frame,
+.step-art .step-picture,
+.step-art .art-view {
+  margin: 0;
+  padding-top: 0;
+}
+
+.step-art .trick-frame {
+  padding: 10px;
+}
+
+.step-screen .bottom {
+  margin-top: 0;
+  padding: 10px 0 calc(env(safe-area-inset-bottom) + 12px);
+}
+
+.step-screen .hint:empty {
+  display: none;
+}
+
+/* A build's "Your turn!" takes the middle, and can scroll if it's long. */
+.step-body.is-turn {
+  display: block;
+  overflow-y: auto;
+}
+
+/* The More panel: all of the step, on the dark ground. */
+.more-panel {
+  background: #1b1510;
+  color: var(--white);
+}
+
+.more-words > :not(:first-child) {
+  margin-top: 12px;
+}
+
+.more-words .say,
+.more-words .swatches,
+.more-words .row-runs {
+  margin-top: 0;
+}
+
+.more-panel > .block-btn {
+  margin-top: 18px;
+}
+
+/* Short screens (an iPhone SE): a smaller step number and title, a thinner progress bar and a lower Done. */
+@media (max-height: 700px) {
+  .step-screen .step-number {
+    font-size: 64px;
+  }
+
+  .step-screen .step-title {
+    font-size: 20px;
+  }
+
+  .step-screen .progress span {
+    height: 10px;
+  }
+
+  .step-screen .done-btn {
+    height: 60px;
+  }
+}
+
+/* Sideways on a wide screen (an iPad on its side): the words beside the picture. */
+@media (orientation: landscape) and (min-width: 600px) {
+  .step-body {
+    flex-direction: row;
+  }
+
+  .step-side {
+    flex: 0 0 40%;
+    padding: 0 0 0 20px;
+  }
+}
+
+/* A phone on its side: very little height. A smaller head, the step buttons in one row, and asking more beside them. */
+@media (orientation: landscape) and (max-height: 500px) {
+  .step-screen .step-number {
+    font-size: 44px;
+  }
+
+  .step-screen .step-title {
+    margin-top: 0;
+    font-size: 17px;
+  }
+
+  .step-screen .progress {
+    margin: 4px 0 6px;
+  }
+
+  .step-screen .bottom {
+    flex-flow: row wrap;
+    align-items: center;
+    padding-top: 0;
+  }
+
+  .step-screen .bottom > * {
+    flex: 1 1 100%;
+  }
+
+  .step-screen .bottom > .three-up,
+  .step-screen .bottom > .last-step {
+    flex: 1 1 0;
+    margin-top: 8px;
+  }
+
+  .step-screen .bottom > .ask-more {
+    flex: 0 1 30%;
+    min-width: 0;
+    margin: 8px 0 0 14px;
+    padding-top: 0;
+  }
+
+  .step-screen .ask-more .talk-btn.talk-small {
+    width: 60px;
+    height: 60px;
+  }
+
+  .step-screen .last-step {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 8px;
+  }
+
+  .step-screen .last-step .done-btn {
+    margin-top: 0;
+    height: auto;
+  }
+}
