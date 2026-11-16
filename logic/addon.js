@@ -59,6 +59,26 @@ export function treeOf(pack) {
   return parent;
 }
 
+// The picture for an answer: its topic's (an item id), for "Asked before".
+export function addonPic(pack, id) {
+  const parent = treeOf(pack);
+  let at = parent.has(id) ? id : pack.topics[0];
+  while (parent.get(at)) at = parent.get(at);
+  return pack.pics?.[at] || null;
+}
+
+// What add-ons change about a regular mob (pack.changes, by mob id), to say after its regular answer:
+// [{ pack, id: the add-on answer, say: "In The Bloop add-on, there are deep sea drowned...", sure }].
+export function changesFor(packs, target) {
+  if (target?.type !== 'mob') return [];
+  return (packs || []).flatMap((pack) => {
+    const change = pack.changes?.[target.id];
+    if (!change) return [];
+    const say = `In ${pack.name} add-on, ${change.say.charAt(0).toLowerCase()}${change.say.slice(1)}`;
+    return [{ pack, id: change.answer, say, sure: isSure(pack, change) }];
+  });
+}
+
 // How many answers sit behind a topic: everything under it in the tree that's written (not the missing ones).
 export function countBehind(pack, topic) {
   const parent = treeOf(pack);

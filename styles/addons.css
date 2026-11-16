@@ -48,3 +48,22 @@
 .trail-sep {
   font-weight: 700;
 }
+
+/* What an add-on changes, under a regular answer (the drowned in The Bloop): a box with the add-on's tag. */
+.addon-changes {
+  padding-top: 18px;
+}
+
+.addon-change {
+  padding: 10px 14px 14px;
+  border: 2px solid var(--edge);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.addon-change > :not(:first-child) {
+  margin-top: 10px;
+}
+
+.addon-change .say {
+  font-size: 17px;
+}

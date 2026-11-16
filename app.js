@@ -14,7 +14,7 @@ import { el } from './components/el.js';
 import { edgeSwipe } from './components/edge-swipe.js';
 import { trackScreenHeight } from './components/screen-height.js';
 import { addonsOff } from './data/addon-switches.js';
-import { turnedOn } from './logic/addon.js';
+import { turnedOn, addonPic } from './logic/addon.js';
 import { homePage, isHome } from './pages/home.js';
 import { bookPage } from './pages/book-page.js';
 import { makePageFor } from './pages/make-routes.js';
@@ -31,7 +31,8 @@ import { aboutPage } from './pages/about.js';
 import { infoPage } from './pages/info.js';
 import { fieldPage } from './pages/field.js';
 import { missingPage } from './pages/missing.js';
-import { addonAnswerPage } from './pages/addon-answer.js';
+import { addonAnswerPage, askAddon } from './pages/addon-answer.js';
+import { namedAddon, addonOnly } from './logic/addon-ask.js';
 import { chapterPage } from './pages/chapter.js';
 import { trailNav } from './components/trail.js';
 import { crumbsFor } from './logic/trail.js';
@@ -118,6 +119,11 @@ function readOut(text) {
 }
 
 function start({ book, guides, addons, builds, challenges, tricks, list }) {
+  // An add-on answer asked on Ask: back goes to Ask.
+  const toAddon = (pack, q, id) => {
+    addRecent({ q, pic: { kind: 'item', id: addonPic(pack, id) } });
+    askAddon(ctx, pack, q, { id, from: '' });
+  };
   const ctx = {
     book,
     guides,
@@ -133,10 +139,17 @@ function start({ book, guides, addons, builds, challenges, tricks, list }) {
     ask(question) {
       const q = String(question || '').trim();
       if (!q) return;
+      // A question that names an add-on that's on goes to it: "how do I get out of the bloop".
+      const named = namedAddon(ctx.addons, q);
+      if (named) return toAddon(named, q);
       // A follow-up that names nothing ("what gifts?", "how do I get it?") is answered from topic memory. One
       // that names an ingredient of the last recipe ("what about the sugar?") is matched with it put in.
       const memory = lastThing();
       const alone = findAnswer(q, list, book, guides);
+      // Not in the book, but an add-on knows it ("what is a harpoon"). Before topic memory, which would add the last
+      // thing to the question.
+      const other = alone.type === 'none' ? addonOnly(ctx.addons, q) : null;
+      if (other) return toAddon(other.pack, q, other.id);
       const follow = alone.type === 'none' ? followUp(q, memory, book, guides, list) : null;
       // One that says a build's name ("how do I make a present") is about that build, not the last answer.
       const matched = follow || buildNamed(q, list) ? q : withLastThing(q, describeLast(memory, book, guides));

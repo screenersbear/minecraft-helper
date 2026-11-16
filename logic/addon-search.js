@@ -16,13 +16,14 @@ function wordsOf(pack, id) {
 }
 
 // The id of the best answer for the question, or null when nothing in the add-on matches. A question that only
-// names the add-on ("what is the bloop") gets its first topic.
+// names the add-on ("what is the bloop") gets its first topic. A word only in what an answer says isn't enough on
+// its own ("does the bloop have a dog" isn't about the answer that says "have").
 export function findInAddon(pack, question) {
   const own = new Set(keyWords(pack.name));
   const asked = keyWords(question).filter((w) => !own.has(w));
   if (!asked.length) return pack.topics[0];
   let best = null;
-  let bestScore = 0;
+  let bestScore = STRONG - 1;
   // Topics first, then one level deeper at a time, so a tie goes to the broader answer.
   for (const id of treeOf(pack).keys()) {
     const { strong, weak } = wordsOf(pack, id);

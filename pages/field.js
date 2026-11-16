@@ -15,6 +15,7 @@ import { answerType } from '../logic/find-answer.js';
 import { questionKind } from '../logic/understand.js';
 import { toHash, backHash, hashForAnswer } from '../logic/routes.js';
 import { targetName, answerLabel } from '../logic/target-name.js';
+import { addonChanges } from '../components/addon-changes.js';
 
 // The button to the thing's own card: how to make it, its facts, or what the mob is like.
 const MORE = { recipe: 'How to make it', unpack: 'How to make it', fact: 'More facts', mob: 'More about it' };
@@ -31,7 +32,8 @@ export function fieldPage(ctx, route) {
   const entry = target && fieldOf(book, target, field);
   if (!entry) return null;
   const name = targetName(book, guides, target);
-  const say = plainText(entry.say);
+  const changes = addonChanges(ctx, target);
+  const say = [plainText(entry.say), changes.say].filter(Boolean).join(' ');
   const kind = route.kind || questionKind(route.q);
   const guide = entry.guide && guides.find((g) => g.id === entry.guide);
   const type = answerType(target, book, guides);
@@ -56,6 +58,7 @@ export function fieldPage(ctx, route) {
       answerHead({ question: route.q, title: name, sentence: linkedWords(ctx, entry.say), onSay: () => ctx.say(say) }),
       el('div', { class: 'card-row' }, el('div', { class: 'panel' }, el('div', { class: 'slot big' }, targetPicture(book, guides, target, 96)))),
       buttons.length ? el('div', { class: 'another' }, buttons) : null,
+      changes.node,
       footer.node,
     ),
   ];

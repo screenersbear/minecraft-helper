@@ -17,16 +17,17 @@ import { addonHome } from '../logic/chapters.js';
 const NOT_YET = "I don't know that yet.";
 
 // Asks one add-on a question: opens the best answer, or "I don't know that yet" (saved for the grown-ups list as
-// "Missing (The Bloop): ...").
-export function askAddon(ctx, pack, question) {
+// "Missing (The Bloop): ..."). id: the answer when it's already found. from: where back goes (the add-on's chapter;
+// '' for Ask).
+export function askAddon(ctx, pack, question, { id: found, from = addonHome(pack).slice(2) } = {}) {
   const q = String(question || '').trim();
   if (!q) return;
-  const id = findInAddon(pack, q) || '';
+  const id = found || findInAddon(pack, q) || '';
   if (!pack.answers[id]) {
     const missing = addonMissing(pack, q);
     logQuestion({ q, answer: missing, reason: 'missing', missing });
   }
-  ctx.go(toHash({ page: 'addon', id: addonKey(pack, id), q, from: addonHome(pack).slice(2) }));
+  ctx.go(toHash({ page: 'addon', id: addonKey(pack, id), q, from }));
 }
 
 export function addonAnswerPage(ctx, route) {
@@ -38,7 +39,9 @@ export function addonAnswerPage(ctx, route) {
   if (id && !answer && !askFor(pack, id)) return null;
   const sentence = answer ? answer.say : NOT_YET;
   const unsure = Boolean(answer) && !isSure(pack, answer);
-  const say = unsure ? `${sentence} ${MAYBE}` : sentence;
+  // Read out, it says where it comes from: "In The Bloop add-on, ...", unless it already says "add-on".
+  const from = answer && !/add-on/i.test(sentence) ? `In ${pack.name} add-on, ${sentence.charAt(0).toLowerCase()}${sentence.slice(1)}` : sentence;
+  const say = unsure ? `${from} ${MAYBE}` : from;
   const title = answer?.title || pack.name;
   // Under an answer: what's one step deeper. Under a question with no answer yet: the questions next to it.
   const more = answer ? moreOf(pack, id) : id ? besideOf(pack, id) : [];

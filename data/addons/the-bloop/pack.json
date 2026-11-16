@@ -13,6 +13,16 @@
     "mobs": { "name": "The Bloop mob list (mcpewiki, unofficial)", "url": "https://mcpewiki.com/addons/mythicus/the-bloop/wiki/mobs/", "official": false }
   },
   "topics": ["what", "inside", "boss", "creatures", "changed", "gear", "villages"],
+  "ownWords": ["harpoon", "submarine", "louse", "lice", "trench", "anglerfish", "diving"],
+  "changes": {
+    "drowned": { "answer": "drowned", "say": "There are deep sea drowned with one longer arm for grabbing swimmers.", "from": ["article"] },
+    "dolphin": { "answer": "dolphin", "say": "There's a deep sea dolphin that isn't friendly: it fights swimmers.", "from": ["article"] },
+    "nautilus": { "answer": "more-changed", "say": "There's a deep sea nautilus that fights swimmers.", "from": ["article"] },
+    "pufferfish": { "answer": "more-changed", "say": "There's also a deep sea pufferfish.", "from": ["mobs"] },
+    "salmon": { "answer": "more-changed", "say": "There's also a deep sea salmon.", "from": ["mobs"] },
+    "squid": { "answer": "more-changed", "say": "There's also a deep sea squid.", "from": ["mobs"] },
+    "turtle": { "answer": "more-changed", "say": "There's also a deep sea turtle.", "from": ["mobs"] }
+  },
   "answers": {
     "what": {
       "title": "What is the Bloop?",
