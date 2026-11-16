@@ -115,6 +115,7 @@ export function extraPictures(biomes, enchants, effects, topics) {
   for (const t of Object.values(topics)) {
     if (t.pic) ids.add(t.pic);
     (t.foods || []).forEach((f) => ids.add(f));
+    (t.things || []).forEach((x) => x.pic && ids.add(x.pic));
   }
   for (const x of [...Object.values(enchants), ...Object.values(effects)]) if (x.pic) ids.add(x.pic);
   return ids;

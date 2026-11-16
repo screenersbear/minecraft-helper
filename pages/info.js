@@ -1,4 +1,5 @@
-// Info answers: a biome (does it rain or snow there), an enchantment, a potion effect, or a topic like "the best food".
+// Info answers: a biome (does it rain or snow there), an enchantment, a potion effect, or a topic like "the best food"
+// or "breathing underwater".
 // They share one layout: the name, a sentence, a big picture, and a few rows of facts.
 import { el } from '../components/el.js';
 import { topBar } from '../components/top-bar.js';
@@ -10,7 +11,7 @@ import { answerFooter } from '../components/answer-footer.js';
 import { biomeSentence, enchantSentence, effectSentence, drumsticks } from '../logic/say-facts.js';
 import { questionKind } from '../logic/understand.js';
 import { infoOf, infoName } from '../logic/info.js';
-import { toHash, backHash } from '../logic/routes.js';
+import { toHash, backHash, deeperHash } from '../logic/routes.js';
 import { answerLabel } from '../logic/target-name.js';
 
 const WEATHER_ROW = {
@@ -65,6 +66,11 @@ const TYPES = {
     label: 'Food',
     say: (book, id) => book.topics[id].say,
     rows(book, t) {
+      // A topic with its own list ("breathing underwater"): each thing links to its own answer.
+      if (t.things) {
+        const things = t.things.map((x) => ({ ...row(book, x.pic, x.text, x.note), href: x.href && deeperHash(x.href, location.hash) }));
+        return [{ heading: t.heading, rows: things }];
+      }
       const foods = (t.foods || []).map((id) => row(book, id, book.items[id]?.name || id, drumsticks(book.facts[id]?.food?.points || 0)));
       return [{ heading: 'Best first', rows: foods }];
     },
@@ -83,7 +89,7 @@ export function infoPage(type) {
     const footer = answerFooter(ctx, { feedback: { question: route.q, answer: answerLabel(type, name), target, say }, follow: { topic: target, here: location.hash } });
     const tag = how.tag?.(info);
     const nodes = [
-      ...topBar({ back: backHash(route), right: how.label }, ctx),
+      ...topBar({ back: backHash(route), right: info.label || how.label }, ctx),
       el(
         'div',
         { class: 'page answer' },

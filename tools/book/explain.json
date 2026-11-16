@@ -261,6 +261,58 @@
         "best thing to eat"
       ],
       "say": "Steak and cooked porkchops are the best everyday food: each fills 4 drumsticks and keeps you full a long time. Golden carrots keep you full even longer."
+    },
+    "breathe-underwater": {
+      "title": "Breathing underwater",
+      "label": "Underwater",
+      "pic": "turtle_helmet",
+      "askedAs": [
+        "breathe underwater",
+        "breath underwater",
+        "breathing underwater",
+        "stay underwater longer",
+        "stay underwater",
+        "more air underwater",
+        "air underwater",
+        "run out of air",
+        "running out of air",
+        "stop drowning",
+        "not drown"
+      ],
+      "say": "Drink a potion of Water Breathing: it lasts 3 minutes, or 8 with redstone. A turtle shell on your head gives you 10 more seconds of air. Near a working conduit you can breathe underwater as long as you stay close. Respiration on a helmet makes your air last longer.",
+      "heading": "Ways to breathe",
+      "things": [
+        {
+          "pic": "potion",
+          "text": "Potion of Water Breathing",
+          "note": "3 or 8 minutes",
+          "href": "#/guide/brew-potions/1"
+        },
+        {
+          "pic": "turtle_helmet",
+          "text": "Turtle shell",
+          "note": "10 more seconds",
+          "href": "#/recipe/turtle_helmet"
+        },
+        {
+          "pic": "conduit",
+          "text": "Conduit",
+          "note": "with prismarine around it",
+          "href": "#/recipe/conduit"
+        },
+        {
+          "pic": "enchanted_book",
+          "text": "Respiration",
+          "note": "on a helmet",
+          "href": "#/enchant/respiration"
+        }
+      ],
+      "wiki": [
+        "https://minecraft.wiki/w/Potion_of_Water_Breathing",
+        "https://minecraft.wiki/w/Turtle_Shell",
+        "https://minecraft.wiki/w/Conduit",
+        "https://minecraft.wiki/w/Respiration"
+      ]
     }
   }
 }

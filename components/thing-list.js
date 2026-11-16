@@ -5,7 +5,7 @@ import { itemPicture } from './picture.js';
 import { cellName, needsOf } from '../logic/say.js';
 import { counted } from '../logic/plural.js';
 
-// rows: [{ picture, text, note }]. heading: optional small label above the list.
+// rows: [{ picture, text, note, href }]; href makes the words a link. heading: optional small label above the list.
 export function thingList(rows, heading) {
   if (!rows.length) return null;
   return el(
@@ -15,7 +15,7 @@ export function thingList(rows, heading) {
     el(
       'ul',
       { class: 'thing-list' },
-      rows.map((r) => el('li', {}, r.picture, el('span', {}, r.text, r.note ? el('small', {}, ` (${r.note})`) : null))),
+      rows.map((r) => el('li', {}, r.picture, el('span', {}, r.href ? el('a', { class: 'mention', href: r.href }, r.text) : r.text, r.note ? el('small', {}, ` (${r.note})`) : null))),
     ),
   );
 }
