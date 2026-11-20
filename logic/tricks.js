@@ -62,7 +62,7 @@ export function checkTrick(trick, hasLook = () => true) {
   if (trick.layers?.some((l) => l.rows?.length !== depth) || rows.some((r) => r.length !== rows[0].length)) problems.push('its layers are not all the same size');
   const key = trick.key || {};
   for (const ch of new Set(rows.join(''))) if (ch !== '.' && !key[ch]) problems.push(`"${ch}" isn't in the key`);
-  const at = stepOfLetters(trick);
+  const at = stepOfLetters({ steps });
   for (const [ch, entry] of Object.entries(key)) {
     const { was } = entryOf(entry);
     if (at[ch] === undefined) problems.push(`no step adds "${ch}"`);

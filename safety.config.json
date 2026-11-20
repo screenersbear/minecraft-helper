@@ -1,7 +1,8 @@
 {
   "_readme": "One settings file for every safety check. Edit this, not the individual configs.",
   "logic": [
-    "src/**/*.{js,mjs}"
+    "logic/**/*.js",
+    "data/**/*.js"
   ],
   "ignore": [
     "**/vendor/**",

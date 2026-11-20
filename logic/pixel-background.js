@@ -35,8 +35,9 @@ export function findBackground(lab, width) {
 
   const mask = new Uint8Array(width * width);
   const queue = [];
+  // Each edge pixel is listed once (see edgePixels), so none is in the mask yet.
   for (const p of edge) {
-    if (!mask[p] && gap(lab, p, seed) < NEAR_BACKGROUND) {
+    if (gap(lab, p, seed) < NEAR_BACKGROUND) {
       mask[p] = 1;
       queue.push(p);
     }

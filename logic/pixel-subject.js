@@ -18,15 +18,16 @@ export function thingBox(mask, width) {
     total += 1;
   }
   if (!total) return null;
+  // Every pixel of the thing is counted by the last row or column, so the last one always ends it.
   const from = (counts) => {
     let seen = 0;
-    for (let i = 0; i < width; i++) if ((seen += counts[i]) > total * STRAY) return i;
-    return 0;
+    for (let i = 0; i < width - 1; i++) if ((seen += counts[i]) > total * STRAY) return i;
+    return width - 1;
   };
   const to = (counts) => {
     let seen = 0;
-    for (let i = width - 1; i >= 0; i--) if ((seen += counts[i]) > total * STRAY) return i + 1;
-    return width;
+    for (let i = width - 1; i > 0; i--) if ((seen += counts[i]) > total * STRAY) return i + 1;
+    return 1;
   };
   return { x0: from(cols), y0: from(rows), x1: to(cols), y1: to(rows) };
 }

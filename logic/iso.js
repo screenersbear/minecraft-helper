@@ -10,7 +10,7 @@ export function isoSize(W, H, D, s) {
 
 // How light each face is: the top in full light, the front a little darker, the right side darker again.
 const SHADE = { top: 1, front: 0.8, right: 0.64 };
-const clamp16 = (n) => (n < 0 ? 0 : n > 15 ? 15 : n | 0);
+const clamp16 = (n) => Math.min(15, Math.max(0, n | 0));
 const DIM = 0.6;
 const MARK = [255, 255, 85, 255];
 
